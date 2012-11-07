@@ -48,17 +48,27 @@ class Cell:
   def getState(self):
     return self.state
 
-  def mergeWithNeighbor(self, neigh):
-    # define method to merge 2 cells into 1 bigger cell
+  def getNeighbors(self):
+    return self.neighs
+
+  def replaceNeigh(self, oldNeigh, newNeigh):
+    # replace old neighbor with new one
+    self.neighs = [newNeigh if oldNeigh == n else n for n in self.neighs]
+
+  def updateNeighborsConnections(self, newNeighs):
+    # update connections
+    map(lambda neigh: neigh.replaceNeigh(self), newNeighs)
+
+  def absorbNeighbor(self, neigh):
+    # absorb means that this cell will sustain, the other will be terminated
+    # add new neighbors
+    self.addNeighbors(neigh.getNeighbors())
+
+    # for each new neighbor we have to update connection
+    self.updateNeighborsConnections(neigh.getNeighbors())
+
+    # cell grows
     self.sizeOfCell << 1
-
-    # this basically means take all neighbors of neighbor
-    # take this cells neighbors and put them together.
-    # destroy one of the cell? Which one?
-    # increase size of cell
-    #
-    # I'm not sure about how I'll handle drawing of this cells
-
 
 class Lattice:
   def __init__(self, width, height, ruleRef):
