@@ -1,3 +1,11 @@
+'''
+       , __  T
+      /|/  \ 
+       |___/ 
+       | \   
+       |  \_/
+             O
+'''
 class Rule:
   def __init__(self, ruleNumber, numberOfStates, threshold):
     self.rules = {}
@@ -18,7 +26,13 @@ class Rule:
       return self.threshold
     return self.rules[sumOfCellStates]
 
-
+'''
+     |--------| 
+     |        | 
+     |  cell  | 
+     |        | 
+     |--------|
+'''
 class Cell:
   def __init__(self, x, y, rule, state = 0):
     self.x = x
@@ -26,7 +40,6 @@ class Cell:
     self.neighs = []
     self.state = [state]
     self.sizeOfCell = 1
-    # reference to rule
     self.rule = rule
 
   def __str__(self):
@@ -77,11 +90,11 @@ class Cell:
 
 
 '''
-            _|__|__|__|__|_
-            _|__|__|__|__|_
-            _|__|__|__|__|_
-            _|__|__|__|__|_
-             |  |  |  |  |
+        _|__|__|__|_
+        _|__|__|__|_
+        _|__|__|__|_
+        _|__|__|__|_
+         |  |  |  |
 
 '''
 class Lattice:
@@ -157,7 +170,6 @@ class CellularAutomata:
 
   def __str__(self):
     return ''.join([''.join([str(cell.getState())+" " for cell in row]) + "\n" for row in self.lattice.getLattice()])
-    
 
 if __name__ == "__main__":
   # configuration for CA
@@ -169,6 +181,5 @@ if __name__ == "__main__":
   ca = CellularAutomata(numberOfStates, rule, threshold, maxSteps)
   initialConfiguration = [(1,3,7), (1,2,2)]
   ca.setUpInitialConfiguration(initialConfiguration)
-  print("start=======================")
   print(ca)
   ca.start()
