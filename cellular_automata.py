@@ -1,5 +1,3 @@
-import operator
-
 class Rule:
   def __init__(self, ruleNumber, numberOfStates, threshold):
     self.rules = {}
