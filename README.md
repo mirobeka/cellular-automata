@@ -20,3 +20,7 @@
                 |                                                                     
                 '                                                                     
 
+Universal Cellular Automata Simulator
+=====================================
+
+TODO: CA intro, Usage, Blog, Code

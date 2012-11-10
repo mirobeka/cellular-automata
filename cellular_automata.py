@@ -1,3 +1,17 @@
+class TimeStep:
+  def __init__(self, maxSteps):
+    self.time = 0
+    self.maxSteps = maxSteps
+
+  def getTime(self):
+    return self.time
+
+  def underMaxSteps(self):
+    return self.time < self.maxSteps
+
+  def nextStep(self):
+    self.time += 1
+
 '''
        , __  T
       /|/  \ 
@@ -13,12 +27,14 @@ class Rule:
     self.ruleNumber = ruleNumber
     self.threshold = threshold
     self.rules = self.ruleDisassembler(ruleNumber, numberOfStates, threshold, {})
-    print(self.rules)
+
+  def __str__(self):
+    return ''.join([str(key) + " => " + str(value) + "\n" for key, value in self.rules.items()])
 
   def ruleDisassembler(self, number, base, threshold, rules):
     if number is 0:
       return rules
-    rules[threshold] = number % base
+    rules[self.threshold - threshold] = number % base
     return self.ruleDisassembler(number / base, base, threshold-1, rules)
 
   def getNextState(self, sumOfCellStates):
@@ -41,19 +57,17 @@ class Cell:
     self.state = [state]
     self.sizeOfCell = 1
     self.rule = rule
-
+  
   def __str__(self):
-    nghs = [str(n.getCoordinates()) for n in self.neighs if n]
-    return "{}:{} => ".format(self.getState(),self.getCoordinates()) + str(nghs)
+    if self.state[-1]:
+      return "|*"
+    else:
+      return "|_"
 
   def nextStep(self, timeStep):
     sumOfNeighsStates = sum([neigh.getState(timeStep) for neigh in self.neighs if neigh])
     sumOfNeighsStates += self.getState(timeStep)
     self.setState(self.rule.getNextState(sumOfNeighsStates),timeStep+1)
-
-  def setState(self, newState, timeStep):
-    # assert len(self.state) == timeStep
-    self.state += [newState]
 
   def addNeighbors(self, listOfNeighbors):
     for neigh in listOfNeighbors:
@@ -61,6 +75,16 @@ class Cell:
 
   def getCoordinates(self):
     return (self.x, self.y)
+
+  def initializeState(self, state):
+    self.state[0] = state
+
+  def setState(self, newState, timeStep = -1):
+    # assert len(self.state) == timeStep
+    if 0 <= timeStep < len(self.state):
+      self.state[timeStep] = newState
+    else:
+      self.state.append(newState)
 
   def getState(self, timeStep = -1):
     assert len(self.state) >= timeStep
@@ -95,7 +119,6 @@ class Cell:
         _|__|__|__|_
         _|__|__|__|_
          |  |  |  |
-
 '''
 class Lattice:
   def __init__(self, width, height, ruleRef):
@@ -108,19 +131,19 @@ class Lattice:
     # create connections between cells
     self.initializeNeighbors()
 
+  def initializeStateOfCell(self, state, x, y):
+    if x >= 0 or x < self.width or y >= 0 or y < self.height:
+      self.lattice[y][x].initializeState(state)
+
   # set state of particular cell
-  def setStateOfCell(self, state, x, y):
-    if x < 0 or x >= self.width or y < 0 or y >= self.height:
-      self.lattice[y][x].setState(state)
+  def setStateOfCell(self, state, x, y, timeStep):
+    if x >= 0 or x < self.width or y >= 0 or y < self.height:
+      self.lattice[y][x].setState(state, timeStep)
 
   # get state of particular cell
   def getStateOfCell(self, x, y):
-    if x < 0 or x >= self.width or y < 0 or y >= self.height:
+    if x >= 0 or x < self.width or y >= 0 or y < self.height:
       return self.lattice[y][x].getState()
-
-  def initializeNeighbors(self):
-    # add neighbors to each cells list of neighbors
-    map(lambda row: map(lambda cell: cell.addNeighbors(self.getCells(self.vonNeumannNeighborhood(cell.getCoordinates()))), row), self.lattice)
 
   def getCells(self, listOfIndices):
     listOfCells = []
@@ -130,6 +153,10 @@ class Lattice:
       else:
         listOfCells.append(self.lattice[y][x])
     return listOfCells
+
+  def initializeNeighbors(self):
+    # add neighbors to each cells list of neighbors
+    map(lambda row: map(lambda cell: cell.addNeighbors(self.getCells(self.vonNeumannNeighborhood(cell.getCoordinates()))), row), self.lattice)
 
   def nextTimeStep(self, timeStep):
     # iterate over all cells and go to next state
@@ -148,20 +175,19 @@ class Lattice:
     return self.lattice
 
 class CellularAutomata:
-  def __init__(self, numberOfStates, rule, threshold, maxSteps = 1000):
-    self.maxSteps = maxSteps
+  def __init__(self, numberOfStates, rule, threshold):
     self.rule = Rule(rule, numberOfStates, threshold)
-    self.lattice = Lattice(10,10, self.rule)
+    self.lattice = Lattice(20,20, self.rule)
 
   def setUpInitialConfiguration(self, initialConfiguration):
-    map(lambda (state,x,y): self.lattice.setStateOfCell(state,x,y), initialConfiguration)
+    map(lambda (state,x,y): self.lattice.initializeStateOfCell(state,x,y), initialConfiguration)
 
-  def start(self):
-    timeStep = 0
-    while timeStep < self.maxSteps:
-      self.lattice.nextTimeStep(timeStep)
-      timeStep += 1
-      print("Step #{}".format(timeStep))
+  def start(self, maxSteps = 10000):
+    timeStep = TimeStep(maxSteps)
+    while timeStep.underMaxSteps():
+      self.lattice.nextTimeStep(timeStep.getTime())
+      timeStep.nextStep()
+      print("Step #{0:03d}".format(timeStep.getTime()))
       print(self)
 
   def drawLattice(self):
@@ -169,17 +195,20 @@ class CellularAutomata:
     pass
 
   def __str__(self):
-    return ''.join([''.join([str(cell.getState())+" " for cell in row]) + "\n" for row in self.lattice.getLattice()])
+    s =''.join([''.join(["{0:02d} ".format(row[0].y)]+[str(cell) for cell in row]) + "|\n" for row in self.lattice.getLattice()])
+    s += "\n   "+"".join(["{0:<2d}".format(x) for x in range(self.lattice.width)])
+    return s
 
 if __name__ == "__main__":
   # configuration for CA
   numberOfStates = 2
-  rule = 37
+  rule = 114
   threshold = 5
-  maxSteps = 10
+  maxSteps = 100
   # create CA and print
-  ca = CellularAutomata(numberOfStates, rule, threshold, maxSteps)
+  ca = CellularAutomata(numberOfStates, rule, threshold)
   initialConfiguration = [(1,3,7), (1,2,2)]
   ca.setUpInitialConfiguration(initialConfiguration)
+  print("Initial configuration")
   print(ca)
-  ca.start()
+  ca.start(maxSteps)
