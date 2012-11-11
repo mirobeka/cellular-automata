@@ -1,3 +1,16 @@
+'''
+         _,.--.,_
+       .'_..--.._'.
+      /.' . 60 . '.\
+     // .      / . \\
+    |; .      /   . |;
+    ||45    ()    15||
+    |; .          . |;
+     \\ .        . //
+      \'._' 30 '_.'/
+       '-._'--'_.-'
+           `""`
+'''
 class TimeStep:
   def __init__(self, maxSteps):
     self.time = 0
@@ -11,6 +24,9 @@ class TimeStep:
 
   def nextStep(self):
     self.time += 1
+  
+  def previousStep(self):
+    self.time -= 1
 
 '''
        , __  T
@@ -90,6 +106,9 @@ class Cell:
     assert len(self.state) >= timeStep
     return self.state[timeStep]
 
+  def getSize(self):
+    return self.size
+
   def getNeighbors(self):
     return self.neighs
 
@@ -112,13 +131,17 @@ class Cell:
     # cell grows
     self.sizeOfCell << 1
 
+  def splitCell(self):
+    # split cell into 2 separate cells.
+    pass
+
 
 '''
-        _|__|__|__|_
-        _|__|__|__|_
-        _|__|__|__|_
-        _|__|__|__|_
-         |  |  |  |
+        _|_|_|_|_|_
+        _|_|_|_|_|_
+        _|_|_|_|_|_
+        _|_|_|_|_|_
+         | | | | |
 '''
 class Lattice:
   def __init__(self, width, height, ruleRef):
@@ -174,41 +197,35 @@ class Lattice:
   def getLattice(self):
     return self.lattice
 
+'''
+      _             _
+     |_|_ _        |_|_         _   _             _
+      _|_|_|      _ _|_|       |_|_|_|        _  |_|
+     |_|_|       |_|_|_|         |_|_|       |_|_|_|
+                                 |_|           |_|_|
+'''
 class CellularAutomata:
   def __init__(self, numberOfStates, rule, threshold):
     self.rule = Rule(rule, numberOfStates, threshold)
     self.lattice = Lattice(20,20, self.rule)
 
+  def getRawData(self):
+    return [[(cell.x,cell.y, cell.getState(), cell.getSize()) for cell in row] for row in self.lattice]
+
   def setUpInitialConfiguration(self, initialConfiguration):
     map(lambda (state,x,y): self.lattice.initializeStateOfCell(state,x,y), initialConfiguration)
+
+  def nextStep(self, timeStep):
+    self.lattice.nextTimeStep(timeStep.getTime())
+    timeStep.nextStep()
+
 
   def start(self, maxSteps = 10000):
     timeStep = TimeStep(maxSteps)
     while timeStep.underMaxSteps():
-      self.lattice.nextTimeStep(timeStep.getTime())
-      timeStep.nextStep()
+      self.nextStep(timeStep)
       print("Step #{0:03d}".format(timeStep.getTime()))
       print(self)
 
-  def drawLattice(self):
-    # somehow draw lattice
-    pass
-
   def __str__(self):
-    s =''.join([''.join(["{0:02d} ".format(row[0].y)]+[str(cell) for cell in row]) + "|\n" for row in self.lattice.getLattice()])
-    s += "\n   "+"".join(["{0:<2d}".format(x) for x in range(self.lattice.width)])
-    return s
-
-if __name__ == "__main__":
-  # configuration for CA
-  numberOfStates = 2
-  rule = 114
-  threshold = 5
-  maxSteps = 100
-  # create CA and print
-  ca = CellularAutomata(numberOfStates, rule, threshold)
-  initialConfiguration = [(1,3,7), (1,2,2)]
-  ca.setUpInitialConfiguration(initialConfiguration)
-  print("Initial configuration")
-  print(ca)
-  ca.start(maxSteps)
+    return ''.join([''.join(["{0:02d} ".format(row[0].y)]+[str(cell) for cell in row]) + "|\n" for row in self.lattice.getLattice()])

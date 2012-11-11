@@ -1,3 +1,6 @@
+# ignore pylife.py
+pylife.py
+
 # ignore vim files
 
 *.swp
