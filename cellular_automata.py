@@ -54,8 +54,8 @@ class Rule:
     return self.ruleDisassembler(number / base, base, threshold-1, rules)
 
   def getNextState(self, sumOfCellStates):
-    if sumOfCellStates > self.threshold:
-      return self.threshold
+    if sumOfCellStates >= self.threshold:
+      return self.rules[self.threshold]
     return self.rules[sumOfCellStates]
 
 '''
@@ -107,7 +107,7 @@ class Cell:
     return self.state[timeStep]
 
   def getSize(self):
-    return self.size
+    return self.sizeOfCell
 
   def getNeighbors(self):
     return self.neighs
@@ -207,10 +207,10 @@ class Lattice:
 class CellularAutomata:
   def __init__(self, numberOfStates, rule, threshold):
     self.rule = Rule(rule, numberOfStates, threshold)
-    self.lattice = Lattice(20,20, self.rule)
+    self.lattice = Lattice(50,50, self.rule)
 
   def getRawData(self):
-    return [[(cell.x,cell.y, cell.getState(), cell.getSize()) for cell in row] for row in self.lattice]
+    return [(cell.x, cell.y, cell.getState(), cell.getSize()) for row in self.lattice.getLattice() for cell in row]
 
   def setUpInitialConfiguration(self, initialConfiguration):
     map(lambda (state,x,y): self.lattice.initializeStateOfCell(state,x,y), initialConfiguration)
@@ -218,7 +218,6 @@ class CellularAutomata:
   def nextStep(self, timeStep):
     self.lattice.nextTimeStep(timeStep.getTime())
     timeStep.nextStep()
-
 
   def start(self, maxSteps = 10000):
     timeStep = TimeStep(maxSteps)
