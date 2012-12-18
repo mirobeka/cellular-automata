@@ -37,6 +37,26 @@ class TimeStep:
              O
 '''
 class Rule:
+  ''' Abstract Rule class '''
+  def __init__(self):
+    # usually store rules data in self.rules
+    self.rules = None
+
+  def getNextState(self, cellStates, neighborsStates):
+    raise Exception("method getNextState not implemented")
+
+''' Set of rules for Game of Life version of Cellular Automata '''
+class GoLRule(Rule):
+  def getNextState(self, cellState, neighborsStates):
+    noOfNeighborsAlive = sum(neighborsStates)
+    if cellState == 1 and  2 <= noOfNeighborsAlive <= 3:
+      return 1
+    elif cellState == 0 and noOfNeighborsAlive == 3:
+      return 1
+    else:
+      return 0
+
+class NumberRule(Rule):
   def __init__(self, ruleNumber, numberOfStates, threshold):
     self.rules = {}
     self.numberOfStates = numberOfStates
@@ -81,9 +101,9 @@ class Cell:
       return "|_"
 
   def nextStep(self, timeStep):
-    sumOfNeighsStates = sum([neigh.getState(timeStep) for neigh in self.neighs if neigh])
-    sumOfNeighsStates += self.getState(timeStep)
-    self.setState(self.rule.getNextState(sumOfNeighsStates),timeStep+1)
+    neighsStates = [neigh.getState(timeStep) for neigh in self.neighs if neigh]
+    newState = self.rule.getNextState(self.getState(timeStep), neighsStates)
+    self.setState(newState,timeStep+1)
 
   def addNeighbors(self, listOfNeighbors):
     for neigh in listOfNeighbors:
@@ -95,15 +115,13 @@ class Cell:
   def initializeState(self, state):
     self.state[0] = state
 
-  def setState(self, newState, timeStep = -1):
-    # assert len(self.state) == timeStep
-    if 0 <= timeStep < len(self.state):
-      self.state[timeStep] = newState
-    else:
+  def setState(self, newState, timeStep):
+    if timeStep == len(self.state):
       self.state.append(newState)
+    else:
+      self.state[timeStep] = newState
 
-  def getState(self, timeStep = -1):
-    assert len(self.state) >= timeStep
+  def getState(self, timeStep):
     return self.state[timeStep]
 
   def getSize(self):
@@ -134,7 +152,6 @@ class Cell:
   def splitCell(self):
     # split cell into 2 separate cells.
     pass
-
 
 '''
         _|_|_|_|_|_
@@ -179,7 +196,8 @@ class Lattice:
 
   def initializeNeighbors(self):
     # add neighbors to each cells list of neighbors
-    map(lambda row: map(lambda cell: cell.addNeighbors(self.getCells(self.vonNeumannNeighborhood(cell.getCoordinates()))), row), self.lattice)
+    # map(lambda row: map(lambda cell: cell.addNeighbors(self.getCells(self.vonNeumannNeighborhood(cell.getCoordinates()))), row), self.lattice)
+    map(lambda row: map(lambda cell: cell.addNeighbors(self.getCells(self.edieMooreNeighborhood(cell.getCoordinates()))), row), self.lattice)
 
   def nextTimeStep(self, timeStep):
     # iterate over all cells and go to next state
@@ -189,10 +207,11 @@ class Lattice:
     # returns list of tuples of indices for von Neumann neighborhood
     return [(x+1,y), (x,y+1), (x-1,y), (x, y-1)]
 
-  def edieMooreNeighborhood(self, x, y):
+  def edieMooreNeighborhood(self, (x, y)):
     # returns list of tuples of indices for Moore neighborhood
     neighsIndices = [(i,j) for i in range(x-1,x+2) for j in range(y-1,y+2)]
-    return neighsIndices.remove((x,y))
+    neighsIndices.remove((x,y))
+    return neighsIndices
 
   def getLattice(self):
     return self.lattice
@@ -205,9 +224,8 @@ class Lattice:
                                  |_|           |_|_|
 '''
 class CellularAutomata:
-  def __init__(self, numberOfStates, rule, threshold):
-    self.rule = Rule(rule, numberOfStates, threshold)
-    self.lattice = Lattice(50,50, self.rule)
+  def __init__(self, rule):
+    self.lattice = Lattice(40,35, rule)
 
   def getRawData(self):
     return [(cell.x, cell.y, cell.getState(), cell.getSize()) for row in self.lattice.getLattice() for cell in row]
@@ -225,6 +243,9 @@ class CellularAutomata:
       self.nextStep(timeStep)
       print("Step #{0:03d}".format(timeStep.getTime()))
       print(self)
+
+  def checkNeighsSoundness(self):
+    self.lattice.checkNeighsSoundness()
 
   def __str__(self):
     return ''.join([''.join(["{0:02d} ".format(row[0].y)]+[str(cell) for cell in row]) + "|\n" for row in self.lattice.getLattice()])
