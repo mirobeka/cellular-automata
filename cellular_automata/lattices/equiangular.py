@@ -1,7 +1,7 @@
 from cellular_automata.cells.cell import Cell
-from cellular_automata.lattices.lattice import Lattice
+from cellular_automata.lattices.base import Lattice
 
-class EquiangularLattice(Lattice):
+class RegullarEquiangularLattice(Lattice):
   def __init__(self, width, height, ruleRef):
     self.width = width
     self.height = height
@@ -56,3 +56,25 @@ class EquiangularLattice(Lattice):
 
   def getLattice(self):
     return self.lattice
+
+class IrregularEquiangularLattice(Lattice):
+  def __init__(self):
+    # initialization
+    pass
+
+class BoundingBox:
+  def __init__(self, ):
+    pass
+
+##
+# What we need here is that cell can be with artibrary shape.
+# First we could do just with squares. Then when comes to merging of cells, one cell anihilate
+# other cells. But multiple. So making just square lattice -> more complicated merging of multiple cells
+# making arbitrary shape -> reprezentation get harder.
+#
+# important is datastructure we will use if we use quadtree, the we can easily merge multiple cells, but we have
+# to use square cells?
+#
+# Or if we have quadtree
+# the problem is that quad tree is binded with euclidian space
+#
