@@ -1,4 +1,4 @@
-from rule import Rule
+from cellular_automata.rules.base import Rule
 
 class GameOfLifeRule(Rule):
   def getNextState(self, cellState, neighborsStates):

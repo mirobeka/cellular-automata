@@ -1,4 +1,4 @@
-from rule import Rule
+from cellular_automata.rules.base import Rule
 
 class NumberRule(Rule):
   def __init__(self, ruleNumber, numberOfStates, threshold):

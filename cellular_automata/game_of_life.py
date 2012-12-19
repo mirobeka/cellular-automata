@@ -1,10 +1,10 @@
-from cellular_automata.lattices.equiangular_lattice import EquiangularLattice
+from cellular_automata.lattices.equiangular import RegullarEquiangularLattice
 from cellular_automata.rules.game_of_life_rule import GameOfLifeRule
 from cellular_automata.time_step import TimeStep
 
 class GameOfLife:
   def __init__(self, width, height):
-    self.lattice = EquiangularLattice(width, height, GameOfLifeRule())
+    self.lattice = RegullarEquiangularLattice(width, height, GameOfLifeRule())
 
   def getRawData(self):
     return [(cell.x, cell.y, cell.getState(), cell.getSize()) for row in self.lattice.getLattice() for cell in row]
