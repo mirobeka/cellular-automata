@@ -2,7 +2,7 @@
 from cellular_automata.game_of_life import GameOfLife
 
 # configuration for CA
-maxSteps = 1000
+maxSteps = 390
 
 # glider gun initial configuration
 gliderGun = [
