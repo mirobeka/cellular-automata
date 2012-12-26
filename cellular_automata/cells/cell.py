@@ -4,7 +4,6 @@ class Cell:
     self.y = y
     self.neighs = []
     self.state = [state]
-    self.sizeOfCell = 1
     self.rule = rule
   
   def __str__(self):
@@ -37,31 +36,6 @@ class Cell:
   def getState(self, timeStep):
     return self.state[timeStep]
 
-  def getSize(self):
-    return self.sizeOfCell
-
   def getNeighbors(self):
     return self.neighs
 
-  def replaceNeigh(self, oldNeigh, newNeigh):
-    # replace old neighbor with new one
-    self.neighs = [newNeigh if oldNeigh == n else n for n in self.neighs]
-
-  def updateNeighborsConnections(self, newNeighs):
-    # update connections
-    map(lambda neigh: neigh.replaceNeigh(self), newNeighs)
-
-    # absorb means that this cell will sustain, the other will be terminated
-  def absorbNeighbor(self, neigh):
-    # add new neighbors
-    self.addNeighbors(neigh.getNeighbors())
-
-    # for each new neighbor we have to update connection
-    self.updateNeighborsConnections(neigh.getNeighbors())
-
-    # cell grows
-    self.sizeOfCell << 1
-
-  def splitCell(self):
-    # split cell into 2 separate cells.
-    pass
