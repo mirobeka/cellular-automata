@@ -1,30 +1,27 @@
-from cellular_automata.cells.cell import Cell
+from cellular_automata.cells.regullar import SquareCell
 from cellular_automata.lattices.base import Lattice
 
-class RegullarEquiangularLattice(Lattice):
+
+class SquareLattice(Lattice):
   def __init__(self, width, height, ruleRef):
     self.width = width
     self.height = height
 
     # lattice initialization
-    self.lattice = [[Cell(cellX, cellY, ruleRef) for cellX in range(self.width)] for cellY in range(self.height)]
+    self.cells = [[SquareCell(cellX, cellY, ruleRef) for cellX in range(self.width)] for cellY in range(self.height)]
 
     # create connections between cells
-    self.initializeNeighbors()
-
-  def initializeStateOfCell(self, state, x, y):
-    if x >= 0 or x < self.width or y >= 0 or y < self.height:
-      self.lattice[y][x].initializeState(state)
+    self.initializeNeighbors(self.edieMooreNeighborhood)
 
   # set state of particular cell
-  def setStateOfCell(self, state, x, y, timeStep):
+  def setStateOfCell(self, state, x, y):
     if x >= 0 or x < self.width or y >= 0 or y < self.height:
-      self.lattice[y][x].setState(state, timeStep)
+      self.cells[y][x].setState(state)
 
   # get state of particular cell
   def getStateOfCell(self, x, y):
     if x >= 0 or x < self.width or y >= 0 or y < self.height:
-      return self.lattice[y][x].getState()
+      return self.cells[y][x].getState()
 
   def getCells(self, listOfIndices):
     listOfCells = []
@@ -32,17 +29,17 @@ class RegullarEquiangularLattice(Lattice):
       if x < 0 or x >= self.width or y < 0 or y >= self.height:
         listOfCells.append(None)
       else:
-        listOfCells.append(self.lattice[y][x])
+        listOfCells.append(self.cells[y][x])
     return listOfCells
 
-  def initializeNeighbors(self):
+  def initializeNeighbors(self, neighborhoodMethod):
     # add neighbors to each cells list of neighbors
-    # map(lambda row: map(lambda cell: cell.addNeighbors(self.getCells(self.vonNeumannNeighborhood(cell.getCoordinates()))), row), self.lattice)
-    map(lambda row: map(lambda cell: cell.addNeighbors(self.getCells(self.edieMooreNeighborhood(cell.getCoordinates()))), row), self.lattice)
+    map(lambda row: map(lambda cell: cell.addNeighbors(self.getCells(neighborhoodMethod(cell.getCoordinates()))), row), self.cells)
 
-  def nextTimeStep(self, timeStep):
+  def nextStep(self):
     # iterate over all cells and go to next state
-    map(lambda row: map(lambda cell: cell.nextStep(timeStep), row),self.lattice)
+    map(lambda row: map(lambda cell: cell.computeNextState(), row),self.cells)
+    map(lambda row: map(lambda cell: cell.applyNextState(), row),self.cells)
 
   def vonNeumannNeighborhood(self, (x, y)):
     # returns list of tuples of indices for von Neumann neighborhood
@@ -55,26 +52,10 @@ class RegullarEquiangularLattice(Lattice):
     return neighsIndices
 
   def getLattice(self):
-    return self.lattice
+    return self.cells
 
-class IrregularEquiangularLattice(Lattice):
+class VariableSquareLattice(Lattice):
   def __init__(self):
-    # initialization
-    pass
+    self.cells = []
 
-class BoundingBox:
-  def __init__(self, ):
-    pass
 
-##
-# What we need here is that cell can be with artibrary shape.
-# First we could do just with squares. Then when comes to merging of cells, one cell anihilate
-# other cells. But multiple. So making just square lattice -> more complicated merging of multiple cells
-# making arbitrary shape -> reprezentation get harder.
-#
-# important is datastructure we will use if we use quadtree, the we can easily merge multiple cells, but we have
-# to use square cells?
-#
-# Or if we have quadtree
-# the problem is that quad tree is binded with euclidian space
-#

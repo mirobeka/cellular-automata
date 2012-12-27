@@ -1,26 +1,20 @@
-from cellular_automata.lattices.equiangular import RegullarEquiangularLattice
+from cellular_automata.lattices.equiangular import SquareLattice
 from cellular_automata.rules.game_of_life_rule import GameOfLifeRule
 from cellular_automata.time_step import TimeStep
 
 class GameOfLife:
   def __init__(self, width, height):
-    self.lattice = RegullarEquiangularLattice(width, height, GameOfLifeRule())
-
-  def getRawData(self):
-    return [(cell.x, cell.y, cell.getState(), cell.getSize()) for row in self.lattice.getLattice() for cell in row]
+    self.lattice = SquareLattice(width, height, GameOfLifeRule())
 
   def setUpInitialConfiguration(self, initialConfiguration):
-    map(lambda (state,x,y): self.lattice.initializeStateOfCell(state,x,y), initialConfiguration)
-
-  def nextStep(self, timeStep):
-    self.lattice.nextTimeStep(timeStep.getTime())
-    timeStep.nextStep()
+    map(lambda (state,x,y): self.lattice.setStateOfCell(state,x,y), initialConfiguration)
 
   def start(self, maxSteps):
-    timeStep = TimeStep(maxSteps)
-    while timeStep.underMaxSteps():
-      self.nextStep(timeStep)
-      print("Step #{0:03d}".format(timeStep.getTime()))
+    step = 0
+    while step < maxSteps:
+      step += 1
+      self.lattice.nextStep()
+      print("Step #{0:03d}".format(step))
       print(self)
 
   def __str__(self):

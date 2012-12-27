@@ -4,6 +4,6 @@ class Rule:
     # usually store rules data in self.rules
     self.rules = None
 
-  def getNextState(self, cellStates, neighborsStates):
+  def getNextState(self, cell, neighbors):
     raise Exception("method getNextState not implemented")
 
