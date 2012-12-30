@@ -32,16 +32,79 @@ class VariableSquareCell(SquareCell):
   def __init__(self, rule):
     SquareCell.__init__(self, rule)
     self.size = 1
+    self.directions = ["north", "east", "south", "west"]
 
   def initializeState(self):
     initialCellState = [0,0]
     self.setState(initialCellState)
 
-  def joinCell(self, cell):
-    # join with other cell
-    pass
+  def wantsGrow(self):
+    return self.getState()[1]
 
-  def tearCell(sefl, cell):
-    # tear join with cell
-    pass
+  def grow(self):
+    for direction, neigh in self.neighs.items():
+      if self.mergeConstraints(direction, neigh):
+        cellsToMerge = neigh[0].getCellsToMerge([self], direction)
+        return self.mergeCells(cellsToMerge)
+
+  def mergeCells(self, cellsToMerge):
+    newCell = VariableSquareCell(self.rule)
+    newCell.size = 4*self.size
+    for direction in self.directions:
+      newCell.neighs[direction] = [neigh for cell in cellsToMerge for neigh in cell.neighs[direction] if neigh not in cellsToMerge]
+    
+    for direction, neighs in newCell.neighs.values():
+      map(lambda neigh: neigh.updateNeighConnection(direction, [newCell], cellsToMerge), neighs)
+    return cellsToMerge, [newCell]
+
+  def updateNeighConnection(self, direction, cellsToAdd, cellsToRemove):
+    oppositeDirection = self.reverseDirection(direction)
+    map(lambda oldNeigh: self.neighs[oppositeDirection].remove(oldNeigh), cellsToRemove)
+    self.neighs[oppositeDirection] += cellsToAdd
+
+  def mergeConstraints(self, direction, neigh, startCell = None):
+    startCell = self if not startCell else startCell
+    return len(neigh) == 1 and self.sameSize(neigh[0]) and neigh.canMergeWithOthers(startCell, direction)
+
+  def sameSize(self, otherCell):
+    return self.size == otherCell.size
+
+  def getCellsToMerge(self, cells, direction):
+    if cells[0] == self:
+      return cells
+    else:
+      newDirection = self.turnRight(direction)
+      neigh = self.neighs[newDirection][0]
+      return neigh.getCellsToMerge(cells+[self], newDirection)
+
+  def canMergeWithOthers(self, startCell, direction):
+    if startCell == self:
+      return True
+    else:
+      newDirection = self.turnRight(direction)
+      return self.mergeConstraints(newDirection, self.neighs[newDirection], startCell)
+
+  def turnRight(self, direction):
+    if direction == "north":
+      return "east"
+    elif direction == "east":
+      return "south"
+    elif direction == "south":
+      return "west"
+    elif direction == "west":
+      return "north"
+    else:
+      raise Exception( direction + " is wrong direction to turn right!")
+
+  def reverseDirection(self, direction):
+    if direction == "north":
+      return "south"
+    elif direction == "east":
+      return "west"
+    elif direction == "south":
+      return "north"
+    elif direction == "west":
+      return "east"
+    else:
+      raise Exception(direction + " is wrong direction to reverse!")
 

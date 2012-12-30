@@ -14,4 +14,4 @@ class DummyRule(Rule):
     Rule.__init__(self)
 
   def getNextState(self, cell, neighbors):
-    return 1 if (uniform(0,1) > 0.5) else 0
+    return [1 if (uniform(0,1) > 0.5) else 0 for x in range(2)]
