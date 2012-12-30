@@ -22,4 +22,4 @@ class Cell:
     self.state["current"] = state
   
   def getNeighbors(self):
-    raise Exception("method getNeighbors of Cell is not implemented")
+    return self.neighs

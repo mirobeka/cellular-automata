@@ -1,18 +1,25 @@
 from cellular_automata.rules.base import Rule
 
 class GameOfLifeRule(Rule):
-  def getNextState(self, cell, neighbors):
-    stateVector = self.getStateVector(cell, neighbors)
+  def getNextState(self, cell, neighs):
+    stateVector = self.getStateVector(cell, neighs)
     return self.calculateState(stateVector)
 
-  def getStateVector(self, cell, neighbors):
+  def getStateVector(self, cell, neighs):
     stateVector = [cell.getState()]
-    stateVector += [neigh.getState() for neigh in neighbors if neigh]
+    stateVector += self.getNeighsStates(neighs)
     return stateVector
+
+  def getNeighsStates(self, neighs):
+    listOfStates = []
+    for direction, neigh in neighs.items():
+      if neigh[0]:
+        listOfStates.append(neigh[0].getState())
+    return listOfStates
 
   def calculateState(self, stateVector):
     noOfNeighborsAlive = sum(stateVector[1:])
-    if stateVector[0] == 1 and  2 <= noOfNeighborsAlive <= 3:
+    if stateVector[0] == 1 and 2 <= noOfNeighborsAlive <= 3:
       return 1
     elif stateVector[0]== 0 and noOfNeighborsAlive == 3:
       return 1

@@ -17,7 +17,7 @@ gliderGun = [
 ]
 
 # create CA and print
-game = GameOfLife(40, 34)
+game = GameOfLife((40, 34))
 game.setUpInitialConfiguration(gliderGun)
 
 # start game
