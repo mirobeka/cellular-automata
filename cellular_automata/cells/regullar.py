@@ -15,11 +15,11 @@ class SquareCell(Cell):
     for direction in directions:
       self.neighs[direction] = []
 
-  def addNeighbors(self,neighbors):
+  def addNeighbors(self, neighbors):
     for direction, neigh in neighbors.items():
       if type(neigh) is list:
-        self.neighs[direction] += neigh
-      else:
+        self.neighs[direction] += filter(lambda x: x, neigh)
+      elif neigh:
         self.neighs[direction].append(neigh)
 
   def __str__(self):
@@ -53,18 +53,20 @@ class VariableSquareCell(SquareCell):
     for direction in self.directions:
       newCell.neighs[direction] = [neigh for cell in cellsToMerge for neigh in cell.neighs[direction] if neigh not in cellsToMerge]
     
-    for direction, neighs in newCell.neighs.values():
+    for direction, neighs in newCell.neighs.items():
       map(lambda neigh: neigh.updateNeighConnection(direction, [newCell], cellsToMerge), neighs)
     return cellsToMerge, [newCell]
 
   def updateNeighConnection(self, direction, cellsToAdd, cellsToRemove):
     oppositeDirection = self.reverseDirection(direction)
-    map(lambda oldNeigh: self.neighs[oppositeDirection].remove(oldNeigh), cellsToRemove)
+    for oldNeigh in cellsToRemove:
+      if oldNeigh in self.neighs[oppositeDirection]:
+        self.neighs[oppositeDirection].remove(oldNeigh)
     self.neighs[oppositeDirection] += cellsToAdd
 
   def mergeConstraints(self, direction, neigh, startCell = None):
     startCell = self if not startCell else startCell
-    return len(neigh) == 1 and self.sameSize(neigh[0]) and neigh.canMergeWithOthers(startCell, direction)
+    return len(neigh) == 1 and self.sameSize(neigh[0]) and neigh[0].canMergeWithOthers(startCell, direction)
 
   def sameSize(self, otherCell):
     return self.size == otherCell.size

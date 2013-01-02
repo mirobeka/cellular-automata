@@ -1,3 +1,4 @@
+from __future__ import print_function
 from cellular_automata.cells.regullar import SquareCell, VariableSquareCell
 from cellular_automata.lattices.base import Lattice
 
@@ -54,9 +55,11 @@ class VariableSquareLattice(SquareLattice):
     growingCells = [cell for cell in self.cells if cell.wantsGrow()]
     for growingCell in growingCells:
       if growingCell in self.cells:
-        cellsToRemove, cellsToAdd = growingCell.grow()
-        self.removeCells(cellsToRemove)
-        self.addCells(cellsToAdd)
+        changes = growingCell.grow()
+        if changes:
+          cellsToRemove, cellsToAdd = changes
+          self.removeCells(cellsToRemove)
+          self.addCells(cellsToAdd)
 
   def addCells(self, listOfCellsToAdd):
     for cellToAdd in listOfCellsToAdd:

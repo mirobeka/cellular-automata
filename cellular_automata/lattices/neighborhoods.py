@@ -18,7 +18,6 @@ def edieMooreNeighborhood(cells, x, y):
   neighs["northwest"] = getCell(cells, (x-1,y-1))
   return neighs
 
-
 def getCell(cells, (x,y)):
   if x < 0 or x >= len(cells[0]) or y < 0 or y >= len(cells):
     return None
