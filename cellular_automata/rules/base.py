@@ -1,4 +1,4 @@
-from random import uniform
+from random import uniform, randint
 
 class Rule:
   ''' Abstract Rule class '''
@@ -14,4 +14,10 @@ class DummyRule(Rule):
     Rule.__init__(self)
 
   def getNextState(self, cell, neighbors):
-    return [1 if (uniform(0,1) > 0.5) else 0 for x in range(2)]
+    state = [randint(0,255), randint(0,255), randint(0,255)]
+    growing = 1 if (uniform(0,1) > 0.3) else 0
+    state.append(growing)
+    return state
+
+  def initialState(self):
+    return [255,255,255,0]

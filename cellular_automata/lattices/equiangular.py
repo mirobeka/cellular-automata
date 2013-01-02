@@ -17,10 +17,12 @@ class SquareLattice(Lattice):
     return cells
 
   def initializeNeighbors(self, cells, neighborhoodMethod):
+    radius = cells[0][0].radius
     for y in range(len(cells)):
       for x in range(len(cells[y])):
         neighs = neighborhoodMethod(cells, x, y)
         cells[y][x].addNeighbors(neighs)
+        cells[y][x].setPosition((2*x*radius+radius, 2*y*radius+radius))
 
   # set state of particular cell
   def setStateOfCell(self, state, x, y):
@@ -36,7 +38,6 @@ class SquareLattice(Lattice):
     return self.cells
 
 class VariableSquareLattice(SquareLattice):
-
   def __init__(self, dimensions, neighborhoodMethod, rule):
     SquareLattice.__init__(self, dimensions, neighborhoodMethod, rule)
     # flatten 2 dimensional list of cells

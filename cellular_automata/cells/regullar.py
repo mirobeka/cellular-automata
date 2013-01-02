@@ -5,6 +5,12 @@ class SquareCell(Cell):
     Cell.__init__(self, rule)
     self.createEmptyNeighborhood()
     self.initializeState()
+    self.setPosition((0,0))
+    self.radius = 8
+
+  def setPosition(self, (x,y)):
+    self.x = x
+    self.y = y
 
   def initializeState(self):
     self.setState(0)
@@ -33,13 +39,14 @@ class VariableSquareCell(SquareCell):
     SquareCell.__init__(self, rule)
     self.size = 1
     self.directions = ["north", "east", "south", "west"]
+    # center of cell and radius
 
   def initializeState(self):
-    initialCellState = [0,0]
+    initialCellState = self.rule.initialState()
     self.setState(initialCellState)
 
   def wantsGrow(self):
-    return self.getState()[1]
+    return self.getState()[3]
 
   def grow(self):
     for direction, neigh in self.neighs.items():
@@ -50,12 +57,24 @@ class VariableSquareCell(SquareCell):
   def mergeCells(self, cellsToMerge):
     newCell = VariableSquareCell(self.rule)
     newCell.size = 4*self.size
+
+    newCenter = self.interpolateCenter(cellsToMerge)
+    newCell.setPosition(newCenter)
+    newCell.radius = self.radius * 2
+
     for direction in self.directions:
       newCell.neighs[direction] = [neigh for cell in cellsToMerge for neigh in cell.neighs[direction] if neigh not in cellsToMerge]
-    
+
     for direction, neighs in newCell.neighs.items():
       map(lambda neigh: neigh.updateNeighConnection(direction, [newCell], cellsToMerge), neighs)
     return cellsToMerge, [newCell]
+
+  def interpolateCenter(self, cells):
+    one = cells[0]
+    opposite = cells[2]
+    x = (one.x + opposite.x) / 2
+    y = (one.y + opposite.y) / 2
+    return x,y
 
   def updateNeighConnection(self, direction, cellsToAdd, cellsToRemove):
     oppositeDirection = self.reverseDirection(direction)
