@@ -14,6 +14,7 @@ class App:
     self.initPyGame()
 
   def initConstants(self, width, height):
+    self.fps = 5
     self.resolution = 16
     self.width = width
     self.height = height
@@ -65,7 +66,7 @@ class App:
 
   def update(self):
     pygame.display.update()
-    self.fpsClock.tick(5)
+    self.fpsClock.tick(self.fps)
 
   def clearSurface(self):
     self.surface.fill(white)
@@ -79,7 +80,7 @@ class App:
     width = cell.radius*2
     height = cell.radius*2
     rgb = cell.getState()
-    pyColor = pygame.Color(rgb[0], rgb[1], rgb[3])
+    pyColor = pygame.Color(rgb[0], rgb[1], rgb[2])
     pygame.draw.rect(self.surface, pyColor,(tlx, tly, width, height))
 
   def printStats(self):

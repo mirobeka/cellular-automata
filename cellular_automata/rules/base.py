@@ -1,5 +1,8 @@
 from random import uniform, randint
 
+class NotImplementedException(Exception):
+  pass
+
 class Rule:
   ''' Abstract Rule class '''
   def __init__(self):
@@ -7,17 +10,20 @@ class Rule:
     self.rules = None
 
   def getNextState(self, cell, neighbors):
-    raise Exception("method getNextState not implemented")
+    raise NotImplementedException("method getNextState not implemented")
 
 class DummyRule(Rule):
-  def __init__(self):
+  def __init__(self, stateVectorLength = 4):
     Rule.__init__(self)
+    self.stateVectorLength = stateVectorLength
 
   def getNextState(self, cell, neighbors):
-    state = [randint(0,255), randint(0,255), randint(0,255)]
+    state = [randint(0,255) for i in range(self.stateVectorLength-1)]
     growing = 1 if (uniform(0,1) > 0.3) else 0
     state.append(growing)
     return state
 
   def initialState(self):
-    return [255,255,255,0]
+    state = [randint(0,255) for i in range(self.stateVectorLength-1)]
+    state.append(0)
+    return state
