@@ -39,7 +39,6 @@ class VariableSquareCell(SquareCell):
     SquareCell.__init__(self, rule)
     self.size = 1
     self.directions = ["north", "east", "south", "west"]
-    # center of cell and radius
 
   def initializeState(self):
     initialCellState = self.rule.initialState()
@@ -49,17 +48,16 @@ class VariableSquareCell(SquareCell):
     return self.getState()[3]
 
   def grow(self):
-    for direction, neigh in self.neighs.items():
-      if self.mergeConstraints(direction, neigh):
-        cellsToMerge = neigh[0].getCellsToMerge([self], direction)
+    for direction in self.directions:
+      if self.canMergeWithOthers(direction):
+        cellsToMerge = self.getCellsToMerge(direction)
         return self.mergeCells(cellsToMerge)
 
   def mergeCells(self, cellsToMerge):
     newCell = VariableSquareCell(self.rule)
     newCell.size = 4*self.size
 
-    newCenter = self.interpolateCenter(cellsToMerge)
-    newCell.setPosition(newCenter)
+    newCell.setPosition(self.interpolateCenter(cellsToMerge))
     newCell.radius = self.radius * 2
 
     for direction in self.directions:
@@ -69,13 +67,6 @@ class VariableSquareCell(SquareCell):
       map(lambda neigh: neigh.updateNeighConnection(direction, [newCell], cellsToMerge), neighs)
     return cellsToMerge, [newCell]
 
-  def interpolateCenter(self, cells):
-    one = cells[0]
-    opposite = cells[2]
-    x = (one.x + opposite.x) / 2
-    y = (one.y + opposite.y) / 2
-    return x,y
-
   def updateNeighConnection(self, direction, cellsToAdd, cellsToRemove):
     oppositeDirection = self.reverseDirection(direction)
     for oldNeigh in cellsToRemove:
@@ -83,27 +74,44 @@ class VariableSquareCell(SquareCell):
         self.neighs[oppositeDirection].remove(oldNeigh)
     self.neighs[oppositeDirection] += cellsToAdd
 
-  def mergeConstraints(self, direction, neigh, startCell = None):
-    startCell = self if not startCell else startCell
-    return len(neigh) == 1 and self.sameSize(neigh[0]) and neigh[0].canMergeWithOthers(startCell, direction)
+  def getCellsToMerge(self, direction):
+    return self._getCellsToMerge([], direction)
 
-  def sameSize(self, otherCell):
-    return self.size == otherCell.size
-
-  def getCellsToMerge(self, cells, direction):
-    if cells[0] == self:
+  def _getCellsToMerge(self, cells, direction):
+    if len(cells) is 4:
       return cells
     else:
       newDirection = self.turnRight(direction)
-      neigh = self.neighs[newDirection][0]
-      return neigh.getCellsToMerge(cells+[self], newDirection)
+      neigh = self.neighs[direction][0]
+      return neigh._getCellsToMerge(cells+[self], newDirection)
 
-  def canMergeWithOthers(self, startCell, direction):
-    if startCell == self:
+  def mergeConstraints(self, direction):
+    ''' cell can merge with other when they are same size and cell are aligned.'''
+    neigh = self.neighs[direction]
+    return len(neigh) == 1 and self.sameSize(neigh[0]) and neigh[0].wantsGrow()
+
+  def canMergeWithOthers(self, direction):
+    return self._canMergeWithOthers(4, direction)
+
+  def _canMergeWithOthers(self, cellCountdown, direction):
+    if cellCountdown is 0:
       return True
     else:
-      newDirection = self.turnRight(direction)
-      return self.mergeConstraints(newDirection, self.neighs[newDirection], startCell)
+      if self.mergeConstraints(direction):
+        newDirection = self.turnRight(direction)
+        return self.neighs[direction][0]._canMergeWithOthers(cellCountdown-1, newDirection)
+      else:
+        return False
+
+  def interpolateCenter(self, cells):
+    one = cells[0]
+    opposite = cells[2]
+    x = (one.x + opposite.x) / 2
+    y = (one.y + opposite.y) / 2
+    return x,y
+
+  def sameSize(self, otherCell):
+    return self.size == otherCell.size
 
   def turnRight(self, direction):
     if direction == "north":
