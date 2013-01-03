@@ -13,7 +13,7 @@ class GameOfLifeRule(Rule):
   def getNeighsStates(self, neighs):
     listOfStates = []
     for direction, neigh in neighs.items():
-      if neigh[0]:
+      if len(neigh) > 0:
         listOfStates.append(neigh[0].getState())
     return listOfStates
 
