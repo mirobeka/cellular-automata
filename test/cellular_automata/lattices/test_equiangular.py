@@ -5,6 +5,7 @@ from cellular_automata.lattices.neighborhoods import vonNeumannNeighborhood
 import unittest
 
 class VariableSquareLatticeTestCase(unittest.TestCase):
+  '''Unit Test for variable square lattice'''
   def setUp(self):
     self.rule = DummyRule()
 
