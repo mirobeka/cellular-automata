@@ -1,7 +1,6 @@
 from cellular_automata.rules.base import Rule
 from cellular_automata.rules.base import DummyRule
 from cellular_automata.rules.base import NotImplementedException
-from cellular_automata.cells.base import Cell
 import unittest
 
 class BaseRuleTestCase(unittest.TestCase):
