@@ -2,9 +2,9 @@ class Cell:
   def __init__(self, rule):
     self.rule = rule
     self.neighs = None
-    self.initState()
+    self.createState()
 
-  def initState(self):
+  def createState(self):
     self.state = {}
     self.state["current"] = None
     self.state["next"] = None

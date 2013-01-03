@@ -1,5 +1,5 @@
 from __future__ import print_function
-from cellular_automata.cells.regullar import SquareCell, VariableSquareCell
+from cellular_automata.cells.regular import SquareCell, VariableSquareCell
 from cellular_automata.lattices.base import Lattice
 
 class SquareLattice(Lattice):

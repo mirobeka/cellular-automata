@@ -24,6 +24,4 @@ class DummyRule(Rule):
     return state
 
   def initialState(self):
-    state = [randint(0,255) for i in range(self.stateVectorLength-1)]
-    state.append(0)
-    return state
+    return [0 for i in range(self.stateVectorLength)]
