@@ -54,24 +54,39 @@ class VariableSquareCell(SquareCell):
         return self.mergeCells(cellsToMerge)
 
   def mergeCells(self, cellsToMerge):
-    newCell = VariableSquareCell(self.rule)
-    newCell.size = 4*self.size
+    newCell = self.createNewCell(cellsToMerge)
+    self.putNewCellIntoNeighborhood(newCell, cellsToMerge)
+    return cellsToMerge, [newCell]
 
+  def createNewCell(self, cellsToMerge):
+    newCell = VariableSquareCell(self.rule)
+    newCell.size = len(cellsToMerge)*self.size
     newCell.setPosition(self.interpolateCenter(cellsToMerge))
     newCell.radius = self.radius * 2
+    return newCell
 
+  def putNewCellIntoNeighborhood(self, newCell, cellsToMerge):
+    self.setNeighborsOfNewCell(newCell, cellsToMerge)
+    self.updateNeighborhood(newCell, cellsToMerge)
+
+  def setNeighborsOfNewCell(self, newCell, cellsToMerge):
     for direction in self.directions:
       newCell.neighs[direction] = [neigh for cell in cellsToMerge for neigh in cell.neighs[direction] if neigh not in cellsToMerge]
 
+  def updateNeighborhood(self, newCell, cellsToMerge):
     for direction, neighs in newCell.neighs.items():
-      map(lambda neigh: neigh.updateNeighConnection(direction, [newCell], cellsToMerge), neighs)
-    return cellsToMerge, [newCell]
+      for neigh in neighs:
+        neigh.removeOldNeighbors(direction, cellsToMerge)
+        neigh.addNewNeighbors(direction, [newCell])
 
-  def updateNeighConnection(self, direction, cellsToAdd, cellsToRemove):
+  def removeOldNeighbors(self, direction, cellsToRemove):
     oppositeDirection = self.reverseDirection(direction)
     for oldNeigh in cellsToRemove:
       if oldNeigh in self.neighs[oppositeDirection]:
         self.neighs[oppositeDirection].remove(oldNeigh)
+
+  def addNewNeighbors(self, direction, cellsToAdd):
+    oppositeDirection = self.reverseDirection(direction)
     self.neighs[oppositeDirection] += cellsToAdd
 
   def getCellsToMerge(self, direction):
