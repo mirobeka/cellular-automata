@@ -95,6 +95,18 @@ class VariableSquareCellNeighborhoodTestCase(unittest.TestCase):
     self.east.setState([0,0,0,1])
     self.assertFalse(self.center.canMergeWithOthers("north"))
 
+  def test_returns_correct_cells_to_merge(self):
+    self.center.setState([0,0,0,1])
+    self.north.setState([0,0,0,1])
+    self.northEast.setState([0,0,0,1])
+    self.east.setState([0,0,0,1])
+    correctList = [self.center, self.north, self.northEast, self.east]
+    self.assertListEqual(correctList, self.center.getCellsToMerge("north"))
+
+  # def test_correct_size_of_new_cell_after_merge(self):
+  #   cellsToMerge = [self.center, self.north, self.northEast, self.east]
+  #   self.center
+
 class VariableSquareCellSizeTestCase(unittest.TestCase):
   def setUp(self):
     self.rule = DummyRule()
