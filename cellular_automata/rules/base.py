@@ -19,9 +19,18 @@ class DummyRule(Rule):
 
   def getNextState(self, cell, neighbors):
     state = [randint(0,255) for i in range(self.stateVectorLength-1)]
-    growing = 1 if (uniform(0,1) > 0.3) else 0
+    growing = 1 if (uniform(0,1) > 0.5) else 0
     state.append(growing)
     return state
 
   def initialState(self):
     return [0 for i in range(self.stateVectorLength)]
+
+class AlwaysMergeRule(DummyRule):
+  def getNextState(self, cell, neighbors):
+    state = [randint(0,255) for i in range(self.stateVectorLength-1)]
+    state.append(1)
+    return state
+
+  def initialState(self):
+    return [1 for i in range(self.stateVectorLength)]
