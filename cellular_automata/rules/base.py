@@ -26,7 +26,7 @@ class DummyRule(Rule):
   def initialState(self):
     return [0 for i in range(self.stateVectorLength)]
 
-class AlwaysMergeRule(DummyRule):
+class AllwaysMergeRule(DummyRule):
   def getNextState(self, cell, neighbors):
     state = [randint(0,255) for i in range(self.stateVectorLength-1)]
     state.append(1)

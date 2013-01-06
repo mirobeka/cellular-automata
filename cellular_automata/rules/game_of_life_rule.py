@@ -14,7 +14,8 @@ class GameOfLifeRule(Rule):
     listOfStates = []
     for direction, neigh in neighs.items():
       if len(neigh) > 0:
-        listOfStates.append(neigh[0].getState())
+        neighItem = iter(neigh).next()
+        listOfStates.append(neighItem.getState())
     return listOfStates
 
   def calculateState(self, stateVector):

@@ -19,14 +19,11 @@ class SquareCell(Cell):
     self.neighs = {}
     directions = ["north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"]
     for direction in directions:
-      self.neighs[direction] = []
+      self.neighs[direction] = set()
 
   def addNeighbors(self, neighbors):
     for direction, neigh in neighbors.items():
-      if type(neigh) is list:
-        self.neighs[direction] += filter(lambda x: x, neigh)
-      elif neigh:
-        self.neighs[direction].append(neigh)
+      self.neighs[direction].update(neigh)
 
   def __str__(self):
     if self.getState():
@@ -71,7 +68,7 @@ class VariableSquareCell(SquareCell):
 
   def setNeighborsOfNewCell(self, newCell, cellsToMerge):
     for direction in self.directions:
-      newCell.neighs[direction] = [neigh for cell in cellsToMerge for neigh in cell.neighs[direction] if neigh not in cellsToMerge]
+      newCell.neighs[direction] = set([neigh for cell in cellsToMerge for neigh in cell.neighs[direction] if neigh not in cellsToMerge])
 
   def updateNeighborhood(self, newCell, cellsToMerge):
     for direction, neighs in newCell.neighs.items():
@@ -87,7 +84,10 @@ class VariableSquareCell(SquareCell):
 
   def addNewNeighbors(self, direction, cellsToAdd):
     oppositeDirection = self.reverseDirection(direction)
-    self.neighs[oppositeDirection] += cellsToAdd
+    self.neighs[oppositeDirection].update(cellsToAdd)
+    # for cellToAdd in cellsToAdd:
+    #   if cellToAdd not in self.neighs[oppositeDirection]:
+    #     self.neighs[oppositeDirection].append(cellToAdd)
 
   def getCellsToMerge(self, direction):
     return self._getCellsToMerge([], direction)
@@ -97,13 +97,16 @@ class VariableSquareCell(SquareCell):
       return cells
     else:
       newDirection = self.turnRight(direction)
-      neigh = self.neighs[direction][0]
+      neigh = iter(self.neighs[direction]).next()
       return neigh._getCellsToMerge(cells+[self], newDirection)
 
   def mergeConstraints(self, direction):
     ''' cell can merge with other when they are same size and cell are aligned.'''
     neigh = self.neighs[direction]
-    return len(neigh) == 1 and self.sameSize(neigh[0]) and neigh[0].wantsGrow()
+    if len(neigh) == 1:
+      neighItem = iter(neigh).next()
+      return self.sameSize(neighItem) and neighItem.wantsGrow()
+    return False
 
   def canMergeWithOthers(self, direction):
     return self._canMergeWithOthers(4, direction)
@@ -114,7 +117,8 @@ class VariableSquareCell(SquareCell):
     else:
       if self.mergeConstraints(direction):
         newDirection = self.turnRight(direction)
-        return self.neighs[direction][0]._canMergeWithOthers(cellCountdown-1, newDirection)
+        neighItem = iter(self.neighs[direction]).next()
+        return neighItem._canMergeWithOthers(cellCountdown-1, newDirection)
       else:
         return False
 
