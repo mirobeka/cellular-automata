@@ -1,11 +1,35 @@
 from cellular_automata.cells.regular import SquareCell
 from cellular_automata.cells.regular import VariableSquareCell
 from cellular_automata.rules.base import DummyRule
+from cellular_automata.rules.base import AllwaysMergeRule
 from cellular_automata.lattices.equiangular import VariableSquareLattice
 from cellular_automata.lattices.neighborhoods import vonNeumannNeighborhood
 import unittest
 
-class VariableSquareCellHelperMethodsTestCase(unittest.TestCase):
+class VSCTestCase(unittest.TestCase):
+  def latticeStateInitialization(self, lattice, initialStates):
+    for idx,initialState in enumerate(initialStates):
+      lattice.cells[idx].setState(initialState)
+    return lattice
+
+  def createLattice(self, size, configuration, rule = DummyRule()):
+    lattice = VariableSquareLattice((size, size), vonNeumannNeighborhood, rule)
+    lattice = self.latticeStateInitialization(lattice, configuration)
+    return lattice
+
+  def createEmptyNeighborhood(self):
+    neighs = {}
+    neighs["northeast"] = set()
+    neighs["southeast"] = set()
+    neighs["northwest"] = set()
+    neighs["southwest"] = set()
+    neighs["south"] = set()
+    neighs["east"] = set()
+    neighs["north"] = set()
+    neighs["west"] =  set()
+    return neighs
+
+class VariableSquareCellHelperMethodsTestCase(VSCTestCase):
   '''Unit test for variable square cell's helper methods'''
   def setUp(self):
     self.rule = DummyRule()
@@ -35,7 +59,7 @@ class VariableSquareCellHelperMethodsTestCase(unittest.TestCase):
   def test_ok_to_turn_north_to_east_direction(self):
     self.assertEqual('north', self.cell.turnRight('west'))
 
-class VariableSquareCellNeighborhoodTestCase(unittest.TestCase):
+class VariableSquareCellNeighborhoodTestCase(VSCTestCase):
   '''Unit test for Variable Square Cell merging and neighborhood methods'''
   def setUp(self):
     self.rule = DummyRule()
@@ -53,17 +77,6 @@ class VariableSquareCellNeighborhoodTestCase(unittest.TestCase):
     self.southWest = self.lattice.cells[6]
     self.west = self.lattice.cells[3]
     self.northWest = self.lattice.cells[0]
-
-  def latticeStateInitialization(self, lattice, initialStates):
-    for idx,initialState in enumerate(initialStates):
-      lattice.cells[idx].setState(initialState)
-    return lattice
-
-  def createLattice(self, size, configuration):
-    rule = DummyRule()
-    lattice = VariableSquareLattice((size, size), vonNeumannNeighborhood, rule)
-    lattice = self.latticeStateInitialization(lattice, configuration)
-    return lattice
 
   def test_north_neighbor_after_initialization_of_lattice(self):
     northNeighborhood = self.center.neighs["north"]
@@ -103,9 +116,124 @@ class VariableSquareCellNeighborhoodTestCase(unittest.TestCase):
     correctList = [self.center, self.north, self.northEast, self.east]
     self.assertListEqual(correctList, self.center.getCellsToMerge("north"))
 
-  # def test_correct_size_of_new_cell_after_merge(self):
-  #   cellsToMerge = [self.center, self.north, self.northEast, self.east]
-  #   self.center
+  def test_new_cell_should_have_correct_north_neighborhood(self):
+    self.center.setState([0,0,0,1])
+    self.north.setState([0,0,0,1])
+    self.northEast.setState([0,0,0,1])
+    self.east.setState([0,0,0,1])
+    cellsToMerge = [self.center, self.north, self.northEast, self.east]
+    newCell = self.center.createNewCell(cellsToMerge)
+    self.center.setNeighborsOfNewCell(newCell, cellsToMerge)
+    self.assertSetEqual(set(), newCell.neighs["north"])
+
+  def test_new_cell_should_have_correct_south_neighborhood(self):
+    self.center.setState([0,0,0,1])
+    self.north.setState([0,0,0,1])
+    self.northEast.setState([0,0,0,1])
+    self.east.setState([0,0,0,1])
+    cellsToMerge = [self.center, self.north, self.northEast, self.east]
+    newCell = self.center.createNewCell(cellsToMerge)
+    self.center.setNeighborsOfNewCell(newCell, cellsToMerge)
+    self.assertSetEqual(set([self.southEast, self.south]), newCell.neighs["south"])
+
+  def test_new_cell_should_have_correct_west_neighborhood(self):
+    self.center.setState([0,0,0,1])
+    self.north.setState([0,0,0,1])
+    self.northEast.setState([0,0,0,1])
+    self.east.setState([0,0,0,1])
+    cellsToMerge = [self.center, self.north, self.northEast, self.east]
+    newCell = self.center.createNewCell(cellsToMerge)
+    self.center.setNeighborsOfNewCell(newCell, cellsToMerge)
+    self.assertSetEqual(set([self.west, self.northWest]), newCell.neighs["west"])
+
+  def test_new_cell_should_have_correct_east_neighborhood(self):
+    self.center.setState([0,0,0,1])
+    self.north.setState([0,0,0,1])
+    self.northEast.setState([0,0,0,1])
+    self.east.setState([0,0,0,1])
+    cellsToMerge = [self.center, self.north, self.northEast, self.east]
+    newCell = self.center.createNewCell(cellsToMerge)
+    self.center.setNeighborsOfNewCell(newCell, cellsToMerge)
+    self.assertSetEqual(set(), newCell.neighs["east"])
+
+  def test_size_of_new_cell_should_be_4(self):
+    self.center.setState([0,0,0,1])
+    self.north.setState([0,0,0,1])
+    self.northEast.setState([0,0,0,1])
+    self.east.setState([0,0,0,1])
+    cellsToMerge = [self.center, self.north, self.northEast, self.east]
+    newCell = self.center.createNewCell(cellsToMerge)
+    self.assertEqual(4,newCell.size)
+
+  def setNeighborsAsCenterCell(self, newCell):
+    newCell.neighs["north"] = set([self.north])
+    newCell.neighs["east"] = set([self.east])
+    newCell.neighs["south"] = set([self.south])
+    newCell.neighs["west"] = set([self.west])
+
+  def test_update_north_neighbor_with_new_cell_in_neighborhood(self):
+    newCell = VariableSquareCell(self.rule)
+    self.setNeighborsAsCenterCell(newCell)
+    self.center.updateNeighborhood(newCell, [self.center])
+    self.assertIn(newCell, self.north.neighs["south"])
+
+  def test_update_east_neighbor_with_new_cell_in_neighborhood(self):
+    newCell = VariableSquareCell(self.rule)
+    self.setNeighborsAsCenterCell(newCell)
+    self.center.updateNeighborhood(newCell, [self.center])
+    self.assertIn(newCell, self.east.neighs["west"])
+
+  def test_update_south_neighbor_with_new_cell_in_neighborhood(self):
+    newCell = VariableSquareCell(self.rule)
+    self.setNeighborsAsCenterCell(newCell)
+    self.center.updateNeighborhood(newCell, [self.center])
+    self.assertIn(newCell, self.south.neighs["north"])
+
+  def test_update_west_neighbor_with_new_cell_in_neighborhood(self):
+    newCell = VariableSquareCell(self.rule)
+    self.setNeighborsAsCenterCell(newCell)
+    self.center.updateNeighborhood(newCell, [self.center])
+    self.assertIn(newCell, self.west.neighs["east"])
+
+class VariableSquareCellMergeTestCase(VSCTestCase):
+  def setUp(self):
+    self.rule = AllwaysMergeRule()
+    self.lattice = self.createLattice(4, [
+        [0,0,0,1],[0,0,0,1],[0,0,0,1],[0,0,0,1],
+        [0,0,0,1],[0,0,0,1],[0,0,0,1],[0,0,0,1],
+        [0,0,0,1],[0,0,0,1],[0,0,0,1],[0,0,0,1],
+        [0,0,0,1],[0,0,0,1],[0,0,0,1],[0,0,0,1]
+      ], self.rule)
+
+  def test_grid_of_16_cells_after_1_merge_pass_should_merge_into_4_cells(self):
+    # after first merge, there should be just 4 cells
+    self.lattice.handleGrowingCells()
+    self.assertEqual(4, len(self.lattice.cells))
+
+  def test_grid_of_16_cells_after_2_merge_pass_should_merge_into_1_cell(self):
+    self.lattice.handleGrowingCells()
+    map(lambda cell: cell.computeNextState(), self.lattice.cells)
+    map(lambda cell: cell.applyNextState(), self.lattice.cells)
+    self.printLattice(self.lattice)
+    self.lattice.handleGrowingCells()
+    self.printLattice(self.lattice)
+    self.assertEqual(1, len(self.lattice.cells))
+
+  def printLattice(self, lattice):
+    print("\n\n\n\n\n==================== lattice {}".format(id(lattice)))
+    map(lambda cell: self.printCell(cell), lattice.cells)
+    print("\n\n\n\n")
+
+  def printCell(self, cell):
+    print("\nCell {}".format(id(cell)))
+    print("Neighbors:")
+    self.printNeighs(cell.neighs)
+    print("Size: {}".format(cell.size))
+    print("State: {}".format(cell.getState()))
+
+  def printNeighs(self, neighs):
+    for direction, neigh in neighs.items():
+      print("{} => {}".format(direction, [id(n) for n in neigh]))
 
 class VariableSquareCellSizeTestCase(unittest.TestCase):
   def setUp(self):
