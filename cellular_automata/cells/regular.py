@@ -46,7 +46,7 @@ class VariableSquareCell(SquareCell):
     return self.getState()[-2] and not self.getState()[-1]
 
   def wantsDivide(self):
-    return self.age > 80 and not self.getState()[-2] and self.getState()[-1] and self.size >= 4
+    return not self.getState()[-2] and self.getState()[-1] and self.size >= 4
 
   def divide(self):
     # create 4 new cells
