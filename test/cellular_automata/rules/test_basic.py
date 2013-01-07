@@ -13,5 +13,5 @@ class DummyRuleTestCase(unittest.TestCase):
   '''Unit test for DummyRule class'''
   def test_default_state_vector_length_value(self):
     rule = DummyRule()
-    self.assertEqual(4, rule.stateVectorLength)
+    self.assertEqual(5, rule.stateVectorLength)
 
