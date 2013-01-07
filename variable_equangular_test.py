@@ -1,6 +1,7 @@
 from cellular_automata.lattices.equiangular import VariableSquareLattice
 from cellular_automata.lattices.neighborhoods import vonNeumannNeighborhood
 from cellular_automata.rules.base import DummyRule
+from cellular_automata.rules.base import AllwaysMergeRule
 import pygame, sys
 from pygame.locals import *
 
@@ -14,7 +15,7 @@ class App:
     self.initPyGame()
 
   def initConstants(self, width, height):
-    self.fps = 5
+    self.fps = 30
     self.resolution = 16
     self.width = width
     self.height = height
@@ -22,6 +23,7 @@ class App:
 
   def initCellularAutomata(self):
     self.rule = DummyRule()
+    # self.rule = AllwaysMergeRule()
     self.lattice = VariableSquareLattice(self.latticeDimensions, vonNeumannNeighborhood, self.rule)
 
   def initPyGame(self):
@@ -80,7 +82,12 @@ class App:
     width = cell.radius*2
     height = cell.radius*2
     rgb = cell.getState()
-    pyColor = pygame.Color(rgb[0], rgb[1], rgb[2])
+    if cell.size == 1:
+      pyColor = pygame.Color(rgb[0], 0, 0)
+    elif cell.size == 4:
+      pyColor = pygame.Color(0, rgb[1], 0)
+    else:
+      pyColor = pygame.Color(0, 0, rgb[2])
     pygame.draw.rect(self.surface, pyColor,(tlx, tly, width, height))
 
   def printStats(self):
@@ -103,5 +110,5 @@ class App:
 
 
 if __name__ == "__main__":
-  app = App(240,240)
+  app = App(256,256)
   app.start()
