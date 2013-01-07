@@ -49,18 +49,28 @@ class VariableSquareLattice(SquareLattice):
 
   def nextStep(self):
     self.handleGrowingCells()
+    self.handleDividingCells()
     map(lambda cell: cell.computeNextState(), self.cells)
     map(lambda cell: cell.applyNextState(), self.cells)
+
+  def handleDividingCells(self):
+    dividingCells = [cell for cell in self.cells if cell.wantsDivide()]
+    for dividingCell in dividingCells:
+      changes = dividingCell.divide()
+      self.handleChangeInCells(changes)
 
   def handleGrowingCells(self):
     growingCells = [cell for cell in self.cells if cell.wantsGrow()]
     for growingCell in growingCells:
       if growingCell in self.cells:
         changes = growingCell.grow()
-        if changes:
-          cellsToRemove, cellsToAdd = changes
-          self.removeCells(cellsToRemove)
-          self.addCells(cellsToAdd)
+        self.handleChangeInCells(changes)
+
+  def handleChangeInCells(self, changes):
+    if changes:
+      cellsToRemove, cellsToAdd = changes
+      self.removeCells(cellsToRemove)
+      self.addCells(cellsToAdd)
 
   def addCells(self, listOfCellsToAdd):
     for cellToAdd in listOfCellsToAdd:

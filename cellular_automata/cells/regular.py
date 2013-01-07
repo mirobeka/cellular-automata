@@ -36,13 +36,92 @@ class VariableSquareCell(SquareCell):
     SquareCell.__init__(self, rule)
     self.size = 1
     self.directions = ["north", "east", "south", "west"]
+    self.initializeState()
 
   def initializeState(self):
     initialCellState = self.rule.initialState()
     self.setState(initialCellState)
 
   def wantsGrow(self):
-    return self.getState()[3]
+    return self.getState()[-2] and not self.getState()[-1]
+
+  def wantsDivide(self):
+    return self.age > 80 and not self.getState()[-2] and self.getState()[-1] and self.size >= 4
+
+  def divide(self):
+    # create 4 new cells
+    cellNW = VariableSquareCell(self.rule)
+    cellNE = VariableSquareCell(self.rule)
+    cellSW = VariableSquareCell(self.rule)
+    cellSE = VariableSquareCell(self.rule)
+
+    cellNW.size = self.size/4
+    cellNE.size = self.size/4
+    cellSW.size = self.size/4
+    cellSE.size = self.size/4
+
+    # position
+    halfRadius = self.radius/2
+
+    cellNW.x = self.x - halfRadius
+    cellNW.y = self.y - halfRadius
+    cellNW.radius = halfRadius
+    cellNE.x = self.x + halfRadius
+    cellNE.y = self.y - halfRadius
+    cellNE.radius = halfRadius
+    cellSW.x = self.x - halfRadius
+    cellSW.y = self.y + halfRadius
+    cellSW.radius = halfRadius
+    cellSE.x = self.x + halfRadius
+    cellSE.y = self.y + halfRadius
+    cellSE.radius = halfRadius
+
+    # create neighbor connections
+    cellNW.neighs["south"].add(cellSW)
+    cellNW.neighs["east"].add(cellNE)
+    cellNE.neighs["south"].add(cellSE)
+    cellNE.neighs["west"].add(cellNW)
+    cellSW.neighs["north"].add(cellNW)
+    cellSW.neighs["east"].add(cellSE)
+    cellSE.neighs["north"].add(cellNE)
+    cellSE.neighs["west"].add(cellSW)
+
+    newCells = {}
+    newCells["north"] = [cellNW, cellNE]
+    newCells["east"] = [cellNE, cellSE]
+    newCells["south"] = [cellSE, cellSW]
+    newCells["west"] = [cellNW, cellSW]
+
+    for direction in self.directions:
+      directionNeighbors = self.neighs[direction]
+      for directionNeighbor in directionNeighbors:
+        for newCell in newCells[direction]:
+          if directionNeighbor.isNeighborWith(newCell):
+            newCell.neighs[direction].add(directionNeighbor)
+
+    # now we have new cells with correct neighs.
+    # this time we have to update rest of the neighborhood
+    for newCell in [cellNW, cellNE, cellSW, cellSE]:
+      self.updateNeighborhood(newCell, [self])
+
+    return [self], [cellNW, cellNE, cellSW, cellSE]
+
+  def isNeighborWith(self, cell):
+    selfLeft = self.x - self.radius
+    selfRight = self.x + self.radius
+    cellLeft = cell.x - cell.radius
+    cellRight = cell.x + cell.radius
+
+    selfTop = self.y - self.radius
+    selfBottom = self.y + self.radius
+    cellTop = cell.y - cell.radius
+    cellBottom = cell.y + cell.radius
+
+    if selfRight < cellLeft or cellRight < selfLeft:
+      return False
+    elif selfBottom < cellTop or cellBottom < selfTop:
+      return False
+    return True
 
   def grow(self):
     for direction in self.directions:
@@ -70,10 +149,10 @@ class VariableSquareCell(SquareCell):
     for direction in self.directions:
       newCell.neighs[direction] = set([neigh for cell in cellsToMerge for neigh in cell.neighs[direction] if neigh not in cellsToMerge])
 
-  def updateNeighborhood(self, newCell, cellsToMerge):
+  def updateNeighborhood(self, newCell, oldCells):
     for direction, neighs in newCell.neighs.items():
       for neigh in neighs:
-        neigh.removeOldNeighbors(direction, cellsToMerge)
+        neigh.removeOldNeighbors(direction, oldCells)
         neigh.addNewNeighbors(direction, [newCell])
 
   def removeOldNeighbors(self, direction, cellsToRemove):
@@ -85,9 +164,6 @@ class VariableSquareCell(SquareCell):
   def addNewNeighbors(self, direction, cellsToAdd):
     oppositeDirection = self.reverseDirection(direction)
     self.neighs[oppositeDirection].update(cellsToAdd)
-    # for cellToAdd in cellsToAdd:
-    #   if cellToAdd not in self.neighs[oppositeDirection]:
-    #     self.neighs[oppositeDirection].append(cellToAdd)
 
   def getCellsToMerge(self, direction):
     return self._getCellsToMerge([], direction)
