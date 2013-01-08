@@ -37,16 +37,22 @@ class VariableSquareCell(SquareCell):
     self.size = 1
     self.directions = ["north", "east", "south", "west"]
     self.initializeState()
+    self.removeUnusedNeighsDirections()
+
+  def removeUnusedNeighsDirections(self):
+    for direction in self.neighs.keys():
+      if direction not in self.directions:
+        del self.neighs[direction]
 
   def initializeState(self):
     initialCellState = self.rule.initialState()
     self.setState(initialCellState)
 
   def wantsGrow(self):
-    return self.getState()[-2] and not self.getState()[-1]
+    return self.getState()[-2] > 0.5 and not self.getState()[-1] <= 0.5
 
   def wantsDivide(self):
-    return not self.getState()[-2] and self.getState()[-1] and self.size >= 4
+    return not self.getState()[-2] > 0.5 and self.getState()[-1] <= 0.5 and self.size >= 4
 
   def divide(self):
     # create 4 new cells
