@@ -1,6 +1,8 @@
 from __future__ import print_function
 from cellular_automata.cells.regular import SquareCell, VariableSquareCell
 from cellular_automata.lattices.base import Lattice
+import pyopencl as cl
+import numpy
 
 class SquareLattice(Lattice):
   def __init__(self, dimensions, neighborhoodMethod, rule):
@@ -36,6 +38,34 @@ class SquareLattice(Lattice):
 
   def getLattice(self):
     return self.cells
+
+class FastSquareLattice(SquareLattice):
+  def __init__(self, dimensions, neighbourhoodMethod, rule):
+    SquareLattice.__init__(self,dimensions, neighbourhoodMethod, rule)
+    self.rule = rule
+    self.flatCells = [cell for row in self.cells for cell in row]
+    self.initOpenCL()
+
+  def initOpenCL(self):
+    self.ctx = cl.create_some_context()
+    self.queue = cl.CommandQueue(self.ctx)
+    self.program = cl.Program(self.ctx, self.rule.getKernel()).build()
+
+  def nextStep(self):
+    # prepare arrays
+    stateVector = numpy.array(map(lambda cell: cell.getState(), self.flatCells))
+    aliveVector = numpy.array(map(lambda cell: cell.livingNeighbours(), self.flatCells))
+
+    mf = cl.mem_flags
+    stateVector_buf = cl.Buffer(self.ctx, mf.READ_ONLY | mf.COPY_HOST_PTR, hostbuf=stateVector)
+    aliveVector_buf = cl.Buffer(self.ctx, mf.READ_ONLY | mf.COPY_HOST_PTR, hostbuf=aliveVector)
+    newStateVector_buf = cl.Buffer(self.ctx, mf.WRITE_ONLY, aliveVector.nbytes)
+
+    self.program.golrule(self.queue, stateVector.shape, None, stateVector_buf, aliveVector_buf, newStateVector_buf)
+
+    newStateVector = numpy.empty_like(stateVector)
+    cl.enqueue_read_buffer(self.queue, newStateVector_buf, newStateVector).wait()
+    print(newStateVector)
 
 class VariableSquareLattice(SquareLattice):
   def __init__(self, dimensions, neighborhoodMethod, rule):

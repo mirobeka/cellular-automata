@@ -25,6 +25,9 @@ class SquareCell(Cell):
     for direction, neigh in neighbors.items():
       self.neighs[direction].update(neigh)
 
+  def livingNeighbours(self):
+    return sum([neigh.getState() for neighSet in self.neighs.values() for neigh in neighSet])
+
 class VariableSquareCell(SquareCell):
   def __init__(self, rule):
     SquareCell.__init__(self, rule)

@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(0,"/Users/miroslavbeka/Development/CA/")
 
-from cellular_automata.lattices.equiangular import SquareLattice
+from cellular_automata.lattices.equiangular import SquareLattice, FastSquareLattice
 from cellular_automata.lattices.neighborhoods import edieMooreNeighborhood
 from cellular_automata.rules.game_of_life_rule import GameOfLifeRule
 from cellular_automata.visualization.base import PygameVisualization
@@ -26,7 +26,7 @@ class GameOfLifeTest:
   def initializeLattice(self):
     dimensions = (64,40)
     rule = GameOfLifeRule()
-    self.lattice = SquareLattice(dimensions, edieMooreNeighborhood, rule)
+    self.lattice = FastSquareLattice(dimensions, edieMooreNeighborhood, rule)
 
   def initializeVisualization(self):
     self.vis = GameOfLifeVisualization(self.lattice)
