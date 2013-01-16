@@ -49,10 +49,10 @@ class VariableSquareCell(SquareCell):
     self.setState(initialCellState)
 
   def wantsGrow(self):
-    return self.getState()[-2] > 0.5 and not self.getState()[-1] <= 0.5
+    return self.getState()[-2] > 0 and not self.getState()[-1] < 0
 
   def wantsDivide(self):
-    return not self.getState()[-2] > 0.5 and self.getState()[-1] <= 0.5 and self.size >= 4
+    return self.getState()[-2] < 0 and self.getState()[-1] > 0 and self.size >= 4
 
   def divide(self):
     # create 4 new cells

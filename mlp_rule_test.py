@@ -23,7 +23,6 @@ class App:
 
   def initCellularAutomata(self):
     self.rule = MLPRule()
-    # self.rule = AllwaysMergeRule()
     self.lattice = VariableSquareLattice(self.latticeDimensions, vonNeumannNeighborhood, self.rule)
 
   def initPyGame(self):

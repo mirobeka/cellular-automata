@@ -16,8 +16,8 @@ class DummyRule(Rule):
 
   def getNextState(self, cell, neighbors):
     state = [randint(0,255) for i in range(self.stateVectorLength-2)]
-    growing = 1 if (uniform(0,1) > 0.5) else 0
-    dividing = 1 - growing
+    growing = uniform(-1, 1)
+    dividing = uniform(-1, 1)
     state.append(growing)
     state.append(dividing)
     return state

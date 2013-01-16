@@ -67,7 +67,7 @@ class VariableSquareLattice(SquareLattice):
         self.handleChangeInCells(changes)
 
   def handleChangeInCells(self, changes):
-    if changes:
+    if changes is not None:
       cellsToRemove, cellsToAdd = changes
       self.removeCells(cellsToRemove)
       self.addCells(cellsToAdd)

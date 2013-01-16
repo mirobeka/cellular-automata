@@ -77,8 +77,8 @@ class App:
     map(lambda cell: self.drawCell(cell), self.lattice.cells)
     
   def drawCell(self, cell):
-    tlx = cell.x - cell.radius
-    tly = cell.y - cell.radius
+    tlx = cell.x - cell.radius    # top left x
+    tly = cell.y - cell.radius    # top left y
     width = cell.radius*2
     height = cell.radius*2
     rgb = cell.getState()
