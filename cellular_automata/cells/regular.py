@@ -25,12 +25,6 @@ class SquareCell(Cell):
     for direction, neigh in neighbors.items():
       self.neighs[direction].update(neigh)
 
-  def __str__(self):
-    if self.getState():
-      return "|*"
-    else:
-      return "|_"
-
 class VariableSquareCell(SquareCell):
   def __init__(self, rule):
     SquareCell.__init__(self, rule)

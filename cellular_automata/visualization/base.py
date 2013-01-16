@@ -1,8 +1,6 @@
 import pygame, sys
 from pygame.locals import *
 
-black = pygame.Color(0,0,0)
-white = pygame.Color(255,255,255)
 
 class PygameVisualization:
   def __init__(self, lattice, fps=30, resolution=16):
@@ -10,6 +8,11 @@ class PygameVisualization:
     self.lattice = lattice
     self.fps = fps
     self.initPyGame()
+    self.initializeBasicColors()
+
+  def initializeBasicColors(self):
+    self.black = pygame.Color(0,0,0)
+    self.white = pygame.Color(255,255,255)
 
   def initPyGame(self):
     pygame.init()
@@ -53,7 +56,7 @@ class PygameVisualization:
 
   def onRender(self):
     self.clearSurface()
-    self.drawLattice()
+    self.drawLattice(self.lattice.cells)
     self.update()
 
   def update(self):
@@ -61,10 +64,14 @@ class PygameVisualization:
     self.fpsClock.tick(self.fps)
 
   def clearSurface(self):
-    self.surface.fill(white)
+    self.surface.fill(self.white)
 
-  def drawLattice(self):
-    map(lambda cell: self.drawCell(cell), self.lattice.cells)
+  def drawLattice(self, cells):
+    for cellOrList in cells:
+      if type(cellOrList) == list:
+        self.drawLattice(cellOrList)
+      else:
+        self.drawCell(cellOrList)
     
   def drawCell(self, cell):
     tlx = cell.x - cell.radius
@@ -73,7 +80,10 @@ class PygameVisualization:
     height = cell.radius*2
     rgb = map(lambda x: int(min(255,abs(30*x))),cell.getState())
     pyColor = pygame.Color(rgb[0], rgb[1], rgb[2])
-    pygame.draw.rect(self.surface, pyColor,(tlx, tly, width, height))
+    pygame.drawRect(pyColor,(tlx, tly, width, height))
+
+  def drawRect(self, color, position):
+    pygame.draw.rect(self.surface, color, position)
 
   def printStats(self):
     count = len(self.lattice.cells)
