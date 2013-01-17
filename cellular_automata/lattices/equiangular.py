@@ -65,7 +65,10 @@ class FastSquareLattice(SquareLattice):
 
     newStateVector = numpy.empty_like(stateVector)
     cl.enqueue_read_buffer(self.queue, newStateVector_buf, newStateVector).wait()
-    print(newStateVector)
+    # set states to cells
+    for idx,cell in enumerate(self.flatCells):
+      cell.state["current"] = newStateVector[idx]
+    # print(newStateVector)
 
 class VariableSquareLattice(SquareLattice):
   def __init__(self, dimensions, neighborhoodMethod, rule):

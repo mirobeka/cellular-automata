@@ -28,11 +28,13 @@ class GameOfLifeRule(Rule):
       return 0
 
   def getKernel(self):
-    kernel = "\
+    return "\
     __kernel void golrule(__global int* state, __global int* numberOfNeighboursAlive, __global int* newState){\
-      unsigned int i = get_global_id(0);\
-      newState[i] = state[i] + numberOfNeighboursAlive[i];\
+      unsigned int id = get_global_id(0);\
+      if(numberOfNeighboursAlive[id] == 2 && state[id] == 1){\
+        newState[id] = 1;\
+      }else if(numberOfNeighboursAlive[id] == 3){\
+        newState[id] = 1;\
+      }\
     }"
-
-    return kernel
 
