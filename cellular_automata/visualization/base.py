@@ -80,7 +80,7 @@ class PygameVisualization:
     height = cell.radius*2
     rgb = map(lambda x: int(min(255,abs(30*x))),cell.getState())
     pyColor = pygame.Color(rgb[0], rgb[1], rgb[2])
-    pygame.drawRect(pyColor,(tlx, tly, width, height))
+    self.drawRect(pyColor,(tlx, tly, width, height))
 
   def drawRect(self, color, position):
     pygame.draw.rect(self.surface, color, position)
