@@ -5,12 +5,7 @@ class SquareCell(Cell):
     Cell.__init__(self, rule)
     self.createEmptyNeighborhood()
     self.initializeState()
-    self.setPosition((0,0))
     self.radius = 8
-
-  def setPosition(self, (x,y)):
-    self.x = x
-    self.y = y
 
   def initializeState(self):
     self.setState(0)
@@ -63,17 +58,13 @@ class VariableSquareCell(SquareCell):
     # position
     halfRadius = self.radius/2
 
-    cellNW.x = self.x - halfRadius
-    cellNW.y = self.y - halfRadius
+    cellNW.position = (self.x - halfRadius, self.y - halfRadius)
     cellNW.radius = halfRadius
-    cellNE.x = self.x + halfRadius
-    cellNE.y = self.y - halfRadius
+    cellNE.position = (self.x + halfRadius, self.y - halfRadius)
     cellNE.radius = halfRadius
-    cellSW.x = self.x - halfRadius
-    cellSW.y = self.y + halfRadius
+    cellSW.position = (self.x - halfRadius, self.y + halfRadius)
     cellSW.radius = halfRadius
-    cellSE.x = self.x + halfRadius
-    cellSE.y = self.y + halfRadius
+    cellSE.position = (self.x + halfRadius, self.y + halfRadius)
     cellSE.radius = halfRadius
 
     # create neighbor connections
@@ -137,7 +128,7 @@ class VariableSquareCell(SquareCell):
   def createNewCell(self, cellsToMerge):
     newCell = VariableSquareCell(self.rule)
     newCell.size = len(cellsToMerge)*self.size
-    newCell.setPosition(self.interpolateCenter(cellsToMerge))
+    newCell.position = (self.interpolateCenter(cellsToMerge))
     newCell.radius = self.radius * 2
     return newCell
 
