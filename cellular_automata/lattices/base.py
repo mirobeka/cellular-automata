@@ -18,6 +18,11 @@ class Lattice:
     raise NotImplementedError("saveToFile method of lattice not implemented")
 
   @classmethod
+  def createInitialzed(cls, **kwargs):
+    '''Create and initialize lattice'''
+    raise NotImplementedError("createInitialized method of lattice not implemented")
+
+  @classmethod
   def createEmpty(cls):
     lattice = cls()
     return lattice

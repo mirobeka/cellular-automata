@@ -14,10 +14,11 @@ class SquareLattice(Lattice):
     self.cells = None
 
   @classmethod
-  def createInitialized(cls, dimensions, neighbourhoodMethod, rule):
+  def createInitialized(cls, **kwargs):
     lattice = cls()
-    lattice.width, lattice.height = dimensions
-    lattice.cells = lattice.initializeLatticeCells(neighbourhoodMethod, rule)
+    lattice.width, lattice.height = kwargs["dimensions"]
+    lattice.resolution = kwargs["resolution"]                  # use configuration class to pass all of this arguments. Or just use **kwarg
+    lattice.cells = lattice.initializeLatticeCells(kwargs["neighbourhoodMethod"], kwargs["rule"])
     return lattice
 
   def initializeLatticeCells(self, neighbourhoodMethod, rule):
@@ -26,29 +27,33 @@ class SquareLattice(Lattice):
     return cells
 
   def createCells(self, rule):
-    cells = [[SquareCell(rule) for x in range(self.width)] for y in range(self.height)]
+    cells = {}
+    for x in range(0, self.width, self.resolution):
+      for y in range(0, self.height, self.resolution):
+        cells[(x,y)] = SquareCell(rule)
+        coordinates = (x+self.resolution, y+self.resolution)
+        cells[(x,y)].position = coordinates
+        cells[(x,y)].radius = self.resolution/2
     return cells
 
   def initializeNeighbours(self, cells, neighbourhoodMethod):
-    radius = cells[0][0].radius
-    for y in range(len(cells)):
-      for x in range(len(cells[y])):
-        neighs = neighbourhoodMethod(cells, x, y)
-        cells[y][x].addNeighbors(neighs)
-        cells[y][x].position = (2*x*radius+radius, 2*y*radius+radius)
+    for x in range(0, self.width, self.resolution):
+      for y in range(0, self.height, self.resolution):
+        neighs = neighbourhoodMethod(cells, self.resolution, x, y)
+        cells[(x,y)].addNeighbors(neighs)
 
   # set state of particular cell
   def setStateOfCell(self, state, x, y):
     if x >= 0 or x < self.width or y >= 0 or y < self.height:
-      self.cells[y][x].setState(state)
+      self.cells[(x,y)].setState(state)
 
   def nextStep(self):
     # iterate over all cells and go to next state
-    map(lambda row: map(lambda cell: cell.computeNextState(), row),self.cells)
-    map(lambda row: map(lambda cell: cell.applyNextState(), row),self.cells)
+    map(lambda cell: cell.computeNextState(), self.cells.values())
+    map(lambda cell: cell.applyNextState(), self.cells.values())
 
   def getLattice(self):
-    return self.cells
+    return self.cells.values()
 
   @classmethod
   def readFromFile(cls, filename):
@@ -80,16 +85,14 @@ class VariableSquareLattice(SquareLattice):
   Cells are stored in hash based on their current coordinates on grid.
   '''
 
-  @classmethod
-  def createInitialized(cls, dimensions, neighbourhoodMethod, rule):
-    lattice = cls()
-    lattice.width, lattice.height = dimensions
-    lattice.cells = lattice.initializeLatticeCells(neighbourhoodMethod, rule)
-    lattice.cells = [cell for row in lattice.cells for cell in row]
-    return lattice
-
   def createCells(self, rule):
-    cells = [[VariableSquareCell(rule) for x in range(self.width)] for y in range(self.height)]
+    cells = {}
+    for x in range(0, self.width, self.resolution):
+      for y in range(0, self.height, self.resolution):
+        cells[(x,y)] = VariableSquareCell(rule)
+        coordinates = (x+self.resolution, y+resolution)
+        cells[(x,y)].position = coordinates
+        cells[(x,y)].radius = self.resolution/2
     return cells
 
   def nextStep(self):

@@ -1,25 +1,25 @@
-def vonNeumannNeighborhood(cells, x, y):
+def vonNeumannNeighborhood(cells, resolution, x, y):
   neighs = {}
-  neighs["north"] = set(getCell(cells, (x,y-1)))
-  neighs["east"] = set(getCell(cells, (x+1,y)))
-  neighs["south"] = set(getCell(cells, (x,y+1)))
-  neighs["west"] = set(getCell(cells, (x-1,y)))
+  neighs["north"] = set(getCell(cells, (x,y-resolution)))
+  neighs["east"] = set(getCell(cells, (x+resolution,y)))
+  neighs["south"] = set(getCell(cells, (x,y+resolution)))
+  neighs["west"] = set(getCell(cells, (x-resolution,y)))
   return neighs
 
-def edieMooreNeighborhood(cells, x, y):
+def edieMooreNeighborhood(cells, resolution, x, y):
   neighs = {}
-  neighs["north"] = set(getCell(cells, (x,y-1)))
-  neighs["northeast"] = set(getCell(cells, (x+1,y-1)))
-  neighs["east"] = set(getCell(cells, (x+1,y)))
-  neighs["southeast"] = set(getCell(cells, (x+1,y+1)))
-  neighs["south"] = set(getCell(cells, (x,y+1)))
-  neighs["southwest"] = set(getCell(cells, (x-1,y+1)))
-  neighs["west"] = set(getCell(cells, (x-1,y)))
-  neighs["northwest"] = set(getCell(cells, (x-1,y-1)))
+  neighs["north"] = set(getCell(cells, (x,y-resolution)))
+  neighs["northeast"] = set(getCell(cells, (x+resolution,y-resolution)))
+  neighs["east"] = set(getCell(cells, (x+resolution,y)))
+  neighs["southeast"] = set(getCell(cells, (x+resolution,y+resolution)))
+  neighs["south"] = set(getCell(cells, (x,y+resolution)))
+  neighs["southwest"] = set(getCell(cells, (x-resolution,y+resolution)))
+  neighs["west"] = set(getCell(cells, (x-resolution,y)))
+  neighs["northwest"] = set(getCell(cells, (x-resolution,y-resolution)))
   return neighs
 
-def getCell(cells, (x,y)):
-  if x < 0 or x >= len(cells[0]) or y < 0 or y >= len(cells):
-    return []
+def getCell(cells, pos):
+  if pos in cells:
+    return [cells[pos]]
   else:
-    return [cells[y][x]]
+    return []

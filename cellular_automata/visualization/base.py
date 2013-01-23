@@ -3,8 +3,7 @@ from pygame.locals import *
 
 
 class PygameVisualization:
-  def __init__(self, lattice, fps=30, resolution=16):
-    self.resolution = resolution
+  def __init__(self, lattice, fps=30):
     self.lattice = lattice
     self.fps = fps
     self.initPyGame()
@@ -23,9 +22,7 @@ class PygameVisualization:
     self.fps = fps
 
   def initWindow(self):
-    width = self.lattice.width*self.resolution
-    height = self.lattice.height*self.resolution
-    self.surface = pygame.display.set_mode((width, height))
+    self.surface = pygame.display.set_mode((self.lattice.width, self.lattice.height))
     pygame.display.set_caption("Cellular Automata")
 
   def start(self):
@@ -67,11 +64,8 @@ class PygameVisualization:
     self.surface.fill(self.white)
 
   def drawLattice(self, cells):
-    for cellOrList in cells:
-      if type(cellOrList) == list:
-        self.drawLattice(cellOrList)
-      else:
-        self.drawCell(cellOrList)
+    for cell in cells.values():
+      self.drawCell(cell)
     
   def drawCell(self, cell):
     tlx = cell.x - cell.radius
