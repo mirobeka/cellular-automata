@@ -1,0 +1,6 @@
+PyBrain==0.3
+matplotlib==1.2.0
+numpy==1.6.2
+pygame==1.9.2pre
+scipy==0.11.0
+wsgiref==0.1.2
