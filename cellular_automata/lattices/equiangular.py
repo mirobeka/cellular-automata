@@ -31,7 +31,7 @@ class SquareLattice(Lattice):
     for x in range(0, self.width, self.resolution):
       for y in range(0, self.height, self.resolution):
         cells[(x,y)] = SquareCell(rule)
-        coordinates = (x+self.resolution, y+self.resolution)
+        coordinates = (x+self.resolution/2, y+self.resolution/2)
         cells[(x,y)].position = coordinates
         cells[(x,y)].radius = self.resolution/2
     return cells
@@ -90,7 +90,7 @@ class VariableSquareLattice(SquareLattice):
     for x in range(0, self.width, self.resolution):
       for y in range(0, self.height, self.resolution):
         cells[(x,y)] = VariableSquareCell(rule)
-        coordinates = (x+self.resolution, y+resolution)
+        coordinates = (x+self.resolution/2, y+self.resolution/2)
         cells[(x,y)].position = coordinates
         cells[(x,y)].radius = self.resolution/2
     return cells
@@ -98,19 +98,19 @@ class VariableSquareLattice(SquareLattice):
   def nextStep(self):
     self.handleGrowingCells()
     self.handleDividingCells()
-    map(lambda cell: cell.computeNextState(), self.cells)
-    map(lambda cell: cell.applyNextState(), self.cells)
+    map(lambda cell: cell.computeNextState(), self.cells.values())
+    map(lambda cell: cell.applyNextState(), self.cells.values())
 
   def handleDividingCells(self):
-    dividingCells = [cell for cell in self.cells if cell.wantsDivide()]
+    dividingCells = [cell for cell in self.cells.values() if cell.wantsDivide()]
     for dividingCell in dividingCells:
       changes = dividingCell.divide()
       self.handleChangeInCells(changes)
 
   def handleGrowingCells(self):
-    growingCells = [cell for cell in self.cells if cell.wantsGrow()]
+    growingCells = [cell for cell in self.cells.values() if cell.wantsGrow()]
     for growingCell in growingCells:
-      if growingCell in self.cells:
+      if growingCell in self.cells.values(): # additional check if cell wasn't already merged
         changes = growingCell.grow()
         self.handleChangeInCells(changes)
 
@@ -122,7 +122,7 @@ class VariableSquareLattice(SquareLattice):
 
   def addCells(self, listOfCellsToAdd):
     for cellToAdd in listOfCellsToAdd:
-      self.cells.append(cellToAdd)
+      self.cells[cellToAdd.position].append(cellToAdd)
 
   def removeCells(self, listOfCellsToRemove):
     for cellToRemove in listOfCellsToRemove:

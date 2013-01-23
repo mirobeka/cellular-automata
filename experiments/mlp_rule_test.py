@@ -23,9 +23,9 @@ class MLPTest:
     self.vis = PygameVisualization(self.lattice)
 
   def initializeLattice(self):
-    dimensions = (16,16)
+    dimensions = (256,256)
     rule = MLPRule()
-    self.lattice = VariableSquareLattice.createInitialized(dimensions, vonNeumannNeighborhood, rule)
+    self.lattice = VariableSquareLattice.createInitialized(dimensions=dimensions, neighbourhoodMethod=vonNeumannNeighborhood, resolution=16, rule=rule)
     
   def start(self):
     self.vis.start()
