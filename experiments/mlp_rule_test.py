@@ -1,6 +1,7 @@
-import sys
-sys.path.insert(0,"/Users/miroslavbeka/Development/CA/")
-print(sys.path)
+import sys, os
+ca_directory = os.getcwd()
+if ca_directory not in sys.path:
+  sys.path.insert(0, ca_directory)
 
 from cellular_automata.lattices.equiangular import VariableSquareLattice
 from cellular_automata.lattices.neighborhoods import vonNeumannNeighborhood
@@ -24,7 +25,7 @@ class MLPTest:
   def initializeLattice(self):
     dimensions = (16,16)
     rule = MLPRule()
-    self.lattice = VariableSquareLattice(dimensions, vonNeumannNeighborhood, rule)
+    self.lattice = VariableSquareLattice.createInitialized(dimensions, vonNeumannNeighborhood, rule)
     
   def start(self):
     self.vis.start()

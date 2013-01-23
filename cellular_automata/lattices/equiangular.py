@@ -3,26 +3,39 @@ from cellular_automata.cells.regular import SquareCell, VariableSquareCell
 from cellular_automata.lattices.base import Lattice
 
 class SquareLattice(Lattice):
-  def __init__(self, dimensions, neighborhoodMethod, rule):
-    self.width, self.height = dimensions
-    self.cells = self.initializeLatticeCells(neighborhoodMethod, rule)
+  '''
+  This lattice is using Square Cells to construct 2 dimensional grid of
+  square cells that don't change their topology, size or other properties
 
-  def initializeLatticeCells(self, neighborhoodMethod, rule):
+  Cells are stored in dictionary where coordinates of cells is key value.
+  '''
+  def __init__(self):
+    self.width = self.height = 0
+    self.cells = None
+
+  @classmethod
+  def createInitialized(cls, dimensions, neighbourhoodMethod, rule):
+    lattice = cls()
+    lattice.width, lattice.height = dimensions
+    lattice.cells = lattice.initializeLatticeCells(neighbourhoodMethod, rule)
+    return lattice
+
+  def initializeLatticeCells(self, neighbourhoodMethod, rule):
     cells = self.createCells(rule)
-    self.initializeNeighbors(cells, neighborhoodMethod)
+    self.initializeNeighbours(cells, neighbourhoodMethod)
     return cells
 
   def createCells(self, rule):
     cells = [[SquareCell(rule) for x in range(self.width)] for y in range(self.height)]
     return cells
 
-  def initializeNeighbors(self, cells, neighborhoodMethod):
+  def initializeNeighbours(self, cells, neighbourhoodMethod):
     radius = cells[0][0].radius
     for y in range(len(cells)):
       for x in range(len(cells[y])):
-        neighs = neighborhoodMethod(cells, x, y)
+        neighs = neighbourhoodMethod(cells, x, y)
         cells[y][x].addNeighbors(neighs)
-        cells[y][x].setPosition((2*x*radius+radius, 2*y*radius+radius))
+        cells[y][x].position = (2*x*radius+radius, 2*y*radius+radius)
 
   # set state of particular cell
   def setStateOfCell(self, state, x, y):
@@ -37,11 +50,43 @@ class SquareLattice(Lattice):
   def getLattice(self):
     return self.cells
 
+  @classmethod
+  def readFromFile(cls, filename):
+    pass
+
+  def saveToFile(self, filename):
+    '''
+    saves properties of lattice:
+      -> width height
+      -> for each line cell with state and list of neighbours indices
+
+      what I need for each cell?
+    '''
+    with open(filename, 'w') as f:
+      f.write("{},{}\n".format(self.width, self.height))
+      # for cell in cells
+      pass
+
 class VariableSquareLattice(SquareLattice):
-  def __init__(self, dimensions, neighborhoodMethod, rule):
-    SquareLattice.__init__(self, dimensions, neighborhoodMethod, rule)
-    # flatten 2 dimensional list of cells
-    self.cells = [cell for row in self.cells for cell in row]
+  '''
+  Varialble Square Lattice is lattice which cell can change their size,
+  change neighbour connections accordingly to changes in sizes.
+  Cells also can be merged together and divided into 4 smaller cells
+
+  Variable Square Lattice is using Variable Square Cells that can change size.
+  However this lattice is still regular from angular point of view. That's reason
+  why is in module of Equiangular lattices.
+
+  Cells are stored in hash based on their current coordinates on grid.
+  '''
+
+  @classmethod
+  def createInitialized(cls, dimensions, neighbourhoodMethod, rule):
+    lattice = cls()
+    lattice.width, lattice.height = dimensions
+    lattice.cells = lattice.initializeLatticeCells(neighbourhoodMethod, rule)
+    lattice.cells = [cell for row in lattice.cells for cell in row]
+    return lattice
 
   def createCells(self, rule):
     cells = [[VariableSquareCell(rule) for x in range(self.width)] for y in range(self.height)]

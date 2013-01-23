@@ -5,13 +5,19 @@ class Lattice:
 
   @classmethod
   def loadFromFile(cls, filename):
-    '''
-    load configuration of lattice, create cells, set cells states
-    neighbours and other stuff
+    '''Load configuration of lattice form file and creates new lattice'''
+    configuration = cls.readFile(filename)
+    cls.createFromConfiguration(configuration)
 
-    this should be lattice specific, so this is just abstract class method
-    '''
-    raise NotImplementedError("Method loadFromFile of Lattice is not implemented")
-    
+  @classmethod
+  def readFromFile(cls, filename):
+    raise NotImplementedError("readFile method of lattice not implemented")
 
-  
+  def saveToFile(self, filename):
+    '''Saves configuration of instance of lattice in file'''
+    raise NotImplementedError("saveToFile method of lattice not implemented")
+
+  @classmethod
+  def createEmpty(cls):
+    lattice = cls()
+    return lattice
