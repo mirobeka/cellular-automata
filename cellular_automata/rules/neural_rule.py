@@ -25,12 +25,12 @@ class MLPRule(Rule):
 
   def getInputVector(self, cell, neighbors):
     inVector = []
-    inVector.extend(cell.getState())
+    inVector.extend(cell.state)
     for neighs in neighbors.values():
       if len(neighs) == 0:
         inVector.extend([0]*self.stateVectorLength)
       else:
-        inVector.extend([sum(x) for x in zip(*map(lambda cell: cell.getState(), neighs))])
+        inVector.extend([sum(x) for x in zip(*map(lambda cell: cell.state, neighs))])
     return inVector
 
   def initialState(self):

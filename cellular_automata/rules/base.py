@@ -24,16 +24,3 @@ class DummyRule(Rule):
 
   def initialState(self):
     return [0 for i in range(self.stateVectorLength)]
-
-class AllwaysMergeRule(DummyRule):
-  def getNextState(self, cell, neighbors):
-    state = [randint(0,255) for i in range(self.stateVectorLength-2)]
-    state.append(1) # growing
-    state.append(0) # dividing
-    return state
-
-  def initialState(self):
-    state = [1 for i in range(self.stateVectorLength-1)]
-    state.append(0)
-    return state
-

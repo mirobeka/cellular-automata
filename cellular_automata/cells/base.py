@@ -17,11 +17,18 @@ class Cell(object):
     return cls()
 
   def createState(self):
-    self.state = {}
-    self.state["current"] = None
-    self.state["next"] = None
+    self._state = {}
+    self._state["current"] = None
+    self._state["next"] = None
 
-  # few property getters and setters
+  @property
+  def state(self):
+    return self._state["current"]
+
+  @state.setter
+  def state(self, state):
+    self._state["current"] = state
+
   @property
   def position(self):
     return self._position
@@ -53,17 +60,11 @@ class Cell(object):
     self._position = (self.x, y)
 
   def computeNextState(self):
-    self.state["next"] = self.rule.getNextState(self, self.neighs)
+    self._state["next"] = self.rule.getNextState(self, self.neighs)
 
   def applyNextState(self):
-    self.state["current"] = self.state["next"]
+    self.state = self._state["next"]
     self.age += 1
 
-  def getState(self):
-    return self.state["current"]
-
-  def setState(self, state):
-    self.state["current"] = state
-  
   def getNeighbors(self):
     return self.neighs

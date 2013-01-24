@@ -6,7 +6,7 @@ class GameOfLifeRule(Rule):
     return self.calculateState(stateVector)
 
   def getStateVector(self, cell, neighs):
-    stateVector = [cell.getState()]
+    stateVector = [cell.state]
     stateVector += self.getNeighsStates(neighs)
     return stateVector
 
@@ -15,7 +15,7 @@ class GameOfLifeRule(Rule):
     for direction, neigh in neighs.items():
       if len(neigh) > 0:
         neighItem = iter(neigh).next()
-        listOfStates.append(neighItem.getState())
+        listOfStates.append(neighItem.state)
     return listOfStates
 
   def calculateState(self, stateVector):

@@ -45,7 +45,7 @@ class SquareLattice(Lattice):
   # set state of particular cell
   def setStateOfCell(self, state, x, y):
     if x >= 0 or x < self.width or y >= 0 or y < self.height:
-      self.cells[(x,y)].setState(state)
+      self.cells[(x,y)].state = state
 
   def nextStep(self):
     # iterate over all cells and go to next state
@@ -80,7 +80,7 @@ class SquareLattice(Lattice):
       cell = SquareCell.createEmpty()
       print("{}".format(cellConfiguration))
       cell.position = cellConfiguration["position"]
-      cell.setState(cellConfiguration["state"])
+      cell.state = cellConfiguration["state"]
       for direction, neighbours in cellConfiguration["neighbours"]:
         cell.neighs[direction] = neighbours
       lattice.cells[cell.position] = cell

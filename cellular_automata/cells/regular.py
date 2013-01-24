@@ -8,7 +8,7 @@ class SquareCell(Cell):
     self.radius = 8
 
   def initializeState(self):
-    self.setState(0)
+    self.state = 0
   
   def createEmptyNeighborhood(self):
     self.neighs = {}
@@ -23,7 +23,7 @@ class SquareCell(Cell):
   def toDict(self):
     '''exports cells state, neighbours indices to dictionary (parsable by YAML)'''
     cell = {}
-    cell["state"] = self.getState()
+    cell["state"] = self.state
     cell["position"] = self.position
     cell["neighbours"] = [
         (direction, set(map(lambda neigh: neigh.position, directionNeighs)))
@@ -45,13 +45,13 @@ class VariableSquareCell(SquareCell):
 
   def initializeState(self):
     initialCellState = [0,0,0,0,0]
-    self.setState(initialCellState)
+    self.state = initialCellState
 
   def wantsGrow(self):
-    return self.getState()[-2] > 0 and not self.getState()[-1] < 0
+    return self.state[-2] > 0 and not self.state[-1] < 0
 
   def wantsDivide(self):
-    return self.getState()[-2] < 0 and self.getState()[-1] > 0 and self.size >= 4
+    return self.state[-2] < 0 and self.state[-1] > 0 and self.size >= 4
 
   def divide(self):
     # create 4 new cells

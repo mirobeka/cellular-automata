@@ -14,7 +14,7 @@ class GameOfLifeVisualization(PygameVisualization):
     tly = cell.y - cell.radius
     width = cell.radius*2
     height = cell.radius*2
-    if cell.getState() == 0:
+    if cell.state == 0:
       pyColor = self.white
     else:
       pyColor = self.black
