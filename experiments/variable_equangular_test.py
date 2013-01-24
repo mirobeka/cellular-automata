@@ -1,114 +1,48 @@
+import sys, os
+ca_directory = os.getcwd()
+if ca_directory not in sys.path:
+  sys.path.insert(0, ca_directory)
+
 from cellular_automata.lattices.equiangular import VariableSquareLattice
 from cellular_automata.lattices.neighborhoods import vonNeumannNeighborhood
 from cellular_automata.rules.base import DummyRule
-from cellular_automata.rules.base import AllwaysMergeRule
-import pygame, sys
-from pygame.locals import *
+from cellular_automata.visualization.base import PygameVisualization
+import pygame
 
-black = pygame.Color(0,0,0)
-white = pygame.Color(255,255,255)
-
-class App:
-  def __init__(self, width, height):
-    self.initConstants(width, height)
-    self.initCellularAutomata()
-    self.initPyGame()
-
-  def initConstants(self, width, height):
-    self.fps = 30
-    self.resolution = 16
-    self.width = width
-    self.height = height
-    self.latticeDimensions = (width/self.resolution, height/self.resolution)
-
-  def initCellularAutomata(self):
-    self.rule = DummyRule()
-    # self.rule = AllwaysMergeRule()
-    self.lattice = VariableSquareLattice(self.latticeDimensions, vonNeumannNeighborhood, self.rule)
-
-  def initPyGame(self):
-    pygame.init()
-    self.fpsClock = pygame.time.Clock()
-    self.initWindow()
-
-  def initWindow(self):
-    self.surface = pygame.display.set_mode((self.width, self.height))
-    pygame.display.set_caption("Cellular Automata")
-
-  def start(self):
-    self.running = True
-    self.mainLoop()
-
-  def onEvent(self, event):
-    if event.type == QUIT:
-      self.quit()
-    elif event.type == KEYDOWN:
-      self.keyEvent(event)
-    elif event.type == MOUSEBUTTONUP:
-      self.mouseButtonEvent(event)
-
-  def keyEvent(self, event):
-    if event.key == K_ESCAPE:
-      pygame.event.post(pygame.event.Event(QUIT))
-
-  def mouseButtonEvent(self, event):
-    pass
-
-  def quit(self):
-    self.running = False
-
-  def onLoop(self):
-    self.lattice.nextStep()
-    self.printStats()
-
-  def onRender(self):
-    self.clearSurface()
-    self.drawLattice()
-    self.update()
-
-  def update(self):
-    pygame.display.update()
-    self.fpsClock.tick(self.fps)
-
-  def clearSurface(self):
-    self.surface.fill(white)
-
-  def drawLattice(self):
-    map(lambda cell: self.drawCell(cell), self.lattice.cells)
-    
+class VariableSquareLatticeVisualization(PygameVisualization):
   def drawCell(self, cell):
-    tlx = cell.x - cell.radius    # top left x
-    tly = cell.y - cell.radius    # top left y
+    tlx = cell.x - cell.radius
+    tly = cell.y - cell.radius
     width = cell.radius*2
     height = cell.radius*2
-    rgb = cell.getState()
     if cell.size == 1:
-      pyColor = pygame.Color(rgb[0], 0, 0)
+      pyColor = pygame.color.Color(cell.state[0],0,0)
     elif cell.size == 4:
-      pyColor = pygame.Color(0, rgb[1], 0)
+      pyColor = pygame.color.Color(0,cell.state[1],0)
     else:
-      pyColor = pygame.Color(0, 0, rgb[2])
-    pygame.draw.rect(self.surface, pyColor,(tlx, tly, width, height))
+      pyColor = pygame.color.Color(0,0,cell.state[2])
+    self.drawRect(pyColor,(tlx, tly, width, height))
 
-  def printStats(self):
-    count = len(self.lattice.cells)
-    print("time {:05d}".format(pygame.time.get_ticks()))
-    print("# Cells : {:03d}".format(count))
+class VariableSquareLatticeTest:
+  def __init__(self):
+    self.initializeLattice()
+    self.initializeVisualization()
 
-  def onCleanup(self):
-    print("Ending application loop")
-    pygame.quit()
-    sys.exit()
+  def initializeLattice(self):
+    dimensions = (256, 256)
+    rule = DummyRule()
+    self.lattice = VariableSquareLattice.createInitialized(
+        dimensions=dimensions, 
+        neighbourhoodMethod=vonNeumannNeighborhood,
+        resolution=16,
+        rule=rule)
 
-  def mainLoop(self):
-    while self.running:
-      for event in pygame.event.get():
-        self.onEvent(event)
-      self.onLoop()
-      self.onRender()
-    self.onCleanup()
+  def initializeVisualization(self):
+    self.vis = VariableSquareLatticeVisualization(self.lattice)
 
+  def start(self):
+    self.vis.start()
 
 if __name__ == "__main__":
-  app = App(256,256)
-  app.start()
+  test = VariableSquareLatticeTest()
+  test.start()
