@@ -1,10 +1,20 @@
 class Cell(object):
-  def __init__(self, rule):
-    self.rule = rule
+  def __init__(self):
+    self.rule = None
     self.neighs = None
     self.age = 0
     self._position = (0,0)
     self.createState()
+
+  @classmethod
+  def createInitialized(cls, rule):
+    cell = cls()
+    cell.rule = rule
+    return cell
+
+  @classmethod
+  def createEmpty(cls):
+    return cls()
 
   def createState(self):
     self.state = {}
@@ -22,6 +32,9 @@ class Cell(object):
       self._position = newPos
     else:
       raise Exception("wrong position argument: {}".format(newPos))
+
+  def toDict(self):
+    raise NotImplementedError("method toYAML of cell is not implemented")
 
   @property
   def x(self):

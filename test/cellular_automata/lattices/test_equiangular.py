@@ -1,8 +1,25 @@
-from cellular_automata.lattices.equiangular import VariableSquareLattice
+from cellular_automata.lattices.equiangular import VariableSquareLattice, SquareLattice
 from cellular_automata.rules.base import DummyRule
 from cellular_automata.cells.regular import VariableSquareCell
-from cellular_automata.lattices.neighborhoods import vonNeumannNeighborhood
+from cellular_automata.lattices.neighborhoods import vonNeumannNeighborhood, edieMooreNeighborhood
 import unittest
+
+class SquareLatticeTestCase(unittest.TestCase):
+  def setUp(self):
+    self.rule = DummyRule()
+
+  def createLattice(self, dimensions):
+    lattice = SquareLattice.createInitialized(
+                              dimensions=dimensions,
+                              rule=self.rule,
+                              neighbourhoodMethod=edieMooreNeighborhood,
+                              resolution=16)
+    return lattice
+
+  def test_lattice_yaml_export(self):
+    lattice = self.createLattice((32, 32))
+    lattice.saveToFile("test_lattice.ltc")
+    self.assertTrue(False) # create some use cases for this export function or maybe not
 
 class VariableSquareLatticeTestCase(unittest.TestCase):
   '''Unit Test for variable square lattice'''
@@ -15,7 +32,7 @@ class VariableSquareLatticeTestCase(unittest.TestCase):
     return lattice
 
   def createLattice(self, size, configuration):
-    lattice = VariableSquareLattice((size, size), vonNeumannNeighborhood, self.rule)
+    lattice = VariableSquareLattice(dimensions=(size, size), neighbourMethod=vonNeumannNeighborhood, rule=self.rule, resolution=16)
     lattice = self.latticeStateInitialization(lattice, configuration)
     return lattice
 

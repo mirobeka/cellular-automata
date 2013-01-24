@@ -1,8 +1,8 @@
 from cellular_automata.cells.base import Cell
 
 class SquareCell(Cell):
-  def __init__(self, rule):
-    Cell.__init__(self, rule)
+  def __init__(self):
+    Cell.__init__(self)
     self.createEmptyNeighborhood()
     self.initializeState()
     self.radius = 8
@@ -20,9 +20,19 @@ class SquareCell(Cell):
     for direction, neigh in neighbors.items():
       self.neighs[direction].update(neigh)
 
+  def toDict(self):
+    '''exports cells state, neighbours indices to dictionary (parsable by YAML)'''
+    cell = {}
+    cell["state"] = self.getState()
+    cell["position"] = self.position
+    cell["neighbours"] = [
+        (direction, set(map(lambda neigh: neigh.position, directionNeighs)))
+        for direction, directionNeighs in self.neighs.items()]
+    return cell
+
 class VariableSquareCell(SquareCell):
-  def __init__(self, rule):
-    SquareCell.__init__(self, rule)
+  def __init__(self):
+    SquareCell.__init__(self)
     self.size = 1
     self.directions = ["north", "east", "south", "west"]
     self.initializeState()
@@ -34,7 +44,7 @@ class VariableSquareCell(SquareCell):
         del self.neighs[direction]
 
   def initializeState(self):
-    initialCellState = self.rule.initialState()
+    initialCellState = [0,0,0,0,0]
     self.setState(initialCellState)
 
   def wantsGrow(self):
@@ -45,10 +55,10 @@ class VariableSquareCell(SquareCell):
 
   def divide(self):
     # create 4 new cells
-    cellNW = VariableSquareCell(self.rule)
-    cellNE = VariableSquareCell(self.rule)
-    cellSW = VariableSquareCell(self.rule)
-    cellSE = VariableSquareCell(self.rule)
+    cellNW = VariableSquareCell.createInitialized(self.rule)
+    cellNE = VariableSquareCell.createInitialized(self.rule)
+    cellSW = VariableSquareCell.createInitialized(self.rule)
+    cellSE = VariableSquareCell.createInitialized(self.rule)
 
     cellNW.size = self.size/4
     cellNE.size = self.size/4
@@ -126,7 +136,7 @@ class VariableSquareCell(SquareCell):
     return cellsToMerge, [newCell]
 
   def createNewCell(self, cellsToMerge):
-    newCell = VariableSquareCell(self.rule)
+    newCell = VariableSquareCell.createInitialized(self.rule)
     newCell.size = len(cellsToMerge)*self.size
     newCell.position = (self.interpolateCenter(cellsToMerge))
     newCell.radius = self.radius * 2
@@ -188,6 +198,9 @@ class VariableSquareCell(SquareCell):
         return neighItem._canMergeWithOthers(cellCountdown-1, newDirection)
       else:
         return False
+
+  def toDict(self):
+    pass
 
   def interpolateCenter(self, cells):
     one = cells[0]

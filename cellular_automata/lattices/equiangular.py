@@ -1,6 +1,7 @@
 from __future__ import print_function
 from cellular_automata.cells.regular import SquareCell, VariableSquareCell
 from cellular_automata.lattices.base import Lattice
+import yaml
 
 class SquareLattice(Lattice):
   '''
@@ -30,17 +31,16 @@ class SquareLattice(Lattice):
     cells = {}
     for x in range(0, self.width, self.resolution):
       for y in range(0, self.height, self.resolution):
-        cells[(x,y)] = SquareCell(rule)
+        cells[(x,y)] = SquareCell.createInitialized(rule)
         coordinates = (x+self.resolution/2, y+self.resolution/2)
         cells[(x,y)].position = coordinates
         cells[(x,y)].radius = self.resolution/2
     return cells
 
   def initializeNeighbours(self, cells, neighbourhoodMethod):
-    for x in range(0, self.width, self.resolution):
-      for y in range(0, self.height, self.resolution):
-        neighs = neighbourhoodMethod(cells, self.resolution, x, y)
-        cells[(x,y)].addNeighbors(neighs)
+    for (x,y), cell in cells.items():
+      neighs = neighbourhoodMethod(cells, self.resolution, x, y)
+      cells[(x,y)].addNeighbors(neighs)
 
   # set state of particular cell
   def setStateOfCell(self, state, x, y):
@@ -56,21 +56,59 @@ class SquareLattice(Lattice):
     return self.cells.values()
 
   @classmethod
-  def readFromFile(cls, filename):
-    pass
+  def loadFromFile(cls, filename):
+    ''' find file, parse to yaml, read all properties and create lattice
+    with defined dimensions and resolution. populate lattice with defined cells
+    '''
+    try:
+      data = open(filename, 'r')
+    except IOError as e:
+      print("error while openning file \"{}\"".format(filename))
+      print(e)
+      return None
+    else:
+      configuration = yaml.load(data)
+      data.close()
+
+    lattice = cls()
+    lattice.width, lattice.height = configuration["dimensions"]
+    lattice.resolution = configuration["resolution"]
+    lattice.cells = {}
+
+    # fill up lattice with cells
+    for cellConfiguration in configuration["cells"]:
+      cell = SquareCell.createEmpty()
+      print("{}".format(cellConfiguration))
+      cell.position = cellConfiguration["position"]
+      cell.setState(cellConfiguration["state"])
+      for direction, neighbours in cellConfiguration["neighbours"]:
+        cell.neighs[direction] = neighbours
+      lattice.cells[cell.position] = cell
+
+    # change positions of cell neighbours for pointers to those cells
+    for cell in lattice.cells.values():
+      for direction, directionNeighs in cell.neighs.items():
+        cell.neighs[direction] = [lattice.cells[neigh] for neigh in directionNeighs]
+
+    return lattice
 
   def saveToFile(self, filename):
-    '''
-    saves properties of lattice:
-      -> width height
-      -> for each line cell with state and list of neighbours indices
-
-      what I need for each cell?
-    '''
+    latticeYAML = self.toYAML()
     with open(filename, 'w') as f:
-      f.write("{},{}\n".format(self.width, self.height))
-      # for cell in cells
-      pass
+      f.write(latticeYAML)
+
+    print("file saved")
+
+  def toYAML(self):
+    ''' export all lattice properties into yaml '''
+    lattice = {}
+    lattice["dimensions"] = (self.width, self.height)
+    lattice["resolution"] = self.resolution
+    cells = []
+    for cell in self.cells.values():
+      cells.append(cell.toDict())
+    lattice["cells"] = cells
+    return yaml.dump(lattice)
 
 class VariableSquareLattice(SquareLattice):
   '''
@@ -89,10 +127,10 @@ class VariableSquareLattice(SquareLattice):
     cells = {}
     for x in range(0, self.width, self.resolution):
       for y in range(0, self.height, self.resolution):
-        cells[(x,y)] = VariableSquareCell(rule)
         coordinates = (x+self.resolution/2, y+self.resolution/2)
-        cells[(x,y)].position = coordinates
-        cells[(x,y)].radius = self.resolution/2
+        cells[coordinates] = VariableSquareCell.createInitialized(rule)
+        cells[coordinates].position = coordinates
+        cells[coordinates].radius = self.resolution/2
     return cells
 
   def nextStep(self):
@@ -122,9 +160,12 @@ class VariableSquareLattice(SquareLattice):
 
   def addCells(self, listOfCellsToAdd):
     for cellToAdd in listOfCellsToAdd:
-      self.cells[cellToAdd.position].append(cellToAdd)
+      self.cells[cellToAdd.position] = cellToAdd
 
   def removeCells(self, listOfCellsToRemove):
     for cellToRemove in listOfCellsToRemove:
-      self.cells.remove(cellToRemove)
+      try:
+        del self.cells[cellToRemove.position]
+      except KeyError as e:
+        print("cell at {} not in self.cells".format(cellToRemove.position))
 

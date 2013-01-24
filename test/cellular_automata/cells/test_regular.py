@@ -6,6 +6,39 @@ from cellular_automata.lattices.equiangular import VariableSquareLattice
 from cellular_automata.lattices.neighborhoods import vonNeumannNeighborhood
 import unittest
 
+class SquareCellTestCase(unittest.TestCase):
+  def setUp(self):
+    self.rule = DummyRule()
+    self.cell = SquareCell(self.rule)
+
+  def test_cell_export_to_dictionary(self):
+    c1 = SquareCell(self.rule)
+    c1.position = (23, 47)
+    c2 = SquareCell(self.rule)
+    c2.position = (2, 5)
+    c3 = SquareCell(self.rule)
+    c3.position = (90, 4)
+    c4 = SquareCell(self.rule)
+    c4.position = (3, 7)
+
+    self.cell.neighs["north"] = set([c1, c2])
+    self.cell.neighs["east"] = set([c2])
+    self.cell.neighs["south"] = set([c3])
+    self.cell.neighs["west"] = set([c4])
+
+    resultDictionary = {
+          'state': 0,
+          'north': set([(23, 47), (2, 5)]),
+          'east': set([(2,5)]),
+          'south': set([(90, 4)]),
+          'west': set([(3, 7)]),
+          'northeast': set([]),
+          'southeast': set([]),
+          'southwest': set([]),
+          'northwest': set([])
+        }
+    self.assertDictEqual(self.cell.toDict(), resultDictionary)
+
 class VSCTestCase(unittest.TestCase):
   def latticeStateInitialization(self, lattice, initialStates):
     for idx,initialState in enumerate(initialStates):
