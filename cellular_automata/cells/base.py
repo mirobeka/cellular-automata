@@ -4,6 +4,7 @@ class Cell(object):
     self.neighs = None
     self.age = 0
     self._position = (0,0)
+    self.radius = 0
     self.createState()
 
   @classmethod
@@ -37,11 +38,29 @@ class Cell(object):
   def position(self, newPos):
     if type(newPos) == tuple and len(newPos) == 2:
       self._position = newPos
+      self._tlc = tuple(x-self.radius for x in newPos)
+      self._brc = tuple(x+self.radius for x in newPos)
     else:
       raise Exception("wrong position argument: {}".format(newPos))
 
   def toDict(self):
     raise NotImplementedError("method toYAML of cell is not implemented")
+
+  @property
+  def topLeftCorner(self):
+    return self._tlc
+
+  @topLeftCorner.setter
+  def topLeftCorner(self, newPos):
+    self.position = tuple(x+self.radius for x in newPos)
+
+  @property
+  def bottomRightCorner(self):
+    return self._brc
+
+  @bottomRightCorner.setter
+  def bottomRightCorner(self, newPos):
+    self.position = tuple(x-self.radius for x in newPos)
 
   @property
   def x(self):

@@ -5,7 +5,6 @@ class SquareCell(Cell):
     Cell.__init__(self)
     self.createEmptyNeighborhood()
     self.initializeState()
-    self.radius = 8
 
   def initializeState(self):
     self.state = 0
