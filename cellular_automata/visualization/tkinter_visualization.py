@@ -10,7 +10,7 @@ class LatticeWidget(Canvas):
   def createInitialized(cls,master, lattice):
     view = cls(master)
     view.lattice = lattice
-    view.config(width=lattice.width, height=lattice.height)
+    view.config(highlightthickness=0, width=lattice.width, height=lattice.height)
     view.pack()
     view.createCanvasItems()
     return view
