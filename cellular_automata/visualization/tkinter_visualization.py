@@ -26,14 +26,8 @@ class LatticeWidget(Canvas):
 
   def createCellItem(self, cell):
     rgb = self.mapStateToRGB(cell.state)
-    box = (
-        cell.x-cell.radius,
-        cell.y-cell.radius,
-        cell.x+cell.radius,
-        cell.y+cell.radius
-        )
     cell.canvasItemId = self.create_rectangle(
-        box,
+        cell.boundingBox,
         fill=rgb)
     self.tag_bind(cell.canvasItemId, '<ButtonPress-1>', self.setCellState)
     self.lattice.canvasItemIds[cell.canvasItemId] = cell
@@ -47,13 +41,7 @@ class LatticeWidget(Canvas):
     if not hasattr(cell, "canvasItemId"):   # must create new canvas item after merge or division
       self.createCellItem(cell)
     rgb = self.mapStateToRGB(cell.state)
-    box = (
-        cell.x-cell.radius,
-        cell.y-cell.radius,
-        cell.x+cell.radius,
-        cell.y+cell.radius
-        )
-    self.coords(cell.canvasItemId, box)
+    self.coords(cell.canvasItemId, cell.boundingBox)
     self.itemconfig(cell.canvasItemId, fill=rgb)
 
   def mapStateToRGB(self, state):

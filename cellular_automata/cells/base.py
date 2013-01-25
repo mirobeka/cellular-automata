@@ -4,7 +4,7 @@ class Cell(object):
     self.neighs = None
     self.age = 0
     self._position = (0,0)
-    self.radius = 0
+    self._radius = 0
     self.createState()
 
   @classmethod
@@ -21,6 +21,16 @@ class Cell(object):
     self._state = {}
     self._state["current"] = None
     self._state["next"] = None
+
+  @property
+  def radius(self):
+    return self._radius
+
+  @radius.setter
+  def radius(self, radius):
+    self._radius = radius
+    self._tlc = (self.x-radius, self.y-radius)
+    self._brc = (self.x+radius, self.y+radius)
 
   @property
   def state(self):
