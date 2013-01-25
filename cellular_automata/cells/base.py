@@ -47,6 +47,10 @@ class Cell(object):
     raise NotImplementedError("method toYAML of cell is not implemented")
 
   @property
+  def boundingBox(self):
+    return self._tlc + self._brc
+
+  @property
   def topLeftCorner(self):
     return self._tlc
 

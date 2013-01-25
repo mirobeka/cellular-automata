@@ -1,4 +1,7 @@
 class Lattice:
+  def __init__(self):
+    self.width = self.height = 0
+
   def nextStep(self):
     # go over all cells and perform next step
     raise NotImplementedError("method nextStep of Lattice not implemented")

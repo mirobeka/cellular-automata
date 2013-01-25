@@ -11,8 +11,9 @@ class SquareLattice(Lattice):
   Cells are stored in dictionary where coordinates of cells is key value.
   '''
   def __init__(self):
-    self.width = self.height = 0
+    Lattice.__init__(self)
     self.cells = None
+    self.resolution = 0
 
   @classmethod
   def createInitialized(cls, **kwargs):
