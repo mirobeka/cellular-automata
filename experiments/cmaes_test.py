@@ -5,7 +5,7 @@ if ca_directory not in sys.path:
 
 import cmaes.barecmaes2 as cma
 from cellular_automata.lattices.eqiuangular import SquareLattice
-from cellular_automata.lattices.neighbors import vonNeumannNeighborhood
+from cellular_automata.lattices.neighbourhoods import vonNeumannNeighborhood
 
 
 class CmaesExperiment:

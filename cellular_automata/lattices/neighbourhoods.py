@@ -1,4 +1,4 @@
-def vonNeumannNeighborhood(cells, resolution, x, y):
+def vonNeumannNeighbourhood(cells, resolution, x, y):
   neighs = {}
   neighs["north"] = set(getCell(cells, (x,y-resolution)))
   neighs["east"] = set(getCell(cells, (x+resolution,y)))
@@ -6,7 +6,7 @@ def vonNeumannNeighborhood(cells, resolution, x, y):
   neighs["west"] = set(getCell(cells, (x-resolution,y)))
   return neighs
 
-def edieMooreNeighborhood(cells, resolution, x, y):
+def edieMooreNeighbourhood(cells, resolution, x, y):
   neighs = {}
   neighs["north"] = set(getCell(cells, (x,y-resolution)))
   neighs["northeast"] = set(getCell(cells, (x+resolution,y-resolution)))

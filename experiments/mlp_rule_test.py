@@ -4,7 +4,7 @@ if ca_directory not in sys.path:
   sys.path.insert(0, ca_directory)
 
 from cellular_automata.lattices.equiangular import VariableSquareLattice
-from cellular_automata.lattices.neighborhoods import vonNeumannNeighborhood
+from cellular_automata.lattices.neighbourhoods import vonNeumannNeighbourhood
 from cellular_automata.rules.neural_rule import MLPRule
 from cellular_automata.visualization.base import PygameVisualization
 
@@ -19,7 +19,7 @@ class MLPTest:
   def initializeLattice(self):
     dimensions = (256,256)
     rule = MLPRule()
-    self.lattice = VariableSquareLattice.createInitialized(dimensions=dimensions, neighbourhoodMethod=vonNeumannNeighborhood, resolution=16, rule=rule)
+    self.lattice = VariableSquareLattice.createInitialized(dimensions=dimensions, neighbourhoodMethod=vonNeumannNeighbourhood, resolution=16, rule=rule)
     
   def start(self):
     self.vis.start()

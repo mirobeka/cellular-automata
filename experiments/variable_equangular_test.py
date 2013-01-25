@@ -4,9 +4,9 @@ if ca_directory not in sys.path:
   sys.path.insert(0, ca_directory)
 
 from cellular_automata.lattices.equiangular import VariableSquareLattice
-from cellular_automata.lattices.neighborhoods import vonNeumannNeighborhood
+from cellular_automata.lattices.neighbourhoods import vonNeumannNeighbourhood
 from cellular_automata.rules.base import DummyRule
-from cellular_automata.visualization.base import PygameVisualization
+from cellular_automata.visualization.pygame_visualization import PygameVisualization
 import pygame
 
 class VariableSquareLatticeVisualization(PygameVisualization):
@@ -33,7 +33,7 @@ class VariableSquareLatticeTest:
     rule = DummyRule()
     self.lattice = VariableSquareLattice.createInitialized(
         dimensions=dimensions, 
-        neighbourhoodMethod=vonNeumannNeighborhood,
+        neighbourhoodMethod=vonNeumannNeighbourhood,
         resolution=16,
         rule=rule)
 

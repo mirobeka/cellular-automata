@@ -4,7 +4,7 @@ if ca_directory not in sys.path:
   sys.path.insert(0, ca_directory)
 
 from cellular_automata.lattices.equiangular import SquareLattice
-from cellular_automata.lattices.neighborhoods import edieMooreNeighborhood
+from cellular_automata.lattices.neighbourhoods import edieMooreNeighbourhood
 from cellular_automata.rules.game_of_life_rule import GameOfLifeRule
 from cellular_automata.visualization.base import PygameVisualization
 
@@ -28,7 +28,7 @@ class GameOfLifeTest:
   def initializeLattice(self):
     dimensions = (1024,512)
     rule = GameOfLifeRule()
-    self.lattice = SquareLattice.createInitialized(dimensions=dimensions, neighbourhoodMethod=edieMooreNeighborhood, resolution=16, rule=rule)
+    self.lattice = SquareLattice.createInitialized(dimensions=dimensions, neighbourhoodMethod=edieMooreNeighbourhood, resolution=16, rule=rule)
 
   def initializeVisualization(self):
     self.vis = GameOfLifeVisualization(self.lattice)
