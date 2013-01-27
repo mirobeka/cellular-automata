@@ -64,7 +64,11 @@ class TwoBandObjective(Objective):
   @staticmethod
   def error_function(pattern, lattice):
     '''check desired pattern with given lattice. Return sum of state differences'''
-    pass
+    return sum([self.difference(pattern.cells[key], lattice.cells[key]) for key in pattern.cells.keys()])
+
+  @staticmethod
+  def difference(cell1, cell2):
+    return sum(map(lambda (x,y): abs(x-y), zip(cell1.state, cell2.state)))
 
   def objective_function(self, weights):
     '''Constructs cellular automata, set weights of MLP as rule for cellular
