@@ -1,6 +1,7 @@
 class Lattice:
   def __init__(self):
     self.width = self.height = 0
+    self.time = 0
 
   def nextStep(self):
     # go over all cells and perform next step

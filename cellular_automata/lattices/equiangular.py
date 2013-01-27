@@ -52,6 +52,11 @@ class SquareLattice(Lattice):
     # iterate over all cells and go to next state
     map(lambda cell: cell.computeNextState(), self.cells.values())
     map(lambda cell: cell.applyNextState(), self.cells.values())
+    self.time += 1
+
+  def run(self, stop_criterion):
+    while stop_criterion.should_run(self):
+      self.nextStep()
 
   def getLattice(self):
     return self.cells.values()
