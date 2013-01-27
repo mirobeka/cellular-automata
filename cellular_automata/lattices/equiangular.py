@@ -57,20 +57,9 @@ class SquareLattice(Lattice):
     return self.cells.values()
 
   @classmethod
-  def loadFromFile(cls, filename):
-    ''' find file, parse to yaml, read all properties and create lattice
-    with defined dimensions and resolution. populate lattice with defined cells
-    '''
-    try:
-      data = open(filename, 'r')
-    except IOError as e:
-      print("error while openning file \"{}\"".format(filename))
-      print(e)
-      return None
-    else:
-      configuration = yaml.load(data)
-      data.close()
-
+  def fromYAML(cls, configuration):
+    '''Read all properties and create lattice with defined
+    dimensions and resolution. populate lattice with defined cells.'''
     lattice = cls()
     lattice.width, lattice.height = configuration["dimensions"]
     lattice.resolution = configuration["resolution"]
@@ -93,15 +82,8 @@ class SquareLattice(Lattice):
 
     return lattice
 
-  def saveToFile(self, filename):
-    latticeYAML = self.toYAML()
-    with open(filename, 'w') as f:
-      f.write(latticeYAML)
-
-    print("file saved")
-
   def toYAML(self):
-    ''' export all lattice properties into yaml '''
+    ''' export all lattice properties and cells into yaml '''
     lattice = {}
     lattice["dimensions"] = (self.width, self.height)
     lattice["resolution"] = self.resolution

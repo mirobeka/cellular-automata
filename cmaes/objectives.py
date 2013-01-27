@@ -43,9 +43,23 @@ class TwoBandObjective(Objective):
     self.initialize_experiment_parameters()
 
   def initialize_experiment_parameters(self):
-    self.desired_lattice = SquareLattice.loadFromFile("data/two_band_configuration.ltc")
+    yaml_configuration = self.load_lattice_configuration("data/two_band_configuration.ltc")
+    self.desired_lattice = SquareLattice.loadFromFile(yaml_configuration)
     self.dimensions = (self.desired_lattice.width, self.desired_lattice.height)
     self.stop_criterion = CAStopCriterion()
+
+  def load_lattice_configuration(self, file_name):
+    try:
+      data = open(file_name, 'r')
+    except IOError as e:
+      print("error while openning file \"{}\"".format(file_name))
+      print(e)
+      return None
+    else:
+      configuration = yaml.load(data)
+      data.close()
+
+    return configuration
   
   @staticmethod
   def error_function(pattern, lattice):
