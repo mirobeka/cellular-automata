@@ -8,12 +8,6 @@ class Lattice:
     raise NotImplementedError("method nextStep of Lattice not implemented")
 
   @classmethod
-  def loadFromFile(cls, filename):
-    '''Load configuration of lattice form file and creates new lattice'''
-    configuration = cls.readFile(filename)
-    cls.createFromConfiguration(configuration)
-
-  @classmethod
   def readFromFile(cls, filename):
     raise NotImplementedError("readFile method of lattice not implemented")
 

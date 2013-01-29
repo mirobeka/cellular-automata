@@ -1,16 +1,16 @@
 class Cell(object):
   def __init__(self):
     self.rule = None
-    self.neighs = None
     self.age = 0
     self._position = (0,0)
     self._radius = 0
     self.createState()
 
   @classmethod
-  def createInitialized(cls, rule):
+  def createInitialized(cls, rule, neighbourhood):
     cell = cls()
     cell.rule = rule
+    cell.neighs = neighbourhood.create_empty()
     return cell
 
   @classmethod
