@@ -1,0 +1,5002 @@
+cells:
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id173 !!python/tuple [200, 24]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id018 !!python/tuple [232, 24]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id066 !!python/tuple [216, 8]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id016 !!python/tuple [216, 40]
+      : null
+  position: &id138 !!python/tuple [216, 24]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id055 !!python/tuple [56, 8]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id128 !!python/tuple [88, 8]
+      : null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id027 !!python/tuple [72, 24]
+      : null
+  position: &id129 !!python/tuple [72, 8]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id004 !!python/tuple [24, 200]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id008 !!python/tuple [56, 200]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id028 !!python/tuple [40, 184]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id003 !!python/tuple [40, 216]
+      : null
+  position: &id006 !!python/tuple [40, 200]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id086 !!python/tuple [104, 232]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id166 !!python/tuple [136, 232]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id084 !!python/tuple [120, 216]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id183 !!python/tuple [120, 248]
+      : null
+  position: &id164 !!python/tuple [120, 232]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id002 !!python/tuple [184, 200]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id010 !!python/tuple [216, 200]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id044 !!python/tuple [200, 184]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id001 !!python/tuple [200, 216]
+      : null
+  position: &id127 !!python/tuple [200, 200]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id161 !!python/tuple [216, 248]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id012 !!python/tuple [248, 248]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id011 !!python/tuple [232, 232]
+      : null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: &id141 !!python/tuple [232, 248]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id113 !!python/tuple [24, 248]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id014 !!python/tuple [56, 248]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id007 !!python/tuple [40, 232]
+      : null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: &id112 !!python/tuple [40, 248]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id049 !!python/tuple [168, 216]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      *id001: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id002: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id103 !!python/tuple [184, 232]
+      : null
+  position: &id101 !!python/tuple [184, 216]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id045 !!python/tuple [24, 72]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id043 !!python/tuple [56, 72]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id064 !!python/tuple [40, 56]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id235 !!python/tuple [40, 88]
+      : null
+  position: &id042 !!python/tuple [40, 72]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id051 !!python/tuple [88, 24]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id026 !!python/tuple [120, 24]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id130 !!python/tuple [104, 8]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id025 !!python/tuple [104, 40]
+      : null
+  position: &id068 !!python/tuple [104, 24]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id058 !!python/tuple [8, 40]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id065 !!python/tuple [40, 40]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id061 !!python/tuple [24, 24]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id057 !!python/tuple [24, 56]
+      : null
+  position: &id062 !!python/tuple [24, 40]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id019 !!python/tuple [232, 40]
+      : null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id139 !!python/tuple [248, 24]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id071 !!python/tuple [248, 56]
+      : null
+  position: &id017 !!python/tuple [248, 40]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id076 !!python/tuple [8, 216]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      *id003: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id004: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id075 !!python/tuple [24, 232]
+      : null
+  position: &id005 !!python/tuple [24, 216]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id035 !!python/tuple [72, 248]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id184 !!python/tuple [104, 248]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id033 !!python/tuple [88, 232]
+      : null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: &id182 !!python/tuple [88, 248]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id005: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id009 !!python/tuple [56, 216]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id006: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id007: null
+  position: *id003
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id003: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id034 !!python/tuple [72, 216]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id008: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id015 !!python/tuple [56, 232]
+      : null
+  position: *id009
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id232 !!python/tuple [24, 88]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id047 !!python/tuple [8, 72]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id145 !!python/tuple [8, 104]
+      : null
+  position: &id046 !!python/tuple [8, 88]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id001: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id013 !!python/tuple [232, 216]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id010: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id119 !!python/tuple [216, 232]
+      : null
+  position: &id126 !!python/tuple [216, 216]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id011: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id024 !!python/tuple [248, 216]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id012: null
+  position: &id023 !!python/tuple [248, 232]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id010: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id022 !!python/tuple [248, 200]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id153 !!python/tuple [232, 184]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id013: null
+  position: &id152 !!python/tuple [232, 200]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id007: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id036 !!python/tuple [72, 232]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id009: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id014: null
+  position: *id015
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id016: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id017: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id018: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id070 !!python/tuple [232, 56]
+      : null
+  position: *id019
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id090 !!python/tuple [120, 200]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id021 !!python/tuple [152, 200]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id020 !!python/tuple [136, 184]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id048 !!python/tuple [136, 216]
+      : null
+  position: &id032 !!python/tuple [136, 200]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id030 !!python/tuple [56, 184]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id080 !!python/tuple [88, 184]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id087 !!python/tuple [72, 168]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id039 !!python/tuple [72, 200]
+      : null
+  position: &id029 !!python/tuple [72, 184]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id020: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id053 !!python/tuple [168, 184]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id177 !!python/tuple [152, 168]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id021: null
+  position: &id031 !!python/tuple [152, 184]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id013: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id022: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id023: null
+  position: *id024
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id025: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id060 !!python/tuple [136, 40]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id026: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id220 !!python/tuple [120, 56]
+      : null
+  position: &id067 !!python/tuple [120, 40]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id056 !!python/tuple [56, 40]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id052 !!python/tuple [88, 40]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id027: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id237 !!python/tuple [72, 56]
+      : null
+  position: &id050 !!python/tuple [72, 40]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id148 !!python/tuple [232, 136]
+      : null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id146 !!python/tuple [248, 120]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id255 !!python/tuple [248, 152]
+      : null
+  position: &id185 !!python/tuple [248, 136]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id028: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id029: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id088 !!python/tuple [56, 168]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id008: null
+  position: *id030
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id105 !!python/tuple [120, 184]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      *id031: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id175 !!python/tuple [136, 168]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id032: null
+  position: *id020
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id015: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id033: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id034: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id035: null
+  position: *id036
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id190 !!python/tuple [136, 136]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id038 !!python/tuple [168, 136]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id079 !!python/tuple [152, 120]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id037 !!python/tuple [152, 152]
+      : null
+  position: &id078 !!python/tuple [152, 136]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id054 !!python/tuple [200, 120]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id149 !!python/tuple [232, 120]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id115 !!python/tuple [216, 104]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id179 !!python/tuple [216, 136]
+      : null
+  position: &id114 !!python/tuple [216, 120]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id238 !!python/tuple [72, 88]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id041 !!python/tuple [104, 88]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id040 !!python/tuple [88, 72]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id181 !!python/tuple [88, 104]
+      : null
+  position: &id199 !!python/tuple [88, 88]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id037: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id245 !!python/tuple [184, 152]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id038: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id176 !!python/tuple [168, 168]
+      : null
+  position: &id198 !!python/tuple [168, 152]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id009: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id081 !!python/tuple [88, 216]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id039: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id036: null
+  position: *id034
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id040: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id073 !!python/tuple [120, 72]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id069 !!python/tuple [104, 56]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id041: null
+  position: &id200 !!python/tuple [104, 72]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id042: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id239 !!python/tuple [72, 72]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id187 !!python/tuple [56, 56]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id234 !!python/tuple [56, 88]
+      : null
+  position: *id043
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id118 !!python/tuple [184, 168]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id143 !!python/tuple [216, 168]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id178 !!python/tuple [200, 152]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id044: null
+  position: &id142 !!python/tuple [200, 168]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id123 !!python/tuple [24, 184]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id110 !!python/tuple [8, 168]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id122 !!python/tuple [8, 200]
+      : null
+  position: &id109 !!python/tuple [8, 184]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id045: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id059 !!python/tuple [8, 56]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id046: null
+  position: *id047
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id048: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id049: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id021: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id165 !!python/tuple [152, 232]
+      : null
+  position: &id174 !!python/tuple [152, 216]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id050: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id025: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id051: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id229 !!python/tuple [88, 56]
+      : null
+  position: *id052
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id021: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id002: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id053: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id049: null
+  position: &id213 !!python/tuple [168, 200]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id106 !!python/tuple [88, 120]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id210 !!python/tuple [120, 120]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id201 !!python/tuple [104, 104]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id099 !!python/tuple [104, 136]
+      : null
+  position: &id097 !!python/tuple [104, 120]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id077 !!python/tuple [168, 120]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      *id054: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id205 !!python/tuple [184, 104]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id244 !!python/tuple [184, 136]
+      : null
+  position: &id219 !!python/tuple [184, 120]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id063 !!python/tuple [40, 24]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      *id027: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id055: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id056: null
+  position: &id124 !!python/tuple [56, 24]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id074 !!python/tuple [120, 88]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id094 !!python/tuple [152, 88]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id092 !!python/tuple [136, 72]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id171 !!python/tuple [136, 104]
+      : null
+  position: &id072 !!python/tuple [136, 88]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id057: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id058: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id047: null
+  position: *id059
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id060: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id083 !!python/tuple [168, 40]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id225 !!python/tuple [152, 24]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id093 !!python/tuple [152, 56]
+      : null
+  position: &id082 !!python/tuple [152, 40]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id224 !!python/tuple [8, 8]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id125 !!python/tuple [40, 8]
+      : null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id061: null
+  position: &id223 !!python/tuple [24, 8]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id062: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id056: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id063: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id064: null
+  position: *id065
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id193 !!python/tuple [152, 248]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id102 !!python/tuple [184, 248]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id100 !!python/tuple [168, 232]
+      : null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: &id192 !!python/tuple [168, 248]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id066: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id243 !!python/tuple [248, 8]
+      : null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id018: null
+  position: &id140 !!python/tuple [232, 8]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id052: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id067: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id068: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id069: null
+  position: *id025
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id197 !!python/tuple [168, 8]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id172 !!python/tuple [200, 8]
+      : null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id131 !!python/tuple [184, 24]
+      : null
+  position: &id195 !!python/tuple [184, 8]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id070: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id017: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id121 !!python/tuple [248, 72]
+      : null
+  position: *id071
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id041: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id072: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id073: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id168 !!python/tuple [120, 104]
+      : null
+  position: *id074
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id216 !!python/tuple [120, 8]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id194 !!python/tuple [152, 8]
+      : null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id221 !!python/tuple [136, 24]
+      : null
+  position: &id231 !!python/tuple [136, 8]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id075: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id076: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id111 !!python/tuple [8, 248]
+      : null
+  position: &id133 !!python/tuple [8, 232]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id170 !!python/tuple [136, 120]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      *id077: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id169 !!python/tuple [152, 104]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id078: null
+  position: *id079
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id039: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id085 !!python/tuple [104, 200]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id080: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id081: null
+  position: &id089 !!python/tuple [88, 200]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id082: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id132 !!python/tuple [184, 40]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id196 !!python/tuple [168, 24]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id230 !!python/tuple [168, 56]
+      : null
+  position: *id083
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id081: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id084: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id085: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id086: null
+  position: &id091 !!python/tuple [104, 216]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id117 !!python/tuple [40, 168]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      *id087: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id159 !!python/tuple [56, 152]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id030: null
+  position: *id088
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id089: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id090: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id104 !!python/tuple [104, 184]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id091: null
+  position: *id085
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id204 !!python/tuple [184, 72]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id214 !!python/tuple [216, 72]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id137 !!python/tuple [200, 56]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id203 !!python/tuple [200, 88]
+      : null
+  position: &id136 !!python/tuple [200, 72]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id092: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id095 !!python/tuple [168, 72]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id093: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id094: null
+  position: &id247 !!python/tuple [152, 72]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id212 !!python/tuple [72, 152]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id098 !!python/tuple [104, 152]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id096 !!python/tuple [88, 136]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id233 !!python/tuple [88, 168]
+      : null
+  position: &id107 !!python/tuple [88, 152]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id094: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id206 !!python/tuple [184, 88]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id095: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id217 !!python/tuple [168, 104]
+      : null
+  position: &id202 !!python/tuple [168, 88]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id096: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id162 !!python/tuple [120, 136]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id097: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id098: null
+  position: *id099
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id100: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id120 !!python/tuple [200, 232]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id101: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id102: null
+  position: *id103
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id104: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id020: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id163 !!python/tuple [120, 168]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id090: null
+  position: *id105
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id158 !!python/tuple [72, 136]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      *id099: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id106: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id107: null
+  position: *id096
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id228 !!python/tuple [24, 136]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id144 !!python/tuple [8, 120]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id108 !!python/tuple [8, 152]
+      : null
+  position: &id246 !!python/tuple [8, 136]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id116 !!python/tuple [24, 168]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id108: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id109: null
+  position: *id110
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id111: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id112: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id075: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id113
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id218 !!python/tuple [200, 104]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id147 !!python/tuple [232, 104]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id155 !!python/tuple [216, 88]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id114: null
+  position: *id115
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id116: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id088: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id211 !!python/tuple [40, 152]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id028: null
+  position: *id117
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id053: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id044: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id118: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id002: null
+  position: &id154 !!python/tuple [184, 184]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id085: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id032: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id105: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id084: null
+  position: *id090
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id103: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id119: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id001: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id160 !!python/tuple [200, 248]
+      : null
+  position: *id120
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id157 !!python/tuple [232, 72]
+      : null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id071: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id156 !!python/tuple [248, 88]
+      : null
+  position: *id121
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id122: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id006: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id123: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id005: null
+  position: *id004
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id059: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id064: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id062: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id045: null
+  position: *id057
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id061: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id124: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id125: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id065: null
+  position: *id063
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id101: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id126: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id127: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id120: null
+  position: *id001
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id027: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id068: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id128: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id052: null
+  position: *id051
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id129: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id130: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id051: null
+  position: *id128
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id083: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id135 !!python/tuple [200, 40]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id131: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id134 !!python/tuple [184, 56]
+      : null
+  position: *id132
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id005: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id122: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id133: null
+  position: *id076
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id134: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id167 !!python/tuple [216, 56]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id135: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id136: null
+  position: *id137
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id138: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id139: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id140: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id019: null
+  position: *id018
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id141: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id023: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id012
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id142: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id151 !!python/tuple [232, 168]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id180 !!python/tuple [216, 152]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id150 !!python/tuple [216, 184]
+      : null
+  position: *id143
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id227 !!python/tuple [24, 104]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id046: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id144: null
+  position: *id145
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id114: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id146: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id147: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id148: null
+  position: *id149
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id150: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id188 !!python/tuple [248, 184]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id151: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id152: null
+  position: *id153
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id154: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id150: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id142: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id127: null
+  position: *id044
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id155: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id156: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id157: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id147: null
+  position: &id215 !!python/tuple [232, 88]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id248 !!python/tuple [40, 136]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      *id158: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id209 !!python/tuple [56, 120]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id159: null
+  position: &id208 !!python/tuple [56, 136]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id160: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id141: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id119: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id161
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id080: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id105: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id242 !!python/tuple [104, 168]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id085: null
+  position: *id104
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id098: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id189 !!python/tuple [136, 152]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id162: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id163: null
+  position: &id241 !!python/tuple [120, 152]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id164: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id165: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id048: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id191 !!python/tuple [136, 248]
+      : null
+  position: *id166
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id127: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id152: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id150: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id126: null
+  position: *id010
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id004: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id109: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id076: null
+  position: *id122
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id167: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id071: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id019: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id157: null
+  position: *id070
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id168: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id169: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id072: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id170: null
+  position: *id171
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id131: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id138: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id172: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id135: null
+  position: *id173
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id084: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id174: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id032: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id166: null
+  position: *id048
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id175: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id176: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id037: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id031: null
+  position: *id177
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id178: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id186 !!python/tuple [232, 152]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id179: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id143: null
+  position: *id180
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id207 !!python/tuple [72, 120]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      *id097: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id181: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id096: null
+  position: *id106
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id182: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id183: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id086: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id184
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id179: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id185: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id149: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id186: null
+  position: *id148
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id065: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id050: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id124: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id187: null
+  position: *id056
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id153: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id249 !!python/tuple [248, 168]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id022: null
+  position: *id188
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id162: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id078: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id170: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id189: null
+  position: *id190
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id014: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id182: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id036: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id035
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id191: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id192: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id165: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id193
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id194: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id195: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id196: null
+  position: *id197
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id177: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id118: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id198: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id053: null
+  position: *id176
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id199: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id074: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id200: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id201: null
+  position: *id041
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id202: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id203: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id204: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id205: null
+  position: *id206
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id226 !!python/tuple [40, 120]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      *id207: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id250 !!python/tuple [56, 104]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id208: null
+  position: *id209
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id210: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id079: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id171: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id190: null
+  position: *id170
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id211: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id212: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id208: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id088: null
+  position: *id159
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id032: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id213: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id031: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id174: null
+  position: *id021
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id137: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id070: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id016: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id214: null
+  position: *id167
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id174: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id101: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id213: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id100: null
+  position: *id049
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id115: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id236 !!python/tuple [248, 104]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id215: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id149: null
+  position: *id147
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id128: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id216: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id068: null
+  position: *id130
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id217: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id218: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id206: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id219: null
+  position: *id205
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id125: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id129: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id124: null
+  position: *id055
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id069: null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id222 !!python/tuple [136, 56]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      *id067: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id073: null
+  position: *id220
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id067: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id082: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id221: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id222: null
+  position: *id060
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id223: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id256 !!python/tuple [8, 24]
+      : null
+  position: *id224
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id221: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id196: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id194: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id082: null
+  position: *id225
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id144: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id226: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id227: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id228: null
+  position: &id251 !!python/tuple [24, 120]
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id110: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id117: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id240 !!python/tuple [24, 152]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id123: null
+  position: *id116
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id229: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id220: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id025: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id200: null
+  position: *id069
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id230: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id137: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id132: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id204: null
+  position: *id134
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id200: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id092: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id220: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id074: null
+  position: *id073
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id026: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id225: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id231: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id060: null
+  position: *id221
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id113: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id133: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id111
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id171: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id217: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id094: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id079: null
+  position: *id169
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id047: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id042: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id057: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id232: null
+  position: *id045
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id029: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id104: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id233: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id089: null
+  position: *id080
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id093: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id134: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id083: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id095: null
+  position: *id230
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id232: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id234: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id042: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id252 !!python/tuple [40, 104]
+      : null
+  position: *id235
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id033: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id164: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id091: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id184: null
+  position: *id086
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id213: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id127: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id154: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id101: null
+  position: *id002
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id149: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id236: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id185: null
+  position: *id146
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id043: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id040: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id237: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id238: null
+  position: *id239
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id206: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id155: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id136: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id218: null
+  position: *id203
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id108: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id211: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id228: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id116: null
+  position: *id240
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id169: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id205: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id202: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id077: null
+  position: *id217
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id107: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id241: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id099: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id242: null
+  position: *id098
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id140: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id139: null
+  position: *id243
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id198: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id178: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id244: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id118: null
+  position: *id245
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id242: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id175: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id241: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id105: null
+  position: *id163
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id240: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id246: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id110: null
+  position: *id108
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id239: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id200: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id229: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id199: null
+  position: *id040
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id123: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id030: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id117: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id006: null
+  position: *id028
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id176: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id142: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id245: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id154: null
+  position: *id118
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id184: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id191: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id164: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id183
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id102: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id161: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id120: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id160
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id152: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id188: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id024: null
+  position: *id022
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id222: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id230: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id082: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id247: null
+  position: *id093
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id075: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id015: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id003: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id112: null
+  position: *id007
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id228: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id208: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id226: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id211: null
+  position: *id248
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id187: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id229: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id050: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id239: null
+  position: *id237
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id244: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id179: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id054: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id178: null
+  position: &id253 !!python/tuple [200, 136]
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id209: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id106: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id254 !!python/tuple [72, 104]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id158: null
+  position: *id207
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id172: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id140: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id138: null
+  position: *id066
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id147: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id156: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id146: null
+  position: *id236
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id201: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id171: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id074: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id210: null
+  position: *id168
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id130: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id231: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id026: null
+  position: *id216
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id143: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id249: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id186: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id153: null
+  position: *id151
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id208: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id096: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id207: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id212: null
+  position: *id158
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id126: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id024: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id152: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id011: null
+  position: *id013
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id136: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id157: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id167: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id155: null
+  position: *id214
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id195: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id066: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id173: null
+  position: *id172
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id235: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id238: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id043: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id250: null
+  position: *id234
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id251: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id209: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id252: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id248: null
+  position: *id226
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id253: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id148: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id114: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id180: null
+  position: *id179
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id205: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id115: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id203: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id054: null
+  position: *id218
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id250: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id181: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id238: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id207: null
+  position: *id254
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id018: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id243: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id017: null
+  position: *id139
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id120: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id011: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id126: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id161: null
+  position: *id119
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id132: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id016: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id173: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id137: null
+  position: *id135
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id087: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id242: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id107: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id080: null
+  position: *id233
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id112: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id035: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id015: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id014
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id183: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id193: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id166: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id191
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id044: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id153: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id143: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id010: null
+  position: *id150
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id006: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id039: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id030: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id009: null
+  position: *id008
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id119: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id023: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id013: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id141: null
+  position: *id011
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id186: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id185: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id249: null
+  position: *id255
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id163: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id177: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id189: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id020: null
+  position: *id175
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id189: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id198: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id078: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id177: null
+  position: *id037
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id254: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id201: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id199: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id106: null
+  position: *id181
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id135: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id019: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id138: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id167: null
+  position: *id016
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id036: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id086: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id081: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id182: null
+  position: *id033
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id151: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id255: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id188: null
+  position: *id249
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id046: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id235: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id045: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id227: null
+  position: *id232
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id241: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id037: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id190: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id175: null
+  position: *id189
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id251: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id145: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id246: null
+  position: *id144
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id008: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id089: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id029: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id034: null
+  position: *id039
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id166: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id100: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id174: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id193: null
+  position: *id165
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id203: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id215: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id214: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id115: null
+  position: *id155
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id237: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id069: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id052: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id040: null
+  position: *id229
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id031: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id154: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id176: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id213: null
+  position: *id053
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id214: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id121: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id070: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id215: null
+  position: *id157
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id181: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id168: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id041: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id097: null
+  position: *id201
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id095: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id136: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id134: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id206: null
+  position: *id204
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id252: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id254: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id234: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id209: null
+  position: *id250
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id068: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id221: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id216: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id067: null
+  position: *id026
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id073: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id247: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id222: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id072: null
+  position: *id092
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id062: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id256: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id059: null
+  position: *id058
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id124: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id051: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id129: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id050: null
+  position: *id027
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id256: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id063: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id223: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id062: null
+  position: *id061
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id165: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id103: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id049: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id192: null
+  position: *id100
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id223: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id055: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id063: null
+  position: *id125
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id196: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id173: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id195: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id132: null
+  position: *id131
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id064: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id237: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id056: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id043: null
+  position: *id187
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id220: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id093: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id060: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id092: null
+  position: *id222
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id061: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id224: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id058: null
+  position: *id256
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id231: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id197: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id225: null
+  position: *id194
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id145: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id252: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id232: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id251: null
+  position: *id227
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id034: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id091: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id089: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id033: null
+  position: *id081
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id225: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id131: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id197: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id083: null
+  position: *id196
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id057: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id187: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id065: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id042: null
+  position: *id064
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id088: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id233: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id212: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id029: null
+  position: *id087
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id078: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id244: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id077: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id198: null
+  position: *id038
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id215: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id121: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id236: null
+  position: *id156
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id097: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id170: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id168: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id162: null
+  position: *id210
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id219: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id114: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id218: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id253: null
+  position: *id054
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id234: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id199: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id239: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id254: null
+  position: *id238
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id072: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id202: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id247: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id169: null
+  position: *id094
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id109: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id028: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id116: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id004: null
+  position: *id123
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id247: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id204: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id230: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id202: null
+  position: *id095
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id133: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id007: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id005: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id113: null
+  position: *id075
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id227: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id250: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id235: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id226: null
+  position: *id252
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id192: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id160: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id103: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id102
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id099: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id190: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id210: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id241: null
+  position: *id162
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id159: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id107: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id158: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id087: null
+  position: *id212
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id246: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id248: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id251: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id240: null
+  position: *id228
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id079: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id219: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id217: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id038: null
+  position: *id077
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id240: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id159: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id248: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id117: null
+  position: *id211
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id233: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id163: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id098: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id104: null
+  position: *id242
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id038: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id253: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id219: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id245: null
+  position: *id244
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id180: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id255: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id148: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id151: null
+  position: *id186
+  state: [0, 0, 0]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id091: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id048: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id090: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id164: null
+  position: *id084
+  state: [255, 255, 255]
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id245: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id180: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id253: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id142: null
+  position: *id178
+  state: [0, 0, 0]
+dimensions: !!python/tuple [256, 256]
+resolution: 16
