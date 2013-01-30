@@ -22,6 +22,7 @@ class SquareLattice(Lattice):
     lattice.resolution = kwargs["resolution"]    # use configuration class to pass all of this arguments. Or just use **kwarg
     lattice.neighbourhood = kwargs["neighbourhood"]
     lattice.rule = kwargs["rule"]
+    lattice.cell_state_class = kwargs["state"]
     lattice.cells = lattice.initializeLatticeCells(kwargs["rule"])
     return lattice
 
@@ -34,7 +35,7 @@ class SquareLattice(Lattice):
     cells = {}
     for x in range(0, self.width, self.resolution):
       for y in range(0, self.height, self.resolution):
-        cells[(x,y)] = SquareCell.createInitialized(rule, self.neighbourhood)
+        cells[(x,y)] = SquareCell.createInitialized(rule, self.neighbourhood, self.cell_state_class)
         coordinates = (x+self.resolution/2, y+self.resolution/2)
         cells[(x,y)].position = coordinates
         cells[(x,y)].radius = self.resolution/2
@@ -52,8 +53,8 @@ class SquareLattice(Lattice):
 
   def nextStep(self):
     # iterate over all cells and go to next state
-    map(lambda cell: cell.computeNextState(), self.cells.values())
-    map(lambda cell: cell.applyNextState(), self.cells.values())
+    map(lambda cell: cell.compute_next_state(), self.cells.values())
+    map(lambda cell: cell.apply_next_state(), self.cells.values())
     self.time += 1
 
   def run(self, stop_criterion):
@@ -125,8 +126,8 @@ class VariableSquareLattice(SquareLattice):
   def nextStep(self):
     self.handleGrowingCells()
     self.handleDividingCells()
-    map(lambda cell: cell.computeNextState(), self.cells.values())
-    map(lambda cell: cell.applyNextState(), self.cells.values())
+    map(lambda cell: cell.compute_next_state(), self.cells.values())
+    map(lambda cell: cell.apply_next_state(), self.cells.values())
 
   def handleDividingCells(self):
     dividing_cells = [cell for cell in self.cells.values() if cell.wantsDivide()]

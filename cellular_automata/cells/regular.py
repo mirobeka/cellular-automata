@@ -85,27 +85,3 @@ class VariableSquareCell(SquareCell):
   def sameSize(self, otherCell):
     return self.size == otherCell.size
 
-  def turnRight(self, direction):
-    if direction == "north":
-      return "east"
-    elif direction == "east":
-      return "south"
-    elif direction == "south":
-      return "west"
-    elif direction == "west":
-      return "north"
-    else:
-      raise Exception( direction + " is wrong direction to turn right!")
-
-  def reverseDirection(self, direction):
-    if direction == "north":
-      return "south"
-    elif direction == "east":
-      return "west"
-    elif direction == "south":
-      return "north"
-    elif direction == "west":
-      return "east"
-    else:
-      raise Exception(direction + " is wrong direction to reverse!")
-

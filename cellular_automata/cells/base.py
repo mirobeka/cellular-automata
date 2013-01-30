@@ -4,23 +4,24 @@ class Cell(object):
     self.age = 0
     self._position = (0,0)
     self._radius = 0
-    self.createState()
+    self.initialize_state()
 
   @classmethod
-  def createInitialized(cls, rule, neighbourhood):
+  def createInitialized(cls, rule, neighbourhood, state_class):
     cell = cls()
     cell.rule = rule
     cell.neighs = neighbourhood.create_empty()
+    cell.state = state_class.create_state()
     return cell
 
   @classmethod
   def createEmpty(cls):
     return cls()
 
-  def createState(self):
+  def initialize_state(self):
     self._state = {}
-    self._state["current"] = None
-    self._state["next"] = None
+    self._state[0] = None
+    self._state[1] = None
 
   @property
   def radius(self):
@@ -34,11 +35,19 @@ class Cell(object):
 
   @property
   def state(self):
-    return self._state["current"]
+    return self._state[0]
 
   @state.setter
   def state(self, state):
-    self._state["current"] = state
+    self._state[0] = state
+
+  @property
+  def next_state(self):
+    return self._state[1]
+
+  @next_state.setter
+  def next_state(self, new_state):
+    self._state[1] = new_state
 
   @property
   def position(self):
@@ -92,11 +101,11 @@ class Cell(object):
   def y(self, y):
     self._position = (self.x, y)
 
-  def computeNextState(self):
-    self._state["next"] = self.rule.getNextState(self, self.neighs)
+  def compute_next_state(self):
+    self.next_state = self.rule.get_next_state(self, self.neighs)
 
-  def applyNextState(self):
-    self.state = self._state["next"]
+  def apply_next_state(self):
+    self.state = self.next_state
     self.age += 1
 
   def getNeighbors(self):
