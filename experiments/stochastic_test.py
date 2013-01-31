@@ -45,12 +45,12 @@ class GUIStochasticTest(Frame):
     self.load = self.createButton("load", self.load, "right")
     
   def initializeLattice(self):
-    dimensions = (160, 160)
+    dimensions = (160, 160)  # dimensions are in pixels
     rule = StochasticRule()
     self.lattice = SquareLattice.createInitialized(
         dimensions=dimensions,
         neighbourhood=VonNeumann,
-        resolution=16,
+        resolution=16,  # diameter of drawn cell in pixels
         state=BinaryState,
         rule=rule)
   

@@ -12,4 +12,5 @@ class StochasticRule(Rule):
     return new_state
 
   def neighbours_alive(self, neighs):
+    # neighs is dictionary. key = direction (e.g. "north"), values = set of cells instances
     return sum([iter(neigh).next().state.alive for neigh in neighs.values() if len(neigh) == 1])
