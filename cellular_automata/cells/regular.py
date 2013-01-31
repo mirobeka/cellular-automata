@@ -1,13 +1,6 @@
 from cellular_automata.cells.base import Cell
 
 class SquareCell(Cell):
-  def __init__(self):
-    Cell.__init__(self)
-    self.initializeState()
-
-  def initializeState(self):
-    self.state = [0,0,0]
-  
   def addNeighbors(self, neighbors):
     for direction, neigh in neighbors.items():
       self.neighs[direction].update(neigh)
@@ -29,17 +22,12 @@ class VariableSquareCell(SquareCell):
   def __init__(self):
     SquareCell.__init__(self)
     self.size = 1
-    self.initializeState()
-
-  def initializeState(self):
-    initialCellState = [0,0,0,0,0]
-    self.state = initialCellState
 
   def wantsGrow(self):
-    return self.state[-2] > 0 and not self.state[-1] < 0
+    return self.state.wants_grow and not self.state.wants_divide
 
   def wantsDivide(self):
-    return self.state[-2] < 0 and self.state[-1] > 0 and self.size >= 4
+    return self.state.wants_divide and not self.state.wants_grow and self.size >= 4
 
   def grow(self):
     for direction in self.neighs.keys():
@@ -84,4 +72,27 @@ class VariableSquareCell(SquareCell):
 
   def sameSize(self, otherCell):
     return self.size == otherCell.size
+  def turnRight(self, direction):
+    if direction == "north":
+      return "east"
+    elif direction == "east":
+      return "south"
+    elif direction == "south":
+      return "west"
+    elif direction == "west":
+      return "north"
+    else:
+      raise Exception( direction + " is wrong direction to turn right!")
+
+  def reverseDirection(self, direction):
+    if direction == "north":
+      return "south"
+    elif direction == "east":
+      return "west"
+    elif direction == "south":
+      return "north"
+    elif direction == "west":
+      return "east"
+    else:
+      raise Exception(direction + " is wrong direction to reverse!")
 

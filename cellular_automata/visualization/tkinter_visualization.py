@@ -60,9 +60,9 @@ class LatticeWidget(Canvas):
   def setCellState(self, event):
     itemId = self.find_closest(event.x, event.y)[0]
     cell = self.lattice.canvasItemIds[itemId]
-    rgb,colorHex = tkColorChooser.askcolor("red", title="choose cells state")
+    rgb,colorHex = tkColorChooser.askcolor("white", title="choose cells state")
     if rgb is None:
       return
     self.itemconfig(itemId, fill=colorHex)
-    cell.state = [x for x in rgb] + [0,0]
+    cell.state.rgb = tuple(rgb)
 

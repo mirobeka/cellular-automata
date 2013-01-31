@@ -4,9 +4,10 @@ if ca_directory not in sys.path:
   sys.path.insert(0, ca_directory)
 
 from cellular_automata.lattices.equiangular import VariableSquareLattice
-from cellular_automata.lattices.neighbourhoods import vonNeumannNeighbourhood
-from cellular_automata.rules.base import DummyRule
+from cellular_automata.lattices.neighbourhoods import VonNeumann
 from cellular_automata.visualization.pygame_visualization import PygameVisualization
+from cellular_automata.rules.base import DummyRule
+from cellular_automata.states.base import ColorTopologyState
 import pygame
 
 class VariableSquareLatticeVisualization(PygameVisualization):
@@ -16,11 +17,11 @@ class VariableSquareLatticeVisualization(PygameVisualization):
     width = cell.radius*2
     height = cell.radius*2
     if cell.size == 1:
-      pyColor = pygame.color.Color(cell.state[0],0,0)
+      pyColor = pygame.color.Color(cell.state.rgb[0],0,0)
     elif cell.size == 4:
-      pyColor = pygame.color.Color(0,cell.state[1],0)
+      pyColor = pygame.color.Color(0,cell.state.rgb[1],0)
     else:
-      pyColor = pygame.color.Color(0,0,cell.state[2])
+      pyColor = pygame.color.Color(0,0,cell.state.rgb[2])
     self.drawRect(pyColor,(tlx, tly, width, height))
 
 class VariableSquareLatticeTest:
@@ -33,8 +34,9 @@ class VariableSquareLatticeTest:
     rule = DummyRule()
     self.lattice = VariableSquareLattice.createInitialized(
         dimensions=dimensions, 
-        neighbourhoodMethod=vonNeumannNeighbourhood,
+        neighbourhood=VonNeumann,
         resolution=16,
+        state=ColorTopologyState,
         rule=rule)
 
   def initializeVisualization(self):

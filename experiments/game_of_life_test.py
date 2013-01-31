@@ -4,9 +4,10 @@ if ca_directory not in sys.path:
   sys.path.insert(0, ca_directory)
 
 from cellular_automata.lattices.equiangular import SquareLattice
-from cellular_automata.lattices.neighbourhoods import edieMooreNeighbourhood
+from cellular_automata.lattices.neighbourhoods import EdieMoore
 from cellular_automata.rules.game_of_life_rule import GameOfLifeRule
-from cellular_automata.visualization.base import PygameVisualization
+from cellular_automata.states.base import BinaryState
+from cellular_automata.visualization.pygame_visualization import PygameVisualization
 
 class GameOfLifeVisualization(PygameVisualization):
   def drawCell(self, cell):
@@ -14,7 +15,7 @@ class GameOfLifeVisualization(PygameVisualization):
     tly = cell.y - cell.radius
     width = cell.radius*2
     height = cell.radius*2
-    if cell.state == 0:
+    if cell.state.alive:
       pyColor = self.white
     else:
       pyColor = self.black
@@ -28,13 +29,21 @@ class GameOfLifeTest:
   def initializeLattice(self):
     dimensions = (1024,512)
     rule = GameOfLifeRule()
-    self.lattice = SquareLattice.createInitialized(dimensions=dimensions, neighbourhoodMethod=edieMooreNeighbourhood, resolution=16, rule=rule)
+    self.lattice = SquareLattice.createInitialized(
+        dimensions=dimensions,
+        neighbourhood=EdieMoore,
+        resolution=16,
+        state=BinaryState,
+        rule=rule)
 
   def initializeVisualization(self):
     self.vis = GameOfLifeVisualization(self.lattice)
 
   def initialConfiguration(self, initialConfiguration):
-    map(lambda (state,x,y): self.lattice.setStateOfCell(state,x,y), initialConfiguration)
+    for state,x,y in initialConfiguration:
+      state = BinaryState.create_state()
+      state.alive = True
+      self.lattice.setStateOfCell(state,x,y)
 
   def start(self):
     self.vis.start()

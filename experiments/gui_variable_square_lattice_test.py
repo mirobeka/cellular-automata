@@ -4,14 +4,15 @@ if ca_directory not in sys.path:
   sys.path.insert(0, ca_directory)
 
 from cellular_automata.lattices.equiangular import VariableSquareLattice
-from cellular_automata.lattices.neighbourhoods import vonNeumannNeighbourhood
+from cellular_automata.lattices.neighbourhoods import VonNeumann
 from cellular_automata.visualization.tkinter_visualization import LatticeWidget
 from cellular_automata.rules.base import DummyRule
+from cellular_automata.states.base import ColorTopologyState
 from Tkinter import *
 
 class VariableSquareLatticeWidget(LatticeWidget):
   def mapStateToRGB(self, state):
-    return "#{:02X}{:02X}{:02X}".format(state[0], state[1], state[2])
+    return "#{:02X}{:02X}{:02X}".format(state.rgb[0], state.rgb[1], state.rgb[2])
 
 class GUIVariableSquareLatticeTest(Frame):
   def __init__(self, master):
@@ -32,8 +33,9 @@ class GUIVariableSquareLatticeTest(Frame):
     rule = DummyRule()
     self.lattice = VariableSquareLattice.createInitialized(
         dimensions=dimensions,
-        neighbourhoodMethod=vonNeumannNeighbourhood,
+        neighbourhood=VonNeumann,
         resolution=16,
+        state=ColorTopologyState,
         rule=rule)
   
   def initializeLatticeWidget(self):

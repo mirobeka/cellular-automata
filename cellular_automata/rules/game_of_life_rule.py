@@ -18,7 +18,7 @@ class GameOfLifeRule(Rule):
         listOfStates.append(neighItem.state.alive)
     return listOfStates
 
-  def calculateState(self, state, stateVector):
+  def calculate_state(self, state, stateVector):
     new_state = state.create_state()
     noOfNeighborsAlive = sum(stateVector[1:])
     if stateVector[0] and 2 <= noOfNeighborsAlive <= 3:

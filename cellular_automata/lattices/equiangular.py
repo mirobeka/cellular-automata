@@ -35,7 +35,10 @@ class SquareLattice(Lattice):
     cells = {}
     for x in range(0, self.width, self.resolution):
       for y in range(0, self.height, self.resolution):
-        cells[(x,y)] = SquareCell.createInitialized(rule, self.neighbourhood, self.cell_state_class)
+        cells[(x,y)] = SquareCell.createInitialized(
+            rule,
+            self.neighbourhood,
+            self.cell_state_class)
         coordinates = (x+self.resolution/2, y+self.resolution/2)
         cells[(x,y)].position = coordinates
         cells[(x,y)].radius = self.resolution/2
@@ -118,7 +121,11 @@ class VariableSquareLattice(SquareLattice):
     for x in range(0, self.width, self.resolution):
       for y in range(0, self.height, self.resolution):
         coordinates = (x+self.resolution/2, y+self.resolution/2)
-        cells[coordinates] = VariableSquareCell.createInitialized(rule, self.neighbourhood)
+        cells[coordinates] = VariableSquareCell.createInitialized(
+            rule,
+            self.neighbourhood,
+            self.cell_state_class)
+
         cells[coordinates].position = coordinates
         cells[coordinates].radius = self.resolution/2
     return cells
@@ -168,7 +175,10 @@ class VariableSquareLattice(SquareLattice):
     return cells_to_merge, [new_cell]
 
   def create_new_cell(self, cells_to_merge):
-    new_cell = VariableSquareCell.createInitialized(self.rule, self.neighbourhood)
+    new_cell = VariableSquareCell.createInitialized(
+        self.rule,
+        self.neighbourhood,
+        self.cell_state_class)
     new_cell.position = self.interpolate_center(cells_to_merge)
     new_cell.size = len(cells_to_merge)*cells_to_merge[0].size
     new_cell.radius = cells_to_merge[0].radius*2
@@ -204,10 +214,10 @@ class VariableSquareLattice(SquareLattice):
 
   def divide(self, cell):
     # create 4 new cells
-    cellNW = VariableSquareCell.createInitialized(self.rule, self.neighbourhood)
-    cellNE = VariableSquareCell.createInitialized(self.rule, self.neighbourhood)
-    cellSW = VariableSquareCell.createInitialized(self.rule, self.neighbourhood)
-    cellSE = VariableSquareCell.createInitialized(self.rule, self.neighbourhood)
+    cellNW = VariableSquareCell.createInitialized(self.rule, self.neighbourhood, self.cell_state_class)
+    cellNE = VariableSquareCell.createInitialized(self.rule, self.neighbourhood, self.cell_state_class)
+    cellSW = VariableSquareCell.createInitialized(self.rule, self.neighbourhood, self.cell_state_class)
+    cellSE = VariableSquareCell.createInitialized(self.rule, self.neighbourhood, self.cell_state_class)
 
     cellNW.size = cell.size/4
     cellNE.size = cell.size/4

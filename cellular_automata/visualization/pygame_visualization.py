@@ -72,7 +72,7 @@ class PygameVisualization:
     tly = cell.y - cell.radius
     width = cell.radius*2
     height = cell.radius*2
-    rgb = map(lambda x: int(min(255,abs(30*x))),cell.state)
+    rgb = cell.state.rgb
     pyColor = pygame.Color(rgb[0], rgb[1], rgb[2])
     self.drawRect(pyColor,(tlx, tly, width, height))
 

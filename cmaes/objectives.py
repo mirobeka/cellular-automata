@@ -1,5 +1,7 @@
 from cellular_automata.lattices.equiangular import SquareLattice
-from cellular_automata.rules.neural_rule import MLPRule
+from cellular_automata.lattices.neighbourhoods import VonNeumann
+from cellular_automata.states.base import ColorState
+from cellular_automata.rules.neural_rule import MLPColorRule
 
 class Objective(object):
   '''This is just abstract class to be extended. Extend this class for your
@@ -37,6 +39,8 @@ class Objective(object):
     needs.'''
     raise NotImplementedError("method objective_function not implemented")
 
+import yaml
+
 class TwoBandObjective(Objective):
   def __init__(self):
     Objective.__init__(self)
@@ -44,7 +48,7 @@ class TwoBandObjective(Objective):
 
   def initialize_experiment_parameters(self):
     yaml_configuration = self.load_lattice_configuration("data/two_band_configuration.ltc")
-    self.desired_lattice = SquareLattice.loadFromFile(yaml_configuration)
+    self.desired_lattice = SquareLattice.fromYAML(yaml_configuration)
     self.dimensions = (self.desired_lattice.width, self.desired_lattice.height)
     self.stop_criterion = CAStopCriterion()
 
@@ -64,19 +68,24 @@ class TwoBandObjective(Objective):
   @staticmethod
   def error_function(pattern, lattice):
     '''check desired pattern with given lattice. Return sum of state differences'''
-    return sum([self.difference(pattern.cells[key], lattice.cells[key]) for key in pattern.cells.keys()])
+    return sum([TwoBandObjective.difference(pattern.cells[key], lattice.cells[key]) for key in pattern.cells.keys() if key in lattice.cells])
 
   @staticmethod
   def difference(cell1, cell2):
-    return sum(map(lambda (x,y): abs(x-y), zip(cell1.state, cell2.state)))
+    return sum(map(lambda (x,y):x-y, zip(cell1.state.rgb, cell2.state.rgb)))
 
   def objective_function(self, weights):
     '''Constructs cellular automata, set weights of MLP as rule for cellular
     automata, run cellular automata until it stops and compare result with
     desired pattern. In this case desired pattern is two band.'''
-    rule = MLPRule()
+    rule = MLPColorRule()
     rule.set_weights(weights)
-    lattice = SquareLattice.create_initialized(rule)
+    lattice = SquareLattice.createInitialized(
+        neighbourhood=vonNeumannNeighbourhood,
+        rule=rule,
+        dimensions=self.dimensions,
+        state=ColorState,
+        resolution=16)
     lattice.run(self.stop_criterion)
     return self.error_function(self.desired_lattice, lattice)
 
@@ -90,5 +99,5 @@ class CAStopCriterion(object):
 
   def should_run(self, lattice):
     '''Return True/False if Cellular Automata should run/stop'''
-    return self.time < 1000:
+    return lattice.time < 100
 
