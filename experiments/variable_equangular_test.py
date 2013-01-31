@@ -11,35 +11,35 @@ from cellular_automata.states.base import ColorTopologyState
 import pygame
 
 class VariableSquareLatticeVisualization(PygameVisualization):
-  def drawCell(self, cell):
+  def draw_cell(self, cell):
     tlx = cell.x - cell.radius
     tly = cell.y - cell.radius
     width = cell.radius*2
     height = cell.radius*2
     if cell.size == 1:
-      pyColor = pygame.color.Color(cell.state.rgb[0],0,0)
+      py_color = pygame.color.Color(cell.state.rgb[0],0,0)
     elif cell.size == 4:
-      pyColor = pygame.color.Color(0,cell.state.rgb[1],0)
+      py_color = pygame.color.Color(0,cell.state.rgb[1],0)
     else:
-      pyColor = pygame.color.Color(0,0,cell.state.rgb[2])
-    self.drawRect(pyColor,(tlx, tly, width, height))
+      py_color = pygame.color.Color(0,0,cell.state.rgb[2])
+    self.draw_rect(py_color,(tlx, tly, width, height))
 
 class VariableSquareLatticeTest:
   def __init__(self):
-    self.initializeLattice()
-    self.initializeVisualization()
+    self.initialize_lattice()
+    self.initialize_visualization()
 
-  def initializeLattice(self):
+  def initialize_lattice(self):
     dimensions = (256, 256)
     rule = DummyRule()
-    self.lattice = VariableSquareLattice.createInitialized(
+    self.lattice = VariableSquareLattice.create_initialized(
         dimensions=dimensions, 
         neighbourhood=VonNeumann,
         resolution=16,
         state=ColorTopologyState,
         rule=rule)
 
-  def initializeVisualization(self):
+  def initialize_visualization(self):
     self.vis = VariableSquareLatticeVisualization(self.lattice)
 
   def start(self):

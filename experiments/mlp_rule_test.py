@@ -11,16 +11,16 @@ from cellular_automata.states.base import ColorTopologyState
 
 class MLPTest:
   def __init__(self):
-    self.initializeLattice()
-    self.initializeVisualization()
+    self.initialize_lattice()
+    self.initialize_visualization()
 
-  def initializeVisualization(self):
+  def initialize_visualization(self):
     self.vis = PygameVisualization(self.lattice)
 
-  def initializeLattice(self):
+  def initialize_lattice(self):
     dimensions = (256,256)
     rule = MLPColorTopologyRule()
-    self.lattice = VariableSquareLattice.createInitialized(
+    self.lattice = VariableSquareLattice.create_initialized(
         dimensions=dimensions,
         neighbourhood=VonNeumann,
         resolution=16,

@@ -7,10 +7,10 @@ class VonNeumann(Neighbourhood):
   @staticmethod
   def gather_neighbours(cells, resolution, x, y):
     neighs = {}
-    neighs["north"] = set(getCell(cells, (x,y-resolution)))
-    neighs["east"] = set(getCell(cells, (x+resolution,y)))
-    neighs["south"] = set(getCell(cells, (x,y+resolution)))
-    neighs["west"] = set(getCell(cells, (x-resolution,y)))
+    neighs["north"] = set(get_cell(cells, (x,y-resolution)))
+    neighs["east"] = set(get_cell(cells, (x+resolution,y)))
+    neighs["south"] = set(get_cell(cells, (x,y+resolution)))
+    neighs["west"] = set(get_cell(cells, (x-resolution,y)))
     return neighs
 
   @staticmethod
@@ -26,14 +26,14 @@ class EdieMoore(Neighbourhood):
   @staticmethod
   def gather_neighbours(cells, resolution, x, y):
     neighs = {}
-    neighs["north"] = set(getCell(cells, (x,y-resolution)))
-    neighs["northeast"] = set(getCell(cells, (x+resolution,y-resolution)))
-    neighs["east"] = set(getCell(cells, (x+resolution,y)))
-    neighs["southeast"] = set(getCell(cells, (x+resolution,y+resolution)))
-    neighs["south"] = set(getCell(cells, (x,y+resolution)))
-    neighs["southwest"] = set(getCell(cells, (x-resolution,y+resolution)))
-    neighs["west"] = set(getCell(cells, (x-resolution,y)))
-    neighs["northwest"] = set(getCell(cells, (x-resolution,y-resolution)))
+    neighs["north"] = set(get_cell(cells, (x,y-resolution)))
+    neighs["northeast"] = set(get_cell(cells, (x+resolution,y-resolution)))
+    neighs["east"] = set(get_cell(cells, (x+resolution,y)))
+    neighs["southeast"] = set(get_cell(cells, (x+resolution,y+resolution)))
+    neighs["south"] = set(get_cell(cells, (x,y+resolution)))
+    neighs["southwest"] = set(get_cell(cells, (x-resolution,y+resolution)))
+    neighs["west"] = set(get_cell(cells, (x-resolution,y)))
+    neighs["northwest"] = set(get_cell(cells, (x-resolution,y-resolution)))
     return neighs
 
   @staticmethod
@@ -49,7 +49,7 @@ class EdieMoore(Neighbourhood):
     neighs["northwest"] = set()
     return neighs
 
-def getCell(cells, pos):
+def get_cell(cells, pos):
   if pos in cells:
     return [cells[pos]]
   else:

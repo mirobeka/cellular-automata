@@ -32,7 +32,7 @@ class MLPColorRule(Rule):
 
     new_state = cell.state.create_state()
     new_state.rgb = tuple(normalized_values)
-    return outVector
+    return out_vector
 
   def normalize_to_color(self, out_vector):
     return (out_vector+1)*128-1

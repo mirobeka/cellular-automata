@@ -11,7 +11,7 @@ from cellular_automata.states.base import ColorState
 from Tkinter import *
 
 class VariableSquareLatticeWidget(LatticeWidget):
-  def mapStateToRGB(self, state):
+  def map_state_to_rgb(self, state):
     return "#{:02X}{:02X}{:02X}".format(state.rgb[0], state.rgb[1], state.rgb[2])
 
 class GUITest(Frame):
@@ -22,25 +22,25 @@ class GUITest(Frame):
     self.pack()
     self.configure(width=self.width, height=self.height)
     self.pack_propagate(False)
-    # self.mainWidget = self.createSlides(5)
-    self.mainWidget = self.createMainSlider()
+    # self.main_widget = self.create_slides(5)
+    self.main_widget = self.create_main_slider()
 
-  def createMainSlider(self):
-    mainWidget = Frame(self, width=self.width*3, height=self.height)
-    mainWidget.configure(bg="#CCC")
-    mainWidget.pack_propagate(False)
-    mainWidget.place(anchor=NW)
+  def create_main_slider(self):
+    main_widget = Frame(self, width=self.width*3, height=self.height)
+    main_widget.configure(bg="#CCC")
+    main_widget.pack_propagate(False)
+    main_widget.place(anchor=NW)
 
     
-    self.createSlide(mainWidget)
-    self.createSlide(mainWidget)
-    self.createSlide(mainWidget)
-    self.actualSlide = 1
+    self.create_slide(main_widget)
+    self.create_slide(main_widget)
+    self.create_slide(main_widget)
+    self.actual_slide = 1
 
-    return mainWidget
+    return main_widget
 
-  def createSlide(self, mainWidget):
-    slide = Frame(mainWidget)
+  def create_slide(self, main_widget):
+    slide = Frame(main_widget)
     slide.configure(width=self.width, height=self.height)
     slide.configure(bg="#999", bd=2, relief=GROOVE, highlightcolor="#000")
     slide.pack(side="left")
@@ -50,39 +50,39 @@ class GUITest(Frame):
     label.pack(fill=BOTH)
     label.configure(bg="#999")
 
-    slide.bind("<Button-1>", self.moveSlide)
+    slide.bind("<Button-1>", self.move_slide)
 
-  def nextSlide(self):
-    x = int(self.mainWidget.place_info()["x"])
-    while x > -self.width*self.actualSlide:
-      self.mainWidget.place_configure(x=x-5)
+  def next_slide(self):
+    x = int(self.main_widget.place_info()["x"])
+    while x > -self.width*self.actual_slide:
+      self.main_widget.place_configure(x=x-5)
       x -=5
       self.update()
-    self.actualSlide += 1
+    self.actual_slide += 1
 
-  def previousSlide(self):
-    if self.actualSlide < 2:
+  def previous_slide(self):
+    if self.actual_slide < 2:
       return
-    x = int(self.mainWidget.place_info()["x"])
-    while x < -self.width*(self.actualSlide-2):
-      self.mainWidget.place_configure(x=x+5)
+    x = int(self.main_widget.place_info()["x"])
+    while x < -self.width*(self.actual_slide-2):
+      self.main_widget.place_configure(x=x+5)
       x +=5
       self.update()
-    self.actualSlide -= 1
+    self.actual_slide -= 1
 
-  def moveSlide(self, event):
+  def move_slide(self, event):
     if event.x <= self.width/2:
-      self.previousSlide()
+      self.previous_slide()
     else:
-      self.nextSlide()
+      self.next_slide()
 
-  def createSlides(self, numberOfSlides):
-    mainWidget = Frame(self, width=numberOfSlides*self.width, height=self.height)
-    mainWidget.pack()
+  def create_slides(self, number_of_slides):
+    main_widget = Frame(self, width=number_of_slides*self.width, height=self.height)
+    main_widget.pack()
     self.slides = [Frame(
-      mainWidget,
+      main_widget,
       width=self.width,
-      height=self.height)]*numberOfSlides
+      height=self.height)]*number_of_slides
 
     for idx,slide in enumerate(self.slides):
       slide.pack()
@@ -91,12 +91,12 @@ class GUITest(Frame):
 
       slide.configure(bg="#999",borderwidth=1)
       slide.place_configure(x=idx*self.width, y=0)
-    mainWidget.place_configure(x=0, y=0)
+    main_widget.place_configure(x=0, y=0)
     self.configure(width=self.width, height=self.height)
-    return mainWidget
+    return main_widget
     
-  def initializeLatticeWidget(self):
-    self.latticeWidget = VariableSquareLatticeWidget.createInitialized(self, self.lattice)
+  def initialize_lattice_widget(self):
+    self.lattice_widget = VariableSquareLatticeWidget.create_initialized(self, self.lattice)
   
   def load(self):
     pass
@@ -104,42 +104,42 @@ class GUITest(Frame):
   def save(self):
     pass
 
-  def simulationStep(self):
-    self.lattice.nextStep()
-    self.latticeWidget.redrawLattice()
+  def simulation_step(self):
+    self.lattice.next_step()
+    self.lattice_widget.redraw_lattice()
     self.update()
 
-  def simulationLoop(self):
-    self.simulationStep()
+  def simulation_loop(self):
+    self.simulation_step()
     if self.running:
-      self.after(0, self.simulationLoop)
+      self.after(0, self.simulation_loop)
 
-  def runSimulation(self):
-    self.toogleRunPause()
+  def run_simulation(self):
+    self.toogle_run_pause()
     self.running = True
-    self.simulationLoop()
+    self.simulation_loop()
 
-  def pauseSimulation(self):
-    self.toogleRunPause()
+  def pause_simulation(self):
+    self.toogle_run_pause()
     self.running = False
 
-  def toogleRunPause(self):
+  def toogle_run_pause(self):
     if self.run == None:
       self.pause.destroy()
       self.pause = None
-      self.run = self.createRunButton()
+      self.run = self.create_run_button()
     else:
       self.run.destroy()
       self.run = None
-      self.pause = self.createPauseButton()
+      self.pause = self.create_pause_button()
 
-  def createRunButton(self):
-    return self.createButton("run", self.runSimulation, "left")
+  def create_run_button(self):
+    return self.create_button("run", self.run_simulation, "left")
 
-  def createPauseButton(self):
-    return self.createButton("pause", self.pauseSimulation, "left")
+  def create_pause_button(self):
+    return self.create_button("pause", self.pause_simulation, "left")
 
-  def createButton(self, text, callback, align):
+  def create_button(self, text, callback, align):
     btn = Button(self)
     btn["text"] = text
     btn["command"] = callback

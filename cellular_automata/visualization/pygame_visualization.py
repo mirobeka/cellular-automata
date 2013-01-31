@@ -6,93 +6,93 @@ class PygameVisualization:
   def __init__(self, lattice, fps=30):
     self.lattice = lattice
     self.fps = fps
-    self.initPyGame()
-    self.initializeBasicColors()
+    self.init_py_game()
+    self.initialize_basic_colors()
 
-  def initializeBasicColors(self):
+  def initialize_basic_colors(self):
     self.black = pygame.Color(0,0,0)
     self.white = pygame.Color(255,255,255)
 
-  def initPyGame(self):
+  def init_py_game(self):
     pygame.init()
-    self.fpsClock = pygame.time.Clock()
-    self.initWindow()
+    self.fps_clock = pygame.time.Clock()
+    self.init_window()
 
-  def setFPS(self, fps):
+  def set_fps(self, fps):
     self.fps = fps
 
-  def initWindow(self):
+  def init_window(self):
     self.surface = pygame.display.set_mode((self.lattice.width, self.lattice.height))
     pygame.display.set_caption("Cellular Automata")
 
   def start(self):
     self.running = True
-    self.mainLoop()
+    self.main_loop()
 
-  def onEvent(self, event):
+  def on_event(self, event):
     if event.type == QUIT:
       self.quit()
     elif event.type == KEYDOWN:
-      self.keyEvent(event)
+      self.key_event(event)
     elif event.type == MOUSEBUTTONUP:
-      self.mouseButtonEvent(event)
+      self.mouse_button_event(event)
 
-  def keyEvent(self, event):
+  def key_event(self, event):
     if event.key == K_ESCAPE:
       pygame.event.post(pygame.event.Event(QUIT))
 
-  def mouseButtonEvent(self, event):
+  def mouse_button_event(self, event):
     pass
 
   def quit(self):
     self.running = False
 
-  def onLoop(self):
-    self.lattice.nextStep()
-    self.printStats()
+  def on_loop(self):
+    self.lattice.next_step()
+    self.print_stats()
 
-  def onRender(self):
-    self.clearSurface()
-    self.drawLattice(self.lattice.cells)
+  def on_render(self):
+    self.clear_surface()
+    self.draw_lattice(self.lattice.cells)
     self.update()
 
   def update(self):
     pygame.display.update()
-    self.fpsClock.tick(self.fps)
+    self.fps_clock.tick(self.fps)
 
-  def clearSurface(self):
+  def clear_surface(self):
     self.surface.fill(self.white)
 
-  def drawLattice(self, cells):
+  def draw_lattice(self, cells):
     for cell in cells.values():
-      self.drawCell(cell)
+      self.draw_cell(cell)
     
-  def drawCell(self, cell):
+  def draw_cell(self, cell):
     tlx = cell.x - cell.radius
     tly = cell.y - cell.radius
     width = cell.radius*2
     height = cell.radius*2
     rgb = cell.state.rgb
-    pyColor = pygame.Color(rgb[0], rgb[1], rgb[2])
-    self.drawRect(pyColor,(tlx, tly, width, height))
+    py_color = pygame.Color(rgb[0], rgb[1], rgb[2])
+    self.draw_rect(py_color,(tlx, tly, width, height))
 
-  def drawRect(self, color, position):
+  def draw_rect(self, color, position):
     pygame.draw.rect(self.surface, color, position)
 
-  def printStats(self):
+  def print_stats(self):
     count = len(self.lattice.cells)
     print("time {:05d}".format(pygame.time.get_ticks()))
     print("# Cells : {:03d}".format(count))
 
-  def onCleanup(self):
+  def on_cleanup(self):
     print("Ending application loop")
     pygame.quit()
     sys.exit()
 
-  def mainLoop(self):
+  def main_loop(self):
     while self.running:
       for event in pygame.event.get():
-        self.onEvent(event)
-      self.onLoop()
-      self.onRender()
-    self.onCleanup()
+        self.on_event(event)
+      self.on_loop()
+      self.on_render()
+    self.on_cleanup()

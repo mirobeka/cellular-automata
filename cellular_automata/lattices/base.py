@@ -3,24 +3,24 @@ class Lattice:
     self.width = self.height = 0
     self.time = 0
 
-  def nextStep(self):
+  def next_step(self):
     # go over all cells and perform next step
-    raise NotImplementedError("method nextStep of Lattice not implemented")
+    raise NotImplementedError("method next_step of Lattice not implemented")
 
   @classmethod
-  def readFromFile(cls, filename):
-    raise NotImplementedError("readFile method of lattice not implemented")
+  def read_from_file(cls, filename):
+    raise NotImplementedError("read_file method of lattice not implemented")
 
-  def saveToFile(self, filename):
+  def save_to_file(self, filename):
     '''Saves configuration of instance of lattice in file'''
-    raise NotImplementedError("saveToFile method of lattice not implemented")
+    raise NotImplementedError("save_to_file method of lattice not implemented")
 
   @classmethod
-  def createInitialzed(cls, **kwargs):
+  def create_initialzed(cls, **kwargs):
     '''Create and initialize lattice'''
-    raise NotImplementedError("createInitialized method of lattice not implemented")
+    raise NotImplementedError("create_initialized method of lattice not implemented")
 
   @classmethod
-  def createEmpty(cls):
+  def create_empty(cls):
     lattice = cls()
     return lattice

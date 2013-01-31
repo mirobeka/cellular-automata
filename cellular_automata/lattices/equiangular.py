@@ -16,26 +16,26 @@ class SquareLattice(Lattice):
     self.resolution = 0
 
   @classmethod
-  def createInitialized(cls, **kwargs):
+  def create_initialized(cls, **kwargs):
     lattice = cls()
     lattice.width, lattice.height = kwargs["dimensions"]
     lattice.resolution = kwargs["resolution"]    # use configuration class to pass all of this arguments. Or just use **kwarg
     lattice.neighbourhood = kwargs["neighbourhood"]
     lattice.rule = kwargs["rule"]
     lattice.cell_state_class = kwargs["state"]
-    lattice.cells = lattice.initializeLatticeCells(kwargs["rule"])
+    lattice.cells = lattice.initialize_lattice_cells(kwargs["rule"])
     return lattice
 
-  def initializeLatticeCells(self, rule):
-    cells = self.createCells(rule)
-    self.initializeNeighbours(cells)
+  def initialize_lattice_cells(self, rule):
+    cells = self.create_cells(rule)
+    self.initialize_neighbours(cells)
     return cells
 
-  def createCells(self, rule):
+  def create_cells(self, rule):
     cells = {}
     for x in range(0, self.width, self.resolution):
       for y in range(0, self.height, self.resolution):
-        cells[(x,y)] = SquareCell.createInitialized(
+        cells[(x,y)] = SquareCell.create_initialized(
             rule,
             self.neighbourhood,
             self.cell_state_class)
@@ -44,17 +44,17 @@ class SquareLattice(Lattice):
         cells[(x,y)].radius = self.resolution/2
     return cells
 
-  def initializeNeighbours(self, cells):
+  def initialize_neighbours(self, cells):
     for (x,y), cell in cells.items():
       neighs = self.neighbourhood.gather_neighbours(cells, self.resolution, x, y)
       cells[(x,y)].set_neighbours(neighs)
 
   # set state of particular cell
-  def setStateOfCell(self, state, x, y):
+  def set_state_of_cell(self, state, x, y):
     if x >= 0 or x < self.width or y >= 0 or y < self.height:
       self.cells[(x,y)].state = state
 
-  def nextStep(self):
+  def next_step(self):
     # iterate over all cells and go to next state
     map(lambda cell: cell.compute_next_state(), self.cells.values())
     map(lambda cell: cell.apply_next_state(), self.cells.values())
@@ -62,13 +62,13 @@ class SquareLattice(Lattice):
 
   def run(self, stop_criterion):
     while stop_criterion.should_run(self):
-      self.nextStep()
+      self.next_step()
 
-  def getLattice(self):
+  def get_lattice(self):
     return self.cells.values()
 
   @classmethod
-  def fromYAML(cls, configuration):
+  def from_yaml(cls, configuration):
     '''Read all properties and create lattice with defined
     dimensions and resolution. populate lattice with defined cells.'''
     lattice = cls()
@@ -77,29 +77,29 @@ class SquareLattice(Lattice):
     lattice.cells = {}
 
     # fill up lattice with cells
-    for cellConfiguration in configuration["cells"]:
-      cell = SquareCell.createEmpty()
-      cell.position = cellConfiguration["position"]
-      cell.state = cellConfiguration["state"]
-      for direction, neighbours in cellConfiguration["neighbours"]:
+    for cell_configuration in configuration["cells"]:
+      cell = SquareCell.create_empty()
+      cell.position = cell_configuration["position"]
+      cell.state = cell_configuration["state"]
+      for direction, neighbours in cell_configuration["neighbours"]:
         cell.neighs[direction] = neighbours
       lattice.cells[cell.position] = cell
 
     # change positions of cell neighbours for pointers to those cells
     for cell in lattice.cells.values():
-      for direction, directionNeighs in cell.neighs.items():
-        cell.neighs[direction] = [lattice.cells[neigh] for neigh in directionNeighs]
+      for direction, direction_neighs in cell.neighs.items():
+        cell.neighs[direction] = [lattice.cells[neigh] for neigh in direction_neighs]
 
     return lattice
 
-  def toYAML(self):
+  def to_yaml(self):
     ''' export all lattice properties and cells into yaml '''
     lattice = {}
     lattice["dimensions"] = (self.width, self.height)
     lattice["resolution"] = self.resolution
     cells = []
     for cell in self.cells.values():
-      cells.append(cell.toDict())
+      cells.append(cell.to_dict())
     lattice["cells"] = cells
     return yaml.dump(lattice)
 
@@ -116,12 +116,12 @@ class VariableSquareLattice(SquareLattice):
   Cells are stored in hash based on their current coordinates on grid.
   '''
 
-  def createCells(self, rule):
+  def create_cells(self, rule):
     cells = {}
     for x in range(0, self.width, self.resolution):
       for y in range(0, self.height, self.resolution):
         coordinates = (x+self.resolution/2, y+self.resolution/2)
-        cells[coordinates] = VariableSquareCell.createInitialized(
+        cells[coordinates] = VariableSquareCell.create_initialized(
             rule,
             self.neighbourhood,
             self.cell_state_class)
@@ -130,44 +130,44 @@ class VariableSquareLattice(SquareLattice):
         cells[coordinates].radius = self.resolution/2
     return cells
 
-  def nextStep(self):
-    self.handleGrowingCells()
-    self.handleDividingCells()
+  def next_step(self):
+    self.handle_growing_cells()
+    self.handle_dividing_cells()
     map(lambda cell: cell.compute_next_state(), self.cells.values())
     map(lambda cell: cell.apply_next_state(), self.cells.values())
 
-  def handleDividingCells(self):
-    dividing_cells = [cell for cell in self.cells.values() if cell.wantsDivide()]
+  def handle_dividing_cells(self):
+    dividing_cells = [cell for cell in self.cells.values() if cell.wants_divide()]
     for dividing_cell in dividing_cells:
       changes = self.divide(dividing_cell)
-      self.handleChangeInCells(changes)
+      self.handle_change_in_cells(changes)
 
-  def handleGrowingCells(self):
-    growingCells = [cell for cell in self.cells.values() if cell.wantsGrow()]
-    for growingCell in growingCells:
-      if growingCell in self.cells.values(): # additional check if cell wasn't already merged
-        cells_to_merge = growingCell.grow()
+  def handle_growing_cells(self):
+    growing_cells = [cell for cell in self.cells.values() if cell.wants_grow()]
+    for growing_cell in growing_cells:
+      if growing_cell in self.cells.values(): # additional check if cell wasn't already merged
+        cells_to_merge = growing_cell.grow()
         if cells_to_merge is None:
           return
         changes = self.merge_cells(cells_to_merge)
-        self.handleChangeInCells(changes)
+        self.handle_change_in_cells(changes)
 
-  def handleChangeInCells(self, changes):
+  def handle_change_in_cells(self, changes):
     if changes is not None:
-      cellsToRemove, cellsToAdd = changes
-      self.removeCells(cellsToRemove)
-      self.addCells(cellsToAdd)
+      cells_to_remove, cells_to_add = changes
+      self.remove_cells(cells_to_remove)
+      self.add_cells(cells_to_add)
 
-  def addCells(self, listOfCellsToAdd):
-    for cellToAdd in listOfCellsToAdd:
-      self.cells[cellToAdd.position] = cellToAdd
+  def add_cells(self, list_of_cells_to_add):
+    for cell_to_add in list_of_cells_to_add:
+      self.cells[cell_to_add.position] = cell_to_add
 
-  def removeCells(self, listOfCellsToRemove):
-    for cellToRemove in listOfCellsToRemove:
+  def remove_cells(self, list_of_cells_to_remove):
+    for cell_to_remove in list_of_cells_to_remove:
       try:
-        del self.cells[cellToRemove.position]
+        del self.cells[cell_to_remove.position]
       except KeyError as e:
-        print("cell at {} not in self.cells".format(cellToRemove.position))
+        print("cell at {} not in self.cells".format(cell_to_remove.position))
 
   def merge_cells(self, cells_to_merge):
     new_cell = self.create_new_cell(cells_to_merge)
@@ -175,7 +175,7 @@ class VariableSquareLattice(SquareLattice):
     return cells_to_merge, [new_cell]
 
   def create_new_cell(self, cells_to_merge):
-    new_cell = VariableSquareCell.createInitialized(
+    new_cell = VariableSquareCell.create_initialized(
         self.rule,
         self.neighbourhood,
         self.cell_state_class)
@@ -214,43 +214,43 @@ class VariableSquareLattice(SquareLattice):
 
   def divide(self, cell):
     # create 4 new cells
-    cellNW = VariableSquareCell.createInitialized(self.rule, self.neighbourhood, self.cell_state_class)
-    cellNE = VariableSquareCell.createInitialized(self.rule, self.neighbourhood, self.cell_state_class)
-    cellSW = VariableSquareCell.createInitialized(self.rule, self.neighbourhood, self.cell_state_class)
-    cellSE = VariableSquareCell.createInitialized(self.rule, self.neighbourhood, self.cell_state_class)
+    cell_nw = VariableSquareCell.create_initialized(self.rule, self.neighbourhood, self.cell_state_class)
+    cell_ne = VariableSquareCell.create_initialized(self.rule, self.neighbourhood, self.cell_state_class)
+    cell_sw = VariableSquareCell.create_initialized(self.rule, self.neighbourhood, self.cell_state_class)
+    cell_se = VariableSquareCell.create_initialized(self.rule, self.neighbourhood, self.cell_state_class)
 
-    cellNW.size = cell.size/4
-    cellNE.size = cell.size/4
-    cellSW.size = cell.size/4
-    cellSE.size = cell.size/4
+    cell_nw.size = cell.size/4
+    cell_ne.size = cell.size/4
+    cell_sw.size = cell.size/4
+    cell_se.size = cell.size/4
 
     # position
     half_radius = cell.radius/2
 
-    cellNW.position = (cell.x - half_radius, cell.y - half_radius)
-    cellNW.radius = half_radius
-    cellNE.position = (cell.x + half_radius, cell.y - half_radius)
-    cellNE.radius = half_radius
-    cellSW.position = (cell.x - half_radius, cell.y + half_radius)
-    cellSW.radius = half_radius
-    cellSE.position = (cell.x + half_radius, cell.y + half_radius)
-    cellSE.radius = half_radius
+    cell_nw.position = (cell.x - half_radius, cell.y - half_radius)
+    cell_nw.radius = half_radius
+    cell_ne.position = (cell.x + half_radius, cell.y - half_radius)
+    cell_ne.radius = half_radius
+    cell_sw.position = (cell.x - half_radius, cell.y + half_radius)
+    cell_sw.radius = half_radius
+    cell_se.position = (cell.x + half_radius, cell.y + half_radius)
+    cell_se.radius = half_radius
 
     # create neighbor connections
-    cellNW.neighs["south"] = set([cellSW])
-    cellNW.neighs["east"] = set([cellNE])
-    cellNE.neighs["south"] = set([cellSE])
-    cellNE.neighs["west"] = set([cellNW])
-    cellSW.neighs["north"] = set([cellNW])
-    cellSW.neighs["east"] = set([cellSE])
-    cellSE.neighs["north"] = set([cellNE])
-    cellSE.neighs["west"] = set([cellSW])
+    cell_nw.neighs["south"] = set([cell_sw])
+    cell_nw.neighs["east"] = set([cell_ne])
+    cell_ne.neighs["south"] = set([cell_se])
+    cell_ne.neighs["west"] = set([cell_nw])
+    cell_sw.neighs["north"] = set([cell_nw])
+    cell_sw.neighs["east"] = set([cell_se])
+    cell_se.neighs["north"] = set([cell_ne])
+    cell_se.neighs["west"] = set([cell_sw])
 
     new_cells = {}
-    new_cells["north"] = [cellNW, cellNE]
-    new_cells["east"] = [cellNE, cellSE]
-    new_cells["south"] = [cellSE, cellSW]
-    new_cells["west"] = [cellNW, cellSW]
+    new_cells["north"] = [cell_nw, cell_ne]
+    new_cells["east"] = [cell_ne, cell_se]
+    new_cells["south"] = [cell_se, cell_sw]
+    new_cells["west"] = [cell_nw, cell_sw]
 
     for direction, direction_neighs in cell.neighs.items():
       for direction_neigh in direction_neighs:
@@ -260,10 +260,10 @@ class VariableSquareLattice(SquareLattice):
 
     # now we have new cells with correct neighs.
     # this time we have to update rest of the neighborhood
-    for newCell in [cellNW, cellNE, cellSW, cellSE]:
-      self.update_surrounding_neighbourhood(newCell, [self])
+    for new_cell in [cell_nw, cell_ne, cell_sw, cell_se]:
+      self.update_surrounding_neighbourhood(new_cell, [self])
 
-    return [cell], [cellNW, cellNE, cellSW, cellSE]
+    return [cell], [cell_nw, cell_ne, cell_sw, cell_se]
 
   @staticmethod
   def is_neighbor_with(cell1, cell2):

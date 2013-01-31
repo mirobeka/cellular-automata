@@ -7,33 +7,33 @@ from cellular_automata.lattices.equiangular import SquareLattice
 from cellular_automata.lattices.neighbourhoods import VonNeumann
 from cellular_automata.visualization.tkinter_visualization import LatticeWidget
 from cellular_automata.rules.neural_rule import MLPColorRule
-from cellular_automata.state.base import ColorState
+from cellular_automata.states.base import ColorState
 from Tkinter import *
 import yaml
 
 class SquareLatticeWidget(LatticeWidget):
-  def mapStateToRGB(self, state):
+  def map_state_to_rgb(self, state):
     return "#{:02X}{:02X}{:02X}".format(state.rgb[0], state.rgb[1], state.rgb[2])
 
 class GUISquareLatticeTest(Frame):
   def __init__(self, master):
     Frame.__init__(self, master)
-    self.initializeLattice()
+    self.initialize_lattice()
     self.pack()
-    self.initializeLatticeWidget()
-    self.createControls()
+    self.initialize_lattice_widget()
+    self.create_controls()
 
-  def createControls(self):
-    self.step = self.createButton("next step", self.simulationStep, "left")
-    self.run = self.createRunButton()
-    self.save = self.createButton("save", self.save, "right")
-    self.load = self.createButton("load", self.load, "right")
+  def create_controls(self):
+    self.step = self.create_button("next step", self.simulation_step, "left")
+    self.run = self.create_run_button()
+    self.save = self.create_button("save", self.save, "right")
+    self.load = self.create_button("load", self.load, "right")
     
-  def initializeLattice(self):
+  def initialize_lattice(self):
     dimensions = (256, 256)
     rule = MLPColorRule()
     rule.set_weights(self.get_weights())
-    self.lattice = SquareLattice.createInitialized(
+    self.lattice = SquareLattice.create_initialized(
         dimensions=dimensions,
         neighbourhood=VonNeumann,
         resolution=16,
@@ -47,55 +47,55 @@ class GUISquareLatticeTest(Frame):
 
     # return result
 
-  def initializeLatticeWidget(self):
-    self.latticeWidget = SquareLatticeWidget.createInitialized(self, self.lattice)
+  def initialize_lattice_widget(self):
+    self.lattice_widget = SquareLatticeWidget.create_initialized(self, self.lattice)
   
   def load(self):
     pass
 
   def save(self):
-    data = self.lattice.toYAML()
+    data = self.lattice.to_yaml()
     with open("data/two_band_configuration.ltc", 'w') as f:
       f.write(data)
     print("data saved")
 
 
-  def simulationStep(self):
-    self.lattice.nextStep()
-    self.latticeWidget.redrawLattice()
+  def simulation_step(self):
+    self.lattice.next_step()
+    self.lattice_widget.redraw_lattice()
     self.update()
 
-  def simulationLoop(self):
-    self.simulationStep()
+  def simulation_loop(self):
+    self.simulation_step()
     if self.running:
-      self.after(0, self.simulationLoop)
+      self.after(0, self.simulation_loop)
 
-  def runSimulation(self):
-    self.toogleRunPause()
+  def run_simulation(self):
+    self.toogle_run_pause()
     self.running = True
-    self.simulationLoop()
+    self.simulation_loop()
 
-  def pauseSimulation(self):
-    self.toogleRunPause()
+  def pause_simulation(self):
+    self.toogle_run_pause()
     self.running = False
 
-  def toogleRunPause(self):
+  def toogle_run_pause(self):
     if self.run == None:
       self.pause.destroy()
       self.pause = None
-      self.run = self.createRunButton()
+      self.run = self.create_run_button()
     else:
       self.run.destroy()
       self.run = None
-      self.pause = self.createPauseButton()
+      self.pause = self.create_pause_button()
 
-  def createRunButton(self):
-    return self.createButton("run", self.runSimulation, "left")
+  def create_run_button(self):
+    return self.create_button("run", self.run_simulation, "left")
 
-  def createPauseButton(self):
-    return self.createButton("pause", self.pauseSimulation, "left")
+  def create_pause_button(self):
+    return self.create_button("pause", self.pause_simulation, "left")
 
-  def createButton(self, text, callback, align):
+  def create_button(self, text, callback, align):
     btn = Button(self)
     btn["text"] = text
     btn["command"] = callback

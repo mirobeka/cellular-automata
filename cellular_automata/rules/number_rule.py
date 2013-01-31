@@ -1,18 +1,18 @@
 from cellular_automata.rules.base import Rule
 
 class NumberRule(Rule):
-  def __init__(self, ruleNumber, numberOfStates, threshold):
+  def __init__(self, rule_number, number_of_states, threshold):
     self.rules = {}
-    self.numberOfStates = numberOfStates
-    self.ruleNumber = ruleNumber
+    self.number_of_states = number_of_states
+    self.rule_number = rule_number
     self.threshold = threshold
-    self.rules = self.ruleDisassembler(ruleNumber, numberOfStates, threshold, {})
+    self.rules = self.rule_disassembler(rule_number, number_of_states, threshold, {})
 
-  def ruleDisassembler(self, number, base, threshold, rules):
+  def rule_disassembler(self, number, base, threshold, rules):
     if number is 0:
       return rules
     rules[self.threshold - threshold] = number % base
-    return self.ruleDisassembler(number / base, base, threshold-1, rules)
+    return self.rule_disassembler(number / base, base, threshold-1, rules)
 
   def get_next_state(self, cell, neighs):
     sum_of_cell_states = self.get_sum_of_cell_states(cell, neighs)

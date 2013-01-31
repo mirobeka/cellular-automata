@@ -7,7 +7,7 @@ class Cell(object):
     self.initialize_state()
 
   @classmethod
-  def createInitialized(cls, rule, neighbourhood, state_class):
+  def create_initialized(cls, rule, neighbourhood, state_class):
     cell = cls()
     cell.rule = rule
     cell.neighs = neighbourhood.create_empty()
@@ -15,7 +15,7 @@ class Cell(object):
     return cell
 
   @classmethod
-  def createEmpty(cls):
+  def create_empty(cls):
     return cls()
 
   def initialize_state(self):
@@ -54,36 +54,36 @@ class Cell(object):
     return self._position
 
   @position.setter
-  def position(self, newPos):
-    if type(newPos) == tuple and len(newPos) == 2:
-      self._position = newPos
-      self._tlc = tuple(x-self.radius for x in newPos)
-      self._brc = tuple(x+self.radius for x in newPos)
+  def position(self, new_pos):
+    if type(new_pos) == tuple and len(new_pos) == 2:
+      self._position = new_pos
+      self._tlc = tuple(x-self.radius for x in new_pos)
+      self._brc = tuple(x+self.radius for x in new_pos)
     else:
-      raise Exception("wrong position argument: {}".format(newPos))
+      raise Exception("wrong position argument: {}".format(new_pos))
 
-  def toDict(self):
-    raise NotImplementedError("method toYAML of cell is not implemented")
+  def to_dict(self):
+    raise NotImplementedError("method to_dict of cell is not implemented")
 
   @property
-  def boundingBox(self):
+  def bounding_box(self):
     return self._tlc + self._brc
 
   @property
-  def topLeftCorner(self):
+  def top_left_corner(self):
     return self._tlc
 
-  @topLeftCorner.setter
-  def topLeftCorner(self, newPos):
-    self.position = tuple(x+self.radius for x in newPos)
+  @top_left_corner.setter
+  def top_left_corner(self, new_pos):
+    self.position = tuple(x+self.radius for x in new_pos)
 
   @property
-  def bottomRightCorner(self):
+  def bottom_right_corner(self):
     return self._brc
 
-  @bottomRightCorner.setter
-  def bottomRightCorner(self, newPos):
-    self.position = tuple(x-self.radius for x in newPos)
+  @bottom_right_corner.setter
+  def bottom_right_corner(self, new_pos):
+    self.position = tuple(x-self.radius for x in new_pos)
 
   @property
   def x(self):
@@ -108,5 +108,5 @@ class Cell(object):
     self.state = self.next_state
     self.age += 1
 
-  def getNeighbors(self):
+  def get_neighbors(self):
     return self.neighs

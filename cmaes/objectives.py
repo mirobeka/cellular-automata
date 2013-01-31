@@ -48,7 +48,7 @@ class TwoBandObjective(Objective):
 
   def initialize_experiment_parameters(self):
     yaml_configuration = self.load_lattice_configuration("data/two_band_configuration.ltc")
-    self.desired_lattice = SquareLattice.fromYAML(yaml_configuration)
+    self.desired_lattice = SquareLattice.from_yaml(yaml_configuration)
     self.dimensions = (self.desired_lattice.width, self.desired_lattice.height)
     self.stop_criterion = CAStopCriterion()
 
@@ -80,8 +80,8 @@ class TwoBandObjective(Objective):
     desired pattern. In this case desired pattern is two band.'''
     rule = MLPColorRule()
     rule.set_weights(weights)
-    lattice = SquareLattice.createInitialized(
-        neighbourhood=vonNeumannNeighbourhood,
+    lattice = SquareLattice.create_initialized(
+        neighbourhood=vonNeumann,
         rule=rule,
         dimensions=self.dimensions,
         state=ColorState,
