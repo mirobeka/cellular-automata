@@ -1,5 +1,8 @@
 from random import random
 from random import randint
+from numpy import array
+from numpy import repeat
+from numpy.random import rand
 
 class State(object):
   @classmethod
@@ -83,4 +86,30 @@ class ChemicalState(State):
   @classmethod
   def initial_state_value(cls):
     return (.0,.0,.0)
+
+class ChemicalInternalGrayscaleState(State):
+  '''This state contains chemical vector of length 3, internal state vector
+  of length 3 and one grayscale value in interval [0,255]
+  '''
+
+  @classmethod
+  def create_state(cls):
+    state = cls()
+    state.chemicals, state.internal, state.grayscale = cls.initial_state_value()
+    return state
+
+  @classmethod
+  def initial_state_value(cls):
+    chemicals = repeat(.0, 3)
+    internal = repeat(.0, 3)
+    grayscale = 0
+    return (chemicals, internal, grayscale)
+
+  @classmethod
+  def create_random_state(cls):
+    state = cls()
+    state.chemicals = rand(3)
+    state.internal = rand(3)
+    state.garyscale = randint(0,255)
+    return state
 
