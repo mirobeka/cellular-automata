@@ -19,7 +19,7 @@ class SquareLattice(Lattice):
   def create_initialized(cls, **kwargs):
     lattice = cls()
     lattice.width, lattice.height = kwargs["dimensions"]
-    lattice.resolution = kwargs["resolution"]    # use configuration class to pass all of this arguments. Or just use **kwarg
+    lattice.resolution = kwargs["resolution"]
     lattice.neighbourhood = kwargs["neighbourhood"]
     lattice.rule = kwargs["rule"]
     lattice.cell_state_class = kwargs["state"]
@@ -105,15 +105,15 @@ class SquareLattice(Lattice):
 
 class VariableSquareLattice(SquareLattice):
   '''
-  Varialble Square Lattice is lattice which cell can change their size,
+  Variable Square Lattice is lattice which cells can change size,
   change neighbour connections accordingly to changes in sizes.
-  Cells also can be merged together and divided into 4 smaller cells
+  Cells can be merged together and divided into 4 smaller cells
 
   Variable Square Lattice is using Variable Square Cells that can change size.
   However this lattice is still regular from angular point of view. That's reason
   why is in module of Equiangular lattices.
 
-  Cells are stored in hash based on their current coordinates on grid.
+  Cells are stored in dictionary based on their current coordinates on grid.
   '''
 
   def create_cells(self, rule):
