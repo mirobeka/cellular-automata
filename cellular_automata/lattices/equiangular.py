@@ -95,11 +95,13 @@ class SquareLattice(Lattice):
     '''This method check all instance methods, finds methods that should be
     executed before going to next step and after this step. This methods are
     stored in list and executed later, when self.next_step() method is called
+
+    This method should be called just in case of duck punching.
     '''
-    pre_ptrn = "^pre_*_method$"
+    pre_ptrn = "pre_.+_method"
     self.pre_methods = [m for m in dir(self) if callable(getattr(self, m)) and match(pre_ptrn, m)]
 
-    post_ptrn = "^post_*_method$"
+    post_ptrn = "post_.+_method"
     self.post_methods = [m for m in dir(self) if callable(getattr(self, m)) and match(post_ptrn, m)]
 
   def run(self, stop_criterion):
@@ -146,8 +148,7 @@ class SquareLattice(Lattice):
     return yaml.dump(lattice)
 
 class VariableSquareLattice(SquareLattice):
-  '''
-  Variable Square Lattice is lattice which cells can change size,
+  '''Variable Square Lattice is lattice which cells can change size,
   change neighbour connections accordingly to changes in sizes.
   Cells can be merged together and divided into 4 smaller cells
 
