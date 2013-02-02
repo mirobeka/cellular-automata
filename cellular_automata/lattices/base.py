@@ -8,15 +8,7 @@ class Lattice:
     raise NotImplementedError("method next_step of Lattice not implemented")
 
   @classmethod
-  def read_from_file(cls, filename):
-    raise NotImplementedError("read_file method of lattice not implemented")
-
-  def save_to_file(self, filename):
-    '''Saves configuration of instance of lattice in file'''
-    raise NotImplementedError("save_to_file method of lattice not implemented")
-
-  @classmethod
-  def create_initialzed(cls, **kwargs):
+  def create_initialized(cls, **kwargs):
     '''Create and initialize lattice'''
     raise NotImplementedError("create_initialized method of lattice not implemented")
 
