@@ -74,7 +74,9 @@ class SquareLattice(Lattice):
     this class or its descendants.
 
     To avoid searching for methods each time we want next step, there's update
-    method for refreshing list of pre and post methods
+    method for refreshing list of pre and post methods with method called
+
+      self.check_pre_post_methods()
 
     '''
     # execute all pre methods
@@ -90,6 +92,10 @@ class SquareLattice(Lattice):
     self.time += 1
 
   def check_pre_post_methods(self):
+    '''This method check all instance methods, finds methods that should be
+    executed before going to next step and after this step. This methods are
+    stored in list and executed later, when self.next_step() method is called
+    '''
     pre_ptrn = "^pre_*_method$"
     self.pre_methods = [m for m in dir(self) if callable(getattr(self, m)) and match(pre_ptrn, m)]
 
@@ -165,12 +171,6 @@ class VariableSquareLattice(SquareLattice):
         cells[coordinates].position = coordinates
         cells[coordinates].radius = self.resolution/2
     return cells
-
-  # def next_step(self):
-  #   self.handle_growing_cells()
-  #   self.handle_dividing_cells()
-  #   map(lambda cell: cell.compute_next_state(), self.cells.values())
-  #   map(lambda cell: cell.apply_next_state(), self.cells.values())
 
   def pre_handle_growing_cells_method(self):
     growing_cells = [cell for cell in self.cells.values() if cell.wants_grow()]
