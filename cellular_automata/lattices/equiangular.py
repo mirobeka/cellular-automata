@@ -1,6 +1,7 @@
 from __future__ import print_function
 from cellular_automata.cells.regular import SquareCell, VariableSquareCell
 from cellular_automata.lattices.base import Lattice
+from re import match
 import yaml
 
 class SquareLattice(Lattice):
@@ -14,6 +15,7 @@ class SquareLattice(Lattice):
     Lattice.__init__(self)
     self.cells = None
     self.resolution = 0
+    self.check_pre_post_methods()
 
   @classmethod
   def create_initialized(cls, **kwargs):
@@ -55,10 +57,44 @@ class SquareLattice(Lattice):
       self.cells[(x,y)].state = state
 
   def next_step(self):
-    # iterate over all cells and go to next state
+    '''This is THE method for going from one state of all cell to next state.
+    Also, there is need to dynamically add some particular calculations that
+    needs to be done before or after state of cell has changed.
+
+    Because of that, this method finds all methods of this instance that has 
+    special names and executes them.
+
+    Method names with following prefixes are recognized:
+      def pre_*_method(self) -> executes before cells state changes
+      def post_*_method(self) -> executes after cells state changes
+
+    Asterisk is replaced by custom name of method.
+
+    To add new methods you can either use duck punching or inherit and extend
+    this class or its descendants.
+
+    To avoid searching for methods each time we want next step, there's update
+    method for refreshing list of pre and post methods
+
+    '''
+    # execute all pre methods
+    map(lambda method: getattr(self, method)(), self.pre_methods)
+
+    # change state of cells to next state
     map(lambda cell: cell.compute_next_state(), self.cells.values())
     map(lambda cell: cell.apply_next_state(), self.cells.values())
+
+    # execute all pre methods
+    map(lambda method: getattr(self, method)(), self.post_methods)
+
     self.time += 1
+
+  def check_pre_post_methods(self):
+    pre_ptrn = "^pre_*_method$"
+    self.pre_methods = [m for m in dir(self) if callable(getattr(self, m)) and match(pre_ptrn, m)]
+
+    post_ptrn = "^post_*_method$"
+    self.post_methods = [m for m in dir(self) if callable(getattr(self, m)) and match(post_ptrn, m)]
 
   def run(self, stop_criterion):
     while stop_criterion.should_run(self):
@@ -130,19 +166,13 @@ class VariableSquareLattice(SquareLattice):
         cells[coordinates].radius = self.resolution/2
     return cells
 
-  def next_step(self):
-    self.handle_growing_cells()
-    self.handle_dividing_cells()
-    map(lambda cell: cell.compute_next_state(), self.cells.values())
-    map(lambda cell: cell.apply_next_state(), self.cells.values())
+  # def next_step(self):
+  #   self.handle_growing_cells()
+  #   self.handle_dividing_cells()
+  #   map(lambda cell: cell.compute_next_state(), self.cells.values())
+  #   map(lambda cell: cell.apply_next_state(), self.cells.values())
 
-  def handle_dividing_cells(self):
-    dividing_cells = [cell for cell in self.cells.values() if cell.wants_divide()]
-    for dividing_cell in dividing_cells:
-      changes = self.divide(dividing_cell)
-      self.handle_change_in_cells(changes)
-
-  def handle_growing_cells(self):
+  def pre_handle_growing_cells_method(self):
     growing_cells = [cell for cell in self.cells.values() if cell.wants_grow()]
     for growing_cell in growing_cells:
       if growing_cell in self.cells.values(): # additional check if cell wasn't already merged
@@ -151,6 +181,12 @@ class VariableSquareLattice(SquareLattice):
           return
         changes = self.merge_cells(cells_to_merge)
         self.handle_change_in_cells(changes)
+
+  def pre_handle_dividing_cells_method(self):
+    dividing_cells = [cell for cell in self.cells.values() if cell.wants_divide()]
+    for dividing_cell in dividing_cells:
+      changes = self.divide(dividing_cell)
+      self.handle_change_in_cells(changes)
 
   def handle_change_in_cells(self, changes):
     if changes is not None:
