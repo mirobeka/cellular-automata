@@ -74,7 +74,7 @@ class ChemicalState(State):
   @classmethod
   def create_state(cls):
     state = cls()
-    state.chemicals = cls.initial_state_value(cls)
+    state.chemicals = cls.initial_state_value()
     return state
 
   @classmethod
@@ -85,7 +85,8 @@ class ChemicalState(State):
 
   @classmethod
   def initial_state_value(cls):
-    return (.0,.0,.0)
+    return (random(), random(), random())
+    # return (.0,.0,.0)
 
 class ChemicalInternalGrayscaleState(State):
   '''This state contains chemical vector of length 3, internal state vector
