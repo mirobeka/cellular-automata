@@ -147,6 +147,41 @@ class SquareLattice(Lattice):
     lattice["cells"] = cells
     return yaml.dump(lattice)
 
+class DiffusionSquareLattice(SquareLattice):
+  '''This class just extends Square Lattice and adds diffusion process
+  chemicals in cells. We implements this by 2 pass gaussian blur filter on chemicals.
+  '''
+
+  def first_pass(self):
+    '''First horizontal pass of gaussian blur filter'''
+    map(lambda cell: self.gaussian_blur_pass(cell, ["west", "east"]), self.cells.values())
+
+  def second_pass(self):
+    '''Second vertical pass of gaussian blur filter'''
+    map(lambda cell: self.gaussian_blur_pass(cell, ["north", "south"]), self.cells.values())
+
+  def gaussian_blur_pass(self, cell, directions):
+    '''Apply horizontal or vertical pass of gaussian blur filter.
+    Take chemicals from neighbours in selected directions,
+    combine them together with cell chemicals in fllowing way
+
+                        chems1 + 2*own_chems + chems2
+          cell.chems = -------------------------------
+                                      4
+
+    Chemicals should be weighted acordingly to common border width between cells,
+    but in this case, we have regular cells with same size, weighting is not
+    neccessary.
+    '''
+    chems = [iter(cell.neighs[direction]).next().state.chemicals for direction in directions if len(cell.neighs[direction]) == 1]
+    chems.append(map(lambda x: x*2, cell.state.chemicals))
+    chems = reduce(lambda x,y: map(sum, zip(x,y)), chems)
+    cell.state.chemicals = map(lambda x: x/4, chems)
+
+  def pre_diffusion_method(self):
+    self.first_pass()
+    self.second_pass()
+
 class VariableSquareLattice(SquareLattice):
   '''Variable Square Lattice is lattice which cells can change size,
   change neighbour connections accordingly to changes in sizes.
