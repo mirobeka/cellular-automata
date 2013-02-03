@@ -1,5 +1,4 @@
 from Tkinter import *
-import tkColorChooser
 
 class LatticeWidget(Canvas):
   def __init__(self, master):
@@ -58,11 +57,76 @@ class LatticeWidget(Canvas):
       del self.lattice.canvas_item_ids[item]
 
   def set_cell_state(self, event):
-    item_id = self.find_closest(event.x, event.y)[0]
-    cell = self.lattice.canvas_item_ids[item_id]
-    rgb,color_hex = tkColorChooser.askcolor("white", title="choose cells state")
-    if rgb is None:
-      return
-    self.itemconfig(item_id, fill=color_hex)
-    cell.state.rgb = tuple(rgb)
+    raise NotImplementedError("method for setting cell state not implemented")
+  
+class SimpleGUI(Frame):
+  def __init__(self, master, lattice_widget_class):
+    Frame.__init__(self, master)
+    self.lattice_widget_class = lattice_widget_class
+    self.initialize_lattice()
+    self.initialize_lattice_widget()
+    self.create_controls()
+    self.pack()
 
+  def create_controls(self):
+    self.step = self.create_button("next step", self.simulation_step, "left")
+    self.run = self.create_run_button()
+    self.save = self.create_button("save", self.save, "right")
+    self.load = self.create_button("load", self.load, "right")
+    
+  def initialize_lattice(self):
+    raise NotImplementedError("method for initializing lattice is not implemented")
+  
+  def initialize_lattice_widget(self):
+    self.lattice_widget = self.lattice_widget_class.create_initialized(self, self.lattice)
+  
+  def load(self):
+    pass
+
+  def save(self):
+    data = self.lattice.to_yaml()
+    with open("data/two_band_configuration.ltc", 'w') as f:
+      f.write(data)
+    print("data saved")
+
+  def simulation_step(self):
+    self.lattice.next_step()
+    self.lattice_widget.redraw_lattice()
+    self.update()
+
+  def simulation_loop(self):
+    self.simulation_step()
+    if self.running:
+      self.after(0, self.simulation_loop)
+
+  def run_simulation(self):
+    self.toogle_run_pause()
+    self.running = True
+    self.simulation_loop()
+
+  def pause_simulation(self):
+    self.toogle_run_pause()
+    self.running = False
+
+  def toogle_run_pause(self):
+    if self.run == None:
+      self.pause.destroy()
+      self.pause = None
+      self.run = self.create_run_button()
+    else:
+      self.run.destroy()
+      self.run = None
+      self.pause = self.create_pause_button()
+
+  def create_run_button(self):
+    return self.create_button("run", self.run_simulation, "left")
+
+  def create_pause_button(self):
+    return self.create_button("pause", self.pause_simulation, "left")
+
+  def create_button(self, text, callback, align):
+    btn = Button(self)
+    btn["text"] = text
+    btn["command"] = callback
+    btn.pack(side=align)
+    return btn
