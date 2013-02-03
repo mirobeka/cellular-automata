@@ -103,6 +103,12 @@ class ANNColorRule(Rule):
     self.input_layer_length = 4*self.chemicals_vector_length + self.internal_state_vector_length
     self.hidden_layer_length = self.input_layer_length*2
     self.output_layer_length = self.internal_state_vector_length+self.chemicals_vector_length
+    self.randomize_weights()
+
+  def randomize_weights(self):
+    number_of_weights = self.total_number_of_weights()
+    weights = np.random.rand(number_of_weights)
+    self.set_weights(weights)
 
   def total_number_of_weights(self):
     '''Return total number of weights that are used'''
@@ -133,7 +139,7 @@ class ANNColorRule(Rule):
   def get_next_state(self, cell, neighbours):
     input_vector = self.get_input_vector(cell, neighbours)
     a1 = np.insert(input_vector, 0, 1)   # insert first bias value
-    a2 = np.tahn(np.dot(self.theta1, a1))
+    a2 = np.tanh(np.dot(self.theta1, a1))
 
     a2 = np.insert(a2,0,1)   # insert first bias value
     out_vector = np.tanh(np.dot(self.theta2, a2))
@@ -143,26 +149,32 @@ class ANNColorRule(Rule):
 
     # getting new color is a bit tricky
     additional_chems_vector = np.repeat(.0,self.internal_state_vector_length)
-    additional_chems_vector = np.append(cell.state.chemicals)
+    additional_chems_vector = np.append(additional_chems_vector,cell.state.chemicals)
     out_vector = out_vector + additional_chems_vector
     a3 = np.insert(out_vector, 0, 1)
     new_color = np.dot(self.theta3, a3)/2 + 0.5
 
     # finally create new state
     new_state = cell.state.create_state()
-    new_state.chemicals = cell.state.chemicals + new_chemicals_vector
+    new_state.chemicals = cell.state.chemicals + new_chemicals
     new_state.internal = new_internal_state
-    new_state.grayscale = new_color*255
+    new_state.grayscale = int(new_color*255)
     return new_state
 
   def get_input_vector(self, cell, neighbours):
     ''' Here we are dealing with just one neighbour per direction. It's Square
     Lattice so there is just one neighbour per direction.
     '''
-
-    input_list = cell.state.internal + [iter(neighbours[direction]).next().state.chemicals for direction in ["north", "east", "south", "west"]]
+    input_list = []
+    input_list.extend(cell.state.internal)
+    for direction in ["north", "east", "south", "west"]:
+      if len(neighbours[direction]) == 0:
+        input_list.extend([.0]*len(cell.state.chemicals))
+      else:
+        input_list.extend(iter(neighbours[direction]).next().state.chemicals)
     
     if len(input_list) != self.input_layer_length:
+      print("{} != {}".format(len(input_list), self.input_layer_length))
       raise Exception("invalid input layer length")
     return np.array(input_list)
 
