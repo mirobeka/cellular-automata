@@ -5,8 +5,6 @@ if ca_directory not in sys.path:
 
 import cmaes.cma as cma
 from cmaes.objectives import TwoBandObjective
-from cellular_automata.lattices.equiangular import SquareLattice
-from cellular_automata.lattices.neighbourhoods import VonNeumann
 import yaml
 
 class CmaesExperiment:
@@ -19,23 +17,25 @@ class CmaesExperiment:
         self.objective.objective_function,
         initial_weights,
         0.3,
-        verb_disp=0)
+        verb_disp=10)
     self.save_result_to_file(result)
     
   def save_result_to_file(self, result):
     data = "empty"
     try:
-      data = yaml.dump(result)
+      data = str(result[4])
+      data += "\n"+str(result[5])
+      data += "\n"+str(result[6])
     except:
       print("error")
 
     print(result)
 
-    with open("data/result.yaml", 'w+') as f:
+    with open("data/result", 'w+') as f:
       f.write(data)
 
   def get_initial_values(self):
-    return [0.0]*288
+    return [.0]*672
 
 if __name__ == "__main__":
   experiment = CmaesExperiment()

@@ -1,37 +1,15 @@
+cell_state_class: !!python/name:cellular_automata.states.base.ChemicalInternalGrayscaleState ''
 cells:
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      ? &id173 !!python/tuple [200, 24]
+      ? &id036 !!python/tuple [48, 16]
       : null
   - !!python/tuple
     - east
     - !!set
-      ? &id018 !!python/tuple [232, 24]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id066 !!python/tuple [216, 8]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id016 !!python/tuple [216, 40]
-      : null
-  position: &id138 !!python/tuple [216, 24]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id055 !!python/tuple [56, 8]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id128 !!python/tuple [88, 8]
+      ? &id003 !!python/tuple [112, 16]
       : null
   - !!python/tuple
     - north
@@ -39,216 +17,278 @@ cells:
   - !!python/tuple
     - south
     - !!set
-      ? &id027 !!python/tuple [72, 24]
+      ? &id002 !!python/tuple [80, 48]
       : null
-  position: &id129 !!python/tuple [72, 8]
-  state: [255, 255, 255]
+  position: &id033 !!python/tuple [80, 16]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - &id001 !!python/name:numpy.ndarray ''
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      ? &id004 !!python/tuple [24, 200]
+      ? &id016 !!python/tuple [208, 176]
       : null
   - !!python/tuple
     - east
-    - !!set
-      ? &id008 !!python/tuple [56, 200]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id028 !!python/tuple [40, 184]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id003 !!python/tuple [40, 216]
-      : null
-  position: &id006 !!python/tuple [40, 200]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id086 !!python/tuple [104, 232]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id166 !!python/tuple [136, 232]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id084 !!python/tuple [120, 216]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id183 !!python/tuple [120, 248]
-      : null
-  position: &id164 !!python/tuple [120, 232]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id002 !!python/tuple [184, 200]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id010 !!python/tuple [216, 200]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id044 !!python/tuple [200, 184]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id001 !!python/tuple [200, 216]
-      : null
-  position: &id127 !!python/tuple [200, 200]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id161 !!python/tuple [216, 248]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id012 !!python/tuple [248, 248]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id011 !!python/tuple [232, 232]
-      : null
-  - !!python/tuple
-    - south
     - !!set {}
-  position: &id141 !!python/tuple [232, 248]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id113 !!python/tuple [24, 248]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id014 !!python/tuple [56, 248]
-      : null
   - !!python/tuple
     - north
     - !!set
-      ? &id007 !!python/tuple [40, 232]
+      ? &id006 !!python/tuple [240, 144]
       : null
   - !!python/tuple
     - south
+    - !!set
+      ? &id021 !!python/tuple [240, 208]
+      : null
+  position: &id005 !!python/tuple [240, 176]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
     - !!set {}
-  position: &id112 !!python/tuple [40, 248]
-  state: [255, 255, 255]
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id028 !!python/tuple [48, 208]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id024 !!python/tuple [16, 176]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id047 !!python/tuple [16, 240]
+      : null
+  position: &id026 !!python/tuple [16, 208]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      ? &id049 !!python/tuple [168, 216]
+      ? &id013 !!python/tuple [208, 16]
       : null
   - !!python/tuple
     - east
-    - !!set
-      *id001: null
+    - !!set {}
   - !!python/tuple
     - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id012 !!python/tuple [240, 48]
+      : null
+  position: &id063 !!python/tuple [240, 16]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
     - !!set
       *id002: null
   - !!python/tuple
-    - south
-    - !!set
-      ? &id103 !!python/tuple [184, 232]
-      : null
-  position: &id101 !!python/tuple [184, 216]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id045 !!python/tuple [24, 72]
-      : null
-  - !!python/tuple
     - east
     - !!set
-      ? &id043 !!python/tuple [56, 72]
+      ? &id004 !!python/tuple [144, 48]
       : null
   - !!python/tuple
     - north
     - !!set
-      ? &id064 !!python/tuple [40, 56]
-      : null
+      *id003: null
   - !!python/tuple
     - south
     - !!set
-      ? &id235 !!python/tuple [40, 88]
+      ? &id042 !!python/tuple [112, 80]
       : null
-  position: &id042 !!python/tuple [40, 72]
-  state: [255, 255, 255]
+  position: &id035 !!python/tuple [112, 48]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      ? &id051 !!python/tuple [88, 24]
-      : null
+      *id003: null
   - !!python/tuple
     - east
     - !!set
-      ? &id026 !!python/tuple [120, 24]
+      ? &id007 !!python/tuple [176, 16]
       : null
   - !!python/tuple
     - north
-    - !!set
-      ? &id130 !!python/tuple [104, 8]
-      : null
+    - !!set {}
   - !!python/tuple
     - south
     - !!set
-      ? &id025 !!python/tuple [104, 40]
-      : null
-  position: &id068 !!python/tuple [104, 24]
-  state: [255, 255, 255]
+      *id004: null
+  position: &id034 !!python/tuple [144, 16]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      ? &id058 !!python/tuple [8, 40]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id065 !!python/tuple [40, 40]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id061 !!python/tuple [24, 24]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id057 !!python/tuple [24, 56]
-      : null
-  position: &id062 !!python/tuple [24, 40]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id019 !!python/tuple [232, 40]
+      ? &id030 !!python/tuple [208, 144]
       : null
   - !!python/tuple
     - east
@@ -256,98 +296,288 @@ cells:
   - !!python/tuple
     - north
     - !!set
-      ? &id139 !!python/tuple [248, 24]
+      ? &id062 !!python/tuple [240, 112]
       : null
   - !!python/tuple
     - south
     - !!set
-      ? &id071 !!python/tuple [248, 56]
-      : null
-  position: &id017 !!python/tuple [248, 40]
-  state: [0, 0, 0]
+      *id005: null
+  position: *id006
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
-    - !!set
-      ? &id076 !!python/tuple [8, 216]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      *id003: null
-  - !!python/tuple
-    - north
     - !!set
       *id004: null
   - !!python/tuple
-    - south
-    - !!set
-      ? &id075 !!python/tuple [24, 232]
-      : null
-  position: &id005 !!python/tuple [24, 216]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id035 !!python/tuple [72, 248]
-      : null
-  - !!python/tuple
     - east
     - !!set
-      ? &id184 !!python/tuple [104, 248]
+      ? &id014 !!python/tuple [208, 48]
       : null
   - !!python/tuple
     - north
-    - !!set
-      ? &id033 !!python/tuple [88, 232]
-      : null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: &id182 !!python/tuple [88, 248]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id005: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id009 !!python/tuple [56, 216]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id006: null
-  - !!python/tuple
-    - south
     - !!set
       *id007: null
-  position: *id003
-  state: [255, 255, 255]
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id052 !!python/tuple [176, 80]
+      : null
+  position: &id011 !!python/tuple [176, 48]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id003: null
+      ? &id010 !!python/tuple [16, 80]
+      : null
   - !!python/tuple
     - east
     - !!set
-      ? &id034 !!python/tuple [72, 216]
+      ? &id044 !!python/tuple [80, 80]
       : null
   - !!python/tuple
     - north
+    - !!set
+      ? &id039 !!python/tuple [48, 48]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id009 !!python/tuple [48, 112]
+      : null
+  position: &id038 !!python/tuple [48, 80]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id022 !!python/tuple [48, 144]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id008 !!python/tuple [112, 144]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id043 !!python/tuple [80, 112]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id031 !!python/tuple [80, 176]
+      : null
+  position: &id018 !!python/tuple [80, 144]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id027 !!python/tuple [80, 208]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id041 !!python/tuple [144, 208]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id020 !!python/tuple [112, 176]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id046 !!python/tuple [112, 240]
+      : null
+  position: &id045 !!python/tuple [112, 208]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
     - !!set
       *id008: null
   - !!python/tuple
+    - east
+    - !!set
+      ? &id017 !!python/tuple [176, 144]
+      : null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id050 !!python/tuple [144, 112]
+      : null
+  - !!python/tuple
     - south
     - !!set
-      ? &id015 !!python/tuple [56, 232]
+      ? &id015 !!python/tuple [144, 176]
       : null
-  position: *id009
-  state: [255, 255, 255]
+  position: &id019 !!python/tuple [144, 144]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
@@ -355,30 +585,7 @@ cells:
   - !!python/tuple
     - east
     - !!set
-      ? &id232 !!python/tuple [24, 88]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id047 !!python/tuple [8, 72]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id145 !!python/tuple [8, 104]
-      : null
-  position: &id046 !!python/tuple [8, 88]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id001: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id013 !!python/tuple [232, 216]
-      : null
+      *id009: null
   - !!python/tuple
     - north
     - !!set
@@ -386,10 +593,37 @@ cells:
   - !!python/tuple
     - south
     - !!set
-      ? &id119 !!python/tuple [216, 232]
+      ? &id025 !!python/tuple [16, 144]
       : null
-  position: &id126 !!python/tuple [216, 216]
-  state: [0, 0, 0]
+  position: &id023 !!python/tuple [16, 112]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
@@ -397,3613 +631,98 @@ cells:
       *id011: null
   - !!python/tuple
     - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id024 !!python/tuple [248, 216]
-      : null
-  - !!python/tuple
-    - south
     - !!set
       *id012: null
-  position: &id023 !!python/tuple [248, 232]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id010: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id022 !!python/tuple [248, 200]
-      : null
   - !!python/tuple
     - north
-    - !!set
-      ? &id153 !!python/tuple [232, 184]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id013: null
-  position: &id152 !!python/tuple [232, 200]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id007: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id036 !!python/tuple [72, 232]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id009: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id014: null
-  position: *id015
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id016: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id017: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id018: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id070 !!python/tuple [232, 56]
-      : null
-  position: *id019
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id090 !!python/tuple [120, 200]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id021 !!python/tuple [152, 200]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id020 !!python/tuple [136, 184]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id048 !!python/tuple [136, 216]
-      : null
-  position: &id032 !!python/tuple [136, 200]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id030 !!python/tuple [56, 184]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id080 !!python/tuple [88, 184]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id087 !!python/tuple [72, 168]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id039 !!python/tuple [72, 200]
-      : null
-  position: &id029 !!python/tuple [72, 184]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id020: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id053 !!python/tuple [168, 184]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id177 !!python/tuple [152, 168]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id021: null
-  position: &id031 !!python/tuple [152, 184]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
     - !!set
       *id013: null
   - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id022: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id023: null
-  position: *id024
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id025: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id060 !!python/tuple [136, 40]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id026: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id220 !!python/tuple [120, 56]
-      : null
-  position: &id067 !!python/tuple [120, 40]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id056 !!python/tuple [56, 40]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id052 !!python/tuple [88, 40]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id027: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id237 !!python/tuple [72, 56]
-      : null
-  position: &id050 !!python/tuple [72, 40]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id148 !!python/tuple [232, 136]
-      : null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id146 !!python/tuple [248, 120]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id255 !!python/tuple [248, 152]
-      : null
-  position: &id185 !!python/tuple [248, 136]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id028: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id029: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id088 !!python/tuple [56, 168]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id008: null
-  position: *id030
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id105 !!python/tuple [120, 184]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      *id031: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id175 !!python/tuple [136, 168]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id032: null
-  position: *id020
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id015: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id033: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id034: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id035: null
-  position: *id036
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id190 !!python/tuple [136, 136]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id038 !!python/tuple [168, 136]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id079 !!python/tuple [152, 120]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id037 !!python/tuple [152, 152]
-      : null
-  position: &id078 !!python/tuple [152, 136]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id054 !!python/tuple [200, 120]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id149 !!python/tuple [232, 120]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id115 !!python/tuple [216, 104]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id179 !!python/tuple [216, 136]
-      : null
-  position: &id114 !!python/tuple [216, 120]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id238 !!python/tuple [72, 88]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id041 !!python/tuple [104, 88]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id040 !!python/tuple [88, 72]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id181 !!python/tuple [88, 104]
-      : null
-  position: &id199 !!python/tuple [88, 88]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id037: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id245 !!python/tuple [184, 152]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id038: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id176 !!python/tuple [168, 168]
-      : null
-  position: &id198 !!python/tuple [168, 152]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id009: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id081 !!python/tuple [88, 216]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id039: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id036: null
-  position: *id034
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id040: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id073 !!python/tuple [120, 72]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id069 !!python/tuple [104, 56]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id041: null
-  position: &id200 !!python/tuple [104, 72]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id042: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id239 !!python/tuple [72, 72]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id187 !!python/tuple [56, 56]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id234 !!python/tuple [56, 88]
-      : null
-  position: *id043
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id118 !!python/tuple [184, 168]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id143 !!python/tuple [216, 168]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id178 !!python/tuple [200, 152]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id044: null
-  position: &id142 !!python/tuple [200, 168]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id123 !!python/tuple [24, 184]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id110 !!python/tuple [8, 168]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id122 !!python/tuple [8, 200]
-      : null
-  position: &id109 !!python/tuple [8, 184]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id045: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id059 !!python/tuple [8, 56]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id046: null
-  position: *id047
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id048: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id049: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id021: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id165 !!python/tuple [152, 232]
-      : null
-  position: &id174 !!python/tuple [152, 216]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id050: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id025: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id051: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id229 !!python/tuple [88, 56]
-      : null
-  position: *id052
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id021: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id002: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id053: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id049: null
-  position: &id213 !!python/tuple [168, 200]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id106 !!python/tuple [88, 120]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id210 !!python/tuple [120, 120]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id201 !!python/tuple [104, 104]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id099 !!python/tuple [104, 136]
-      : null
-  position: &id097 !!python/tuple [104, 120]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id077 !!python/tuple [168, 120]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      *id054: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id205 !!python/tuple [184, 104]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id244 !!python/tuple [184, 136]
-      : null
-  position: &id219 !!python/tuple [184, 120]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id063 !!python/tuple [40, 24]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      *id027: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id055: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id056: null
-  position: &id124 !!python/tuple [56, 24]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id074 !!python/tuple [120, 88]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id094 !!python/tuple [152, 88]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id092 !!python/tuple [136, 72]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id171 !!python/tuple [136, 104]
-      : null
-  position: &id072 !!python/tuple [136, 88]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id057: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id058: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id047: null
-  position: *id059
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id060: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id083 !!python/tuple [168, 40]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id225 !!python/tuple [152, 24]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id093 !!python/tuple [152, 56]
-      : null
-  position: &id082 !!python/tuple [152, 40]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id224 !!python/tuple [8, 8]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id125 !!python/tuple [40, 8]
-      : null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id061: null
-  position: &id223 !!python/tuple [24, 8]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id062: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id056: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id063: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id064: null
-  position: *id065
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id193 !!python/tuple [152, 248]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id102 !!python/tuple [184, 248]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id100 !!python/tuple [168, 232]
-      : null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: &id192 !!python/tuple [168, 248]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id066: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id243 !!python/tuple [248, 8]
-      : null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id018: null
-  position: &id140 !!python/tuple [232, 8]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id052: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id067: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id068: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id069: null
-  position: *id025
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id197 !!python/tuple [168, 8]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id172 !!python/tuple [200, 8]
-      : null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id131 !!python/tuple [184, 24]
-      : null
-  position: &id195 !!python/tuple [184, 8]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id070: null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id017: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id121 !!python/tuple [248, 72]
-      : null
-  position: *id071
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id041: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id072: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id073: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id168 !!python/tuple [120, 104]
-      : null
-  position: *id074
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id216 !!python/tuple [120, 8]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id194 !!python/tuple [152, 8]
-      : null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id221 !!python/tuple [136, 24]
-      : null
-  position: &id231 !!python/tuple [136, 8]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id075: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id076: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id111 !!python/tuple [8, 248]
-      : null
-  position: &id133 !!python/tuple [8, 232]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id170 !!python/tuple [136, 120]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      *id077: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id169 !!python/tuple [152, 104]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id078: null
-  position: *id079
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id039: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id085 !!python/tuple [104, 200]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id080: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id081: null
-  position: &id089 !!python/tuple [88, 200]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id082: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id132 !!python/tuple [184, 40]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id196 !!python/tuple [168, 24]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id230 !!python/tuple [168, 56]
-      : null
-  position: *id083
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id081: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id084: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id085: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id086: null
-  position: &id091 !!python/tuple [104, 216]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id117 !!python/tuple [40, 168]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      *id087: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id159 !!python/tuple [56, 152]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id030: null
-  position: *id088
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id089: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id090: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id104 !!python/tuple [104, 184]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id091: null
-  position: *id085
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id204 !!python/tuple [184, 72]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id214 !!python/tuple [216, 72]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id137 !!python/tuple [200, 56]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id203 !!python/tuple [200, 88]
-      : null
-  position: &id136 !!python/tuple [200, 72]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id092: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id095 !!python/tuple [168, 72]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id093: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id094: null
-  position: &id247 !!python/tuple [152, 72]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id212 !!python/tuple [72, 152]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id098 !!python/tuple [104, 152]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id096 !!python/tuple [88, 136]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id233 !!python/tuple [88, 168]
-      : null
-  position: &id107 !!python/tuple [88, 152]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id094: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id206 !!python/tuple [184, 88]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id095: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id217 !!python/tuple [168, 104]
-      : null
-  position: &id202 !!python/tuple [168, 88]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id096: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id162 !!python/tuple [120, 136]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id097: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id098: null
-  position: *id099
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id100: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id120 !!python/tuple [200, 232]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id101: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id102: null
-  position: *id103
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id104: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id020: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id163 !!python/tuple [120, 168]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id090: null
-  position: *id105
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id158 !!python/tuple [72, 136]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      *id099: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id106: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id107: null
-  position: *id096
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id228 !!python/tuple [24, 136]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id144 !!python/tuple [8, 120]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id108 !!python/tuple [8, 152]
-      : null
-  position: &id246 !!python/tuple [8, 136]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id116 !!python/tuple [24, 168]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id108: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id109: null
-  position: *id110
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id111: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id112: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id075: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id113
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id218 !!python/tuple [200, 104]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id147 !!python/tuple [232, 104]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id155 !!python/tuple [216, 88]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id114: null
-  position: *id115
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id116: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id088: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id211 !!python/tuple [40, 152]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id028: null
-  position: *id117
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id053: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id044: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id118: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id002: null
-  position: &id154 !!python/tuple [184, 184]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id085: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id032: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id105: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id084: null
-  position: *id090
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id103: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id119: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id001: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id160 !!python/tuple [200, 248]
-      : null
-  position: *id120
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id157 !!python/tuple [232, 72]
-      : null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id071: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id156 !!python/tuple [248, 88]
-      : null
-  position: *id121
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id122: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id006: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id123: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id005: null
-  position: *id004
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id059: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id064: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id062: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id045: null
-  position: *id057
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id061: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id124: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id125: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id065: null
-  position: *id063
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id101: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id126: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id127: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id120: null
-  position: *id001
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id027: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id068: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id128: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id052: null
-  position: *id051
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id129: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id130: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id051: null
-  position: *id128
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id083: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id135 !!python/tuple [200, 40]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id131: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id134 !!python/tuple [184, 56]
-      : null
-  position: *id132
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id005: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id122: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id133: null
-  position: *id076
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id134: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id167 !!python/tuple [216, 56]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id135: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id136: null
-  position: *id137
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id138: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id139: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id140: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id019: null
-  position: *id018
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id141: null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id023: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id012
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id142: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id151 !!python/tuple [232, 168]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id180 !!python/tuple [216, 152]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id150 !!python/tuple [216, 184]
-      : null
-  position: *id143
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id227 !!python/tuple [24, 104]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id046: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id144: null
-  position: *id145
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id114: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id146: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id147: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id148: null
-  position: *id149
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id150: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id188 !!python/tuple [248, 184]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id151: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id152: null
-  position: *id153
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id154: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id150: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id142: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id127: null
-  position: *id044
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id155: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id156: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id157: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id147: null
-  position: &id215 !!python/tuple [232, 88]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id248 !!python/tuple [40, 136]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      *id158: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id209 !!python/tuple [56, 120]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id159: null
-  position: &id208 !!python/tuple [56, 136]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id160: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id141: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id119: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id161
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id080: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id105: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id242 !!python/tuple [104, 168]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id085: null
-  position: *id104
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id098: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id189 !!python/tuple [136, 152]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id162: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id163: null
-  position: &id241 !!python/tuple [120, 152]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id164: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id165: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id048: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id191 !!python/tuple [136, 248]
-      : null
-  position: *id166
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id127: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id152: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id150: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id126: null
-  position: *id010
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id004: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id109: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id076: null
-  position: *id122
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id167: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id071: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id019: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id157: null
-  position: *id070
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id168: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id169: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id072: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id170: null
-  position: *id171
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id131: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id138: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id172: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id135: null
-  position: *id173
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id084: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id174: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id032: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id166: null
-  position: *id048
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id175: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id176: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id037: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id031: null
-  position: *id177
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id178: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id186 !!python/tuple [232, 152]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id179: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id143: null
-  position: *id180
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id207 !!python/tuple [72, 120]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      *id097: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id181: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id096: null
-  position: *id106
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id182: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id183: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id086: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id184
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id179: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id185: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id149: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id186: null
-  position: *id148
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id065: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id050: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id124: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id187: null
-  position: *id056
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id153: null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id249 !!python/tuple [248, 168]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id022: null
-  position: *id188
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id162: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id078: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id170: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id189: null
-  position: *id190
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id014: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id182: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id036: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id035
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id191: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id192: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id165: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id193
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id194: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id195: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id196: null
-  position: *id197
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id177: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id118: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id198: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id053: null
-  position: *id176
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id199: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id074: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id200: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id201: null
-  position: *id041
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id202: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id203: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id204: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id205: null
-  position: *id206
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id226 !!python/tuple [40, 120]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      *id207: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id250 !!python/tuple [56, 104]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id208: null
-  position: *id209
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id210: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id079: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id171: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id190: null
-  position: *id170
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id211: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id212: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id208: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id088: null
-  position: *id159
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id032: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id213: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id031: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id174: null
-  position: *id021
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id137: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id070: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id016: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id214: null
-  position: *id167
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id174: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id101: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id213: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id100: null
-  position: *id049
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id115: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id236 !!python/tuple [248, 104]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id215: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id149: null
-  position: *id147
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id128: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id216: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id068: null
-  position: *id130
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id217: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id218: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id206: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id219: null
-  position: *id205
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id125: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id129: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id124: null
-  position: *id055
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id069: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id222 !!python/tuple [136, 56]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id067: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id073: null
-  position: *id220
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id067: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id082: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id221: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id222: null
-  position: *id060
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id223: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id256 !!python/tuple [8, 24]
-      : null
-  position: *id224
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id221: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id196: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id194: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id082: null
-  position: *id225
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id144: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id226: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id227: null
-  - !!python/tuple
     - south
     - !!set
-      *id228: null
-  position: &id251 !!python/tuple [24, 120]
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id110: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id117: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id240 !!python/tuple [24, 152]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id123: null
-  position: *id116
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id229: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id220: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id025: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id200: null
-  position: *id069
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id230: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id137: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id132: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id204: null
-  position: *id134
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id200: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id092: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id220: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id074: null
-  position: *id073
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id026: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id225: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id231: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id060: null
-  position: *id221
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id113: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id133: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id111
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id171: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id217: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id094: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id079: null
-  position: *id169
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id047: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id042: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id057: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id232: null
-  position: *id045
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id029: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id104: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id233: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id089: null
-  position: *id080
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id093: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id134: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id083: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id095: null
-  position: *id230
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id232: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id234: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id042: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id252 !!python/tuple [40, 104]
-      : null
-  position: *id235
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id033: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id164: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id091: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id184: null
-  position: *id086
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id213: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id127: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id154: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id101: null
-  position: *id002
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id149: null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id236: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id185: null
-  position: *id146
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id043: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id040: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id237: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id238: null
-  position: *id239
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id206: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id155: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id136: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id218: null
-  position: *id203
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id108: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id211: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id228: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id116: null
-  position: *id240
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id169: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id205: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id202: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id077: null
-  position: *id217
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id107: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id241: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id099: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id242: null
-  position: *id098
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id140: null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id139: null
-  position: *id243
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id198: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id178: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id244: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id118: null
-  position: *id245
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id242: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id175: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id241: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id105: null
-  position: *id163
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id240: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id246: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id110: null
-  position: *id108
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id239: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id200: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id229: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id199: null
-  position: *id040
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id123: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id030: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id117: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id006: null
-  position: *id028
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id176: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id142: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id245: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id154: null
-  position: *id118
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id184: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id191: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id164: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id183
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id102: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id161: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id120: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id160
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id152: null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id188: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id024: null
-  position: *id022
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id222: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id230: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id082: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id247: null
-  position: *id093
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id075: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id015: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id003: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id112: null
-  position: *id007
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id228: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id208: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id226: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id211: null
-  position: *id248
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id187: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id229: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id050: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id239: null
-  position: *id237
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id244: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id179: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id054: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id178: null
-  position: &id253 !!python/tuple [200, 136]
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id209: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id106: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id254 !!python/tuple [72, 104]
+      ? &id065 !!python/tuple [208, 80]
       : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id158: null
-  position: *id207
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id172: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id140: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id138: null
-  position: *id066
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id147: null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id156: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id146: null
-  position: *id236
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id201: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id171: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id074: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id210: null
-  position: *id168
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id130: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id231: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id026: null
-  position: *id216
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id143: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id249: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id186: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id153: null
-  position: *id151
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id208: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id096: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id207: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id212: null
-  position: *id158
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id126: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id024: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id152: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id011: null
-  position: *id013
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id136: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id157: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id167: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id155: null
-  position: *id214
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id195: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id066: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id173: null
-  position: *id172
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id235: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id238: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id043: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id250: null
-  position: *id234
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id251: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id209: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id252: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id248: null
-  position: *id226
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id253: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id148: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id114: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id180: null
-  position: *id179
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id205: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id115: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id203: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id054: null
-  position: *id218
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id250: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id181: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id238: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id207: null
-  position: *id254
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id018: null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id243: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id017: null
-  position: *id139
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id120: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id011: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id126: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id161: null
-  position: *id119
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id132: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id016: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id173: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id137: null
-  position: *id135
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id087: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id242: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id107: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id080: null
-  position: *id233
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id112: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id035: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id015: null
-  - !!python/tuple
-    - south
-    - !!set {}
   position: *id014
-  state: [255, 255, 255]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id183: null
+      *id015: null
   - !!python/tuple
     - east
     - !!set
-      *id193: null
+      *id016: null
   - !!python/tuple
     - north
     - !!set
-      *id166: null
+      *id017: null
   - !!python/tuple
     - south
-    - !!set {}
-  position: *id191
-  state: [0, 0, 0]
+    - !!set
+      ? &id057 !!python/tuple [176, 208]
+      : null
+  position: &id040 !!python/tuple [176, 176]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id044: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id153: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id143: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id010: null
-  position: *id150
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id006: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id039: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id030: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id009: null
-  position: *id008
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id119: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id023: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id013: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id141: null
-  position: *id011
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id186: null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id185: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id249: null
-  position: *id255
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id163: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id177: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id189: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id020: null
-  position: *id175
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id189: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id198: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id078: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id177: null
-  position: *id037
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id254: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id201: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id199: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id106: null
-  position: *id181
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id135: null
+      *id018: null
   - !!python/tuple
     - east
     - !!set
@@ -4011,88 +730,824 @@ cells:
   - !!python/tuple
     - north
     - !!set
-      *id138: null
+      ? &id054 !!python/tuple [112, 112]
+      : null
   - !!python/tuple
     - south
     - !!set
-      *id167: null
-  position: *id016
-  state: [0, 0, 0]
+      *id020: null
+  position: *id008
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id036: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id086: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id081: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id182: null
-  position: *id033
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id151: null
+      ? &id059 !!python/tuple [208, 208]
+      : null
   - !!python/tuple
     - east
     - !!set {}
   - !!python/tuple
     - north
     - !!set
-      *id255: null
+      *id005: null
   - !!python/tuple
     - south
     - !!set
-      *id188: null
-  position: *id249
-  state: [0, 0, 0]
+      ? &id029 !!python/tuple [240, 240]
+      : null
+  position: *id021
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id022: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id023: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id024: null
+  position: *id025
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id046: null
+      *id026: null
   - !!python/tuple
     - east
     - !!set
-      *id235: null
+      *id027: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id032 !!python/tuple [48, 176]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id049 !!python/tuple [48, 240]
+      : null
+  position: *id028
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id058 !!python/tuple [208, 240]
+      : null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id021: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id029
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id017: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id006: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id051 !!python/tuple [208, 112]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id016: null
+  position: *id030
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id024: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id031: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id022: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id028: null
+  position: *id032
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id033: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id034: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id035: null
+  position: *id003
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id035: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id011: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id034: null
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id055 !!python/tuple [144, 80]
+      : null
+  position: *id004
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id036: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      ? &id037 !!python/tuple [16, 48]
+      : null
+  position: &id056 !!python/tuple [16, 16]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id032: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id020: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id018: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id027: null
+  position: *id031
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id034: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id013: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id011: null
+  position: *id007
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id037: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id002: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id036: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id038: null
+  position: *id039
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id020: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id040: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id019: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id041: null
+  position: *id015
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id038: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id042: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id002: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id043: null
+  position: *id044
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id019: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id030: null
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id053 !!python/tuple [176, 112]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id040: null
+  position: *id017
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      ? &id048 !!python/tuple [80, 240]
+      : null
+  - !!python/tuple
+    - east
+    - !!set
+      ? &id060 !!python/tuple [144, 240]
+      : null
   - !!python/tuple
     - north
     - !!set
       *id045: null
   - !!python/tuple
     - south
-    - !!set
-      *id227: null
-  position: *id232
-  state: [255, 255, 255]
+    - !!set {}
+  position: *id046
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id241: null
+      *id047: null
   - !!python/tuple
     - east
     - !!set
-      *id037: null
+      *id048: null
   - !!python/tuple
     - north
     - !!set
-      *id190: null
+      *id028: null
   - !!python/tuple
     - south
-    - !!set
-      *id175: null
-  position: *id189
-  state: [0, 0, 0]
+    - !!set {}
+  position: *id049
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
@@ -4100,249 +1555,95 @@ cells:
   - !!python/tuple
     - east
     - !!set
-      *id251: null
+      *id032: null
   - !!python/tuple
     - north
     - !!set
-      *id145: null
+      *id025: null
   - !!python/tuple
     - south
     - !!set
-      *id246: null
-  position: *id144
-  state: [255, 255, 255]
+      *id026: null
+  position: *id024
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id008: null
+      *id028: null
   - !!python/tuple
     - east
     - !!set
-      *id089: null
+      *id045: null
   - !!python/tuple
     - north
-    - !!set
-      *id029: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id034: null
-  position: *id039
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id166: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id100: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id174: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id193: null
-  position: *id165
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id203: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id215: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id214: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id115: null
-  position: *id155
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id237: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id069: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id052: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id040: null
-  position: *id229
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
     - !!set
       *id031: null
   - !!python/tuple
-    - east
-    - !!set
-      *id154: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id176: null
-  - !!python/tuple
     - south
     - !!set
-      *id213: null
-  position: *id053
-  state: [0, 0, 0]
+      *id048: null
+  position: *id027
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id214: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id121: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id070: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id215: null
-  position: *id157
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id181: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id168: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id041: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id097: null
-  position: *id201
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id095: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id136: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id134: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id206: null
-  position: *id204
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id252: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id254: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id234: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id209: null
-  position: *id250
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id068: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id221: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id216: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id067: null
-  position: *id026
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id073: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id247: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id222: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id072: null
-  position: *id092
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id062: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id256: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id059: null
-  position: *id058
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id124: null
+      *id050: null
   - !!python/tuple
     - east
     - !!set
@@ -4350,97 +1651,186 @@ cells:
   - !!python/tuple
     - north
     - !!set
-      *id129: null
+      *id052: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id017: null
+  position: *id053
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id025: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id018: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id009: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id032: null
+  position: *id022
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id043: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id050: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id042: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id008: null
+  position: *id054
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id042: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id052: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id004: null
   - !!python/tuple
     - south
     - !!set
       *id050: null
-  position: *id027
-  state: [255, 255, 255]
+  position: *id055
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
-    - !!set
-      *id256: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id063: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id223: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id062: null
-  position: *id061
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id165: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id103: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id049: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id192: null
-  position: *id100
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id223: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id055: null
-  - !!python/tuple
-    - north
     - !!set {}
   - !!python/tuple
-    - south
-    - !!set
-      *id063: null
-  position: *id125
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id196: null
-  - !!python/tuple
     - east
     - !!set
-      *id173: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id195: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id132: null
-  position: *id131
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id064: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id237: null
+      *id039: null
   - !!python/tuple
     - north
     - !!set
@@ -4448,121 +1838,82 @@ cells:
   - !!python/tuple
     - south
     - !!set
-      *id043: null
-  position: *id187
-  state: [255, 255, 255]
+      *id010: null
+  position: *id037
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id220: null
+      *id009: null
   - !!python/tuple
     - east
     - !!set
-      *id093: null
+      *id054: null
   - !!python/tuple
     - north
     - !!set
-      *id060: null
+      *id044: null
   - !!python/tuple
     - south
     - !!set
-      *id092: null
-  position: *id222
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id061: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id224: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id058: null
-  position: *id256
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id231: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id197: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id225: null
-  position: *id194
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id145: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id252: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id232: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id251: null
-  position: *id227
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id034: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id091: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id089: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id033: null
-  position: *id081
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id225: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id131: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id197: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id083: null
-  position: *id196
-  state: [0, 0, 0]
+      *id018: null
+  position: *id043
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
@@ -4571,7 +1922,369 @@ cells:
   - !!python/tuple
     - east
     - !!set
-      *id187: null
+      *id021: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id016: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id058: null
+  position: *id059
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id060: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id058: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id057: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: &id061 !!python/tuple [176, 240]
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id056: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id033: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id039: null
+  position: *id036
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id045: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id057: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id015: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id060: null
+  position: *id041
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id061: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id029: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id059: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id058
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id051: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      ? &id064 !!python/tuple [240, 80]
+      : null
+  - !!python/tuple
+    - south
+    - !!set
+      *id006: null
+  position: *id062
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id014: null
+  - !!python/tuple
+    - east
+    - !!set {}
+  - !!python/tuple
+    - north
+    - !!set
+      *id063: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id064: null
+  position: *id012
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id049: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id026: null
+  - !!python/tuple
+    - south
+    - !!set {}
+  position: *id047
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id053: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id062: null
   - !!python/tuple
     - north
     - !!set
@@ -4579,424 +2292,816 @@ cells:
   - !!python/tuple
     - south
     - !!set
-      *id042: null
-  position: *id064
-  state: [255, 255, 255]
+      *id030: null
+  position: *id051
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id088: null
+      *id049: null
   - !!python/tuple
     - east
     - !!set
-      *id233: null
+      *id046: null
   - !!python/tuple
     - north
     - !!set
-      *id212: null
+      *id027: null
   - !!python/tuple
     - south
-    - !!set
-      *id029: null
-  position: *id087
-  state: [255, 255, 255]
+    - !!set {}
+  position: *id048
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id078: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id244: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id077: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id198: null
-  position: *id038
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id215: null
+      *id065: null
   - !!python/tuple
     - east
     - !!set {}
   - !!python/tuple
     - north
     - !!set
-      *id121: null
+      *id012: null
   - !!python/tuple
     - south
     - !!set
-      *id236: null
-  position: *id156
-  state: [0, 0, 0]
+      *id062: null
+  position: *id064
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id097: null
+      *id039: null
   - !!python/tuple
     - east
     - !!set
-      *id170: null
+      *id035: null
   - !!python/tuple
     - north
     - !!set
-      *id168: null
+      *id033: null
   - !!python/tuple
     - south
     - !!set
-      *id162: null
-  position: *id210
-  state: [255, 255, 255]
+      *id044: null
+  position: *id002
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id219: null
+      *id055: null
   - !!python/tuple
     - east
     - !!set
-      *id114: null
+      *id065: null
   - !!python/tuple
     - north
     - !!set
-      *id218: null
+      *id011: null
   - !!python/tuple
     - south
     - !!set
-      *id253: null
-  position: *id054
-  state: [0, 0, 0]
+      *id053: null
+  position: *id052
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id234: null
+      *id023: null
   - !!python/tuple
     - east
     - !!set
-      *id199: null
+      *id043: null
   - !!python/tuple
     - north
     - !!set
-      *id239: null
+      *id038: null
   - !!python/tuple
     - south
     - !!set
-      *id254: null
-  position: *id238
-  state: [255, 255, 255]
+      *id022: null
+  position: *id009
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id072: null
+      *id044: null
   - !!python/tuple
     - east
     - !!set
-      *id202: null
+      *id055: null
   - !!python/tuple
     - north
     - !!set
-      *id247: null
+      *id035: null
   - !!python/tuple
     - south
     - !!set
-      *id169: null
-  position: *id094
-  state: [0, 0, 0]
+      *id054: null
+  position: *id042
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id109: null
+      *id040: null
   - !!python/tuple
     - east
-    - !!set
-      *id028: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id116: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id004: null
-  position: *id123
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id247: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id204: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id230: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id202: null
-  position: *id095
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id133: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id007: null
-  - !!python/tuple
-    - north
     - !!set
       *id005: null
   - !!python/tuple
+    - north
+    - !!set
+      *id030: null
+  - !!python/tuple
     - south
     - !!set
-      *id113: null
-  position: *id075
-  state: [255, 255, 255]
+      *id059: null
+  position: *id016
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id227: null
+      *id054: null
   - !!python/tuple
     - east
     - !!set
-      *id250: null
+      *id053: null
   - !!python/tuple
     - north
     - !!set
-      *id235: null
+      *id055: null
   - !!python/tuple
     - south
     - !!set
-      *id226: null
-  position: *id252
-  state: [255, 255, 255]
+      *id019: null
+  position: *id050
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set {}
+  - !!python/tuple
+    - east
+    - !!set
+      *id038: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id037: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id023: null
+  position: *id010
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 - neighbours:
   - !!python/tuple
     - west
     - !!set
-      *id192: null
+      *id007: null
   - !!python/tuple
     - east
     - !!set
-      *id160: null
+      *id063: null
+  - !!python/tuple
+    - north
+    - !!set {}
+  - !!python/tuple
+    - south
+    - !!set
+      *id014: null
+  position: *id013
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id041: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id059: null
   - !!python/tuple
     - north
     - !!set
-      *id103: null
+      *id040: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id061: null
+  position: *id057
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id031: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id015: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id008: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id045: null
+  position: *id020
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 255
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id052: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id064: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id014: null
+  - !!python/tuple
+    - south
+    - !!set
+      *id051: null
+  position: *id065
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+- neighbours:
+  - !!python/tuple
+    - west
+    - !!set
+      *id046: null
+  - !!python/tuple
+    - east
+    - !!set
+      *id061: null
+  - !!python/tuple
+    - north
+    - !!set
+      *id041: null
   - !!python/tuple
     - south
     - !!set {}
-  position: *id102
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id099: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id190: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id210: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id241: null
-  position: *id162
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id159: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id107: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id158: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id087: null
-  position: *id212
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id246: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id248: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id251: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id240: null
-  position: *id228
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id079: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id219: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id217: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id038: null
-  position: *id077
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id240: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id159: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id248: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id117: null
-  position: *id211
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id233: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id163: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id098: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id104: null
-  position: *id242
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id038: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id253: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id219: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id245: null
-  position: *id244
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id180: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id255: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id148: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id151: null
-  position: *id186
-  state: [0, 0, 0]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id091: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id048: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id090: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id164: null
-  position: *id084
-  state: [255, 255, 255]
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id245: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id180: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id253: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id142: null
-  position: *id178
-  state: [0, 0, 0]
+  position: *id060
+  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    grayscale: 0
+    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - b
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
 dimensions: !!python/tuple [256, 256]
-resolution: 16
+neighbourhood: !!python/name:cellular_automata.lattices.neighbourhoods.VonNeumann ''
+resolution: 32
+rule: !!python/object:cellular_automata.rules.neural_rule.ANNColorRule
+  chemicals_vector_length: 3
+  hidden_layer_length: 30
+  input_layer_length: 15
+  internal_state_vector_length: 3
+  output_layer_length: 6
+  theta1: !!python/object/apply:numpy.core.multiarray._reconstruct
+    args:
+    - *id001
+    - !!python/tuple [0]
+    - b
+    state: !!python/tuple
+    - 1
+    - !!python/tuple [30, 16]
+    - !!python/object/apply:numpy.dtype
+      args: [f8, 0, 1]
+      state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+    - false
+    - !!binary |
+      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
+      9Mbr7T9uGFKqJ9vdP9L4qfbWEtk/
+  theta2: !!python/object/apply:numpy.core.multiarray._reconstruct
+    args:
+    - *id001
+    - !!python/tuple [0]
+    - b
+    state: !!python/tuple
+    - 1
+    - !!python/tuple [6, 31]
+    - !!python/object/apply:numpy.dtype
+      args: [f8, 0, 1]
+      state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+    - false
+    - !!binary |
+      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
+      m5f+0do/
+  theta3: !!python/object/apply:numpy.core.multiarray._reconstruct
+    args:
+    - *id001
+    - !!python/tuple [0]
+    - b
+    state: !!python/tuple
+    - 1
+    - !!python/tuple [1, 7]
+    - !!python/object/apply:numpy.dtype
+      args: [f8, 0, 1]
+      state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+    - false
+    - !!binary |
+      ap2bl/7R2j/O0AvfmBLtP2hDIxY6+uo/P8oyrWld4j+otqffQ4zvP6Q3gdT35ew/YPz93XSS0T8=

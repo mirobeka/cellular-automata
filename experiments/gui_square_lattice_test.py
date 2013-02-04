@@ -24,7 +24,7 @@ class SquareLatticeWidget(LatticeWidget):
     if rgb is None:
       return
     self.itemconfig(item_id, fill=color_hex)
-    cell.state.rgb = tuple(rgb)
+    cell.state.grayscale = rgb[0]
 
 class GUISquareLatticeTest(SimpleGUI):
   def initialize_lattice(self):
@@ -34,7 +34,7 @@ class GUISquareLatticeTest(SimpleGUI):
     self.lattice = SquareLattice.create_initialized(
         dimensions=dimensions,
         neighbourhood=VonNeumann,
-        resolution=16,
+        resolution=32,
         state=ChemicalInternalGrayscaleState,
         rule=rule)
   

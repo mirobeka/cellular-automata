@@ -1,7 +1,7 @@
-from cellular_automata.lattices.equiangular import SquareLattice
+from cellular_automata.lattices.equiangular import DiffusionSquareLattice
 from cellular_automata.lattices.neighbourhoods import VonNeumann
-from cellular_automata.states.base import ColorState
-from cellular_automata.rules.neural_rule import MLPColorRule
+from cellular_automata.states.base import ChemicalInternalGrayscaleState
+from cellular_automata.rules.neural_rule import ANNColorRule
 
 class Objective(object):
   '''This is just abstract class to be extended. Extend this class for your
@@ -48,7 +48,7 @@ class TwoBandObjective(Objective):
 
   def initialize_experiment_parameters(self):
     yaml_configuration = self.load_lattice_configuration("data/two_band_configuration.ltc")
-    self.desired_lattice = SquareLattice.from_yaml(yaml_configuration)
+    self.desired_lattice = DiffusionSquareLattice.from_yaml(yaml_configuration)
     self.dimensions = (self.desired_lattice.width, self.desired_lattice.height)
     self.stop_criterion = CAStopCriterion()
 
@@ -72,19 +72,20 @@ class TwoBandObjective(Objective):
 
   @staticmethod
   def difference(cell1, cell2):
-    return sum(map(lambda (x,y):x-y, zip(cell1.state.rgb, cell2.state.rgb)))
+    diff = (cell1.state.grayscale-cell2.state.grayscale)**2
+    return diff
 
   def objective_function(self, weights):
     '''Constructs cellular automata, set weights of MLP as rule for cellular
     automata, run cellular automata until it stops and compare result with
     desired pattern. In this case desired pattern is two band.'''
-    rule = MLPColorRule()
+    rule = ANNColorRule()
     rule.set_weights(weights)
-    lattice = SquareLattice.create_initialized(
-        neighbourhood=vonNeumann,
+    lattice = DiffusionSquareLattice.create_initialized(
+        neighbourhood=VonNeumann,
         rule=rule,
         dimensions=self.dimensions,
-        state=ColorState,
+        state=ChemicalInternalGrayscaleState,
         resolution=16)
     lattice.run(self.stop_criterion)
     return self.error_function(self.desired_lattice, lattice)
