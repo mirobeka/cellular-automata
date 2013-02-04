@@ -28,6 +28,51 @@ class SquareLattice(Lattice):
     lattice.cells = lattice.initialize_lattice_cells(kwargs["rule"])
     return lattice
 
+  @classmethod
+  def from_yaml(cls, configuration):
+    '''Read all properties and create lattice with defined
+    dimensions and resolution. populate lattice with defined cells.'''
+    lattice = cls()
+    lattice.width, lattice.height = configuration["dimensions"]
+    lattice.resolution = configuration["resolution"]
+    lattice.neighbourhood = configuration["neighbourhood"]
+    lattice.rule = configuration["rule"]
+    lattice.cell_state_class = configuration["cell_state_class"]
+    lattice.cells = {}
+
+    # fill up lattice with cells
+    for cell_configuration in configuration["cells"]:
+      cell = SquareCell.create_empty()
+      cell.position = cell_configuration["position"]
+      cell.state = cell_configuration["state"]
+      cell.rule = lattice.rule
+      cell.neighs = lattice.neighbourhood.create_empty()
+      for direction, neighbours in cell_configuration["neighbours"]:
+        cell.neighs[direction] = neighbours
+      lattice.cells[cell.position] = cell
+
+    # change positions of cell neighbours for pointers to those cells
+    for cell in lattice.cells.values():
+      for direction, direction_neighs in cell.neighs.items():
+        cell.neighs[direction] = [lattice.cells[neigh] for neigh in direction_neighs]
+
+    return lattice
+
+  def to_yaml(self):
+    ''' export all lattice properties and cells into yaml '''
+    lattice = {}
+    lattice["dimensions"] = (self.width, self.height)
+    lattice["resolution"] = self.resolution
+    lattice["neighbourhood"] = self.neighbourhood
+    lattice["rule"] = self.rule
+    lattice["cell_state_class"] = self.cell_state_class
+    cells = []
+    for cell in self.cells.values():
+      cells.append(cell.to_dict())
+
+    lattice["cells"] = cells
+    return yaml.dump(lattice)
+
   def initialize_lattice_cells(self, rule):
     cells = self.create_cells(rule)
     self.initialize_neighbours(cells)
@@ -110,42 +155,6 @@ class SquareLattice(Lattice):
 
   def get_lattice(self):
     return self.cells.values()
-
-  @classmethod
-  def from_yaml(cls, configuration):
-    '''Read all properties and create lattice with defined
-    dimensions and resolution. populate lattice with defined cells.'''
-    lattice = cls()
-    lattice.width, lattice.height = configuration["dimensions"]
-    lattice.resolution = configuration["resolution"]
-    lattice.cells = {}
-
-    # fill up lattice with cells
-    for cell_configuration in configuration["cells"]:
-      cell = SquareCell.create_empty()
-      cell.position = cell_configuration["position"]
-      cell.state = cell_configuration["state"]
-      for direction, neighbours in cell_configuration["neighbours"]:
-        cell.neighs[direction] = neighbours
-      lattice.cells[cell.position] = cell
-
-    # change positions of cell neighbours for pointers to those cells
-    for cell in lattice.cells.values():
-      for direction, direction_neighs in cell.neighs.items():
-        cell.neighs[direction] = [lattice.cells[neigh] for neigh in direction_neighs]
-
-    return lattice
-
-  def to_yaml(self):
-    ''' export all lattice properties and cells into yaml '''
-    lattice = {}
-    lattice["dimensions"] = (self.width, self.height)
-    lattice["resolution"] = self.resolution
-    cells = []
-    for cell in self.cells.values():
-      cells.append(cell.to_dict())
-    lattice["cells"] = cells
-    return yaml.dump(lattice)
 
 class DiffusionSquareLattice(SquareLattice):
   '''This class just extends Square Lattice and adds diffusion process
