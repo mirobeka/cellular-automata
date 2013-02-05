@@ -1,4 +1,6 @@
 from Tkinter import *
+import yaml
+import time
 
 class LatticeWidget(Canvas):
   def __init__(self, master):
@@ -81,7 +83,12 @@ class SimpleGUI(Frame):
     self.lattice_widget = self.lattice_widget_class.create_initialized(self, self.lattice)
   
   def load(self):
-    pass
+    with open("data/two_band_configuration.ltc", 'r') as f:
+      configuration = yaml.load(f)
+    self.lattice_widget.destroy()
+    self.lattice = self.lattice.from_yaml(configuration)
+    self.initialize_lattice_widget()
+    self.pack()
 
   def save(self):
     data = self.lattice.to_yaml()
@@ -90,13 +97,17 @@ class SimpleGUI(Frame):
     print("data saved")
 
   def simulation_step(self):
+    t = time.time()
     self.lattice.next_step()
     self.lattice_widget.redraw_lattice()
     self.update()
+    print(time.time()-t, " seconds")
 
   def simulation_loop(self):
     self.simulation_step()
     if self.running:
+      if self.lattice.time >= 100:
+        self.pause_simulation()
       self.after(0, self.simulation_loop)
 
   def run_simulation(self):
