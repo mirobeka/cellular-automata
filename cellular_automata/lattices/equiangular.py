@@ -1,8 +1,144 @@
 from __future__ import print_function
-from cellular_automata.cells.regular import SquareCell, VariableSquareCell
+from cellular_automata.cells.regular import SquareCell, SquareCellCL
+from cellular_automata.cells.regular import VariableSquareCell
 from cellular_automata.lattices.base import Lattice
 from re import match
 import yaml
+import numpy as np
+import pyopencl as cl
+import pyopencl.tools
+
+class SquareLatticeCL(Lattice):
+  def __init__(self):
+    Lattice.__init__(self)
+    self.cells = None
+    self.program = None
+    self.resolution = 0
+    self.check_pre_post_methods()
+    self.initialize_cl()
+
+  @classmethod
+  def create_initialized(cls, **kwargs):
+    lattice = cls()
+    lattice.width, lattice.height = kwargs["dimensions"]
+    lattice.resolution = kwargs["resolution"]
+    lattice.neighbourhood = kwargs["neighbourhood"]
+    lattice.rule = kwargs["rule"]
+    lattice.cell_state_class = kwargs["state"]
+    lattice.initialize_data_type()
+    lattice.cells = lattice.initialize_lattice_cells()
+    return lattice
+
+  def initialize_data_type(self):
+    '''Set struct and dtype of cell'''
+    state_dtype = self.cell_state_class.dtype
+    self.np_dtype, self.dtype, self.c_decl = SquareCellCL.create_dtype_struct(state_dtype)
+    cl.tools.get_or_register_dtype("cell", self.dtype)
+
+  def initialize_cl(self):
+    self.context = cl.create_some_context()
+    self.queue = cl.CommandQueue(self.context)
+
+  def initialize_lattice_cells(self):
+    cells = self.create_cells(self.rule)
+    self.initialize_neighbours(cells)
+    return cells
+
+  def create_cells(self, rule):
+    number_of_cells = self.width/self.resolution * self.height/self.resolution
+    empty_data = SquareCellCL.get_empty_data(self.cell_state_class)
+    self.cells_data = np.array([empty_data]*number_of_cells, self.np_dtype)
+    cells = {}
+    for x in range(0, self.width, self.resolution):
+      for y in range(0, self.height, self.resolution):
+        coordinates = (x+self.resolution/2, y+self.resolution/2)
+        idx = (self.width*y/self.resolution + x)/self.resolution
+        cells[coordinates] = SquareCellCL.create_initialized(
+            data=self.cells_data[idx],
+            index=idx,
+            rule=rule,
+            neighbourhood=self.neighbourhood,
+            state_class=self.cell_state_class)
+        cells[coordinates].position = coordinates
+        cells[coordinates].radius = self.resolution/2
+    return cells
+
+  def initialize_neighbours(self, cells):
+    for (x,y), cell in cells.items():
+      neighs = self.neighbourhood.gather_neighbours(cells, self.resolution, x, y)
+      neighs_indices = self.get_neighs_indices(neighs)
+      cells[(x,y)].set_neighbours_indices(neighs_indices)
+      cells[(x,y)].set_neighbours(neighs)
+
+  def get_neighs_indices(self, neighs):
+    directions = ["north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"]
+    neighs_indices = []
+    for direction in directions:
+      if direction in neighs:
+        if len(neighs[direction]) == 1:
+          neighs_indices.append(iter(neighs[direction]).next().idx)
+        else:
+          neighs_indices.append(-1)
+      else:
+        neighs_indices.append(-1)
+    return neighs_indices
+
+  # set state of particular cell
+  def set_state_of_cell(self, state, x, y):
+    if x >= 0 or x < self.width or y >= 0 or y < self.height:
+      self.cells[(x,y)].state = state
+
+  def next_step(self):
+    # execute all pre methods
+    map(lambda method: getattr(self, method)(), self.pre_methods)
+
+    if self.program is None:
+      kernel = self.rule.get_kernel(self.c_decl)
+      self.program = cl.Program(self.context,kernel).build()
+
+    #create in_buffer
+    in_buf = cl.Buffer(
+        self.context,
+        cl.mem_flags.READ_ONLY | cl.mem_flags.COPY_HOST_PTR,
+        hostbuf=self.cells_data
+      )
+    dest_buf = cl.Buffer(
+        self.context,
+        cl.mem_flags.WRITE_ONLY,
+        self.cells_data.nbytes
+      )
+    self.program.next_state(
+        self.queue,
+        self.cells_data.shape,
+        None,
+        in_buf,
+        dest_buf
+      )
+
+    cl.enqueue_read_buffer(self.queue, dest_buf, self.cells_data).wait()
+
+    # execute all pre methods
+    map(lambda method: getattr(self, method)(), self.post_methods)
+
+    self.time += 1
+
+  def check_pre_post_methods(self):
+    '''This method check all instance methods, finds methods that should be
+    executed before going to next step and after this step. This methods are
+    stored in list and executed later, when self.next_step() method is called
+
+    This method should be called just in case of duck punching.
+    '''
+    pre_ptrn = "pre_.+_method"
+    self.pre_methods = [m for m in dir(self) if callable(getattr(self, m)) and match(pre_ptrn, m)]
+
+    post_ptrn = "post_.+_method"
+    self.post_methods = [m for m in dir(self) if callable(getattr(self, m)) and match(post_ptrn, m)]
+
+  def run(self, stop_criterion):
+    while stop_criterion.should_run(self):
+      self.next_step()
+
 
 class SquareLattice(Lattice):
   '''
@@ -25,7 +161,7 @@ class SquareLattice(Lattice):
     lattice.neighbourhood = kwargs["neighbourhood"]
     lattice.rule = kwargs["rule"]
     lattice.cell_state_class = kwargs["state"]
-    lattice.cells = lattice.initialize_lattice_cells(kwargs["rule"])
+    lattice.cells = lattice.initialize_lattice_cells()
     return lattice
 
   @classmethod
@@ -73,8 +209,8 @@ class SquareLattice(Lattice):
     lattice["cells"] = cells
     return yaml.dump(lattice)
 
-  def initialize_lattice_cells(self, rule):
-    cells = self.create_cells(rule)
+  def initialize_lattice_cells(self):
+    cells = self.create_cells(self.rule)
     self.initialize_neighbours(cells)
     return cells
 

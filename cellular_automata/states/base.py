@@ -3,6 +3,7 @@ from random import randint
 from numpy import array
 from numpy import repeat
 from numpy.random import rand
+import numpy as np
 
 class State(object):
   @classmethod
@@ -92,6 +93,15 @@ class ChemicalInternalGrayscaleState(State):
   '''This state contains chemical vector of length 3, internal state vector
   of length 3 and one grayscale value in interval [0,255]
   '''
+  dtype = [
+    ("grayscale",np.int),
+    ("ch0",np.float32),("ch1",np.float32),("ch2",np.float32),
+    ("st0",np.float32),("st1",np.float32),("st2",np.float32)
+  ]
+
+  @classmethod
+  def get_empty_data(cls):
+    return (128,.0,.0,.0,.0,.0,.0)
 
   @classmethod
   def create_state(cls):

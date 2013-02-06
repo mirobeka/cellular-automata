@@ -106,8 +106,8 @@ class SimpleGUI(Frame):
   def simulation_loop(self):
     self.simulation_step()
     if self.running:
-      if self.lattice.time >= 100:
-        self.pause_simulation()
+      # if self.lattice.time >= 100:
+      #   self.pause_simulation()
       self.after(0, self.simulation_loop)
 
   def run_simulation(self):
