@@ -97,9 +97,9 @@ class ANNColorRule(Rule):
   neurons in hidden layer. Then outputs cell chemical and state vector.
   '''
 
-  def __init__(self):
-    self.chemicals_vector_length = 3
-    self.internal_state_vector_length = 3
+  def __init__(self, chemicals_vector_length=1, internal_state_vector_length=1):
+    self.chemicals_vector_length = chemicals_vector_length
+    self.internal_state_vector_length = internal_state_vector_length
     self.input_layer_length = 4*self.chemicals_vector_length + self.internal_state_vector_length
     self.hidden_layer_length = self.input_layer_length*2
     self.output_layer_length = self.internal_state_vector_length+self.chemicals_vector_length
