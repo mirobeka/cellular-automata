@@ -1,2975 +1,3054 @@
 cell_state_class: !!python/name:cellular_automata.states.base.ChemicalInternalGrayscaleState ''
 cells:
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id036 !!python/tuple [48, 16]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id003 !!python/tuple [112, 16]
-      : null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id002 !!python/tuple [80, 48]
-      : null
-  position: &id033 !!python/tuple [80, 16]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - &id001 !!python/name:numpy.ndarray ''
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id016 !!python/tuple [208, 176]
-      : null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id006 !!python/tuple [240, 144]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id021 !!python/tuple [240, 208]
-      : null
-  position: &id005 !!python/tuple [240, 176]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id028 !!python/tuple [48, 208]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id024 !!python/tuple [16, 176]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id047 !!python/tuple [16, 240]
-      : null
-  position: &id026 !!python/tuple [16, 208]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id013 !!python/tuple [208, 16]
-      : null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id012 !!python/tuple [240, 48]
-      : null
-  position: &id063 !!python/tuple [240, 16]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id002: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id004 !!python/tuple [144, 48]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id003: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id042 !!python/tuple [112, 80]
-      : null
-  position: &id035 !!python/tuple [112, 48]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id003: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id007 !!python/tuple [176, 16]
-      : null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id004: null
-  position: &id034 !!python/tuple [144, 16]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id030 !!python/tuple [208, 144]
-      : null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id062 !!python/tuple [240, 112]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id005: null
-  position: *id006
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id004: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id014 !!python/tuple [208, 48]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id007: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id052 !!python/tuple [176, 80]
-      : null
-  position: &id011 !!python/tuple [176, 48]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id010 !!python/tuple [16, 80]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id044 !!python/tuple [80, 80]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id039 !!python/tuple [48, 48]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id009 !!python/tuple [48, 112]
-      : null
-  position: &id038 !!python/tuple [48, 80]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id022 !!python/tuple [48, 144]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id008 !!python/tuple [112, 144]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id043 !!python/tuple [80, 112]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id031 !!python/tuple [80, 176]
-      : null
-  position: &id018 !!python/tuple [80, 144]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id027 !!python/tuple [80, 208]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id041 !!python/tuple [144, 208]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id020 !!python/tuple [112, 176]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id046 !!python/tuple [112, 240]
-      : null
-  position: &id045 !!python/tuple [112, 208]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id008: null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id017 !!python/tuple [176, 144]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id050 !!python/tuple [144, 112]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id015 !!python/tuple [144, 176]
-      : null
-  position: &id019 !!python/tuple [144, 144]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id009: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id010: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id025 !!python/tuple [16, 144]
-      : null
-  position: &id023 !!python/tuple [16, 112]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id011: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id012: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id013: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id065 !!python/tuple [208, 80]
-      : null
-  position: *id014
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id015: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id016: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id017: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id057 !!python/tuple [176, 208]
-      : null
-  position: &id040 !!python/tuple [176, 176]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id018: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id019: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id054 !!python/tuple [112, 112]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id020: null
-  position: *id008
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id059 !!python/tuple [208, 208]
-      : null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id005: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id029 !!python/tuple [240, 240]
-      : null
-  position: *id021
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id022: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id023: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id024: null
-  position: *id025
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id026: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id027: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id032 !!python/tuple [48, 176]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id049 !!python/tuple [48, 240]
-      : null
-  position: *id028
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id058 !!python/tuple [208, 240]
-      : null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id021: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id029
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id017: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id006: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id051 !!python/tuple [208, 112]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id016: null
-  position: *id030
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id024: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id031: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id022: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id028: null
-  position: *id032
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id033: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id034: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id035: null
-  position: *id003
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id035: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id011: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id034: null
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id055 !!python/tuple [144, 80]
-      : null
-  position: *id004
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id036: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      ? &id037 !!python/tuple [16, 48]
-      : null
-  position: &id056 !!python/tuple [16, 16]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id032: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id020: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id018: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id027: null
-  position: *id031
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id034: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id013: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id011: null
-  position: *id007
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id037: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id002: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id036: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id038: null
-  position: *id039
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id020: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id040: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id019: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id041: null
-  position: *id015
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id038: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id042: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id002: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id043: null
-  position: *id044
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id019: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id030: null
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id053 !!python/tuple [176, 112]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id040: null
-  position: *id017
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      ? &id048 !!python/tuple [80, 240]
-      : null
-  - !!python/tuple
-    - east
-    - !!set
-      ? &id060 !!python/tuple [144, 240]
-      : null
-  - !!python/tuple
-    - north
-    - !!set
-      *id045: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id046
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id047: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id048: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id028: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id049
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id032: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id025: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id026: null
-  position: *id024
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id028: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id045: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id031: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id048: null
-  position: *id027
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id050: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id051: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id052: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id017: null
-  position: *id053
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id025: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id018: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id009: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id032: null
-  position: *id022
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id043: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id050: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id042: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id008: null
-  position: *id054
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id042: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id052: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id004: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id050: null
-  position: *id055
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id039: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id056: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id010: null
-  position: *id037
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id009: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id054: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id044: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id018: null
-  position: *id043
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id057: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id021: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id016: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id058: null
-  position: *id059
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id060: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id058: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id057: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: &id061 !!python/tuple [176, 240]
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id056: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id033: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id039: null
-  position: *id036
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id045: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id057: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id015: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id060: null
-  position: *id041
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id061: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id029: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id059: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id058
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id051: null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      ? &id064 !!python/tuple [240, 80]
-      : null
-  - !!python/tuple
-    - south
-    - !!set
-      *id006: null
-  position: *id062
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id014: null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id063: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id064: null
-  position: *id012
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id049: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id026: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id047
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id053: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id062: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id065: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id030: null
-  position: *id051
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id049: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id046: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id027: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id048
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id065: null
-  - !!python/tuple
-    - east
-    - !!set {}
-  - !!python/tuple
-    - north
-    - !!set
-      *id012: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id062: null
-  position: *id064
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id039: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id035: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id033: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id044: null
-  position: *id002
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id055: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id065: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id011: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id053: null
-  position: *id052
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id023: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id043: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id038: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id022: null
-  position: *id009
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id044: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id055: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id035: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id054: null
-  position: *id042
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id040: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id005: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id030: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id059: null
-  position: *id016
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id054: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id053: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id055: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id019: null
-  position: *id050
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set {}
-  - !!python/tuple
-    - east
-    - !!set
-      *id038: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id037: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id023: null
-  position: *id010
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id007: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id063: null
-  - !!python/tuple
-    - north
-    - !!set {}
-  - !!python/tuple
-    - south
-    - !!set
-      *id014: null
-  position: *id013
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id041: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id059: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id040: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id061: null
-  position: *id057
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id031: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id015: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id008: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id045: null
-  position: *id020
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 255
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id052: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id064: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id014: null
-  - !!python/tuple
-    - south
-    - !!set
-      *id051: null
-  position: *id065
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-- neighbours:
-  - !!python/tuple
-    - west
-    - !!set
-      *id046: null
-  - !!python/tuple
-    - east
-    - !!set
-      *id061: null
-  - !!python/tuple
-    - north
-    - !!set
-      *id041: null
-  - !!python/tuple
-    - south
-    - !!set {}
-  position: *id060
-  state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
-    chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    grayscale: 0
-    internal: !!python/object/apply:numpy.core.multiarray._reconstruct
-      args:
-      - *id001
-      - !!python/tuple [0]
-      - b
-      state: !!python/tuple
-      - 1
-      - !!python/tuple [3]
-      - !!python/object/apply:numpy.dtype
-        args: [f8, 0, 1]
-        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
-      - false
-      - "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [0, 0]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set {}
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id010 !!python/tuple [32, 0]
+        : null
+    - !!python/tuple
+      - north
+      - !!set {}
+    - !!python/tuple
+      - south
+      - !!set
+        ? &id002 !!python/tuple [0, 32]
+        : null
+    position: !!python/tuple [16, 16]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - &id001 !!python/name:numpy.ndarray ''
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [0, 32]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set {}
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id009 !!python/tuple [32, 32]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        ? &id008 !!python/tuple [0, 0]
+        : null
+    - !!python/tuple
+      - south
+      - !!set
+        ? &id003 !!python/tuple [0, 64]
+        : null
+    position: !!python/tuple [16, 48]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [0, 64]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set {}
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id011 !!python/tuple [32, 64]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id002: null
+    - !!python/tuple
+      - south
+      - !!set
+        ? &id004 !!python/tuple [0, 96]
+        : null
+    position: !!python/tuple [16, 80]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [0, 96]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set {}
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id012 !!python/tuple [32, 96]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id003: null
+    - !!python/tuple
+      - south
+      - !!set
+        ? &id005 !!python/tuple [0, 128]
+        : null
+    position: !!python/tuple [16, 112]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [0, 128]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set {}
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id013 !!python/tuple [32, 128]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id004: null
+    - !!python/tuple
+      - south
+      - !!set
+        ? &id006 !!python/tuple [0, 160]
+        : null
+    position: !!python/tuple [16, 144]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [0, 160]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set {}
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id014 !!python/tuple [32, 160]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id005: null
+    - !!python/tuple
+      - south
+      - !!set
+        ? &id007 !!python/tuple [0, 192]
+        : null
+    position: !!python/tuple [16, 176]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [0, 192]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set {}
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id015 !!python/tuple [32, 192]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id006: null
+    - !!python/tuple
+      - south
+      - !!set
+        ? &id017 !!python/tuple [0, 224]
+        : null
+    position: !!python/tuple [16, 208]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [0, 224]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set {}
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id016 !!python/tuple [32, 224]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id007: null
+    - !!python/tuple
+      - south
+      - !!set {}
+    position: !!python/tuple [16, 240]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [32, 0]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id008: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id019 !!python/tuple [64, 0]
+        : null
+    - !!python/tuple
+      - north
+      - !!set {}
+    - !!python/tuple
+      - south
+      - !!set
+        *id009: null
+    position: !!python/tuple [48, 16]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [32, 32]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id002: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id018 !!python/tuple [64, 32]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id010: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id011: null
+    position: !!python/tuple [48, 48]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [32, 64]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id003: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id020 !!python/tuple [64, 64]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id009: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id012: null
+    position: !!python/tuple [48, 80]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [32, 96]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id004: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id021 !!python/tuple [64, 96]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id011: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id013: null
+    position: !!python/tuple [48, 112]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [32, 128]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id005: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id022 !!python/tuple [64, 128]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id012: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id014: null
+    position: !!python/tuple [48, 144]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [32, 160]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id006: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id023 !!python/tuple [64, 160]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id013: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id015: null
+    position: !!python/tuple [48, 176]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [32, 192]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id007: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id024 !!python/tuple [64, 192]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id014: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id016: null
+    position: !!python/tuple [48, 208]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [32, 224]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id017: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id025 !!python/tuple [64, 224]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id015: null
+    - !!python/tuple
+      - south
+      - !!set {}
+    position: !!python/tuple [48, 240]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [64, 0]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id010: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id027 !!python/tuple [96, 0]
+        : null
+    - !!python/tuple
+      - north
+      - !!set {}
+    - !!python/tuple
+      - south
+      - !!set
+        *id018: null
+    position: !!python/tuple [80, 16]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [64, 32]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id009: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id026 !!python/tuple [96, 32]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id019: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id020: null
+    position: !!python/tuple [80, 48]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [64, 64]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id011: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id028 !!python/tuple [96, 64]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id018: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id021: null
+    position: !!python/tuple [80, 80]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [64, 96]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id012: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id029 !!python/tuple [96, 96]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id020: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id022: null
+    position: !!python/tuple [80, 112]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [64, 128]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id013: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id030 !!python/tuple [96, 128]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id021: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id023: null
+    position: !!python/tuple [80, 144]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [64, 160]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id014: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id031 !!python/tuple [96, 160]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id022: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id024: null
+    position: !!python/tuple [80, 176]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [64, 192]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id015: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id032 !!python/tuple [96, 192]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id023: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id025: null
+    position: !!python/tuple [80, 208]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [64, 224]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id016: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id033 !!python/tuple [96, 224]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id024: null
+    - !!python/tuple
+      - south
+      - !!set {}
+    position: !!python/tuple [80, 240]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [96, 0]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id019: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id035 !!python/tuple [128, 0]
+        : null
+    - !!python/tuple
+      - north
+      - !!set {}
+    - !!python/tuple
+      - south
+      - !!set
+        *id026: null
+    position: !!python/tuple [112, 16]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [96, 32]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id018: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id034 !!python/tuple [128, 32]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id027: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id028: null
+    position: !!python/tuple [112, 48]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [96, 64]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id020: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id036 !!python/tuple [128, 64]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id026: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id029: null
+    position: !!python/tuple [112, 80]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [96, 96]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id021: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id037 !!python/tuple [128, 96]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id028: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id030: null
+    position: !!python/tuple [112, 112]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [96, 128]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id022: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id038 !!python/tuple [128, 128]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id029: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id031: null
+    position: !!python/tuple [112, 144]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [96, 160]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id023: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id039 !!python/tuple [128, 160]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id030: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id032: null
+    position: !!python/tuple [112, 176]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [96, 192]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id024: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id040 !!python/tuple [128, 192]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id031: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id033: null
+    position: !!python/tuple [112, 208]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [96, 224]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id025: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id041 !!python/tuple [128, 224]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id032: null
+    - !!python/tuple
+      - south
+      - !!set {}
+    position: !!python/tuple [112, 240]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 255
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [128, 0]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id027: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id043 !!python/tuple [160, 0]
+        : null
+    - !!python/tuple
+      - north
+      - !!set {}
+    - !!python/tuple
+      - south
+      - !!set
+        *id034: null
+    position: !!python/tuple [144, 16]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [128, 32]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id026: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id042 !!python/tuple [160, 32]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id035: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id036: null
+    position: !!python/tuple [144, 48]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [128, 64]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id028: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id044 !!python/tuple [160, 64]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id034: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id037: null
+    position: !!python/tuple [144, 80]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [128, 96]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id029: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id045 !!python/tuple [160, 96]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id036: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id038: null
+    position: !!python/tuple [144, 112]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [128, 128]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id030: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id046 !!python/tuple [160, 128]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id037: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id039: null
+    position: !!python/tuple [144, 144]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [128, 160]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id031: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id047 !!python/tuple [160, 160]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id038: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id040: null
+    position: !!python/tuple [144, 176]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [128, 192]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id032: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id048 !!python/tuple [160, 192]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id039: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id041: null
+    position: !!python/tuple [144, 208]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [128, 224]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id033: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id049 !!python/tuple [160, 224]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id040: null
+    - !!python/tuple
+      - south
+      - !!set {}
+    position: !!python/tuple [144, 240]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [160, 0]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id035: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id051 !!python/tuple [192, 0]
+        : null
+    - !!python/tuple
+      - north
+      - !!set {}
+    - !!python/tuple
+      - south
+      - !!set
+        *id042: null
+    position: !!python/tuple [176, 16]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [160, 32]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id034: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id050 !!python/tuple [192, 32]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id043: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id044: null
+    position: !!python/tuple [176, 48]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [160, 64]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id036: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id052 !!python/tuple [192, 64]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id042: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id045: null
+    position: !!python/tuple [176, 80]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [160, 96]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id037: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id053 !!python/tuple [192, 96]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id044: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id046: null
+    position: !!python/tuple [176, 112]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [160, 128]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id038: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id054 !!python/tuple [192, 128]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id045: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id047: null
+    position: !!python/tuple [176, 144]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [160, 160]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id039: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id055 !!python/tuple [192, 160]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id046: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id048: null
+    position: !!python/tuple [176, 176]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [160, 192]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id040: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id056 !!python/tuple [192, 192]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id047: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id049: null
+    position: !!python/tuple [176, 208]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [160, 224]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id041: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id057 !!python/tuple [192, 224]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id048: null
+    - !!python/tuple
+      - south
+      - !!set {}
+    position: !!python/tuple [176, 240]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [192, 0]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id043: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id059 !!python/tuple [224, 0]
+        : null
+    - !!python/tuple
+      - north
+      - !!set {}
+    - !!python/tuple
+      - south
+      - !!set
+        *id050: null
+    position: !!python/tuple [208, 16]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [192, 32]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id042: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id058 !!python/tuple [224, 32]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id051: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id052: null
+    position: !!python/tuple [208, 48]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [192, 64]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id044: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id060 !!python/tuple [224, 64]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id050: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id053: null
+    position: !!python/tuple [208, 80]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [192, 96]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id045: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id061 !!python/tuple [224, 96]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id052: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id054: null
+    position: !!python/tuple [208, 112]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [192, 128]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id046: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id062 !!python/tuple [224, 128]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id053: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id055: null
+    position: !!python/tuple [208, 144]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [192, 160]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id047: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id063 !!python/tuple [224, 160]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id054: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id056: null
+    position: !!python/tuple [208, 176]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [192, 192]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id048: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id064 !!python/tuple [224, 192]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id055: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id057: null
+    position: !!python/tuple [208, 208]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [192, 224]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id049: null
+    - !!python/tuple
+      - east
+      - !!set
+        ? &id065 !!python/tuple [224, 224]
+        : null
+    - !!python/tuple
+      - north
+      - !!set
+        *id056: null
+    - !!python/tuple
+      - south
+      - !!set {}
+    position: !!python/tuple [208, 240]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [224, 0]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id051: null
+    - !!python/tuple
+      - east
+      - !!set {}
+    - !!python/tuple
+      - north
+      - !!set {}
+    - !!python/tuple
+      - south
+      - !!set
+        *id058: null
+    position: !!python/tuple [240, 16]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [224, 32]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id050: null
+    - !!python/tuple
+      - east
+      - !!set {}
+    - !!python/tuple
+      - north
+      - !!set
+        *id059: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id060: null
+    position: !!python/tuple [240, 48]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [224, 64]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id052: null
+    - !!python/tuple
+      - east
+      - !!set {}
+    - !!python/tuple
+      - north
+      - !!set
+        *id058: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id061: null
+    position: !!python/tuple [240, 80]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [224, 96]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id053: null
+    - !!python/tuple
+      - east
+      - !!set {}
+    - !!python/tuple
+      - north
+      - !!set
+        *id060: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id062: null
+    position: !!python/tuple [240, 112]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [224, 128]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id054: null
+    - !!python/tuple
+      - east
+      - !!set {}
+    - !!python/tuple
+      - north
+      - !!set
+        *id061: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id063: null
+    position: !!python/tuple [240, 144]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [224, 160]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id055: null
+    - !!python/tuple
+      - east
+      - !!set {}
+    - !!python/tuple
+      - north
+      - !!set
+        *id062: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id064: null
+    position: !!python/tuple [240, 176]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [224, 192]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id056: null
+    - !!python/tuple
+      - east
+      - !!set {}
+    - !!python/tuple
+      - north
+      - !!set
+        *id063: null
+    - !!python/tuple
+      - south
+      - !!set
+        *id065: null
+    position: !!python/tuple [240, 208]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+  ? !!python/tuple [224, 224]
+  : neighbours:
+    - !!python/tuple
+      - west
+      - !!set
+        *id057: null
+    - !!python/tuple
+      - east
+      - !!set {}
+    - !!python/tuple
+      - north
+      - !!set
+        *id064: null
+    - !!python/tuple
+      - south
+      - !!set {}
+    position: !!python/tuple [240, 240]
+    state: !!python/object:cellular_automata.states.base.ChemicalInternalGrayscaleState
+      chemicals: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
+      grayscale: 0
+      internal: !!python/object/apply:numpy.core.multiarray._reconstruct
+        args:
+        - *id001
+        - !!python/tuple [0]
+        - b
+        state: !!python/tuple
+        - 1
+        - !!python/tuple [1]
+        - !!python/object/apply:numpy.dtype
+          args: [f8, 0, 1]
+          state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+        - false
+        - "\0\0\0\0\0\0\0\0"
 dimensions: !!python/tuple [256, 256]
 neighbourhood: !!python/name:cellular_automata.lattices.neighbourhoods.VonNeumann ''
 resolution: 32
 rule: !!python/object:cellular_automata.rules.neural_rule.ANNColorRule
-  chemicals_vector_length: 3
-  hidden_layer_length: 30
-  input_layer_length: 15
-  internal_state_vector_length: 3
-  output_layer_length: 6
+  chemicals_vector_length: 1
+  hidden_layer_length: 10
+  input_layer_length: 5
+  internal_state_vector_length: 1
+  output_layer_length: 2
   theta1: !!python/object/apply:numpy.core.multiarray._reconstruct
     args:
     - *id001
@@ -2977,80 +3056,21 @@ rule: !!python/object:cellular_automata.rules.neural_rule.ANNColorRule
     - b
     state: !!python/tuple
     - 1
-    - !!python/tuple [30, 16]
+    - !!python/tuple [10, 6]
     - !!python/object/apply:numpy.dtype
       args: [f8, 0, 1]
       state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
     - false
     - !!binary |
-      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
-      9Mbr7T9uGFKqJ9vdP9L4qfbWEtk/
+      Rn++H9C40z/Y5ZUeWuvSP3d5L8QY++U/ApFYQLKN5j/jo3Pu99DsP5amkz3kkNk/tO/6L/ez7z/w
+      QoL2lHXCP5TPI1ZlesM/5J7kmWZR0T+OsjfPStreP1gZkjpSrus/vf+GTySo6z84+AvjsczaP1LH
+      vNsX+Ow/KswObzvQ1T/w5tQmSVLNP6QU2410Isc/mM2WatnO2j8s9f6AfTHpPwr1/zgrxdk/TuDP
+      iIH73j+427n2qzntP1J3AziGydc/Bqs+dkd60T8YAftJXB/vP9SyHtpK9cM/aO3JUQ7F7j82ACvA
+      h6biP5Qravrp7sM/LRlaYZ2O4z/2MjvvcibjP7RdkPd3esU/II6mSeIdyT8K844zG1jePwCFp6MS
+      Y2c//L+qfNhB4T+AYeyXBV+MP2Cl6sNtItc/jW07pjFq5z8jfL8/uhXnPyjT/FhJu8o/VIItMOx3
+      1T9ICSxmb0KyP6Ufi5PMDOo/rNV6SZu7wT+warBwF+u3PwB8Yx6o8Yo/ocjcmgCQ4D+gWtPbdAi3
+      P3xCGdaaP9o/5LySm3raxz/+Kq6gsRToP4UaLKkgceI/DWVSaDk95z+NEoGKNHzpP4L/L9mGUe0/
+      YPfN7BM6nT9O4fxUKzXbP1Lhk1pd7d4/
   theta2: !!python/object/apply:numpy.core.multiarray._reconstruct
     args:
     - *id001
@@ -3058,39 +3078,16 @@ rule: !!python/object:cellular_automata.rules.neural_rule.ANNColorRule
     - b
     state: !!python/tuple
     - 1
-    - !!python/tuple [6, 31]
+    - !!python/tuple [2, 11]
     - !!python/object/apply:numpy.dtype
       args: [f8, 0, 1]
       state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
     - false
     - !!binary |
-      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
-      m5f+0do/
+      1IGj6JPz7z8gFK9n/vDAP1iHPv9Ms8Q/MPTarbb51z8QhVAta9ndP50r3o+J++c/X7A4OVnl5j+c
+      KRX3y3/NP57/BfqSyN0/LYAH9yvH6T90f2XHi77kP5w8GIIh8e0/JUZi6t+B5j99eGY3wEfnPwC3
+      FAlQQOM/nQJJaHQz6D8QK0/Kd1m0P5UHLqCbouA/+EqGCYXl6D+fvrIH0ynkPxEHR65n++w/LxTV
+      lFLR4D8=
   theta3: !!python/object/apply:numpy.core.multiarray._reconstruct
     args:
     - *id001
@@ -3098,10 +3095,10 @@ rule: !!python/object:cellular_automata.rules.neural_rule.ANNColorRule
     - b
     state: !!python/tuple
     - 1
-    - !!python/tuple [1, 7]
+    - !!python/tuple [1, 3]
     - !!python/object/apply:numpy.dtype
       args: [f8, 0, 1]
       state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
     - false
     - !!binary |
-      ap2bl/7R2j/O0AvfmBLtP2hDIxY6+uo/P8oyrWld4j+otqffQ4zvP6Q3gdT35ew/YPz93XSS0T8=
+      LxTVlFLR4D98OWqvMn/QP3HcIkQ0xuc/

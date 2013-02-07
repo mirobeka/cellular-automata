@@ -177,7 +177,7 @@ class SquareLattice(Lattice):
     lattice.cells = {}
 
     # fill up lattice with cells
-    for cell_configuration in configuration["cells"]:
+    for key,cell_configuration in configuration["cells"].items():
       cell = SquareCell.create_empty()
       cell.position = cell_configuration["position"]
       cell.state = cell_configuration["state"]
@@ -185,7 +185,7 @@ class SquareLattice(Lattice):
       cell.neighs = lattice.neighbourhood.create_empty()
       for direction, neighbours in cell_configuration["neighbours"]:
         cell.neighs[direction] = neighbours
-      lattice.cells[cell.position] = cell
+      lattice.cells[key] = cell
 
     # change positions of cell neighbours for pointers to those cells
     for cell in lattice.cells.values():
@@ -202,9 +202,9 @@ class SquareLattice(Lattice):
     lattice["neighbourhood"] = self.neighbourhood
     lattice["rule"] = self.rule
     lattice["cell_state_class"] = self.cell_state_class
-    cells = []
-    for cell in self.cells.values():
-      cells.append(cell.to_dict())
+    cells = {}
+    for key,cell in self.cells.items():
+      cells[key] = cell.to_dict()
 
     lattice["cells"] = cells
     return yaml.dump(lattice)

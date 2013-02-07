@@ -34,7 +34,7 @@ class SquareCell(Cell):
     cell["state"] = self.state
     cell["position"] = self.position
     cell["neighbours"] = [
-        (direction, set(map(lambda neigh: neigh.position, direction_neighs)))
+        (direction, set(map(lambda neigh: neigh.top_left_corner, direction_neighs)))
         for direction, direction_neighs in self.neighs.items()]
     return cell
 
