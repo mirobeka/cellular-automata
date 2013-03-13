@@ -1,5 +1,3 @@
-
-
 __kernel void next_state(__global cell* cells, __global cell* new_cells){
   int gid = get_global_id(0);
   new_cells[gid] = cells[gid];
