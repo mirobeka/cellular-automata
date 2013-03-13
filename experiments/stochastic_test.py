@@ -45,12 +45,12 @@ class GUIStochasticTest(Frame):
     self.load = self.create_button("load", self.load, "right")
     
   def initialize_lattice(self):
-    dimensions = (160, 160)  # dimensions are in pixels
+    dimensions = (320, 320)  # dimensions are in pixels
     rule = StochasticRule()
     self.lattice = SquareLattice.create_initialized(
         dimensions=dimensions,
         neighbourhood=VonNeumann,
-        resolution=16,  # diameter of drawn cell in pixels
+        resolution=8,  # diameter of drawn cell in pixels
         state=BinaryState,
         rule=rule)
   
@@ -74,7 +74,7 @@ class GUIStochasticTest(Frame):
   def simulation_loop(self):
     self.simulation_step()
     if self.running:
-      self.after(100, self.simulation_loop)
+      self.after(7, self.simulation_loop)
 
   def run_simulation(self):
     self.toogle_run_pause()
