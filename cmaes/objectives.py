@@ -2,6 +2,7 @@ from cellular_automata.lattices.equiangular import DiffusionSquareLattice
 from cellular_automata.lattices.neighbourhoods import VonNeumann
 from cellular_automata.states.base import ChemicalInternalGrayscaleState
 from cellular_automata.rules.neural_rule import ANNColorRule
+import yaml
 
 class Objective(object):
   '''This is just abstract class to be extended. Extend this class for your
@@ -39,7 +40,6 @@ class Objective(object):
     needs.'''
     raise NotImplementedError("method objective_function not implemented")
 
-import yaml
 
 class TwoBandObjective(Objective):
   def __init__(self):
@@ -68,11 +68,14 @@ class TwoBandObjective(Objective):
   @staticmethod
   def error_function(pattern, lattice):
     '''check desired pattern with given lattice. Return sum of state differences'''
-    return sum([TwoBandObjective.difference(pattern.cells[key], lattice.cells[key]) for key in pattern.cells.keys() if key in lattice.cells])
+    print("no. of pattern cells: \t{}".format(len(pattern.cells.values())))
+    print("no. of lattice cells: \t{}".format(len(lattice.cells.values())))
+    return sum([TwoBandObjective.difference(pattern.cells[key], lattice.cells[key]) for key in pattern.cells.keys()])
 
   @staticmethod
   def difference(cell1, cell2):
     diff = (cell1.state.grayscale-cell2.state.grayscale)**2
+    print("({} - {})^2 = {}".format(cell1.state.grayscale,cell2.state.grayscale,diff))
     return diff
 
   def objective_function(self, weights):
@@ -86,7 +89,7 @@ class TwoBandObjective(Objective):
         rule=rule,
         dimensions=self.dimensions,
         state=ChemicalInternalGrayscaleState,
-        resolution=16)
+        resolution=32)
     lattice.run(self.stop_criterion)
     return self.error_function(self.desired_lattice, lattice)
 
