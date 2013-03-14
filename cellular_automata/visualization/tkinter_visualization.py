@@ -83,7 +83,7 @@ class SimpleGUI(Frame):
     self.lattice_widget = self.lattice_widget_class.create_initialized(self, self.lattice)
   
   def load(self):
-    with open("data/two_band_configuration.ltc", 'r') as f:
+    with open("data/two_band_configuration2.ltc", 'r') as f:
       configuration = yaml.load(f)
     self.lattice_widget.destroy()
     self.lattice = self.lattice.from_yaml(configuration)
@@ -92,7 +92,7 @@ class SimpleGUI(Frame):
 
   def save(self):
     data = self.lattice.to_yaml()
-    with open("data/two_band_configuration.ltc", 'w') as f:
+    with open("data/two_band_configuration2.ltc", 'w') as f:
       f.write(data)
     print("data saved")
 
@@ -106,8 +106,8 @@ class SimpleGUI(Frame):
   def simulation_loop(self):
     self.simulation_step()
     if self.running:
-      # if self.lattice.time >= 100:
-      #   self.pause_simulation()
+      if self.lattice.time >= 100:
+        self.pause_simulation()
       self.after(0, self.simulation_loop)
 
   def run_simulation(self):

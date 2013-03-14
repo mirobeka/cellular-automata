@@ -111,8 +111,8 @@ class ChemicalInternalGrayscaleState(State):
 
   @classmethod
   def initial_state_value(cls):
-    chemicals = repeat(.0, 3)
-    internal = repeat(.0, 3)
+    chemicals = repeat(.0, 1)
+    internal = repeat(.0, 1)
     grayscale = 0
     # chemicals = rand(3)
     # internal = rand(3)
@@ -122,8 +122,8 @@ class ChemicalInternalGrayscaleState(State):
   @classmethod
   def create_random_state(cls):
     state = cls()
-    state.chemicals = rand(3)*2-1
-    state.internal = rand(3)*2-1
+    state.chemicals = rand(1)*2-1
+    state.internal = rand(1)*2-1
     state.garyscale = randint(0,255)
     return state
 
