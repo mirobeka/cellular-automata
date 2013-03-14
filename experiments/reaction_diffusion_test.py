@@ -38,7 +38,7 @@ class GUISquareLatticeTest(Frame):
     self.lattice = DiffusionSquareLattice.create_initialized(
         dimensions=dimensions,
         neighbourhood=VonNeumann,
-        resolution=8,
+        resolution=32,
         state=ChemicalState,
         rule=rule)
   
