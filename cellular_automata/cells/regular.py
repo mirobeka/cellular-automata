@@ -16,10 +16,6 @@ class SquareCellCL(CellCL):
     for i,index in enumerate(neighs_indices):
       self.data[i] = index
 
-  def to_dict(self):
-    # TODO
-    pass
-
 class SquareCell(Cell):
   def add_neighbors(self, neighbors):
     for direction, neigh in neighbors.items():
@@ -27,16 +23,6 @@ class SquareCell(Cell):
 
   def set_neighbours(self, neighbours):
     self.neighs = neighbours
-
-  def to_dict(self):
-    '''exports cells state, neighbours indices to dictionary (parsable by YAML)'''
-    cell = {}
-    cell["state"] = self.state
-    cell["position"] = self.position
-    cell["neighbours"] = [
-        (direction, set(map(lambda neigh: neigh.top_left_corner, direction_neighs)))
-        for direction, direction_neighs in self.neighs.items()]
-    return cell
 
 class VariableSquareCell(SquareCell):
   def __init__(self):
@@ -86,9 +72,6 @@ class VariableSquareCell(SquareCell):
         return neigh_item._can_merge_with_others(cell_countdown-1, new_direction)
       else:
         return False
-
-  def to_dict(self):
-    pass
 
   def same_size(self, other_cell):
     return self.size == other_cell.size

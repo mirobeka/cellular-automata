@@ -2,8 +2,10 @@ from __future__ import print_function
 from cellular_automata.cells.regular import SquareCell, SquareCellCL
 from cellular_automata.cells.regular import VariableSquareCell
 from cellular_automata.lattices.base import Lattice
+
 from re import match
-import yaml
+from cPickle import Pickler, Unpickler
+
 import numpy as np
 import pyopencl as cl
 import pyopencl.tools
@@ -165,49 +167,20 @@ class SquareLattice(Lattice):
     return lattice
 
   @classmethod
-  def from_yaml(cls, configuration):
-    '''Read all properties and create lattice with defined
-    dimensions and resolution. populate lattice with defined cells.'''
-    lattice = cls()
-    lattice.width, lattice.height = configuration["dimensions"]
-    lattice.resolution = configuration["resolution"]
-    lattice.neighbourhood = configuration["neighbourhood"]
-    lattice.rule = configuration["rule"]
-    lattice.cell_state_class = configuration["cell_state_class"]
-    lattice.cells = {}
-
-    # fill up lattice with cells
-    for key,cell_configuration in configuration["cells"].items():
-      cell = SquareCell.create_empty()
-      cell.position = cell_configuration["position"]
-      cell.state = cell_configuration["state"]
-      cell.rule = lattice.rule
-      cell.neighs = lattice.neighbourhood.create_empty()
-      for direction, neighbours in cell_configuration["neighbours"]:
-        cell.neighs[direction] = neighbours
-      lattice.cells[key] = cell
-
-    # change positions of cell neighbours for pointers to those cells
-    for cell in lattice.cells.values():
-      for direction, direction_neighs in cell.neighs.items():
-        cell.neighs[direction] = [lattice.cells[neigh] for neigh in direction_neighs]
-
+  def load_configuration(cls, file_name):
+    ''' Unpickle lattice configuration from file'''
+    with open(file_name, 'r') as f:
+      upkl = Unpickler(f)
+      lattice = upkl.load()
+    if lattice is None:
+      print("failed to unpickle or something else happened")
     return lattice
 
-  def to_yaml(self):
-    ''' export all lattice properties and cells into yaml '''
-    lattice = {}
-    lattice["dimensions"] = (self.width, self.height)
-    lattice["resolution"] = self.resolution
-    lattice["neighbourhood"] = self.neighbourhood
-    lattice["rule"] = self.rule
-    lattice["cell_state_class"] = self.cell_state_class
-    cells = {}
-    for key,cell in self.cells.items():
-      cells[key] = cell.to_dict()
-
-    lattice["cells"] = cells
-    return yaml.dump(lattice)
+  def save_configuration(self, file_name):
+    ''' export all lattice properties and cells into file for later use'''
+    with open(file_name, 'w') as f:
+      pkl = Pickler(f)
+      pkl.dump(self)
 
   def initialize_lattice_cells(self):
     cells = self.create_cells(self.rule)
