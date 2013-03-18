@@ -90,6 +90,10 @@ class SimpleGUI(Frame):
     file_dialog_options['initialdir'] = "./"
     file_name = tkFileDialog.askopenfilename(**file_dialog_options)
 
+    if file_name is None:
+      print("No more loading.")
+      return
+
     # create new widget
     self.lattice_widget.destroy()
 
