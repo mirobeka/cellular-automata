@@ -1,5 +1,6 @@
 from Tkinter import *
-import yaml
+from glob import glob
+import tkFileDialog
 import time
 
 class LatticeWidget(Canvas):
@@ -83,18 +84,31 @@ class SimpleGUI(Frame):
     self.lattice_widget = self.lattice_widget_class.create_initialized(self, self.lattice)
   
   def load(self):
-    with open("data/two_band_configuration2.ltc", 'r') as f:
-      configuration = yaml.load(f)
+    #get file_name to open
+    file_dialog_options = {}
+    file_dialog_options['filetypes'] = [('lattice files', '.ltc')]
+    file_dialog_options['initialdir'] = "./"
+    file_name = tkFileDialog.askopenfilename(**file_dialog_options)
+
+    # create new widget
     self.lattice_widget.destroy()
-    self.lattice = self.lattice.from_yaml(configuration)
+
+    # load lattice configuration
+    self.lattice = self.lattice.load_configuration(file_name)
     self.initialize_lattice_widget()
     self.pack()
 
   def save(self):
-    data = self.lattice.to_yaml()
-    with open("data/two_band_configuration2.ltc", 'w') as f:
-      f.write(data)
-    print("data saved")
+    file_dialog_options = {}
+    file_dialog_options['filetypes'] = [('lattice files', '.ltc')]
+    file_dialog_options['initialdir'] = "./"
+    file_name = tkFileDialog.asksaveasfilename(**file_dialog_options)
+    if file_name is None:
+      print("Forget about saving...")
+      return
+
+    self.lattice.save_configuration(file_name)
+    print("Yep, it's saved.")
 
   def simulation_step(self):
     t = time.time()
