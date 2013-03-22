@@ -5,6 +5,8 @@ from cellular_automata.lattices.base import Lattice
 
 from re import match
 from cPickle import Pickler, Unpickler
+from math import sqrt
+import operator
 
 import numpy as np
 import pyopencl as cl
@@ -154,6 +156,22 @@ class SquareLattice(Lattice):
     self.cells = None
     self.resolution = 0
     self.check_pre_post_methods()
+    self.energy_history = []
+
+  def energy(self):
+    return sqrt(sum(map(lambda cell: cell.energy, self.cells.values())))
+
+  def save_energy(self):
+    self.energy_history.append(self.energy())
+
+  def average_energy_window(self, window_size):
+    return sum(self.energy_history[-window_size:])/window_size
+
+  def energy_variance(self, window_size):
+    if len(self.energy_history) < window_size:
+      return 999
+    average_energy = self.average_energy_window(window_size)
+    return sqrt(sum(map(lambda e: (e-average_energy)**2, self.energy_history[-window_size:]))/window_size)
 
   @classmethod
   def create_initialized(cls, **kwargs):
@@ -257,6 +275,9 @@ class SquareLattice(Lattice):
 
     post_ptrn = "post_.+_method"
     self.post_methods = [m for m in dir(self) if callable(getattr(self, m)) and match(post_ptrn, m)]
+
+  def post_energy_variance_method(self):
+    self.save_energy()
 
   def run(self, stop_criterion):
     while stop_criterion.should_run(self):

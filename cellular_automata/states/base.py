@@ -3,6 +3,7 @@ from random import randint
 from numpy import array
 from numpy import repeat
 from numpy.random import rand
+from math import sqrt
 import numpy as np
 
 class State(object):
@@ -126,4 +127,7 @@ class ChemicalInternalGrayscaleState(State):
     state.internal = rand(1)*2-1
     state.garyscale = randint(0,255)
     return state
+
+  def euclidean_distance(self):
+    return sqrt(self.chemicals**2 + self.internal**2)
 

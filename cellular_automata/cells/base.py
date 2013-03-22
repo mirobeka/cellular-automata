@@ -38,6 +38,14 @@ class Cell(object):
     self._brc = (self.x+radius, self.y+radius)
 
   @property
+  def energy(self):
+    return self._energy
+
+  @energy.setter
+  def energy(self, energy):
+    self._energy = energy
+
+  @property
   def state(self):
     return self._state[0]
 
@@ -65,9 +73,6 @@ class Cell(object):
       self._brc = tuple(x+self.radius for x in new_pos)
     else:
       raise Exception("wrong position argument: {}".format(new_pos))
-
-  def to_dict(self):
-    raise NotImplementedError("method to_dict of cell is not implemented")
 
   @property
   def bounding_box(self):
@@ -110,6 +115,7 @@ class Cell(object):
 
   def apply_next_state(self):
     self.state = self.next_state
+    self.energy = self.state.euclidean_distance()
     self.age += 1
 
   def get_neighbors(self):

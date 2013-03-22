@@ -48,7 +48,7 @@ class TwoBandObjective(Objective):
   def initialize_experiment_parameters(self):
     self.desired_lattice = DiffusionSquareLattice.load_configuration('./data/two_band_desired.ltc')
     self.dimensions = (self.desired_lattice.width, self.desired_lattice.height)
-    self.stop_criterion = CAStopCriterion()
+    self.stop_criterion = EnergyStopCriterion()
 
   def load_lattice_configuration(self, file_name):
     try:
@@ -98,5 +98,12 @@ class CAStopCriterion(object):
 
   def should_run(self, lattice):
     '''Return True/False if Cellular Automata should run/stop'''
-    return lattice.time < 100
+    raise NotImplementedError("stop method not implemented buddy. Sorry.")
 
+class EnergyStopCriterion(CAStopCriterion):
+  def __init__(self):
+    self.energy_threshold = 10**-5
+    self.max_time = 1024
+
+  def should_run(self, lattice):
+    return lattice.time < self.max_time and lattice.energy_variance(16) > self.energy_threshold

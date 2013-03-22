@@ -1,5 +1,6 @@
 from Tkinter import *
 from glob import glob
+from cmaes.objectives import EnergyStopCriterion    # JUST TEMPORARY, REMOVE LATER
 import tkFileDialog
 import time
 
@@ -115,20 +116,20 @@ class SimpleGUI(Frame):
     print("Yep, it's saved.")
 
   def simulation_step(self):
-    t = time.time()
     self.lattice.next_step()
     self.lattice_widget.redraw_lattice()
     self.update()
-    print(time.time()-t, " seconds")
 
   def simulation_loop(self):
     self.simulation_step()
     if self.running:
-      if self.lattice.time >= 100:
+      if self.stop_criterion.should_run(self.lattice):    # JUST TEMPORARY, REMOVE LATER
+        self.after(0, self.simulation_loop)
+      else:
         self.pause_simulation()
-      self.after(0, self.simulation_loop)
 
   def run_simulation(self):
+    self.stop_criterion = EnergyStopCriterion()
     self.toogle_run_pause()
     self.running = True
     self.simulation_loop()
