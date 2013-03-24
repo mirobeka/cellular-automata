@@ -2,6 +2,7 @@ class Lattice:
   def __init__(self):
     self.width = self.height = 0
     self.time = 0
+    self.chaotic = False
 
   def next_step(self):
     # go over all cells and perform next step

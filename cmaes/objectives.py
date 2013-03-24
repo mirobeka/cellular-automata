@@ -1,7 +1,6 @@
 from cellular_automata.lattices.equiangular import DiffusionSquareLattice
 from cellular_automata.lattices.neighbourhoods import VonNeumann
 from cellular_automata.states.base import ChemicalInternalGrayscaleState
-from cellular_automata.rules.neural_rule import ANNColorRule
 
 class Objective(object):
   '''This is just abstract class to be extended. Extend this class for your
@@ -48,30 +47,23 @@ class TwoBandObjective(Objective):
   def initialize_experiment_parameters(self):
     self.desired_lattice = DiffusionSquareLattice.load_configuration('./data/two_band_desired.ltc')
     self.dimensions = (self.desired_lattice.width, self.desired_lattice.height)
+    self.resolution = self.desired_lattice.resolution
     self.stop_criterion = EnergyStopCriterion()
+    self.max_difference = self.get_max_difference(self.desired_lattice) # max difference between lattices
 
-  def load_lattice_configuration(self, file_name):
-    try:
-      data = open(file_name, 'r')
-    except IOError as e:
-      print("error while openning file \"{}\"".format(file_name))
-      print(e)
-      return None
-    else:
-      configuration = yaml.load(data)
-      data.close()
-
-    return configuration
-  
   @staticmethod
-  def error_function(pattern, lattice):
+  def get_max_difference(desired_lattice):
+    return len(desired_lattice.cells) * (65536)
+
+  def error_function(self, pattern, lattice):
     '''check desired pattern with given lattice. Return sum of state differences'''
-    return sum([TwoBandObjective.difference(pattern.cells[key], lattice.cells[key]) for key in pattern.cells.keys()])
+    difference = .0
+    for key in pattern.cells.keys():
+      difference += (pattern.cells[key].state.grayscale - lattice.cells[key].state.grayscale)**2
 
-  @staticmethod
-  def difference(cell1, cell2):
-    diff = (cell1.state.grayscale-cell2.state.grayscale)**2
-    return diff
+    # normalize difference
+    normalized_difference = difference / self.max_difference
+    return normalized_difference
 
   def objective_function(self, weights):
     '''Constructs cellular automata, set weights of MLP as rule for cellular
@@ -84,8 +76,11 @@ class TwoBandObjective(Objective):
         rule=rule,
         dimensions=self.dimensions,
         state=ChemicalInternalGrayscaleState,
-        resolution=32)
+        resolution=self.resolution)
     lattice.run(self.stop_criterion)
+    if lattice.chaotic:   # if lattice doesn't have stable configuration
+      print("Lattice is chaotic. Return fitness 1.0")
+      return 1.0
     return self.error_function(self.desired_lattice, lattice)
 
 class CircleObjective(Objective):
@@ -106,4 +101,6 @@ class EnergyStopCriterion(CAStopCriterion):
     self.max_time = 1024
 
   def should_run(self, lattice):
+    if lattice.time >= self.max_time:
+      lattice.chaotic = True
     return lattice.time < self.max_time and lattice.energy_variance(16) > self.energy_threshold
