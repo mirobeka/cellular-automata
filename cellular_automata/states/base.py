@@ -125,7 +125,7 @@ class ChemicalInternalGrayscaleState(State):
     state = cls()
     state.chemicals = rand(1)*2-1
     state.internal = rand(1)*2-1
-    state.garyscale = randint(0,255)
+    state.grayscale = randint(0,255)
     return state
 
   def euclidean_distance(self):

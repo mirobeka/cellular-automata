@@ -1,6 +1,7 @@
 from cellular_automata.lattices.equiangular import DiffusionSquareLattice
 from cellular_automata.lattices.neighbourhoods import VonNeumann
 from cellular_automata.states.base import ChemicalInternalGrayscaleState
+from cellular_automata.rules.neural_rule import ANNColorRule
 
 class Objective(object):
   '''This is just abstract class to be extended. Extend this class for your
@@ -103,4 +104,5 @@ class EnergyStopCriterion(CAStopCriterion):
   def should_run(self, lattice):
     if lattice.time >= self.max_time:
       lattice.chaotic = True
+    print("energy variance: {}".format(lattice.energy_variance(16)))
     return lattice.time < self.max_time and lattice.energy_variance(16) > self.energy_threshold

@@ -136,59 +136,37 @@ class ANNColorRule(Rule):
     self.theta3 = new_weights[-last_slice:]
     self.theta3.shape = (1,self.output_layer_length+1)
 
-    self.kontrola(new_weights)
-
-  def kontrola(self, new_weights):
-    import operator
-
-    t1 = reduce(operator.mul, self.theta1.shape)
-    t2 = reduce(operator.mul, self.theta2.shape)
-    t3 = reduce(operator.mul, self.theta3.shape)
-
-    print("tvar matic: t1 = {} t2 = {} t3 = {}".format(self.theta1.shape, self.theta2.shape, self.theta3.shape))
-
-    print("dlzka vah: {}".format(len(new_weights)))
-    print("dlzka kkk: {}".format(t1+t2+t3))
-    print("dlzka aaa: {}".format(self.total_number_of_weights()))
-
   def get_next_state(self, cell, neighbours):
+    # get input vector from neighbours
     input_vector = self.get_input_vector(cell, neighbours)
-    a1 = np.insert(input_vector, 0, 1)   # insert first bias value
-    a2 = np.tanh(np.dot(self.theta1, a1))
 
-    a2 = np.insert(a2,0,1)   # insert first bias value
+    # get hidden layer
+    a1 = np.insert(input_vector, 0, 1)
+    hidden_layer = np.tanh(np.dot(self.theta1, a1))
+
+    # get output layer
+    a2 = np.insert(hidden_layer,0,1)
     out_vector = np.tanh(np.dot(self.theta2, a2))
 
+    # set new internal state and chemicals of cell
     new_internal_state = out_vector[:self.internal_state_vector_length]
     new_chemicals = out_vector[-self.chemicals_vector_length:]
 
-    # getting new color is a bit tricky
-    additional_chems_vector = np.repeat(.0,self.internal_state_vector_length)
-    additional_chems_vector = np.append(additional_chems_vector,cell.state.chemicals)
-    out_vector = out_vector + additional_chems_vector
-    a3 = np.insert(out_vector, 0, 1)
-    new_color = np.tanh(np.dot(self.theta3, a3))/2 + 0.5
-    # self.kontrola_siete(self.theta3, out_vector)
+    # add prievious chemical concentration
+    new_chemicals += cell.state.chemicals
+
+    # get new color of cell
+    color_vector = np.append(new_internal_state, new_chemicals)
+    a3 = np.insert(color_vector, 0, 1)
+    new_color = (np.tanh(np.dot(self.theta3, a3))+1)/2
 
     # finally create new state
     new_state = cell.state.create_state()
-    new_state.chemicals = cell.state.chemicals + new_chemicals
+    new_state.chemicals = new_chemicals
     new_state.internal = new_internal_state
     new_state.grayscale = int(new_color*255)
     return new_state
   
-  def kontrola_siete(self, theta, vector):
-    # theta has some shape 1x3, vetor has some shape 3x1 result value is one
-    #
-    #
-    # ======CHECK PRINT=======
-    # a1 = theta[0][0]*vector[0] + theta[0][]
-    #
-    #
-    #
-    
-    check_print = "{}{}*{} + "
-
   def get_input_vector(self, cell, neighbours):
     ''' Here we are dealing with just one neighbour per direction. It's Square
     Lattice so there is just one neighbour per direction.

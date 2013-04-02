@@ -126,6 +126,10 @@ class SimpleGUI(Frame):
       if self.stop_criterion.should_run(self.lattice):    # JUST TEMPORARY, REMOVE LATER
         self.after(0, self.simulation_loop)
       else:
+        if self.lattice.chaotic:
+          print("chaotic rule, stopping after 1024 steps")
+        else:
+          print("lattice energy variance stabilized")
         self.pause_simulation()
 
   def run_simulation(self):
