@@ -87,7 +87,7 @@ class TwoBandObjective(Objective):
 class CircleObjective(Objective):
   pass    # TODO
 
-class CAStopCriterion(object):
+class StopCriterion(object):
   '''This is base class of cellular automata stop criterion.
   class should be extended to check more that just number of steps as stopping
   criterion.'''
@@ -96,7 +96,7 @@ class CAStopCriterion(object):
     '''Return True/False if Cellular Automata should run/stop'''
     raise NotImplementedError("stop method not implemented buddy. Sorry.")
 
-class EnergyStopCriterion(CAStopCriterion):
+class EnergyStopCriterion(StopCriterion):
   def __init__(self):
     self.energy_threshold = 10**-5
     self.max_time = 1024
