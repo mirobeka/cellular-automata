@@ -1,10 +1,13 @@
 from cellular_automata.cells.cell import Cell
 from cellular_automata.lattices.base import Lattice
 
+
 class VoronoiLattice(Lattice):
-  def __init__(self):
-    # TODO
-    pass
+    def __init__(self):
+        # TODO
+        pass
+
+
 '''
 NEIGHBOURHOOD
 Ďalšou vecou s ktorou sa treba popasovať sú susedstvá. Treba vedieť ako ich nastaviť tak aby správne fungovali. Takže v tomto prípade môžeme spraviť to, žeby sme bunke poskytli uhol, ktorý medzi sebou svierajú. Bunka môže by ako center a uhol ostatnej bunky už vieme zistiť. Takže takto by sme si mohli udržať susedstvo. Dictionary s kľúčom ako je uhol. miesto množiny susednov z jedného smeru. Uhol bude vždy unikátny pre každého suseda, takže ho bude môcť neurónka presne identifikovať.
