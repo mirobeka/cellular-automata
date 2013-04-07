@@ -1,8 +1,7 @@
 from Tkinter import *
-from glob import glob
 from cmaes.objectives import EnergyStopCriterion    # JUST TEMPORARY, REMOVE LATER
 import tkFileDialog
-import time
+import tkColorChooser
 
 
 class LatticeWidget(Canvas):
@@ -54,6 +53,20 @@ class LatticeWidget(Canvas):
     def map_state_to_rgb(self, state):
         raise NotImplementedError("method map_state_to_rgb not implemented")
 
+    def set_cell_state(self, event):
+        item_id = self.find_closest(event.x, event.y)[0]
+        cell = self.lattice.canvas_item_ids[item_id]
+        rgb, color_hex = tkColorChooser.askcolor("white",
+                                                 title="choose cells state")
+        if rgb is None:
+            return
+        self.itemconfig(item_id, fill=color_hex)
+        self.map_rgb_to_state(rgb, cell.state)
+
+    def map_rgb_to_state(self, color, state):
+        raise NotImplementedError(
+            "method for setting cell state not implemented")
+
     def remove_unused_items(self):
         items = [item for item in self.find_all()]
         for cell in self.cells:
@@ -64,9 +77,6 @@ class LatticeWidget(Canvas):
             self.delete(item)
             del self.lattice.canvas_item_ids[item]
 
-    def set_cell_state(self, event):
-        raise NotImplementedError(
-            "method for setting cell state not implemented")
 
 
 class SimpleGUI(Frame):
@@ -95,7 +105,7 @@ class SimpleGUI(Frame):
 
     def load(self):
         #get file_name to open
-        file_dialog_options = {}
+        file_dialog_options = dict()
         file_dialog_options['filetypes'] = [('lattice files', '.ltc')]
         file_dialog_options['initialdir'] = "./"
         file_name = tkFileDialog.askopenfilename(**file_dialog_options)
@@ -113,7 +123,7 @@ class SimpleGUI(Frame):
         self.pack()
 
     def save(self):
-        file_dialog_options = {}
+        file_dialog_options = dict()
         file_dialog_options['filetypes'] = [('lattice files', '.ltc')]
         file_dialog_options['initialdir'] = "./"
         file_name = tkFileDialog.asksaveasfilename(**file_dialog_options)

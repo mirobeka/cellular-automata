@@ -101,8 +101,7 @@ class ChemicalState(State):
 
     @classmethod
     def initial_state_value(cls):
-        return (random(), random(), random())
-        # return (.0,.0,.0)
+        return random(), random(), random()
 
     def euclidean_distance(self):
         return abs(self.chemicals)
