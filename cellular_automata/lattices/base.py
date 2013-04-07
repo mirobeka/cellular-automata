@@ -9,8 +9,8 @@ class Lattice:
         raise NotImplementedError("method next_step of Lattice not implemented")
 
     @classmethod
-    def create_initialized(cls, **kwargs):
-        '''Create and initialize lattice'''
+    def create_initialized(cls, conf):
+        """Create and initialize lattice"""
         raise NotImplementedError(
             "create_initialized method of lattice not implemented")
 

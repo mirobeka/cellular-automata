@@ -10,6 +10,7 @@ from cellular_automata.visualization.tkinter_visualization import LatticeWidget
 from cellular_automata.rules.base import DummyRule
 from cellular_automata.states.base import ColorTopologyState
 from Tkinter import *
+from cellular_automata.automaton.creator import create_automaton
 
 
 class VariableSquareLatticeWidget(LatticeWidget):
@@ -34,14 +35,7 @@ class GUIVariableSquareLatticeTest(Frame):
         self.load = self.create_button("load", self.load, "right")
 
     def initialize_lattice(self):
-        dimensions = (512, 512)
-        rule = DummyRule()
-        self.lattice = VariableSquareLattice.create_initialized(
-            dimensions=dimensions,
-            neighbourhood=VonNeumann,
-            resolution=16,
-            state=ColorTopologyState,
-            rule=rule)
+        self.lattice = create_automaton("experiments/variable_lattice.cfg")
 
     def initialize_lattice_widget(self):
         self.lattice_widget = VariableSquareLatticeWidget.create_initialized(

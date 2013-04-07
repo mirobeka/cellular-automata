@@ -57,7 +57,10 @@ class ColorState(State):
 
     @classmethod
     def initial_state_value(cls):
-        return (0, 0, 0)
+        return 0, 0, 0
+
+    def euclidean_distance(self):
+        return sqrt(sum(map(lambda x: pow(x, 2), self.rgb)))
 
 
 class ColorTopologyState(State):
@@ -77,7 +80,10 @@ class ColorTopologyState(State):
 
     @classmethod
     def initial_state_value(cls):
-        return ((0, 0, 0), False, False)
+        return (0, 0, 0), False, False
+
+    def euclidean_distance(self):
+        return sqrt(sum(map(lambda x: pow(x, 2), self.rgb)))
 
 
 class ChemicalState(State):
@@ -97,6 +103,9 @@ class ChemicalState(State):
     def initial_state_value(cls):
         return (random(), random(), random())
         # return (.0,.0,.0)
+
+    def euclidean_distance(self):
+        return abs(self.chemicals)
 
 
 class ChemicalInternalGrayscaleState(State):

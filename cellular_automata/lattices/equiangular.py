@@ -23,19 +23,21 @@ class SquareLatticeCL(Lattice):
         self.initialize_cl()
 
     @classmethod
-    def create_initialized(cls, **kwargs):
+    def create_initialized(cls, conf):
         lattice = cls()
-        lattice.width, lattice.height = kwargs["dimensions"]
-        lattice.resolution = kwargs["resolution"]
-        lattice.neighbourhood = kwargs["neighbourhood"]
-        lattice.rule = kwargs["rule"]
-        lattice.cell_state_class = kwargs["state"]
+        lattice.width = int(conf["width"])
+        lattice.height = int(conf["height"])
+        lattice.resolution = int(conf["resolution"])
+        lattice.neighbourhood = conf["neighbourhood"]
+        rule_class = conf["rule"]
+        lattice.rule = rule_class()
+        lattice.cell_state_class = conf["state"]
         lattice.initialize_data_type()
         lattice.cells = lattice.initialize_lattice_cells()
         return lattice
 
     def initialize_data_type(self):
-        '''Set struct and dtype of cell'''
+        """Set struct and dtype of cell"""
         state_dtype = self.cell_state_class.dtype
         self.np_dtype, self.dtype, self.c_decl = SquareCellCL.create_dtype_struct(
             state_dtype)
@@ -183,13 +185,15 @@ class SquareLattice(Lattice):
                             self.energy_history[-window_size:])) / window_size)
 
     @classmethod
-    def create_initialized(cls, **kwargs):
+    def create_initialized(cls, conf):
         lattice = cls()
-        lattice.width, lattice.height = kwargs["dimensions"]
-        lattice.resolution = kwargs["resolution"]
-        lattice.neighbourhood = kwargs["neighbourhood"]
-        lattice.rule = kwargs["rule"]
-        lattice.cell_state_class = kwargs["state"]
+        lattice.width = int(conf["width"])
+        lattice.height = int(conf["height"])
+        lattice.resolution = int(conf["resolution"])
+        lattice.neighbourhood = conf["neighbourhood"]
+        rule_class = conf["rule"]
+        lattice.rule = rule_class()
+        lattice.cell_state_class = conf["state"]
         lattice.cells = lattice.initialize_lattice_cells()
         return lattice
 
