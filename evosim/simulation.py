@@ -6,7 +6,7 @@ if ca_directory not in sys.path:
     sys.path.insert(0, ca_directory)
 
 from cellular_automata.visualization.tkinter_visualization import LatticeWidget
-from cellular_automata.automaton.creator import get_conf
+from cellular_automata.creator import get_conf
 
 SUPPORTED_STATES = ["rgb", "color", "grayscale", "chemicals", "internal",
                     "alive", "binary"]
