@@ -4,11 +4,7 @@ ca_directory = os.getcwd()
 if ca_directory not in sys.path:
     sys.path.insert(0, ca_directory)
 
-from cellular_automata.lattices.equiangular import VariableSquareLattice
-from cellular_automata.lattices.neighbourhoods import VonNeumann
 from cellular_automata.visualization.tkinter_visualization import LatticeWidget
-from cellular_automata.rules.base import DummyRule
-from cellular_automata.states.base import ColorTopologyState
 from Tkinter import *
 from cellular_automata.automaton.creator import create_automaton
 
