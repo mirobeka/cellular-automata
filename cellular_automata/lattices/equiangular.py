@@ -6,160 +6,15 @@ from cellular_automata.lattices.base import Lattice
 from re import match
 from cPickle import Pickler, Unpickler
 from math import sqrt
-import operator
-
-import numpy as np
-import pyopencl as cl
-import pyopencl.tools
-
-
-class SquareLatticeCL(Lattice):
-    def __init__(self):
-        Lattice.__init__(self)
-        self.cells = None
-        self.program = None
-        self.resolution = 0
-        self.check_pre_post_methods()
-        self.initialize_cl()
-
-    @classmethod
-    def create_initialized(cls, conf):
-        lattice = cls()
-        lattice.width = int(conf["width"])
-        lattice.height = int(conf["height"])
-        lattice.resolution = int(conf["resolution"])
-        lattice.neighbourhood = conf["neighbourhood"]
-        rule_class = conf["rule"]
-        lattice.rule = rule_class()
-        lattice.cell_state_class = conf["state"]
-        lattice.initialize_data_type()
-        lattice.cells = lattice.initialize_lattice_cells()
-        return lattice
-
-    def initialize_data_type(self):
-        """Set struct and dtype of cell"""
-        state_dtype = self.cell_state_class.dtype
-        self.np_dtype, self.dtype, self.c_decl = SquareCellCL.create_dtype_struct(
-            state_dtype)
-        cl.tools.get_or_register_dtype("cell", self.dtype)
-
-    def initialize_cl(self):
-        self.context = cl.create_some_context()
-        self.queue = cl.CommandQueue(self.context)
-
-    def initialize_lattice_cells(self):
-        cells = self.create_cells(self.rule)
-        self.initialize_neighbours(cells)
-        return cells
-
-    def create_cells(self, rule):
-        number_of_cells = self.width / self.resolution * self.height / self.resolution
-        empty_data = SquareCellCL.get_empty_data(self.cell_state_class)
-        self.cells_data = np.array([empty_data] * number_of_cells,
-                                   self.np_dtype)
-        cells = {}
-        for x in range(0, self.width, self.resolution):
-            for y in range(0, self.height, self.resolution):
-                coordinates = (x + self.resolution / 2, y + self.resolution / 2)
-                idx = (self.width * y / self.resolution + x) / self.resolution
-                cells[coordinates] = SquareCellCL.create_initialized(
-                    data=self.cells_data[idx],
-                    index=idx,
-                    rule=rule,
-                    neighbourhood=self.neighbourhood,
-                    state_class=self.cell_state_class)
-                cells[coordinates].position = coordinates
-                cells[coordinates].radius = self.resolution / 2
-        return cells
-
-    def initialize_neighbours(self, cells):
-        for (x, y), cell in cells.items():
-            neighs = self.neighbourhood.gather_neighbours(cells,
-                                                          self.resolution, x, y)
-            neighs_indices = self.get_neighs_indices(neighs)
-            cells[(x, y)].set_neighbours_indices(neighs_indices)
-            cells[(x, y)].set_neighbours(neighs)
-
-    def get_neighs_indices(self, neighs):
-        directions = ["north", "northeast", "east", "southeast", "south",
-                      "southwest", "west", "northwest"]
-        neighs_indices = []
-        for direction in directions:
-            if direction in neighs:
-                if len(neighs[direction]) == 1:
-                    neighs_indices.append(iter(neighs[direction]).next().idx)
-                else:
-                    neighs_indices.append(-1)
-            else:
-                neighs_indices.append(-1)
-        return neighs_indices
-
-    # set state of particular cell
-    def set_state_of_cell(self, state, x, y):
-        if x >= 0 or x < self.width or y >= 0 or y < self.height:
-            self.cells[(x, y)].state = state
-
-    def next_step(self):
-        # execute all pre methods
-        map(lambda method: getattr(self, method)(), self.pre_methods)
-
-        if self.program is None:
-            kernel = self.rule.get_kernel(self.c_decl)
-            self.program = cl.Program(self.context, kernel).build()
-
-        #create in_buffer
-        in_buf = cl.Buffer(
-            self.context,
-            cl.mem_flags.READ_ONLY | cl.mem_flags.COPY_HOST_PTR,
-            hostbuf=self.cells_data
-        )
-        dest_buf = cl.Buffer(
-            self.context,
-            cl.mem_flags.WRITE_ONLY,
-            self.cells_data.nbytes
-        )
-        self.program.next_state(
-            self.queue,
-            self.cells_data.shape,
-            None,
-            in_buf,
-            dest_buf
-        )
-
-        cl.enqueue_read_buffer(self.queue, dest_buf, self.cells_data).wait()
-
-        # execute all pre methods
-        map(lambda method: getattr(self, method)(), self.post_methods)
-
-        self.time += 1
-
-    def check_pre_post_methods(self):
-        '''This method check all instance methods, finds methods that should be
-        executed before going to next step and after this step. This methods are
-        stored in list and executed later, when self.next_step() method is called
-
-        This method should be called just in case of duck punching.
-        '''
-        pre_ptrn = "pre_.+_method"
-        self.pre_methods = [m for m in dir(self) if
-                            callable(getattr(self, m)) and match(pre_ptrn, m)]
-
-        post_ptrn = "post_.+_method"
-        self.post_methods = [m for m in dir(self) if
-                             callable(getattr(self, m)) and match(post_ptrn, m)]
-
-    def run(self, stop_criterion):
-        while stop_criterion.should_run(self):
-            self.next_step()
 
 
 class SquareLattice(Lattice):
-    '''
+    """
     This lattice is using Square Cells to construct 2 dimensional grid of
     square cells that don't change their topology, size or other properties
 
     Cells are stored in dictionary where coordinates of cells is key value.
-    '''
+    """
 
     def __init__(self):
         Lattice.__init__(self)
@@ -179,7 +34,7 @@ class SquareLattice(Lattice):
 
     def energy_variance(self, window_size):
         if len(self.energy_history) < window_size:
-            return 999
+            return 9999
         average_energy = self.average_energy_window(window_size)
         return sqrt(sum(map(lambda e: (e - average_energy) ** 2,
                             self.energy_history[-window_size:])) / window_size)
@@ -187,19 +42,31 @@ class SquareLattice(Lattice):
     @classmethod
     def create_initialized(cls, conf):
         lattice = cls()
+
+        # set lattice dimensions
         lattice.width = int(conf["width"])
         lattice.height = int(conf["height"])
         lattice.resolution = int(conf["resolution"])
+
+        # supply lattice with neighbourhood class
         lattice.neighbourhood = conf["neighbourhood"]
+
+        # prepare the brain of the CA
         rule_class = conf["rule"]
+        border = lattice.read_border(conf)
         lattice.rule = rule_class()
+        lattice.rule.set_border(border)
+
+        # cells are just carrying state, right? What kind of state? Here it is!
         lattice.cell_state_class = conf["state"]
+
+        # all set, let's create all cells
         lattice.cells = lattice.initialize_lattice_cells()
         return lattice
 
     @classmethod
     def load_configuration(cls, file_name):
-        ''' Unpickle lattice configuration from file'''
+        """ Unpickle lattice configuration from file"""
         with open(file_name, 'r') as f:
             upkl = Unpickler(f)
             lattice = upkl.load()
@@ -208,7 +75,7 @@ class SquareLattice(Lattice):
         return lattice
 
     def save_configuration(self, file_name):
-        ''' export all lattice properties and cells into file for later use'''
+        """ export all lattice properties and cells into file for later use"""
         with open(file_name, 'w') as f:
             pkl = Pickler(f)
             pkl.dump(self)
@@ -278,12 +145,12 @@ class SquareLattice(Lattice):
         self.time += 1
 
     def check_pre_post_methods(self):
-        '''This method check all instance methods, finds methods that should be
+        """This method check all instance methods, finds methods that should be
         executed before going to next step and after this step. This methods are
         stored in list and executed later, when self.next_step() method is called
 
         This method should be called just in case of duck punching.
-        '''
+        """
         pre_ptrn = "pre_.+_method"
         self.pre_methods = [m for m in dir(self) if
                             callable(getattr(self, m)) and match(pre_ptrn, m)]
