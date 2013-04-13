@@ -6,6 +6,8 @@ if ca_directory not in sys.path:
     sys.path.insert(0, ca_directory)
 
 from cellular_automata.visualization.tkinter_visualization import LatticeWidget
+from cellular_automata.visualization.tkinter_visualization import SimpleGUI
+from cellular_automata.creator import create_automaton
 from cellular_automata.creator import get_conf
 
 SUPPORTED_STATES = ["rgb", "color", "grayscale", "chemicals", "internal",
@@ -13,22 +15,54 @@ SUPPORTED_STATES = ["rgb", "color", "grayscale", "chemicals", "internal",
 
 
 class Simulation(object):
-    def __init__(self, conf_file=None):
+    def __init__(self):
+        # something here?
+        pass
+
+    @classmethod
+    def new_simulation(cls, conf_file=None):
+        """This method creates instance of Simulation class. First it parser
+        config file, then creates instance of lattice with automaton
+        constructor, smartly select mapping of state of cell to color space
+        and creates PatchedLatticeWidget class.
+        :param conf_file: file that specifies parameters of CA
+        :return:
+        """
+        sim = cls()
+        sim.initialize_new_simulation(conf_file)
+        sim.start_simulation()
+
+    @classmethod
+    def load_simulation(cls, lattice_file=None):
+        sim = cls()
+        sim.initialize_previous_lattice(lattice_file)
+        sim.start_simulation()
+
+    def start_simulation(self):
+        self.gui = SimpleGUI()
+        self.gui.insert_lattice_widget(self.lattice_widget_instance)
+        self.gui.show()
+
+    def initialize_new_simulation(self, conf_file):
         self.conf_file = conf_file
-        if conf_file in None:
-            # we have to initialize GUI and ask what to load CONF or LATTICE
-            pass
-        else:
-            # create lattice widget(lw) subclass
-            self.path_lattice_widget()
+        self.lattice_widget_class = self.patch_lattice_widget()
+        self.lattice_instance = create_automaton(conf_file)
+        self.lattice_widget_instance = self.lattice_widget_class(self.lattice_instance)
 
-            # fire up GUI with this lattice widget subclass
-            pass
+    def initialize_previous_lattice(self, lattice_file):
+        # get all the information from this fucking file
+        # create lattice widget
+        # create GUi
+        # push lattice into gui
+        # fire up GUI
+        # have a beer
+        pass
 
-    def path_lattice_widget(self):
+    def patch_lattice_widget(self):
         state_to_color, color_to_state = self.smart_state_mapping()
-        LatticeWidget.map_state_to_rgb = state_to_color
+        LatticeWidget.map_rgb_to_state = state_to_color
         LatticeWidget.set_cell_state = color_to_state
+        return LatticeWidget
 
     def smart_state_mapping(self):
         """ dynamically create method for mapping state of cell into color
