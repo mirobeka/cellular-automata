@@ -1,5 +1,5 @@
 from __future__ import print_function
-from cellular_automata.cells.regular import SquareCell, SquareCellCL
+from cellular_automata.cells.regular import SquareCell
 from cellular_automata.cells.regular import VariableSquareCell
 from cellular_automata.lattices.base import Lattice
 
@@ -30,14 +30,18 @@ class SquareLattice(Lattice):
         self.energy_history.append(self.energy())
 
     def average_energy_window(self, window_size):
-        return sum(self.energy_history[-window_size:]) / window_size
+        return sum(self.energy_history[-window_size:]) / float(window_size)
 
     def energy_variance(self, window_size):
         if len(self.energy_history) < window_size:
             return 9999
+
+        energies = self.energy_history[-window_size:]
         average_energy = self.average_energy_window(window_size)
-        return sqrt(sum(map(lambda e: (e - average_energy) ** 2,
-                            self.energy_history[-window_size:])) / window_size)
+
+        average_difference = map(lambda e: (e - average_energy) ** 2, energies)
+        energy_variance = sqrt(sum(average_difference) / float(window_size))
+        return energy_variance
 
     @classmethod
     def create_initialized(cls, conf):

@@ -2,6 +2,27 @@ from cellular_automata.rules.base import Rule
 import numpy as np
 
 
+class TestRule(Rule):
+    """This rule is just for testing energy stopping criterion"""
+
+    def get_next_state(self, cell, neighbors):
+        new_state = cell.state.create_state()
+
+        # increase state energy value
+        #new_state.chemicals = np.array(map(lambda c: c + .1, cell.state.chemicals))
+
+        # decrease state energy value
+        new_state.chemicals = np.array(map(lambda c: c - .1, cell.state.chemicals))
+
+        # stable state energy value
+        # new_state.chemicals = cell.state.chemicals
+
+        return new_state
+
+    def set_border(self, border=None):
+        self.border = border
+
+
 class ANNColorRule(Rule):
     """This rule is implementing own neural network that takes chemicals of
     cells and their internal states as input then calculate one hidden layer

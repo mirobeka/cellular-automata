@@ -96,21 +96,21 @@ class ChemicalState(State):
     @classmethod
     def create_random_state(cls):
         state = cls()
-        state.chemicals = (random(), random(), random())
+        state.chemicals = rand(1)
         return state
 
     @classmethod
     def initial_state_value(cls):
-        return random(), random(), random()
+        return rand(1)
 
     def euclidean_distance(self):
         return abs(self.chemicals)
 
 
 class ChemicalInternalGrayscaleState(State):
-    '''This state contains chemical vector of length 3, internal state vector
+    """This state contains chemical vector of length 3, internal state vector
     of length 3 and one grayscale value in interval [0,255]
-    '''
+    """
     dtype = [
         ("grayscale", np.int),
         ("ch0", np.float32), ("ch1", np.float32), ("ch2", np.float32),
@@ -135,7 +135,7 @@ class ChemicalInternalGrayscaleState(State):
         # chemicals = rand(3)
         # internal = rand(3)
         # grayscale = randint(0,255)
-        return (chemicals, internal, grayscale)
+        return chemicals, internal, grayscale
 
     @classmethod
     def create_random_state(cls):
