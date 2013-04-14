@@ -53,6 +53,10 @@ class LatticeWidget(Canvas):
     def map_state_to_rgb(self, state):
         raise NotImplementedError("method map_state_to_rgb not implemented")
 
+    def map_rgb_to_state(self, color, state):
+        raise NotImplementedError(
+            "method for setting cell state not implemented")
+
     def set_cell_state(self, event):
         item_id = self.find_closest(event.x, event.y)[0]
         cell = self.lattice.canvas_item_ids[item_id]
@@ -62,10 +66,6 @@ class LatticeWidget(Canvas):
             return
         self.itemconfig(item_id, fill=color_hex)
         self.map_rgb_to_state(rgb, cell.state)
-
-    def map_rgb_to_state(self, color, state):
-        raise NotImplementedError(
-            "method for setting cell state not implemented")
 
     def remove_unused_items(self):
         items = [item for item in self.find_all()]
