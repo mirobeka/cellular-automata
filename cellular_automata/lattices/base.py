@@ -30,27 +30,27 @@ class Lattice:
             coords_top = (x + resolution / 2, resolution / 2)
             coords_bottom = (x + resolution / 2, height - resolution / 2)
             if coords_top in border:
-                border[coords_top]["n"] = border_top[x / resolution]
+                border[coords_top]["north"] = border_top[x / resolution]
             else:
-                border[coords_top] = {"n": border_top[x / resolution]}
+                border[coords_top] = {"north": border_top[x / resolution]}
 
             if coords_bottom in border:
-                border[coords_bottom]["s"] = border_bottom[x / resolution]
+                border[coords_bottom]["south"] = border_bottom[x / resolution]
             else:
-                border[coords_bottom] = {"n": border_top[x / resolution]}
+                border[coords_bottom] = {"south": border_bottom[x / resolution]}
 
         for y in xrange(0, height, resolution):
             coords_left = (resolution / 2, y + resolution / 2)
             coords_right = (width - resolution / 2, y + resolution / 2)
             if coords_left in border:
-                border[coords_left]["w"] = border_left[y / resolution]
+                border[coords_left]["west"] = border_left[y / resolution]
             else:
-                border[coords_left] = {"w": border_left[y / resolution]}
+                border[coords_left] = {"west": border_left[y / resolution]}
 
             if coords_right in border:
-                border[coords_right]["e"] = border_right[y / resolution]
+                border[coords_right]["east"] = border_right[y / resolution]
             else:
-                border[coords_right] = {"e": border_right[y / resolution]}
+                border[coords_right] = {"east": border_right[y / resolution]}
 
         return border
 

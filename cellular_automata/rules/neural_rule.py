@@ -91,7 +91,7 @@ class ANNColorRule(Rule):
         input_list.extend(cell.state.internal)
         for direction in ["north", "east", "south", "west"]:
             if len(neighbours[direction]) == 0:
-                border_value = self.get_border_value(direction)
+                border_value = self.get_border_value(cell.position, direction)
                 input_list.extend(border_value)
             else:
                 input_list.extend(
