@@ -1,7 +1,6 @@
-from Tkinter import *
-from cmaes.objectives import EnergyStopCriterion    # JUST TEMPORARY, REMOVE LATER
 import tkFileDialog
 import tkColorChooser
+from Tkinter import *
 
 
 class LatticeWidget(Canvas):
@@ -11,13 +10,13 @@ class LatticeWidget(Canvas):
 
     @classmethod
     def create_initialized(cls, master, lattice):
-        view = cls(master)
-        view.lattice = lattice
-        view.config(highlightthickness=0, width=lattice.width,
-                    height=lattice.height)
-        view.pack()
-        view.create_canvas_items()
-        return view
+        lattice_widget = cls(master)
+        lattice_widget.lattice = lattice
+        lattice_widget.config(highlightthickness=0, width=lattice.width,
+                              height=lattice.height)
+        lattice_widget.pack()
+        lattice_widget.create_canvas_items()
+        return lattice_widget
 
     # small property helper
     @property
@@ -50,10 +49,12 @@ class LatticeWidget(Canvas):
         self.coords(cell.canvas_item_id, cell.bounding_box)
         self.itemconfig(cell.canvas_item_id, fill=rgb)
 
-    def map_state_to_rgb(self, state):
+    @classmethod
+    def map_state_to_rgb(cls, state):
         raise NotImplementedError("method map_state_to_rgb not implemented")
 
-    def map_rgb_to_state(self, color, state):
+    @classmethod
+    def map_rgb_to_state(cls, rgb, state):
         raise NotImplementedError(
             "method for setting cell state not implemented")
 
@@ -78,30 +79,66 @@ class LatticeWidget(Canvas):
             del self.lattice.canvas_item_ids[item]
 
 
-
-class SimpleGUI(Frame):
-    def __init__(self, master, lattice_widget_class):
+class ControlBox(Frame):
+    def __init__(self, master):
         Frame.__init__(self, master)
-        self.lattice_widget_class = lattice_widget_class
-        self.initialize_lattice()
-        self.initialize_lattice_widget()
         self.create_controls()
-        self.pack()
 
     def create_controls(self):
-        self.step = self.create_button("next step", self.simulation_step,
+        self.step = self.create_button("next step",
+                                       self.master.simulation_step,
                                        "left")
         self.run = self.create_run_button()
-        self.save = self.create_button("save", self.save, "right")
-        self.load = self.create_button("load", self.load, "right")
+        self.save = self.create_button("save", self.master.save, "right")
+        self.load = self.create_button("load", self.master.load, "right")
 
-    def initialize_lattice(self):
-        raise NotImplementedError(
-            "method for initializing lattice is not implemented")
+    def create_run_button(self):
+        return self.create_button("run", self.master.run_simulation, "left")
 
-    def initialize_lattice_widget(self):
-        self.lattice_widget = self.lattice_widget_class.create_initialized(self,
-                                                                           self.lattice)
+    def create_pause_button(self):
+        return self.create_button("pause", self.master.pause_simulation,
+                                  "left")
+
+    def create_button(self, text, callback, align):
+        btn = Button(self)
+        btn["text"] = text
+        btn["command"] = callback
+        btn.pack(side=align)
+        return btn
+
+
+class Statistics(Frame):
+    pass
+
+
+class SimpleGUI(Frame):
+    """ This is basic GUI for visualizing this cellular automaton.
+
+    How it works?
+        -> Initialize GUI, create instance of Frame.
+        -> insert lattice widget into scene
+        -> create Tk() root stuff and show that.
+
+    """
+    def __init__(self, master):
+        Frame.__init__(self, master)
+        self.lattice_box = Frame(self)
+        self.lattice_box.pack()
+        self.controls_box = ControlBox(self)
+        self.controls_box.pack()
+        # self.statistics_box = Statistics(self)
+
+    def show_me_something(self):
+        self.pack()
+
+    def insert_lattice_widget(self, lattice_widget_class, lattice):
+        self.lattice = lattice
+        # destroy all previous lattices
+        for child in self.lattice_box.winfo_children():
+            child.destroy()
+        self.lattice_widget = lattice_widget_class.create_initialized(
+            self.lattice_box, lattice)
+        self.lattice_widget.pack()
 
     def load(self):
         #get file_name to open
@@ -119,7 +156,7 @@ class SimpleGUI(Frame):
 
         # load lattice configuration
         self.lattice = self.lattice.load_configuration(file_name)
-        self.initialize_lattice_widget()
+        self.insert_lattice_widget(self.lattice.__class__, self.lattice)
         self.pack()
 
     def save(self):
@@ -142,18 +179,9 @@ class SimpleGUI(Frame):
     def simulation_loop(self):
         self.simulation_step()
         if self.running:
-            if self.stop_criterion.should_run(
-                    self.lattice):    # JUST TEMPORARY, REMOVE LATER
-                self.after(0, self.simulation_loop)
-            else:
-                if self.lattice.chaotic:
-                    print("chaotic rule, stopping after 1024 steps")
-                else:
-                    print("lattice energy variance stabilized")
-                self.pause_simulation()
+            self.after(0, self.simulation_loop)
 
     def run_simulation(self):
-        self.stop_criterion = EnergyStopCriterion()
         self.toogle_run_pause()
         self.running = True
         self.simulation_loop()
@@ -163,24 +191,12 @@ class SimpleGUI(Frame):
         self.running = False
 
     def toogle_run_pause(self):
-        if self.run is None:
-            self.pause.destroy()
-            self.pause = None
-            self.run = self.create_run_button()
+        if self.controls_box.run is None:
+            self.controls_box.pause.destroy()
+            self.controls_box.pause = None
+            self.controls_box.run = self.controls_box.create_run_button()
         else:
-            self.run.destroy()
-            self.run = None
-            self.pause = self.create_pause_button()
+            self.controls_box.run.destroy()
+            self.controls_box.run = None
+            self.controls_box.pause = self.controls_box.create_pause_button()
 
-    def create_run_button(self):
-        return self.create_button("run", self.run_simulation, "left")
-
-    def create_pause_button(self):
-        return self.create_button("pause", self.pause_simulation, "left")
-
-    def create_button(self, text, callback, align):
-        btn = Button(self)
-        btn["text"] = text
-        btn["command"] = callback
-        btn.pack(side=align)
-        return btn

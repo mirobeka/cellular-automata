@@ -9,6 +9,7 @@ from cellular_automata.visualization.tkinter_visualization import LatticeWidget
 from cellular_automata.visualization.tkinter_visualization import SimpleGUI
 from cellular_automata.creator import create_automaton
 from cellular_automata.creator import get_conf
+from Tkinter import Tk
 
 SUPPORTED_STATES = ["rgb", "color", "grayscale", "chemicals", "internal",
                     "alive", "binary"]
@@ -25,8 +26,9 @@ class Simulation(object):
         config file, then creates instance of lattice with automaton
         constructor, smartly select mapping of state of cell to color space
         and creates PatchedLatticeWidget class.
+
         :param conf_file: file that specifies parameters of CA
-        :return:
+        :return: None
         """
         sim = cls()
         sim.initialize_new_simulation(conf_file)
@@ -39,15 +41,20 @@ class Simulation(object):
         sim.start_simulation()
 
     def start_simulation(self):
-        self.gui = SimpleGUI()
-        self.gui.insert_lattice_widget(self.lattice_widget_instance)
-        self.gui.show()
+        self.tk = Tk()
+        self.gui = SimpleGUI(self.tk)
+        self.gui.insert_lattice_widget(self.lattice_widget_class,
+                                       self.lattice_instance)
+        self.gui.show_me_something()
 
     def initialize_new_simulation(self, conf_file):
         self.conf_file = conf_file
-        self.lattice_widget_class = self.patch_lattice_widget()
+
+        # create CA instance
         self.lattice_instance = create_automaton(conf_file)
-        self.lattice_widget_instance = self.lattice_widget_class(self.lattice_instance)
+
+        # create lattice widget class
+        self.lattice_widget_class = self.patch_lattice_widget()
 
     def initialize_previous_lattice(self, lattice_file):
         # get all the information from this fucking file
@@ -60,8 +67,8 @@ class Simulation(object):
 
     def patch_lattice_widget(self):
         state_to_color, color_to_state = self.smart_state_mapping()
-        LatticeWidget.map_rgb_to_state = state_to_color
-        LatticeWidget.set_cell_state = color_to_state
+        LatticeWidget.map_rgb_to_state = color_to_state
+        LatticeWidget.map_state_to_rgb = state_to_color
         return LatticeWidget
 
     def smart_state_mapping(self):
@@ -101,20 +108,21 @@ class Simulation(object):
         # this is super ugly, find better way to do this
         if length == 1:
             if type(value) is float:
-                def map_rgb_to_state(self, rgb, state):
+                def map_rgb_to_state(cls, rgb, state):
                     setattr(state, state_type, rgb[0]/255.0)
                 return map_rgb_to_state
             else:
-                def map_rgb_to_state(self, rgb, state):
+                def map_rgb_to_state(cls, rgb, state):
                     setattr(state, state_type, rgb[0])
+                return map_rgb_to_state
         else:
             if type(value[0]) is float:
-                def map_rgb_to_state(self, rgb, state):
+                def map_rgb_to_state(cls, rgb, state):
                     setattr(state, state_type, tuple([map(lambda x: x/255.0),
                                                       rgb]))
                 return map_rgb_to_state
             else:
-                def map_rgb_to_state(self, rgb, state):
+                def map_rgb_to_state(cls, rgb, state):
                     setattr(state, state_type, rgb)
                 return map_rgb_to_state
 
@@ -137,12 +145,12 @@ class Simulation(object):
             length = 1
 
         if length == 1:
-            def map_state_to_rgb(self, state):
+            def map_state_to_rgb(cls, state):
                 return "#{val:02X}{val:02X}{val:02X}".format(val=getattr(
                     state, state_type))
             return map_state_to_rgb
         else:
-            def map_state_to_rgb(self, state):
+            def map_state_to_rgb(cls, state):
                 return "#{:02X}{:02X}{:02X}".format(getattr(state, state_type))
             return map_state_to_rgb
 

@@ -63,5 +63,3 @@ class Evolution(object):
             print(e)
             print("weights are : {}".format(self.result))
         print("weight successfully saved to {}".format(file_name))
-
-
