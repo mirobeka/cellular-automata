@@ -4,7 +4,8 @@ from cellular_automata.cells.regular import VariableSquareCell
 from cellular_automata.lattices.base import Lattice
 
 from re import match
-from cPickle import Pickler, Unpickler
+from utils.nonrecursivepickler import NonrecursivePickler
+from pickle import Unpickler
 from math import sqrt
 
 
@@ -81,7 +82,7 @@ class SquareLattice(Lattice):
     def save_configuration(self, file_name):
         """ export all lattice properties and cells into file for later use"""
         with open(file_name, 'w') as f:
-            pkl = Pickler(f)
+            pkl = NonrecursivePickler(f)
             pkl.dump(self)
 
     def initialize_lattice_cells(self):

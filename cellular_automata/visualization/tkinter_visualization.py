@@ -136,8 +136,7 @@ class SimpleGUI(Frame):
         # destroy all previous lattices
         for child in self.lattice_box.winfo_children():
             child.destroy()
-        self.lattice_widget = lattice_widget_class.create_initialized(
-            self.lattice_box, lattice)
+        self.lattice_widget = lattice_widget_class.create_initialized(self.lattice_box, self.lattice)
         self.lattice_widget.pack()
 
     def load(self):
@@ -151,12 +150,10 @@ class SimpleGUI(Frame):
             print("No more loading.")
             return
 
-        # create new widget
-        self.lattice_widget.destroy()
-
         # load lattice configuration
         self.lattice = self.lattice.load_configuration(file_name)
-        self.insert_lattice_widget(self.lattice.__class__, self.lattice)
+        print(self.lattice_widget.__class__)
+        self.insert_lattice_widget(self.lattice_widget.__class__, self.lattice)
         self.pack()
 
     def save(self):
