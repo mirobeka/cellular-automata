@@ -7,9 +7,6 @@ class Objective(object):
     objective that should be optimized.
     """
 
-    def __init__(self):
-        pass
-
     def error_function(self, pattern, lattice):
         """ error funtion compare given latice with desired pattern and returns
         scalar value describing difference between those 2 lattices
@@ -96,20 +93,12 @@ class TwoBandObjective(Objective):
 
 
 class CircleObjective(Objective):
+    """Objective that is trying to learn how to model circular shape
+    """
     pass    # TODO
 
 
-class StopCriterion(object):
-    '''This is base class of cellular automata stop criterion.
-    class should be extended to check more that just number of steps as stopping
-    criterion.'''
-
-    def should_run(self, lattice):
-        '''Return True/False if Cellular Automata should run/stop'''
-        raise NotImplementedError("stop method not implemented buddy. Sorry.")
-
-
-class EnergyStopCriterion(StopCriterion):
+class EnergyStopCriterion(object):
     def __init__(self):
         self.energy_threshold = 10 ** -5
         self.max_time = 1024
