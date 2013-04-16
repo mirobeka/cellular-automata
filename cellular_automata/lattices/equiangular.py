@@ -69,16 +69,6 @@ class SquareLattice(Lattice):
         lattice.cells = lattice.initialize_lattice_cells()
         return lattice
 
-    @classmethod
-    def load_configuration(cls, file_name):
-        """ Unpickle lattice configuration from file"""
-        with open(file_name, 'r') as f:
-            upkl = Unpickler(f)
-            lattice = upkl.load()
-        if lattice is None:
-            print("failed to unpickle or something else happened")
-        return lattice
-
     def save_configuration(self, file_name):
         """ export all lattice properties and cells into file for later use"""
         with open(file_name, 'w') as f:

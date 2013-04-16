@@ -1,4 +1,5 @@
 import ConfigParser
+from cellular_automata.lattices.base import Lattice
 
 # dictionary to get path of different cellular automata modules
 ca_dict = {
@@ -35,4 +36,5 @@ def create_automaton(conf_file):
 
 
 def load_automaton(lattice_file):
-    pass
+    lattice = Lattice.load_configuration(lattice_file)
+    return lattice

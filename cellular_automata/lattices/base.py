@@ -1,3 +1,6 @@
+from cPickle import Unpickler
+
+
 class Lattice:
     def __init__(self):
         self.width = self.height = 0
@@ -64,3 +67,14 @@ class Lattice:
     def create_empty(cls):
         lattice = cls()
         return lattice
+
+    @classmethod
+    def load_configuration(cls, file_name):
+        """ Unpickle lattice configuration from file"""
+        with open(file_name, 'r') as f:
+            upkl = Unpickler(f)
+            lattice = upkl.load()
+        if lattice is None:
+            print("failed to unpickle or something else happened")
+        return lattice
+
