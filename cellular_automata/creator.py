@@ -1,37 +1,15 @@
-import ConfigParser
 from cellular_automata.lattices.base import Lattice
-
-# dictionary to get path of different cellular automata modules
-ca_dict = {
-    "lattice": "cellular_automata.lattices.equiangular",
-    "state": "cellular_automata.states.base",
-    "neighbourhood": "cellular_automata.lattices.neighbourhoods",
-    "rule": "cellular_automata.rules.neural_rule"
-}
-
-
-def get_conf(file_name):
-    # read configuration file
-    conf = ConfigParser.ConfigParser()
-    conf.read(file_name)
-
-    # import and get all necessary components
-    return dict([(path, load_module(path, cls)) for (path, cls)
-                 in conf.items("simulation")])
-
-
-def load_module(path, class_name):
-    if path not in ca_dict:
-        return class_name
-    absolute_path = ca_dict[path]
-    module = __import__(absolute_path, fromlist=[class_name])
-    return getattr(module, class_name)
+from utils.loader import get_conf
 
 
 def create_automaton(conf_file):
+    """ Loads configuration file and creates lattice based on parameters
+    :param conf_file: config file describing cellular automata
+    :return: lattice instance
+    """
     conf = get_conf(conf_file)
-    lattice_class = conf["lattice"]
-    lattice = lattice_class.create_initialized(conf)
+    lattice_class = conf["simulation"]["lattice"]
+    lattice = lattice_class.create_initialized(conf["simulation"])
     return lattice
 
 

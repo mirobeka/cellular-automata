@@ -1,6 +1,7 @@
 import sys
 import os
 from ConfigParser import ConfigParser
+from utils.loader import get_conf
 
 ca_directory = os.getcwd()
 if ca_directory not in sys.path:
@@ -23,36 +24,30 @@ class Evolution(object):
         try:
             evo.evolve()
         except Exception as e:
-            print("Exception while evolving weights")
-            print(e)
-
-        evo.save_results()
+            print("Exception while evolving weights", e)
+        evo.save_results("data/results")
 
     def initialize_new_evolution(self, conf_file):
-        self.conf = self.parse_configuration(conf_file)
-        objective_class = self.get_objective_class()
-        lattice_file = self.get_lattice_file()
-        self.objective_instance = objective_class(lattice_file)
+        self.conf = get_conf(conf_file)
 
-    def get_objective_class(self):
-        return self.conf["objective"]
+        objective_class = self.conf["evolution"]["objective"]
+        lattice_file = self.conf["evolution"]["desired_pattern"]
+        self.objective = objective_class.create_new_objective(lattice_file)
 
-    def get_lattice_file(self):
-        return self.conf["lattice_file"]
+        strategy_class = self.conf["evolution"]["strategy"]
+        self.strategy = strategy_class()
 
     def evolve(self):
-        # which strategy to use?
-        # fire up strategy with some sensible defaults
-        self.result = [1, 2, 3]  # result should be list of weights in right
-        # order
-        return self.result
+        # there should be some kind of clever way of dealing with different
+        # optimization methods, but for new, we use only CMAES
+        initial_values = self.get_initial_values()
+        self.result = self.strategy.fmin(self.objective.objective_function, initial_values, verb_time=100)
 
-    def parse_configuration(self, conf_file):
-        parser = ConfigParser()
-        parser.read(conf_file)
-        conf = {"a": 1}
-        # make some more transformations
-        return conf
+    def get_initial_values(self):
+        # how many weights?
+        rule_class = self.conf["simulation"]["rule"]
+        rule = rule_class()
+        return rule.total_number_of_weights()
 
     def save_results(self, file_name="data/result"):
         try:

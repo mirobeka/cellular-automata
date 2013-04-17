@@ -2052,10 +2052,7 @@ class CMAEvolutionStrategy(OOOptimizer):
                             Izero[i][i] = 0
                     if 1 < 3 and sum([(9 + i + 1) * x[i] for i in
                                       xrange(self.N)]) > 50e3:
-                        self.constraints_paths[0] = 0.9 *
-                                                    self.constraints_paths[
-                                                        0] + 0.1 * (
-                        x - self.mean) / self.sigma
+                        self.constraints_paths[0] = 0.9 * self.constraints_paths[ 0] + 0.1 * ( x - self.mean) / self.sigma
                         self.C -= (self.opts['vv'] / self.N) * np.outer(
                             self.constraints_paths[0],
                             self.constraints_paths[0])
@@ -5664,8 +5661,7 @@ def fmin(func, x0, sigma0=None, args=()
                         # print fit[0]
                 es.tell(X, fit)  # prepare for next iteration
                 if noise_handling:
-                    es.sigma *= noisehandler(X, fit, func, es.ask, args) **
-                                opts['noise_change_sigma']
+                    es.sigma *= noisehandler(X, fit, func, es.ask, args) ** opts['noise_change_sigma']
                     es.countevals += noisehandler.evaluations_just_done  # TODO: this is a hack, not important though
 
                 es.disp()

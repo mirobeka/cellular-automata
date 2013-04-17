@@ -156,5 +156,5 @@ class Simulation(object):
 
     def get_state_instance(self):
         conf = get_conf(self.conf_file)
-        state_class = conf["state"]
+        state_class = conf["simulation"]["state"]
         return state_class.create_state()
