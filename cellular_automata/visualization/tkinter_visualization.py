@@ -32,6 +32,7 @@ class LatticeWidget(Canvas):
 
     def create_cell_item(self, cell):
         rgb = self.map_state_to_rgb(cell.state)
+
         cell.canvas_item_id = self.create_rectangle(
             cell.bounding_box,
             fill=rgb)
@@ -103,7 +104,7 @@ class LatticeWidget(Canvas):
     def remove_unused_items(self):
         items = [item for item in self.find_all()]
         for cell in self.cells:
-            if cell.canvas_item_id not in items:
+            if cell.canvas_item_id in items:
                 items.remove(cell.canvas_item_id)
 
         for item in items:

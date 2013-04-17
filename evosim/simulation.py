@@ -18,8 +18,7 @@ SUPPORTED_STATES = ["rgb", "color", "grayscale", "chemicals", "internal",
 
 class Simulation(object):
     def __init__(self):
-        # something here?
-        pass
+        self.sample_state = None
 
     @classmethod
     def new_simulation(cls, conf_file=None):
@@ -77,16 +76,14 @@ class Simulation(object):
         """
 
         if self.sample_state is None:
-          sample_state = self.get_state_instance()
-        else:
-          sample_state = self.sample_state
+          self.sample_state = self.get_state_instance()
 
         for state in SUPPORTED_STATES:
-            if hasattr(sample_state, state):
+            if hasattr(self.sample_state, state):
                 state_to_color = self.create_color_mapping(getattr(
-                    sample_state, state), state)
+                    self.sample_state, state), state)
                 color_to_state = self.create_state_mapping(getattr(
-                    sample_state, state), state)
+                    self.sample_state, state), state)
                 break
         return state_to_color, color_to_state
 
