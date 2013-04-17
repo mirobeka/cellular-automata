@@ -7,6 +7,9 @@ class LatticeWidget(Canvas):
     def __init__(self, master):
         Canvas.__init__(self, master)
         self.lattice = None
+        self.bind("<B1-Motion>", self.selection_move)
+        self.bind("<ButtonPress-1>", self.selection_begin)
+        self.bind("<ButtonRelease-1>", self.selection_end)
 
     @classmethod
     def create_initialized(cls, master, lattice):
@@ -32,10 +35,38 @@ class LatticeWidget(Canvas):
         cell.canvas_item_id = self.create_rectangle(
             cell.bounding_box,
             fill=rgb)
-        self.tag_bind(cell.canvas_item_id, '<ButtonPress-1>',
-                      self.set_cell_state)
         self.lattice.canvas_item_ids[cell.canvas_item_id] = cell
 
+    def selection_begin(self, event):
+        self.selected_cells = []
+        self.selection_start = (event.x, event.y)
+
+    def selection_move(self, event):
+        self.select_cells(self.selection_start[0], self.selection_start[1], event.x, event.y) 
+
+    def selection_end(self, event):
+        self.select_cells(self.selection_start[0], self.selection_start[1], event.x, event.y) 
+        self.set_color_to_selected_cells()
+        self.selection_start = None
+
+    def set_color_to_selected_cells(self):
+        rgb, color_hex = tkColorChooser.askcolor("white",
+                                                 title="choose cells state")
+        if rgb is None:
+            return
+        
+        for cell in self.selected_cells:
+            self.itemconfig(cell.canvas_item_id, fill=color_hex)
+            self.map_rgb_to_state(rgb, cell.state)
+
+    def select_cells(self, x1, y1, x2, y2):
+        cells_ids = self.find_overlapping(x1, y1, x2, y2)
+        for cell in self.cells:
+            if cell.canvas_item_id in cells_ids:
+                self.itemconfig(cell.canvas_item_id, outline="red")
+                self.selected_cells.append(cell)
+            else:
+                self.itemconfig(cell.canvas_item_id, outline="black")
 
     def redraw_lattice(self):
         map(lambda cell: self.redraw_cell(cell), self.cells)
@@ -46,9 +77,6 @@ class LatticeWidget(Canvas):
         if not hasattr(cell, "canvas_item_id"):   # must create new canvas item after merge or division
             self.create_cell_item(cell)
         
-        border_width = 0
-        if cell.selected:
-          border_width = 1
         rgb = self.map_state_to_rgb(cell.state)
         self.coords(cell.canvas_item_id, cell.bounding_box)
         self.itemconfig(cell.canvas_item_id, fill=rgb)
@@ -75,7 +103,7 @@ class LatticeWidget(Canvas):
     def remove_unused_items(self):
         items = [item for item in self.find_all()]
         for cell in self.cells:
-            if cell.canvas_item_id in items:
+            if cell.canvas_item_id not in items:
                 items.remove(cell.canvas_item_id)
 
         for item in items:
