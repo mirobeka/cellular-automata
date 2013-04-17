@@ -124,8 +124,8 @@ class Cell(object):
 
 
 class CellCL(Cell):
-    '''This is base class for different cellular automata cells, but with
-  open cl in mind.'''
+    """This is base class for different cellular automata cells, but with
+  open cl in mind."""
 
     def __init__(self, data, index):
         self.data = data
@@ -168,4 +168,3 @@ class CellCL(Cell):
         offset = 8
         for i in range(len(state)):
             self.data[offset + i] = state[i]
-

@@ -32,7 +32,6 @@ def main():
     elif options.lattice_file is None:
         # nothing to do, exiting
         print("Nothing to do.")
-        exit(0)
 
 if __name__ == "__main__":
     main()

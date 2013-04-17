@@ -5,7 +5,6 @@ from cellular_automata.lattices.base import Lattice
 
 from re import match
 from utils.nonrecursivepickler import NonrecursivePickler
-from pickle import Unpickler
 from math import sqrt
 
 

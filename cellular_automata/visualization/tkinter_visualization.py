@@ -36,15 +36,19 @@ class LatticeWidget(Canvas):
                       self.set_cell_state)
         self.lattice.canvas_item_ids[cell.canvas_item_id] = cell
 
+
     def redraw_lattice(self):
         map(lambda cell: self.redraw_cell(cell), self.cells)
         self.remove_unused_items()
 
     def redraw_cell(self, cell):
         # redraw position + color
-        if not hasattr(cell,
-                       "canvas_item_id"):   # must create new canvas item after merge or division
+        if not hasattr(cell, "canvas_item_id"):   # must create new canvas item after merge or division
             self.create_cell_item(cell)
+        
+        border_width = 0
+        if cell.selected:
+          border_width = 1
         rgb = self.map_state_to_rgb(cell.state)
         self.coords(cell.canvas_item_id, cell.bounding_box)
         self.itemconfig(cell.canvas_item_id, fill=rgb)

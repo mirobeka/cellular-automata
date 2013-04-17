@@ -1,6 +1,5 @@
 from random import random
 from random import randint
-from numpy import array
 from numpy import repeat
 from numpy.random import rand
 from math import sqrt

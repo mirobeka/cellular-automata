@@ -8,13 +8,14 @@ class TwoBandObjective(Objective):
         self.initialize_experiment_parameters(lattice_file)
 
     @classmethod
-    def create_new_objective(cls, lattice_file):
-        objective = cls(lattice_file)
+    def create_new_objective(cls, conf_file, desired_pattern):
+        objective = cls(desired_pattern)
+        objective.conf_file = conf_file
         return objective
 
-    def initialize_experiment_parameters(self, lattice_file):
+    def initialize_experiment_parameters(self, desired_pattern):
         # load desired automaton from serialized file
-        self.desired_lattice = load_automaton(lattice_file)
+        self.desired_lattice = load_automaton(desired_pattern)
 
         # load all important properties
         self.dimensions = (self.desired_lattice.width,
@@ -79,6 +80,5 @@ class EnergyStopCriterion(object):
     def should_run(self, lattice):
         if lattice.time >= self.max_time:
             lattice.chaotic = True
-        print("energy variance: {}".format(lattice.energy_variance(16)))
         return lattice.time < self.max_time and lattice.energy_variance(
             16) > self.energy_threshold

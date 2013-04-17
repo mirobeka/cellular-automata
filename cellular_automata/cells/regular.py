@@ -55,7 +55,7 @@ class VariableSquareCell(SquareCell):
             return neigh._get_cells_to_merge(cells + [self], new_direction)
 
     def merge_constraints(self, direction):
-        ''' cell can merge with other when they are same size and cell are aligned.'''
+        """ cell can merge with other when they are same size and cell are aligned."""
         neigh = self.neighs[direction]
         if len(neigh) == 1:
             neigh_item = iter(neigh).next()

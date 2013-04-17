@@ -5,6 +5,7 @@ ca_directory = os.getcwd()
 if ca_directory not in sys.path:
     sys.path.insert(0, ca_directory)
 
+from cellular_automata.lattices.base import Lattice
 from cellular_automata.visualization.tkinter_visualization import LatticeWidget
 from cellular_automata.visualization.tkinter_visualization import SimpleGUI
 from cellular_automata.creator import create_automaton
@@ -41,11 +42,12 @@ class Simulation(object):
         sim.start_simulation()
 
     def start_simulation(self):
-        self.tk = Tk()
-        self.gui = SimpleGUI(self.tk)
+        tk = Tk()
+        self.gui = SimpleGUI(tk)
         self.gui.insert_lattice_widget(self.lattice_widget_class,
                                        self.lattice_instance)
         self.gui.show_me_something()
+        self.gui.mainloop()
 
     def initialize_new_simulation(self, conf_file):
         self.conf_file = conf_file
@@ -57,13 +59,9 @@ class Simulation(object):
         self.lattice_widget_class = self.patch_lattice_widget()
 
     def initialize_previous_lattice(self, lattice_file):
-        # get all the information from this fucking file
-        # create lattice widget
-        # create GUi
-        # push lattice into gui
-        # fire up GUI
-        # have a beer
-        pass
+        self.lattice_instance = Lattice.load_configuration(lattice_file)
+        self.sample_state = self.lattice_instance.cell_state_class.create_state()
+        self.lattice_widget_class = self.patch_lattice_widget()
 
     def patch_lattice_widget(self):
         state_to_color, color_to_state = self.smart_state_mapping()
@@ -77,7 +75,11 @@ class Simulation(object):
          type of state variable and it's name.
         :return: tuple of methods state -> rgb, rgb -> state
         """
-        sample_state = self.get_state_instance()
+
+        if self.sample_state is None:
+          sample_state = self.get_state_instance()
+        else:
+          sample_state = self.sample_state
 
         for state in SUPPORTED_STATES:
             if hasattr(sample_state, state):

@@ -1,7 +1,7 @@
 import sys
 import os
-from ConfigParser import ConfigParser
 from utils.loader import get_conf
+import numpy as np
 
 ca_directory = os.getcwd()
 if ca_directory not in sys.path:
@@ -21,33 +21,32 @@ class Evolution(object):
         """
         evo = cls()
         evo.initialize_new_evolution(conf_file)
-        try:
-            evo.evolve()
-        except Exception as e:
-            print("Exception while evolving weights", e)
+        evo.evolve()
         evo.save_results("data/results")
 
     def initialize_new_evolution(self, conf_file):
         self.conf = get_conf(conf_file)
 
         objective_class = self.conf["evolution"]["objective"]
-        lattice_file = self.conf["evolution"]["desired_pattern"]
-        self.objective = objective_class.create_new_objective(lattice_file)
+        desired_pattern = self.conf["evolution"]["desired_pattern"]
+        self.objective = objective_class.create_new_objective(
+            conf_file, desired_pattern)
 
-        strategy_class = self.conf["evolution"]["strategy"]
-        self.strategy = strategy_class()
+        self.strategy = self.conf["evolution"]["strategy"]
 
     def evolve(self):
         # there should be some kind of clever way of dealing with different
         # optimization methods, but for new, we use only CMAES
         initial_values = self.get_initial_values()
-        self.result = self.strategy.fmin(self.objective.objective_function, initial_values, verb_time=100)
+        self.result = self.strategy.fmin(self.objective.objective_function, initial_values, 1, verb_time=100)
 
     def get_initial_values(self):
         # how many weights?
         rule_class = self.conf["simulation"]["rule"]
         rule = rule_class()
-        return rule.total_number_of_weights()
+        values = [0]*rule.total_number_of_weights()
+        print(values)
+        return np.array(values)
 
     def save_results(self, file_name="data/result"):
         try:
