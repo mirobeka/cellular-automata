@@ -38,7 +38,7 @@ class Evolution(object):
         # there should be some kind of clever way of dealing with different
         # optimization methods, but for new, we use only CMAES
         initial_values = self.get_initial_values()
-        self.result = self.strategy.fmin(self.objective.objective_function, initial_values, 1, verb_time=100)
+        self.result = self.strategy.fmin(self.objective.objective_function, initial_values, 1, verb_time=10)
 
     def get_initial_values(self):
         # how many weights?

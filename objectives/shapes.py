@@ -74,7 +74,7 @@ class CircleObjective(Objective):
 
 class EnergyStopCriterion(object):
     def __init__(self):
-        self.energy_threshold = 10 ** -5
+        self.energy_threshold = 10 ** -3
         self.max_time = 1024
 
     def should_run(self, lattice):
