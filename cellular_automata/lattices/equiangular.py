@@ -27,7 +27,8 @@ class SquareLattice(Lattice):
         return sqrt(sum(map(lambda cell: cell.energy, self.cells.values())))
 
     def save_energy(self):
-        self.energy_history.append(self.energy())
+        energy = self.energy()
+        self.energy_history.append(energy)
 
     def average_energy_window(self, window_size):
         return sum(self.energy_history[-window_size:]) / float(window_size)
@@ -60,6 +61,10 @@ class SquareLattice(Lattice):
         border = lattice.read_border(conf)
         lattice.rule = rule_class()
         lattice.rule.set_border(border)
+
+        if "weights" in conf.keys():
+            weights = eval(conf["weights"])
+            lattice.rule.set_weights(weights)
 
         # cells are just carrying state, right? What kind of state? Here it is!
         lattice.cell_state_class = conf["state"]

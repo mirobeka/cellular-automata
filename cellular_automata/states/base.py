@@ -145,5 +145,10 @@ class ChemicalInternalGrayscaleState(State):
         return state
 
     def euclidean_distance(self):
-        return sqrt(self.chemicals ** 2 + self.internal ** 2)
+        distance = 0
+        if type(self.chemicals) is list or type(self.chemicals) is np.ndarray:
+            distance = sqrt(sum(map(lambda x: x**2, self.internal)))
+        else:
+            distance = self.internal
+        return distance
 

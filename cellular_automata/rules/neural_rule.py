@@ -12,10 +12,11 @@ class TestRule(Rule):
         #new_state.chemicals = np.array(map(lambda c: c + .1, cell.state.chemicals))
 
         # decrease state energy value
-        new_state.chemicals = np.array(map(lambda c: c - .1, cell.state.chemicals))
+        # new_state.chemicals = np.array(map(lambda c: c - .1, cell.state.chemicals))
 
         # stable state energy value
-        # new_state.chemicals = cell.state.chemicals
+        new_state.chemicals = cell.state.chemicals
+        new_state.internal = cell.state.internal
 
         return new_state
 
@@ -59,6 +60,8 @@ class ANNColorRule(Rule):
 
     So actually we are using 3 types of weights for our network
     """
+        if type(new_weights) is list:
+            new_weights = np.array(new_weights)
         first_slice = (self.input_layer_length + 1) * self.hidden_layer_length
         self.theta1 = np.array(new_weights[:first_slice])
         self.theta1.shape = (

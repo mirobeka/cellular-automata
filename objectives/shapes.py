@@ -67,14 +67,13 @@ class TwoBandObjective(Objective):
 
 
 class CircleObjective(Objective):
-    """Objective that is trying to learn how to model circular shape
-    """
+    """Objective that is trying to learn how to model circular shape"""
     pass    # TODO
 
 
 class EnergyStopCriterion(object):
     def __init__(self):
-        self.energy_threshold = 10 ** -3
+        self.energy_threshold = 0.01
         self.max_time = 1024
 
     def should_run(self, lattice):
