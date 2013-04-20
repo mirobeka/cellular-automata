@@ -78,6 +78,33 @@ class CircleObjective(Objective):
 
 
 class EnergyStopCriterion(object):
+    """ Energy stop criterion is really important part of evolution. It drives
+    evolution to a certain very different solutions. As an example, we could 
+    take stopping criterion based on variance of lattice in some time window.
+    In our case, we used window of 16 energy variances from mean energy and sum
+    those up. If variance is low, we consider this as stable state and forther
+    iterations are stopped.
+
+    Now in this kind of stopping criterion, is high posibility, that semi stable
+    configuration will emerge. Because we measure global variance of all cells,
+    regular cyclic changes seems as stable to variance evaluation, but in reallity
+    solution is semi stable. That means, there is some pattern that is repeating
+    over and over again and doesn't do exactly what we wanted to evolve.
+
+    This is really good example, how such a simple part as when we consider lattice
+    as stable, could drive evolution to periodic solutions instead of perfectly
+    stable one.
+
+    The regularity of repeating pattern also depends on main goal, but also from
+    time window that we measure variance in. In shorter time windows, solution
+    that emerges are more likely similiar to semafor behaviour and blinking.
+    However, stretching time window to at least 16 time steps, enables evolution
+    to create more smooth transition resembling waves traveling in one direction.
+
+    Very interesting way, is also stretch time window even more, and check variance
+    over the whole time span of iteration of CA. This particullar setting returns
+
+    """
     def __init__(self):
         self.energy_threshold = 0.01
         self.max_time = 1024
@@ -85,4 +112,4 @@ class EnergyStopCriterion(object):
     def should_run(self, lattice):
         if lattice.time >= self.max_time:
             lattice.chaotic = True
-        return lattice.time < self.max_time and lattice.energy_variance(2) > self.energy_threshold
+        return lattice.time < self.max_time and lattice.energy_variance(lattice.time) > self.energy_threshold
