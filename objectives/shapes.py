@@ -61,14 +61,10 @@ class TwoBandObjective(Objective):
         lattice.rule.set_weights(weights)
         lattice.run(self.stop_criterion)
         if lattice.chaotic:   # if lattice doesn't have stable configuration
-            print("Lattice is chaotic. Return fitness 99999.0")
-            print("Weights: {}".format(weights))
+            print("unstable configuration of lattice")
             return 99999.0
         else:
-            print("Lattice has stable configuration.")
             error = self.error_function(self.desired_lattice, lattice)
-            print("error: {}".format(error))
-            print("weights: {}".format(weights))
             return error
 
 
@@ -112,4 +108,8 @@ class EnergyStopCriterion(object):
     def should_run(self, lattice):
         if lattice.time >= self.max_time:
             lattice.chaotic = True
-        return lattice.time < self.max_time and lattice.energy_variance(lattice.time) > self.energy_threshold
+            return False
+        elif lattice.energy_variance(lattice.time) < self.energy_threshold:
+            return False
+        else:
+            return True
