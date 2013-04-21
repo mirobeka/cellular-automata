@@ -34,7 +34,7 @@ class SquareLattice(Lattice):
         return sum(self.energy_history[-window_size:]) / float(window_size)
 
     def energy_variance(self, window_size):
-        if len(self.energy_history) < window_size:
+        if len(self.energy_history) < window_size or window_size == 0:
             return 9999
 
         energies = self.energy_history[-window_size:]
