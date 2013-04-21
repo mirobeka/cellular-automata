@@ -35,7 +35,7 @@ class SquareLattice(Lattice):
 
     def energy_variance(self, window_size):
         if len(self.energy_history) < window_size or window_size == 0:
-            return 9999
+            return len(self.cells.values())*255
 
         energies = self.energy_history[-window_size:]
         average_energy = self.average_energy_window(window_size)
@@ -43,6 +43,15 @@ class SquareLattice(Lattice):
         average_difference = map(lambda e: (e - average_energy) ** 2, energies)
         energy_variance = sqrt(sum(average_difference) / float(window_size))
         return energy_variance
+
+    def energy_difference(self):
+        """This method returns sum of differences of cells from their previous
+        state.
+        """
+        if len(self.energy_history) <= 0:
+            return len(self.cells.values())*255
+        else:
+            return self.energy_history[-1]
 
     @classmethod
     def create_initialized(cls, conf):

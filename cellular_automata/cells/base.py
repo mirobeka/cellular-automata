@@ -9,6 +9,7 @@ class Cell(object):
         self.age = 0
         self._position = (0, 0)
         self._radius = 0
+        self.current_energy = 0
         self.initialize_state()
 
     @classmethod
@@ -116,7 +117,9 @@ class Cell(object):
 
     def apply_next_state(self):
         self.state = self.next_state
-        self.energy = self.state.euclidean_distance()
+        self.previous_energy = self.current_energy
+        self.current_energy = self.state.euclidean_distance()
+        self.energy = abs(self.previous_energy - self.current_energy)
         self.age += 1
 
     def get_neighbors(self):
