@@ -48,7 +48,6 @@ class Evolution(object):
         self.objective.best_weights = initial_values
         self.result = self.strategy.learn(self.objective.objective_function, initial_values)
 
-
     def get_initial_values(self):
         if self.conf["evolution"]["initial_weights"] is None:
             # how many weights?

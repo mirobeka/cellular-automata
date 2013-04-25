@@ -26,6 +26,7 @@ class TwoBandObjective(Objective):
         # later we could be more flexible about choosing stop criterion
         self.stop_criterion = EnergyStopCriterion()
         self.max_difference = self.get_max_difference(self.desired_lattice)
+        self.min_error = 1.0
 
     @staticmethod
     def get_max_difference(desired_lattice):
