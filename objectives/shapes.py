@@ -61,18 +61,14 @@ class TwoBandObjective(Objective):
         lattice.rule.set_weights(weights)
         lattice.run(self.stop_criterion)
         print("lattice iterations: {}".format(lattice.time))
+        print("lattice weights: {}".format(weights))
         if lattice.chaotic:   # if lattice doesn't have stable configuration
-            print("unstable configuration of lattice")
-            return 99999.0
+            print("error: 1.0")
+            return 1.0
         else:
             error = self.error_function(self.desired_lattice, lattice)
             print("error: {}".format(error))
             return error
-
-
-class CircleObjective(Objective):
-    """Objective that is trying to learn how to model circular shape"""
-    pass    # TODO
 
 
 class EnergyStopCriterion(object):

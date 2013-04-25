@@ -60,6 +60,7 @@ class ANNColorRule(Rule):
 
     So actually we are using 3 types of weights for our network
     """
+        self.weights = new_weights
         if type(new_weights) is list:
             new_weights = np.array(new_weights)
         first_slice = (self.input_layer_length + 1) * self.hidden_layer_length
@@ -75,6 +76,9 @@ class ANNColorRule(Rule):
         last_slice = self.output_layer_length + 1
         self.theta3 = new_weights[-last_slice:]
         self.theta3.shape = (1, self.output_layer_length + 1)
+
+    def get_weights(self):
+        return self.weights
 
     def get_next_state(self, cell, neighbours):
         # get input vector from neighbours

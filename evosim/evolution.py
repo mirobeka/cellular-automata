@@ -41,11 +41,14 @@ class Evolution(object):
         self.result = self.strategy.learn(self.objective.objective_function, initial_values)
 
     def get_initial_values(self):
-        # how many weights?
-        rule_class = self.conf["simulation"]["rule"]
-        rule = rule_class()
-        values = [0]*rule.total_number_of_weights()
-        print(values)
+        if self.conf["evolution"]["initial_weights"] is None:
+            # how many weights?
+            rule_class = self.conf["simulation"]["rule"]
+            rule = rule_class()
+            values = [0]*rule.total_number_of_weights()
+        else:
+            values = eval(self.conf["evolution"]["initial_weights"])
+
         return np.array(values)
 
     def save_results(self, file_name="data/result"):
