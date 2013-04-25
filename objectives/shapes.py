@@ -67,6 +67,8 @@ class TwoBandObjective(Objective):
             return 1.0
         else:
             error = self.error_function(self.desired_lattice, lattice)
+            if error <= self.min_error:
+                self.best_weights = weights
             print("error: {}".format(error))
             return error
 

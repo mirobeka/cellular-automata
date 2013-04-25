@@ -1,5 +1,6 @@
 import sys
 import os
+import time
 from utils.loader import get_conf
 import numpy as np
 
@@ -21,8 +22,14 @@ class Evolution(object):
         """
         evo = cls()
         evo.initialize_new_evolution(conf_file)
-        evo.evolve()
-        evo.save_results("data/results")
+        try:
+            evo.evolve()
+        except:
+            # take the best weights and save them
+            evo.result = evo.objective.best_weights
+            evo.save_results("data/results_{}".format(time.ctime().replace(" ","_")))
+        else:
+            evo.save_results("data/results_{}".format(time.ctime().replace(" ","_")))
 
     def initialize_new_evolution(self, conf_file):
         self.conf = get_conf(conf_file)
@@ -38,7 +45,9 @@ class Evolution(object):
         # there should be some kind of clever way of dealing with different
         # optimization methods, but for new, we use only CMAES
         initial_values = self.get_initial_values()
+        self.objective.best_weights = initial_values
         self.result = self.strategy.learn(self.objective.objective_function, initial_values)
+
 
     def get_initial_values(self):
         if self.conf["evolution"]["initial_weights"] is None:
