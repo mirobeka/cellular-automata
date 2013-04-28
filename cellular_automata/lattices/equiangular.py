@@ -2,6 +2,7 @@ from __future__ import print_function
 from cellular_automata.cells.regular import SquareCell
 from cellular_automata.cells.regular import VariableSquareCell
 from cellular_automata.lattices.base import Lattice
+from multiprocessing.pool import ThreadPool
 
 from re import match
 from utils.nonrecursivepickler import NonrecursivePickler
@@ -22,6 +23,8 @@ class SquareLattice(Lattice):
         self.resolution = 0
         self.check_pre_post_methods()
         self.energy_history = []
+
+        self.pool = ThreadPool()
 
     def energy(self):
         return sqrt(sum(map(lambda cell: cell.energy, self.cells.values())))
@@ -140,15 +143,17 @@ class SquareLattice(Lattice):
           self.check_pre_post_methods()
 
         '''
+
         # execute all pre methods
         map(lambda method: getattr(self, method)(), self.pre_methods)
 
         # change state of cells to next state
-        map(lambda cell: cell.compute_next_state(), self.cells.values())
-        map(lambda cell: cell.apply_next_state(), self.cells.values())
+        self.pool.map(lambda cell: cell.compute_next_state(), self.cells.values())
+        self.pool.map(lambda cell: cell.apply_next_state(), self.cells.values())
 
         # execute all pre methods
         map(lambda method: getattr(self, method)(), self.post_methods)
+
 
         self.time += 1
 
