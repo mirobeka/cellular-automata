@@ -1,4 +1,5 @@
 from cellular_automata.rules.base import Rule
+from pybrain.tools.shortcuts import buildNetwork
 import numpy as np
 
 
@@ -23,6 +24,48 @@ class TestRule(Rule):
     def set_border(self, border=None):
         self.border = border
 
+
+class FullyInformed(Rule):
+    """This rule takes as input for neural network it's position and based
+    on actual position of a cell, it returns the right color. This is fully informed
+    method that is not scalable for any other solution than just this one (that
+    means this particular pattern).
+    """
+    def set_weights(self, new_weights):
+        self.theta1 = np.array(new_weights[0:12])
+        self.theta1.shape = (4,3)
+        self.theta2 = np.array(new_weights[13:28])
+        self.theta2.shape = (3,5)
+        self.theta3 = np.array(new_weights[29:33])
+        self.theta3.shape = (1,4)
+
+    def total_number_of_weights(self):
+        return 33
+
+    def get_next_state(self, cell, neighs):
+        input_vector = [cell.x, cell.y]
+        
+        a1 = np.insert(input_vector, 0, 1)
+        hidden_layer1 = np.tanh(np.dot(self.theta1, a1))
+
+        a2 = np.insert(hidden_layer1, 0, 1)
+        hidden_layer2 = np.tanh(np.dot(self.theta2, a2))
+
+        a3 = np.insert(hidden_layer2, 0, 1)
+        new_color = np.tanh(np.dot(self.theta3, a3))
+
+        # map new color to interval <0, 355>
+        grayscale = int((new_color[0]/2.0 + 0.5)*255)
+
+        new_state = cell.state.create_state()
+        new_state.chemicals = cell.state.chemicals
+        new_state.internal = cell.state.internal
+        new_state.grayscale = grayscale
+
+        return new_state
+
+    def set_border(self, border=None):
+        self.border = border
 
 class ANNColorRule(Rule):
     """This rule is implementing own neural network that takes chemicals of
