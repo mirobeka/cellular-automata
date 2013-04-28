@@ -25,6 +25,7 @@ class Evolution(object):
         try:
             evo.evolve()
         except:
+            print("Some fucking error happened")
             # take the best weights and save them
             evo.result = evo.objective.best_weights
             evo.save_results("data/results_{}".format(time.ctime().replace(" ","_")))
@@ -49,20 +50,14 @@ class Evolution(object):
         self.result = self.strategy.learn(self.objective.objective_function, initial_values)
 
     def get_initial_values(self):
-        if self.conf["evolution"]["initial_weights"] is None:
-            # how many weights?
-            rule_class = self.conf["simulation"]["rule"]
-            rule = rule_class()
-            values = [0]*rule.total_number_of_weights()
-        else:
-            values = eval(self.conf["evolution"]["initial_weights"])
-
+        values = eval(self.conf["evolution"]["initial_weights"])
         return np.array(values)
 
     def save_results(self, file_name="data/result"):
         try:
             with open(file_name, "w") as results_file:
                 results_file.write(str(self.result))
+                results_file.write("\n")
         except IOError as e:
             print("failed to write results to file")
             print(e)
