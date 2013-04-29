@@ -72,7 +72,7 @@ class Cell(object):
             self._tlc = tuple(x - self.radius for x in new_pos)
             self._brc = tuple(x + self.radius for x in new_pos)
         else:
-            raise Exception("wrong position argument: {}".format(new_pos))
+            raise Exception("wrong position argument: {0}".format(new_pos))
 
     @property
     def bounding_box(self):

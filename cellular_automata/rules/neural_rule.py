@@ -79,7 +79,7 @@ class ANNColorRule(Rule):
         self.chemicals_vector_length = chemicals_vector_length
         self.internal_state_vector_length = internal_state_vector_length
         self.input_layer_length = 4 * self.chemicals_vector_length + self.internal_state_vector_length
-        self.hidden_layer_length = self.input_layer_length * 2
+        self.hidden_layer_length = int(self.input_layer_length * 1.5)
         self.output_layer_length = self.internal_state_vector_length + self.chemicals_vector_length
         self.randomize_weights()
 
@@ -169,7 +169,7 @@ class ANNColorRule(Rule):
                     iter(neighbours[direction]).next().state.chemicals)
 
         if len(input_list) != self.input_layer_length:
-            print("{} != {}".format(len(input_list), self.input_layer_length))
+            print("{0} != {1}".format(len(input_list), self.input_layer_length))
             raise Exception("invalid input layer length")
         return np.array(input_list)
 

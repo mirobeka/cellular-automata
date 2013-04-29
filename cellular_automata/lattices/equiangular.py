@@ -71,7 +71,10 @@ class SquareLattice(Lattice):
         # prepare the brain of the CA
         rule_class = conf["rule"]
         border = lattice.read_border(conf)
-        lattice.rule = rule_class()
+        if conf.has_key("chemicals_vector_length") and conf.has_key("internal_vector_length"):
+            lattice.rule = rule_class(int(conf["chemical_vector_length"]), int(conf["internal_vector_length"]))
+        else:
+            lattice.rule = rule_class()
         lattice.rule.set_border(border)
 
         if "weights" in conf.keys():
@@ -281,7 +284,7 @@ class VariableSquareLattice(SquareLattice):
             try:
                 del self.cells[cell_to_remove.position]
             except KeyError as e:
-                print("cell at {} not in self.cells".format(
+                print("cell at {0} not in self.cells".format(
                     cell_to_remove.position))
 
     def merge_cells(self, cells_to_merge):

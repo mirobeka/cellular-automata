@@ -61,8 +61,8 @@ class TwoBandObjective(Objective):
         lattice = create_automaton(self.conf_file)
         lattice.rule.set_weights(weights)
         lattice.run(self.stop_criterion)
-        print("lattice iterations: {}".format(lattice.time))
-        print("lattice weights: {}".format(weights))
+        print("lattice iterations: {0}".format(lattice.time))
+        print("lattice weights: {0}".format(weights))
         if lattice.chaotic:   # if lattice doesn't have stable configuration
             print("error: 1.0")
             return 1.0
@@ -70,7 +70,7 @@ class TwoBandObjective(Objective):
             error = self.error_function(self.desired_lattice, lattice)
             if error <= self.min_error:
                 self.best_weights = weights
-            print("error: {}".format(error))
+            print("error: {0}".format(error))
             return error
 
 

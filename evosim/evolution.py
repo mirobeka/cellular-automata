@@ -28,9 +28,9 @@ class Evolution(object):
             print("Some fucking error happened")
             # take the best weights and save them
             evo.result = evo.objective.best_weights
-            evo.save_results("data/results_{}".format(time.ctime().replace(" ","_")))
+            evo.save_results("data/results_{0}".format(time.ctime().replace(" ","_")))
         else:
-            evo.save_results("data/results_{}".format(time.ctime().replace(" ","_")))
+            evo.save_results("data/results_{0}".format(time.ctime().replace(" ","_")))
 
     def initialize_new_evolution(self, conf_file):
         self.conf = get_conf(conf_file)
@@ -61,5 +61,5 @@ class Evolution(object):
         except IOError as e:
             print("failed to write results to file")
             print(e)
-            print("weights are : {}".format(self.result))
-        print("weight successfully saved to {}".format(file_name))
+            print("weights are : {0}".format(self.result))
+        print("weight successfully saved to {0}".format(file_name))
