@@ -1,13 +1,8 @@
 PyBrain==0.3
-PyYAML==3.10
 decorator==3.4.0
 distribute==0.6.19
 matplotlib==1.2.0
 numpy==1.6.2
-py==1.4.12
-pygame==1.9.2pre
-pyopencl==2013.1
-pytest==2.3.4
 pytools==2012.1
 scipy==0.11.0
 wsgiref==0.1.2

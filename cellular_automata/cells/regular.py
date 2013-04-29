@@ -1,21 +1,4 @@
 from cellular_automata.cells.base import Cell
-from cellular_automata.cells.base import CellCL
-
-
-class SquareCellCL(CellCL):
-    def add_neighbors(self, neighbors):
-        for direction, neigh in neighbors.items():
-            self.neighs[direction].update(neigh)
-            # TODO: adjust indices
-
-    def set_neighbours(self, neighbours):
-        self.neighs = neighbours
-
-    def set_neighbours_indices(self, neighs_indices):
-        # in cell data first 8 values are indices to neighbours in clockwise order
-        # n,ne,e,se,s,sw,w,nw
-        for i, index in enumerate(neighs_indices):
-            self.data[i] = index
 
 
 class SquareCell(Cell):
