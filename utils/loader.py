@@ -19,6 +19,8 @@ def load_module(path, class_name):
     :return: class that we asked for
     """
     if path not in ca_dict:
+        # small hack. This way, what's importable imports
+        # and other string values are returned back
         return class_name
     absolute_path = ca_dict[path]
     module = __import__(absolute_path, fromlist=[class_name])
