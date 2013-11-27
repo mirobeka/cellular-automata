@@ -50,15 +50,18 @@ class Evolution(object):
         self.result = self.strategy.learn(self.objective.objective_function, initial_values)
 
     def get_initial_values(self):
-        rule_class = self.conf["simulation"]["rule"]
-        if self.conf["simulation"].has_key("chemical_vector_length"):
-            chems_count = int(self.conf["simulation"]["chemical_vector_length"])
-            inter_count = int(self.conf["simulation"]["internal_vector_length"])
-            sample_rule_instance = rule_class(chems_count, inter_count)
-        else:
-            sample_rule_instance = rule_class()
-        number_of_values = sample_rule_instance.total_number_of_weights()
-        values = np.random.rand(number_of_values)
+#        rule_class = self.conf["simulation"]["rule"]
+#        if self.conf["simulation"].has_key("chemical_vector_length"):
+#            chems_count = int(self.conf["simulation"]["chemical_vector_length"])
+#            inter_count = int(self.conf["simulation"]["internal_vector_length"])
+#            sample_rule_instance = rule_class(chems_count, inter_count)
+#        else:
+#            sample_rule_instance = rule_class()
+#        number_of_values = sample_rule_instance.total_number_of_weights()
+#        values = np.random.rand(number_of_values)
+
+        # for now, return just initial weights from configuration file
+        values = eval(self.conf["evolution"]["initial_weights"])
         return np.array(values)
 
     def save_results(self, file_name="data/result"):

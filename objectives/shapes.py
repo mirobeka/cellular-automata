@@ -99,7 +99,7 @@ class EnergyStopCriterion(object):
     to create more smooth transition resembling waves traveling in one direction.
 
     Very interesting way, is also stretch time window even more, and check variance
-    over the whole time span of iteration of CA. This particullar setting returns
+    over the whole time span of iteration of CA.
 
     """
     def __init__(self):
