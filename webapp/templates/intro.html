@@ -1,0 +1,12 @@
+{% extends "application.html" %}
+{% block title %}intro{% endblock %}
+{% block head %}
+  {{ super() }}
+  <script src= {{ url_for("static", filename="js/application.js") }}></script>
+{% endblock %}
+{% block content %}
+  <h1>Hi stranger!</h1>
+  <p> What's your name?</p>
+  <p> Put your name in hello url</p>
+{% endblock %}
+
