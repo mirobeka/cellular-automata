@@ -1,8 +1,8 @@
-{% extends "application.html" %}
-{% block title %}Configure Experiment{% endblock %}
+{% extends "application.jinja" %}
+{% block title %}Configure Experiment{% endblock title%}
 {% block head %}
   {{ super() }}
-{% endblock %}
+{% endblock head%}
 {% block content %}
 <div class="ui one column grid">
   <div class="ui column">
@@ -22,4 +22,4 @@
   </div>
 </div>
 
-{% endblock %}
+{% endblock content %}
