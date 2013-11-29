@@ -1,0 +1,20 @@
+{% extends "application.jinja" %}
+{% set active_page = "about" %}
+
+{# change title #}
+{% block title %}WICA - About{% endblock %}
+
+{# content for main block #}
+{% block content %}
+
+<div class="ui page grid">
+  <div class="ui column">
+    <h2 class="ui huge center aligned icon header" >
+      <i class="circular emphasized inverted teal question icon"></i>
+      <div class="content">About this project</div>
+    </h2>
+  </div>
+</div>
+
+{% endblock %}
+

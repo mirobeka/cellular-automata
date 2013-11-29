@@ -1,0 +1,20 @@
+{% extends "application.jinja" %}
+{% set active_page = "documentation" %}
+
+{# change title #}
+{% block title %}WICA - Documentation{% endblock %}
+
+{# content for main block #}
+{% block content %}
+
+<div class="ui page grid">
+  <div class="ui column">
+    <h2 class="ui huge center aligned icon header" >
+      <i class="circular emphasized inverted teal text file icon"></i>
+      <div class="content">Welcome to Documentation</div>
+    </h2>
+  </div>
+</div>
+
+{% endblock %}
+

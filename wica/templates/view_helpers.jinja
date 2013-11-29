@@ -1,0 +1,18 @@
+{# generating menu item #}
+{% macro menu_item(label, url, icon=None, active=false) -%}
+<a class="item {% if active %}active{% endif %}" href="{{ url }}">
+  {% if icon != None -%}
+  <i class="{{ icon }} icon"></i>
+  {%- endif %}
+  {{ label }}
+</a>
+{%- endmacro %}
+
+{# generating menu #}
+{% macro menu(items, active_page) -%}
+<div class="ui secondary pointing menu">
+  {% for item in items %}
+    {{ menu_item(item[0], item[1], item[2], active_page == item[0]) }}
+  {% endfor %}
+</div>
+{% endmacro %}

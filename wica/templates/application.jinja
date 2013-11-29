@@ -1,18 +1,33 @@
+{% import 'view_helpers.jinja' as helper %}
+
+{# if active_page is not set, make dashboard default #} 
+{% set active_page = active_page|default("dashboard") %}
+
+{# define navigation items #}
+{% set navigation = [
+  ("dashboard", url_for("dashboard"), "dashboard"),
+  ("configurations", url_for("configurations"), "settings"),
+  ("replays", url_for("replays"), "video"),
+  ("about", url_for("about"), "question"),
+  ("documentation", url_for("documentation"), "text file")
+  ]
+  %}
 <!doctype html>
 <html>
   <head>
-    {% block head %}
-    <link rel="stylesheet" href={{ url_for("static", filename="css/semantic.css") }} />
-    <link rel="stylesheet" href={{ url_for("static", filename="css/application.css") }} />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700" type="text/css" />
-    <script src= {{ url_for("static", filename="js/jquery-2.0.3.js") }}></script>
-    <script src= {{ url_for("static", filename="js/semantic.js") }}></script>
-    <script src= {{ url_for("static", filename="js/application.js") }}></script>
     <title>{% block title%}{% endblock %}</title>
-    {% endblock %}
+    {% include "_head.jinja" %}
+    {% block head %}{% endblock %}
   </head>
   <body>
+    {# navigation #}
+    <nav> {{ helper.menu(navigation, active_page) }} </nav>
+    
+    {# replace block with content #}
     {% block content %}{% endblock %}
+
+    {# footer here please #}
+    {% include "_footer.jinja" %}
   </body>
 </html>
 
