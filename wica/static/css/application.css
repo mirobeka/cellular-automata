@@ -1,3 +1,20 @@
 html, body {
   font-family: "Open Sans", Hevletica, sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+.stripe {
+  padding: 50px 0px;
+}
+
+.dark.stripe {
+  background-color: #333333;
+  color: #FFFFFF;
+}
+
+.footer.link.list {
+  display: block;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
