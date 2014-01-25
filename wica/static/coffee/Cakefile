@@ -1,6 +1,7 @@
 {exec} = require 'child_process'
 
 coffeeFiles = [
+    'form.coffee',
     'application.coffee'
 ]
 

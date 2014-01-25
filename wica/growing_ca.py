@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask import redirect
+from flask import request
 from flask import url_for
 from flask_cake import Cake
 from config_options import get_options
@@ -17,10 +18,14 @@ def index():
 def dashboard():
   return render_template("dashboard.jinja")
 
-@app.route("/configurations/")
-def configurations():
+@app.route("/projects/", methods=["POST"])
+def create_project():
+  return request.form["projectName"]
+
+@app.route("/projects/")
+def projects():
   config_options = get_options()
-  return render_template("configurations.jinja", config_option=config_options)
+  return render_template("projects.jinja", config_option=config_options)
 
 @app.route("/replays/")
 def replays():
