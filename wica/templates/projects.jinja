@@ -1,0 +1,32 @@
+{% extends "application.jinja" %}
+{% set active_page = "projects" %}
+
+{# change title #}
+{% block title %}WICA - Projects{% endblock %}
+
+{# content for main block #}
+{% block content %}
+<div class="ui page grid">
+  <div class="ui column">
+    <h2 class="ui huge center aligned icon header" >
+      <i class="circular emphasized inverted teal settings icon"></i>
+      <div class="content">Welcome to projects</div>
+    </h2>
+
+    {# TODO: list of projects #}
+
+    <div class="ui form segment">
+      <div class="field">
+        <label>Create New Project</label>
+        <div class="ui left labeled icon input">
+          <input type="text" name="projectName" placeholder="project01">
+            <i class="setting icon"></i>
+          </input>
+        </div>
+      </div> {# field end #}
+      <div class="ui blue submit button floated right">Create</div>
+    </div> {# form end #}
+
+  </div>
+</div>
+{% endblock %}
