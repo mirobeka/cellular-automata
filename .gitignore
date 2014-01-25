@@ -43,3 +43,7 @@ pip-log.txt
 
 # ignore pycharm files
 .idea/*
+
+# generated files by coffee script
+wica/static/js/application.js
+
