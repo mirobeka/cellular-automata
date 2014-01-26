@@ -2,9 +2,17 @@ from flask import Flask
 from flask import render_template
 from flask import redirect
 from flask import request
+from flask import abort
 from flask import url_for
 from flask_cake import Cake
 from config_options import get_options
+import os
+import sys
+
+#add cellular automata into path
+sys.path.insert(0, "..")
+
+from projects.project import Project
 
 app = Flask(__name__)
 app.debug = True
@@ -20,10 +28,23 @@ def dashboard():
 
 @app.route("/projects/", methods=["POST"])
 def create_project():
-  return request.form["projectName"]
+  project_name = request.form["projectName"]
 
-@app.route("/projects/")
-def projects():
+  # TODO: check if project with this name already exists
+
+  # creates project
+  project = Project.create_project(project_name)
+  return url_for("get_project", project_name=project_name)
+
+@app.route("/projects/<project_name>/", methods=["GET"])
+def get_project(project_name):
+  project = Project.load_project(project_name)
+  if project is None:
+    return abort(404)
+  return render_template("project.jinja", project=project)
+
+@app.route("/projects/", methods=["GET"])
+def get_projects():
   config_options = get_options()
   return render_template("projects.jinja", config_option=config_options)
 

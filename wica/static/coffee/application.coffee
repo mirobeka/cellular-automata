@@ -1,2 +1,2 @@
 $(document).ready ->
-  new FormSubmitter(".ui.form", "POST", ".", (response) -> console.log(response))
+  new FormSubmitter(".ui.form", "POST", ".", (response) -> window.location.assign response)
