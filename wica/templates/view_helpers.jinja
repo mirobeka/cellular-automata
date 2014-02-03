@@ -16,3 +16,36 @@
   {% endfor %}
 </div>
 {% endmacro %}
+
+{% macro display_section(settings, section) -%}
+<div class="item">
+  <div class="content">
+    <a class="name"> {{ section }} </a> {# end name #}
+
+    <div class="ui list">
+      {% for option in settings.options(section) %}
+      <div class="item">
+        <div class="content">
+          <div class="header"> {{ option }} </div> {# end header #}
+          <div class="description"> {{ settings.get(section, option) }} </div> {# end description #}
+        </div> {# end content #}
+      </div> {# end item #}
+      {% endfor %}
+    </div> {# end list #}
+  </div> {# end content #}
+</div> {# end item #}
+{% endmacro %}
+
+{# generate project #}
+{% macro display_project(project) -%}
+  <div class="ui segment">
+    <h3><a href={{ url_for("get_project", project_name=project.name) }}>{{project.name}}</a></h3>
+
+    <div class="ui items">
+      {# list all sections of configuration #}
+      {% for section in project.config.sections() %}
+        {{ display_section(project.config, section) }}
+      {% endfor %}
+    </div> {# end ui items #}
+  </div> {# end segment #}
+{% endmacro %}

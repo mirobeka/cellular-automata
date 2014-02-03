@@ -12,9 +12,24 @@
       <i class="circular emphasized inverted teal settings icon"></i>
       <div class="content">Welcome to project {{project.name}}</div>
     </h2>
-    <div class="ui segment">
-      segment
+
+    <div class="ui update form">
+
+      <div class="field">
+        <label>Name</label>
+        <input type="text" name="project_name" placeholder={{project.name}}>
+      </div> {# end field #}
+
+      <button type="ui primary submit button">Update</button>
+
+    </div> {# end form #}
+
+    <div class="ui horizontal icon divider">
+      <i class="circular heart icon">
     </div>
+    <div class="ui delete form">
+
+    </div> {# end form #}
   </div> {# end ui column #}
 </div>
 {% endblock %}
