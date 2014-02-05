@@ -17,6 +17,15 @@
 </div>
 {% endmacro %}
 
+{% macro display_option(settings, section, option) -%}
+<div class="item">
+  <div class="content">
+    <div class="header"> {{ option }} </div> {# end header #}
+    <div class="description"> {{ settings.get(section, option) }} </div> {# end description #}
+  </div> {# end content #}
+</div> {# end item #}
+{% endmacro %}
+
 {% macro display_section(settings, section) -%}
 <div class="item">
   <div class="content">
@@ -24,12 +33,7 @@
 
     <div class="ui list">
       {% for option in settings.options(section) %}
-      <div class="item">
-        <div class="content">
-          <div class="header"> {{ option }} </div> {# end header #}
-          <div class="description"> {{ settings.get(section, option) }} </div> {# end description #}
-        </div> {# end content #}
-      </div> {# end item #}
+        {{ display_option(settings, section, option) }}
       {% endfor %}
     </div> {# end list #}
   </div> {# end content #}
