@@ -15,12 +15,20 @@
 
     <div class="ui update form">
 
-      <div class="field">
-        <label>Name</label>
-        <input type="text" name="project_name" placeholder={{project.name}}>
-      </div> {# end field #}
+      {% for section in project.config.sections() %}
+      <h3>{{ section }}</h3>
+        {% for option in project.config.options(section) %}
+        <div class="field">
+          <label>{{ option }}</label>
+          <input type="text" name="{{section}}.{{option}}" value="{{ project.config.get(section, option) }}">
+        </div> {# end field #}
+        {% endfor %}
+      <div class="ui horizontal icon divider">
+        <i class="ellipsis horizontal icon"></i>
+      </div>
+      {% endfor %} {# section end #}
 
-      <div class="ui submit button">Update</button>
+      <div class="ui floated right submit button">Update</button>
 
     </div> {# end form #}
 

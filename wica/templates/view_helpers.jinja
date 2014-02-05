@@ -21,7 +21,9 @@
 <div class="item">
   <div class="content">
     <div class="header"> {{ option }} </div> {# end header #}
-    <div class="description"> {{ settings.get(section, option) }} </div> {# end description #}
+    <div class="description">
+        {{ settings.get(section, option)|truncate(30)}}
+      </div> {# end description #}
   </div> {# end content #}
 </div> {# end item #}
 {% endmacro %}

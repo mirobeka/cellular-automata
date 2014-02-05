@@ -5,7 +5,6 @@ from flask import request
 from flask import abort
 from flask import url_for
 from flask_cake import Cake
-from config_options import get_options
 import logging
 import os
 import sys
