@@ -1,5 +1,6 @@
 from __future__ import print_function
 from glob import glob
+from shutil import rmtree
 import os
 import logging
 import ConfigParser
@@ -22,7 +23,7 @@ class Project:
 
   def delete(self):
     """Delete all project files, logs, replays, ..."""
-    pass
+    rmtree(os.path.join(PROJECTS, self.name))
 
   def parse_config(self, path):
     self.config = ConfigParser.ConfigParser()
