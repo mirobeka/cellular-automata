@@ -15,6 +15,7 @@
       this.getFields = __bind(this.getFields, this);
       this.makeFormDataFromFields = __bind(this.makeFormDataFromFields, this);
       this.sendForm = __bind(this.sendForm, this);
+      this.setValidations = __bind(this.setValidations, this);
       this.validations = __bind(this.validations, this);
       this.form = $(this.selector);
       if (this.form.length !== 1) {
@@ -43,6 +44,11 @@
         };
       }
       return validations;
+    };
+
+    FormSubmitter.prototype.setValidations = function(validations) {
+      console.log(validations);
+      return this.form.form(validations);
     };
 
     FormSubmitter.prototype.sendForm = function() {

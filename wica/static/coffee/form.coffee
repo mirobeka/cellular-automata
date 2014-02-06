@@ -21,6 +21,10 @@ class root.FormSubmitter
 
     return validations
 
+  setValidations: (validations) =>
+    console.log(validations)
+    @form.form(validations)
+
   sendForm: () =>
     # get all input fields? or get all inputs
     fields = @getFields()
