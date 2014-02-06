@@ -8,6 +8,14 @@
 </a>
 {%- endmacro %}
 
+{% macro header(icon,content) -%}
+<span>&nbsp;</span>
+<h2 class="ui right aligned header" >
+  <i class="{{icon}} icon"></i>
+  {{content}}
+</h2>
+{% endmacro %}
+
 {# generating menu #}
 {% macro menu(items, active_page) -%}
 <div class="ui secondary pointing menu">
