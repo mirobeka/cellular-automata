@@ -19,7 +19,6 @@ class root.FormSubmitter
         identifier: field
         rules: [{type: "empty", prompt: "Enter name"}],
 
-    console.log(validations)
     return validations
 
   sendForm: () =>
