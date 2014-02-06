@@ -1,0 +1,30 @@
+{% extends "application.jinja" %}
+{% set active_page = "projects" %}
+{% set active_tab = "evolve" %}
+
+{# change title #}
+{% block title %}WICA - Project {{ project.name }}{% endblock %}
+
+{% block head %}
+<script src= {{ url_for("static", filename="js/form.js") }}></script>
+<script src= {{ url_for("static", filename="js/project.js") }}></script>
+{{ super() }}
+{% endblock %}
+
+{# content for main block #}
+{% block content %}
+<div class="ui page grid">
+  <div class="ui column">
+    <h2 class="ui huge center aligned icon header" >
+      <i class="circular emphasized inverted teal settings icon"></i>
+      <div class="content">{{project.name}}</div>
+    </h2>
+
+    {{ helper.tab_menu(project.name, active_tab) }}
+    <div class="ui bottom attached segment">
+      List of evolved values?
+    </div>
+
+  </div> {# end ui column #}
+</div>
+{% endblock %}

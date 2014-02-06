@@ -1,8 +1,15 @@
 {% extends "application.jinja" %}
 {% set active_page = "projects" %}
+{% set active_tab = "settings" %}
 
 {# change title #}
 {% block title %}WICA - Project {{ project.name }}{% endblock %}
+
+{% block head %}
+<script src= {{ url_for("static", filename="js/form.js") }}></script>
+<script src= {{ url_for("static", filename="js/project.js") }}></script>
+{{ super() }}
+{% endblock %}
 
 {# content for main block #}
 {% block content %}
@@ -10,10 +17,12 @@
   <div class="ui column">
     <h2 class="ui huge center aligned icon header" >
       <i class="circular emphasized inverted teal settings icon"></i>
-      <div class="content">Welcome to project {{project.name}}</div>
+      <div class="content">{{project.name}}</div>
     </h2>
 
-    <div class="ui update form">
+    {{ helper.tab_menu(project.name, active_tab) }}
+
+    <div class="ui bottom attached update form segment">
 
       {% for section in project.config.sections() %}
       <h3>{{ section }}</h3>
@@ -35,8 +44,17 @@
     <div class="ui horizontal icon divider">
       <i class="trash icon"></i>
     </div>
+
     <div class="ui delete form">
-      <div class="ui primary submit button">Delete</button>
+      <div class="two fields">
+        <div class="field">
+          <input type="text" name="delete_pass" placeholder="Enter project name">
+        </div> {# end field #}
+        <div class="field">
+          <div class="ui primary submit button">Delete</button>
+        </div> {# end field #}
+      </div> {# end two fields #}
+
     </div> {# end form #}
   </div> {# end ui column #}
 </div>

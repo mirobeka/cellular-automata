@@ -4,6 +4,12 @@
 {# change title #}
 {% block title %}WICA - Projects{% endblock %}
 
+{% block head %}
+<script src= {{ url_for("static", filename="js/projects.js") }}></script>
+<script src= {{ url_for("static", filename="js/form.js") }}></script>
+{{ super() }}
+{% endblock %}
+
 {# content for main block #}
 {% block content %}
 <div class="ui page grid">
