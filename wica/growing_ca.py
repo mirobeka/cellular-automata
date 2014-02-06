@@ -37,14 +37,22 @@ def create_project():
   return url_for("get_project", project_name=project_name)
 
 @app.route("/projects/<project_name>/", methods=["GET"])
-def get_project(project_name):
+@app.route("/projects/<project_name>/<tab>/", methods=["GET"])
+def get_project(project_name, tab="settings"):
   project = Project.load_project(project_name)
   if project is None:
     return abort(404)
-  return render_template("project.jinja", project=project)
+  if tab == "settings":
+    return render_template("project_settings.jinja", project=project)
+  elif tab == "replays":
+    return render_template("project_replays.jinja", project=project)
+  elif tab == "evolve":
+    return render_template("project_evolve.jinja", project=project)
 
 @app.route("/projects/<project_name>/", methods=["PUT"])
 def update_project_config(project_name):
+  log = logging.getLogger("WICA")
+  log.debug("trying update project {}".format(project_name))
   project = Project.load_project(project_name)
   if project is None:
     return abort(404)
@@ -55,6 +63,8 @@ def update_project_config(project_name):
 
 @app.route("/projects/<project_name>/", methods=["DELETE"])
 def delete_project(project_name):
+  log = logging.getLogger("WICA")
+  log.debug("deleting project {}".format(project_name))
   project = Project.load_project(project_name)
   if project is None:
     return abort(404)
