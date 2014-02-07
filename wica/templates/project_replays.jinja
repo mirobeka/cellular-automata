@@ -8,6 +8,7 @@
 {% block head %}
 <script src= {{ url_for("static", filename="js/form.js") }}></script>
 <script src= {{ url_for("static", filename="js/project.js") }}></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/ocanvas/2.5.0/ocanvas.min.js"></script>
 {{ super() }}
 {% endblock %}
 
@@ -21,8 +22,36 @@
     {{ helper.tab_menu(project.name, active_tab) }}
 
     <div class="ui bottom attached segment">
-      List of project replays
-    </div>
+      <p>List of project replays</p>
+      <div class="ui grid">
+        <div class="four wide column">
+          <div class="ui center aligned segment">
+            <div class="ui labeled icon button">
+              <i class="play icon"></i>
+              Play
+            </div>
+            <p></p>
+            <div class="ui labeled icon button">
+              <i class="pause icon"></i>
+              Pause
+            </div>
+            <p></p>
+            <div class="ui labeled icon button">
+              <i class="stop icon"></i>
+              Stop
+            </div>
+          </div> {# end center aligned segment #}
+        </div> {# end first column #}
+        <div class="ten wide column">
+          <div class="ui center aligned segment">
+            <canvas
+              id="replayCanvas"
+              width="{{project.config.get("lattice", "width")}}"
+              height="{{project.config.get("lattice", "height")}}">
+          </div> {# end center aligned segment #}
+        </div> {# end second column #}
+      </div> {# end grid #}
+    </div> {# end bottom attached segment #}
 
   </div> {# end ui column #}
 </div>
