@@ -2,9 +2,10 @@
 (function() {
   $(document).ready(function() {
     var submitter;
-    return submitter = new FormSubmitter(".ui.form", "POST", ".", function(response) {
+    submitter = new FormSubmitter(".ui.form", "POST", ".", function(response) {
       return window.location.assign(response);
     });
+    return $(".ui.accordion").accordion();
   });
 
 }).call(this);

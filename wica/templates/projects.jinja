@@ -33,9 +33,11 @@
 
     <div class="ui horizontal divider"> or </div>
 
-    {% for project in projects %}
-      {{ helper.display_project(project) }}
-    {% endfor %}
+    <div class="ui fluid accordion">
+      {% for project in projects %}
+        {{ helper.display_project(project) }}
+      {% endfor %}
+    </div> {# end accordion #}
 
   </div>
 </div>
