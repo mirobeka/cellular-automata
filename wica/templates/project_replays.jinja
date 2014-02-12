@@ -26,20 +26,13 @@
       <div class="ui grid">
         <div class="four wide column">
           <div class="ui center aligned segment">
-            <div class="ui labeled icon button">
-              <i class="play icon"></i>
-              Play
-            </div>
-            <p></p>
-            <div class="ui labeled icon button">
-              <i class="pause icon"></i>
-              Pause
-            </div>
-            <p></p>
-            <div class="ui labeled icon button">
-              <i class="stop icon"></i>
-              Stop
-            </div>
+            <div class="ui list">
+              {% for replay in project.replays %}
+              <div class="item">
+                {{ replay|replace(".replay","") }}
+              </div> {# end item #}
+              {% endfor %}
+            </div> {# end list #}
           </div> {# end center aligned segment #}
         </div> {# end first column #}
         <div class="ten wide column">
@@ -47,7 +40,18 @@
             <canvas
               id="replayCanvas"
               width="{{project.config.get("lattice", "width")}}"
-              height="{{project.config.get("lattice", "height")}}">
+              height="{{project.config.get("lattice", "height")}}"></canvas>
+          <br />
+
+          <div class="ui icon button">
+            <i class="play icon"></i>
+          </div>
+          <div class="ui icon button">
+            <i class="pause icon"></i>
+          </div>
+          <div class="ui icon button">
+            <i class="stop icon"></i>
+          </div>
           </div> {# end center aligned segment #}
         </div> {# end second column #}
       </div> {# end grid #}
