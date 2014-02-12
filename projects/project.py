@@ -1,9 +1,10 @@
 from __future__ import print_function
 from glob import glob
 from shutil import rmtree
-import os
-import logging
+from cPickle import Pickler, Unpickler
 import ConfigParser
+import logging
+import os
 
 PROJECTS = "data"
 
@@ -14,7 +15,6 @@ class Project:
     # get path to project config
     self.config_path = self.get_config_path(os.path.join(PROJECTS, project_name))
     log.debug("config_path is {}".format(self.config_path))
-
 
   def save(self):
     """Save configuration to cfg file """
@@ -28,6 +28,19 @@ class Project:
   def parse_config(self, path):
     self.config = ConfigParser.ConfigParser()
     self.config.read(path)
+
+  @property
+  def replays(self):
+    return [os.path.basename(repl) for repl in glob(os.path.join(PROJECTS, self.name, "replays", "*.replay"))]
+
+  @property
+  def replay(self, name):
+    replay_file_path = os.path.join(PROJECTS, self.name, "replays", name)
+    replay = None
+    with open(replay_file_path, "r") as fp:
+      upkl = Unpickler(fp)
+      replay = upkl.load()
+    return replay
 
   @classmethod
   def create_project(cls, project_name):
