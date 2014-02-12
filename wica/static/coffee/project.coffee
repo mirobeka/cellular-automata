@@ -50,24 +50,5 @@ $(document).ready ->
   new FormSubmitter(".ui.update.form", "PUT", ".", (response) -> window.location.assign response)
   new FormSubmitter(".ui.delete.form", "DELETE", ".", (response) -> window.location.assign response)
 
-  ## example data
-  jsonReplay=
-    width: 2
-    height: 2
-    resolution: 200
-    length: 10
-    data:[
-      [0.0, 0.0, 0.0, 0.1]
-      [0.1, 0.1, 0.2, 0.1]
-      [0.2, 0.1, 0.4, 0.1]
-      [0.3, 0.1, 0.6, 0.1]
-      [0.4, 0.1, 0.8, 0.1]
-      [0.5, 0.3, 0.8, 0.1]
-      [0.6, 0.6, 0.6, 0.1]
-      [0.7, 0.9, 0.4, 0.1]
-      [0.8, 0.9, 0.2, 0.1]
-      [0.9, 0.9, 0.0, 0.1]
-    ]
-
   root.player = new ReplayPlayer(jsonReplay)
   root.player.initCells()
