@@ -7,7 +7,7 @@
 
 {% block head %}
 <script src= {{ url_for("static", filename="js/form.js") }}></script>
-<script src= {{ url_for("static", filename="js/project.js") }}></script>
+<script src= {{ url_for("static", filename="js/project_replay.js") }}></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/ocanvas/2.5.0/ocanvas.min.js"></script>
 {{ super() }}
 {% endblock %}
@@ -22,13 +22,13 @@
     {{ helper.tab_menu(project.name, active_tab) }}
 
     <div class="ui bottom attached segment">
-      <p>List of project replays</p>
       <div class="ui grid">
         <div class="four wide column">
-          <div class="ui center aligned segment">
+          <div class="ui segment">
             <div class="ui list">
               {% for replay in project.replays %}
               <div class="item load replay">
+                <i class="video icon"></i>
                 <a class="load replay" data-name={{replay}}> {{ replay|replace(".replay","") }}</a>
               </div> {# end item #}
               {% endfor %}
