@@ -33,7 +33,6 @@ class Project:
   def replays(self):
     return [os.path.basename(repl) for repl in glob(os.path.join(PROJECTS, self.name, "replays", "*.replay"))]
 
-  @property
   def replay(self, name):
     replay_file_path = os.path.join(PROJECTS, self.name, "replays", name)
     replay = None
