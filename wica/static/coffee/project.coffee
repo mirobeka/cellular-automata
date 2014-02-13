@@ -45,10 +45,13 @@ class Cell
       fill: "#aaa"
     }).add()
 
-
 $(document).ready ->
   new FormSubmitter(".ui.update.form", "PUT", ".", (response) -> window.location.assign response)
   new FormSubmitter(".ui.delete.form", "DELETE", ".", (response) -> window.location.assign response)
 
-  root.player = new ReplayPlayer(jsonReplay)
-  root.player.initCells()
+  foo = (event) ->
+    replayName = $(@).attr("data-name")
+    jsonData = loadReplayData replayName
+    if
+
+  hmm = $('a.load.replay').bind('click', foo)

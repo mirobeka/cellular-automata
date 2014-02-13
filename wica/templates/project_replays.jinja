@@ -28,8 +28,8 @@
           <div class="ui center aligned segment">
             <div class="ui list">
               {% for replay in project.replays %}
-              <div class="item">
-                {{ replay|replace(".replay","") }}
+              <div class="item load replay">
+                <a class="load replay" data-name={{replay}}> {{ replay|replace(".replay","") }}</a>
               </div> {# end item #}
               {% endfor %}
             </div> {# end list #}
