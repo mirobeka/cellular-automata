@@ -5,6 +5,7 @@ from flask import request
 from flask import abort
 from flask import url_for
 from flask_cake import Cake
+import json
 import logging
 import os
 import sys
@@ -36,6 +37,17 @@ def create_project():
   project = Project.create_project(project_name)
   return url_for("get_project", project_name=project_name)
 
+@app.route("/projects/<project_name>/replay/<replay_name>/", methods=["GET"])
+def get_project_replay_data(project_name, replay_name):
+  log = logging.getLogger("PROJECT")
+  log.debug("project_name = {} replay_name = {}".format(project_name, replay_name))
+
+  project = Project.load_project(project_name)
+  if project is None:
+    return abort(404)
+  json_data = convert_to_json(project.replay(replay_name))
+  return json_data
+
 @app.route("/projects/<project_name>/", methods=["GET"])
 @app.route("/projects/<project_name>/<tab>/", methods=["GET"])
 def get_project(project_name, tab="settings"):
@@ -48,6 +60,7 @@ def get_project(project_name, tab="settings"):
     return render_template("project_replays.jinja", project=project)
   elif tab == "evolve":
     return render_template("project_evolve.jinja", project=project)
+
 
 @app.route("/projects/<project_name>/", methods=["PUT"])
 def update_project_config(project_name):
@@ -96,6 +109,9 @@ def set_logger(level="DEBUG", outfile=None):
       filename=outfile,
       filemode="w",
       level=level.upper())
+
+def convert_to_json(data):
+  return json.dumps(data)
 
 if __name__ == "__main__":
   set_logger()
