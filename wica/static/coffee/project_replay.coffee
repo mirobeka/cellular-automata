@@ -3,6 +3,10 @@ root = exports ? this
 # this class will be for controlling what's happening on replay canvas
 class ReplayPlayer
   constructor: (@replay) ->
+    for c in oCanvas.canvasList
+      c.destroy() unless c is null
+      oCanvas.canvasList = []
+
     @canvas = oCanvas.create({ canvas: "#replayCanvas", background: "#eee"})
     @cells = []
     @stepIndex = 0

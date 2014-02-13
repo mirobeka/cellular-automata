@@ -7,6 +7,7 @@
 
   ReplayPlayer = (function() {
     function ReplayPlayer(replay) {
+      var c, _i, _len, _ref;
       this.replay = replay;
       this.setState = __bind(this.setState, this);
       this.loop = __bind(this.loop, this);
@@ -18,6 +19,14 @@
       this.addCell = __bind(this.addCell, this);
       this.initCells = __bind(this.initCells, this);
       this.initControls = __bind(this.initControls, this);
+      _ref = oCanvas.canvasList;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        c = _ref[_i];
+        if (c !== null) {
+          c.destroy();
+        }
+        oCanvas.canvasList = [];
+      }
       this.canvas = oCanvas.create({
         canvas: "#replayCanvas",
         background: "#eee"
