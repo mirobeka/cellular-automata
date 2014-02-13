@@ -34,9 +34,9 @@ class root.FormSubmitter
 
     # send data
     $.ajax
-      type: @type,
-      url: @url,
-      data: formData,
+      type: @type
+      url: @url
+      data: formData
       success: @callback
 
   makeFormDataFromFields: (fields) =>

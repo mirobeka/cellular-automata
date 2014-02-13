@@ -7,19 +7,39 @@ class ReplayPlayer
     @cells = []
     @stepIndex = 0
 
+  initControls: =>
+    $(".play.icon").parent().bind("click", @start)
+    $(".pause.icon").parent().bind("click", @pause)
+    $(".stop.icon").parent().bind("click", @stop)
+
   initCells: =>
-    @addCell idx for idx in [0..(@replay.width*@replay.height)-1]
+    @addCell(idx) for idx in [0..(@replay.width*@replay.height)-1]
 
   addCell: (idx) =>
     x = idx % @replay.width
     y = idx / @replay.height
     cell = new Cell(@canvas, idx, @replay.resolution, x, y)
     @cells.push(cell)
-    cell.rectangle.bind("click", => @loop())
 
-  start: (speed=30) =>
+  removeCell: (cell) =>
+    @canvas.removeChild cell.rectangle
+
+  start: (speed=1) =>
     @canvas.settings.fps = speed
     @canvas.setLoop(@loop).start()
+
+  pause: =>
+    @canvas.timeline.stop()
+
+  stop: =>
+    @canvas.timeline.stop()
+    @stepIndex = 0
+    @clearCanvas()
+    @initCells()
+
+  clearCanvas: =>
+    @removeCell cell for cell in @cells
+    @cells = []
 
   loop: () =>
     @stepIndex++
@@ -49,9 +69,21 @@ $(document).ready ->
   new FormSubmitter(".ui.update.form", "PUT", ".", (response) -> window.location.assign response)
   new FormSubmitter(".ui.delete.form", "DELETE", ".", (response) -> window.location.assign response)
 
+  loadReplayData= (replayName, callback) ->
+    $.ajax
+      type: "GET"
+      url: "../replay/#{replayName}/"
+      success: callback
+
+  otherFoo= (replayData) ->
+    replayData = JSON.parse replayData
+    player = new ReplayPlayer(replayData)
+    player.initControls()
+    player.initCells()
+
+
   foo = (event) ->
     replayName = $(@).attr("data-name")
-    jsonData = loadReplayData replayName
-    if
+    jsonData = loadReplayData replayName, otherFoo
 
   hmm = $('a.load.replay').bind('click', foo)
