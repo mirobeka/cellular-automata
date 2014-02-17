@@ -3,75 +3,74 @@ root = exports ? this
 # this class will be for controlling what's happening on replay canvas
 class ReplayPlayer
   constructor: (@replay) ->
-    for c in oCanvas.canvasList
-      c.destroy() unless c is null
-      oCanvas.canvasList = []
-
-    @canvas = oCanvas.create({ canvas: "#replayCanvas", background: "#eee"})
-    @cells = []
-    @stepIndex = 0
+    # pass
+    @canvas = $("#replayCanvas").get(0)
+    @ctx = @canvas.getContext("2d")
+    @canvas.width = @replay.width*@replay.resolution
+    @canvas.height = @replay.height*@replay.resolution
+    @step=0
 
   initControls: =>
     $(".play.icon").parent().bind("click", @start)
     $(".pause.icon").parent().bind("click", @pause)
     $(".stop.icon").parent().bind("click", @stop)
 
-  initCells: =>
-    @addCell(idx) for idx in [0..(@replay.width*@replay.height)-1]
+  loop: =>
+    return unless @running
+    @clear()
+    @update()
+    #@draw()
+    @queue()
 
-  addCell: (idx) =>
-    x = idx % @replay.width
-    y = idx / @replay.height
-    cell = new Cell(@canvas, idx, @replay.resolution, x, y)
-    @cells.push(cell)
+  clear: =>
+    @ctx.clearRect(0,0,@canvas.width, @canvas.height)
 
-  removeCell: (cell) =>
-    @canvas.removeChild cell.rectangle
+  update: =>
+    if @step >= @replay.length
+      @stop()
+      return
 
-  start: (speed=1) =>
-    @canvas.settings.fps = speed
-    @canvas.setLoop(@loop).start()
+    for state,idx in @replay.data[@step]
+      r = Math.random()
+      gray = Math.floor(state*r)
+      @ctx.fillStyle = "rgb(#{gray},#{gray},#{gray})"
+      x = (idx % @replay.width)*@replay.resolution
+      y = Math.floor(idx / @replay.height)*@replay.resolution
+      @ctx.fillRect(x, y, @replay.resolution, @replay.resolution)
+    @step++
+
+  queue: =>
+    nextFrame = =>
+      window.requestAnimationFrame(@loop)
+    window.setTimeout(nextFrame, 100)
 
   pause: =>
-    @canvas.timeline.stop()
+    console.log "pause"
+    if @running
+      @running = false
+    else
+      @running = true
+      window.requestAnimationFrame(@loop)
 
   stop: =>
-    @canvas.timeline.stop()
-    @stepIndex = 0
-    @clearCanvas()
-    @initCells()
+    @clear()
+    @running = false
+    @step = 0
 
-  clearCanvas: =>
-    @removeCell cell for cell in @cells
-    @cells = []
-
-  loop: () =>
-    @stepIndex++
-    return false unless @stepIndex < @replay.length
-    for cell in @cells
-      @setState @stepIndex, cell
-      @canvas.draw.redraw()
-
-  setState: (stepIndex, cell) =>
-    gray = Math.round(255*@replay.data[stepIndex][cell.idx])
-    rgb = "rgb(#{gray},#{gray},#{gray})"
-    cell.rectangle.fill = rgb
-
-class Cell
-  constructor: (@canvas, @idx, @size, @x, @y) ->
-    @rectangle = @canvas.display.rectangle({
-      x: Math.floor(@x)*@size
-      y: Math.floor(@y)*@size
-      origin: { x: "left", y: "top" }
-      width: @size
-      height: @size
-      stroke: "#999"
-      fill: "#aaa"
-    }).add()
+  start: =>
+    console.log "start"
+    @running = true
+    window.requestAnimationFrame(@loop)
 
 $(document).ready ->
   new FormSubmitter(".ui.update.form", "PUT", ".", (response) -> window.location.assign response)
   new FormSubmitter(".ui.delete.form", "DELETE", ".", (response) -> window.location.assign response)
+  $(".ui.dimmable").dimmer({
+      duration:
+        show: 300
+        hide: 700
+    })
+  
 
   loadReplayData= (replayName, callback) ->
     $.ajax
@@ -80,13 +79,27 @@ $(document).ready ->
       success: callback
 
   otherFoo= (replayData) ->
+    console.log "callback with data from server"
+    console.log replayData
+    console.log "parsing data"
     replayData = JSON.parse replayData
+    console.log "parsed data"
+    console.log replayData
+
+    console.log "Creating new ReplayPlayer"
     player = new ReplayPlayer(replayData)
+    console.log player
+    console.log "initializing controls"
     player.initControls()
-    player.initCells()
+    $(".ui.dimmable").dimmer("show")
+    hideDimmer = ->
+      $(".ui.dimmable").dimmer("hide")
+    window.setTimeout( hideDimmer, 1000)
+      
 
 
   foo = (event) ->
+    console.log "getting data from server"
     replayName = $(@).attr("data-name")
     jsonData = loadReplayData replayName, otherFoo
 

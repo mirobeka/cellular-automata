@@ -36,7 +36,14 @@
           </div> {# end center aligned segment #}
         </div> {# end first column #}
         <div class="ten wide column">
-          <div class="ui center aligned segment">
+          <div class="ui center aligned segment dimmable">
+            <div class="ui dimmer hidden">
+              <div class="content">
+                <div class="center">
+                  Replay loaded
+                </div>
+              </div>
+            </div> {# end dimmer #}
             <canvas
               id="replayCanvas"
               width="{{project.config.get("lattice", "width")}}"
