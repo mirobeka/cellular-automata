@@ -6,7 +6,10 @@ from multiprocessing.pool import ThreadPool
 
 from re import match
 from utils.nonrecursivepickler import NonrecursivePickler
+from cPickle import Pickler
 from math import sqrt
+
+import logging
 
 
 class SquareLattice(Lattice):
@@ -61,15 +64,15 @@ class SquareLattice(Lattice):
         lattice = cls()
 
         # set lattice dimensions
-        lattice.width = int(conf["width"])
-        lattice.height = int(conf["height"])
-        lattice.resolution = int(conf["resolution"])
+        lattice.width = int(conf["lattice"]["width"])
+        lattice.height = int(conf["lattice"]["height"])
+        lattice.resolution = int(conf["lattice"]["resolution"])
 
         # supply lattice with neighbourhood class
-        lattice.neighbourhood = conf["neighbourhood"]
+        lattice.neighbourhood = conf["cells"]["neighbourhood"]
 
         # prepare the brain of the CA
-        rule_class = conf["rule"]
+        rule_class = conf["cells"]["rule"]
         border = lattice.read_border(conf)
         if conf.has_key("chemicals_vector_length") and conf.has_key("internal_vector_length"):
             lattice.rule = rule_class(int(conf["chemical_vector_length"]), int(conf["internal_vector_length"]))
@@ -77,12 +80,12 @@ class SquareLattice(Lattice):
             lattice.rule = rule_class()
         lattice.rule.set_border(border)
 
-        if "weights" in conf.keys():
-            weights = eval(conf["weights"])
+        if "initial_weights" in conf.keys():
+            weights = eval(conf["network"]["weights"])
             lattice.rule.set_weights(weights)
 
         # cells are just carrying state, right? What kind of state? Here it is!
-        lattice.cell_state_class = conf["state"]
+        lattice.cell_state_class = conf["cells"]["state"]
 
         # all set, let's create all cells
         lattice.cells = lattice.initialize_lattice_cells()
@@ -178,9 +181,49 @@ class SquareLattice(Lattice):
     def post_energy_variance_method(self):
         self.save_energy()
 
-    def run(self, stop_criterion):
-        while stop_criterion.should_run(self):
-            self.next_step()
+    def run(self, stop_criterion, replay_file=None):
+        if replay_file is None:
+          self.run_without_record(stop_criterion)
+        else:
+          self.run_with_record(stop_criterion, replay_file)
+
+    def run_without_record(self, stop_criterion):
+        log = logging.getLogger("LATTICE")
+        log.info("starting lattice run")
+        try:
+            while stop_criterion.should_run(self):
+                self.next_step()
+        except Exception as e:
+            log.exception("exception occured during lattice run")
+            log.exception(e)
+
+    def run_with_record(self, stop_criterion, replay_file):
+        log = logging.getLogger("LATTICE")
+        data = []
+        try:
+            while stop_criterion.should_run(self):
+                self.next_step()
+                data.append([cell.state.grayscale for cell in self.cells.values()])
+        except:
+            log.exception("exception occured during lattice run")
+        finally:
+            log.info("saving data from run into {}".format(replay_file))
+            self.save_replay(data, replay_file)
+
+    def save_replay(self, data, replay_file):
+        replay = {}
+        replay["width"] = self.width / self.resolution
+        replay["height"] = self.height / self.resolution
+        replay["resolution"] = self.resolution
+        replay["length"] = self.time
+        replay["data"] = data
+
+        with open(replay_file, "w") as fp:
+            pkl = Pickler(fp)
+            pkl.dump(replay)
+
+            log = logging.getLogger("LATTICE")
+            log.debug("Lattice run saved into replay")
 
     def get_lattice(self):
         return self.cells.values()

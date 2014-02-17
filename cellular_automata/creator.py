@@ -8,8 +8,8 @@ def create_automaton(conf_file):
     :return: lattice instance
     """
     conf = get_conf(conf_file)
-    lattice_class = conf["simulation"]["lattice"]
-    lattice = lattice_class.create_initialized(conf["simulation"])
+    lattice_class = conf["lattice"]["type"]
+    lattice = lattice_class.create_initialized(conf)
     return lattice
 
 

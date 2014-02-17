@@ -2,7 +2,7 @@ import ConfigParser
 
 # dictionary to get path of different cellular automata modules
 ca_dict = {
-    "lattice": "cellular_automata.lattices.equiangular",
+    "type": "cellular_automata.lattices.equiangular",
     "state": "cellular_automata.states.base",
     "neighbourhood": "cellular_automata.lattices.neighbourhoods",
     "rule": "cellular_automata.rules.neural_rule",
@@ -39,8 +39,6 @@ def get_conf(file_name):
 def import_importable(conf):
     # import and get all necessary components
     transformed_conf = dict()
-    transformed_conf["simulation"] = dict([(path, load_module(path, cls)) for (path, cls) in conf.items("simulation")])
-    transformed_conf["evolution"] = dict([(path, load_module(path, cls)) for (path, cls) in conf.items("evolution")])
+    for section in conf.sections():
+      transformed_conf[section] = dict([(path, load_module(path, cls)) for (path, cls) in conf.items(section)])
     return transformed_conf
-
-

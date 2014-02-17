@@ -18,13 +18,13 @@ class Lattice:
         :param conf: lattice configuration in dictionary
         :return: dictionary with border cells values
         """
-        border_top = eval(conf["border_top"])
-        border_left = eval(conf["border_left"])
-        border_right = eval(conf["border_right"])
-        border_bottom = eval(conf["border_bottom"])
-        resolution = int(conf["resolution"])
-        width = int(conf["width"])
-        height = int(conf["height"])
+        border_top = eval(conf["borders"]["border_top"])
+        border_left = eval(conf["borders"]["border_left"])
+        border_right = eval(conf["borders"]["border_right"])
+        border_bottom = eval(conf["borders"]["border_bottom"])
+        resolution = int(conf["lattice"]["resolution"])
+        width = int(conf["lattice"]["width"])
+        height = int(conf["lattice"]["height"])
 
         border = dict()
 
