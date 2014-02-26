@@ -22,6 +22,7 @@
         console.log("Form not found with selector: " + this.selector);
         return;
       }
+      this.disableValidations = true;
       this.form.form(this.validations(), {
         onSuccess: this.sendForm
       });
@@ -31,17 +32,19 @@
       var field, fields, validations, _i, _len;
       fields = this.getFields();
       validations = {};
-      for (_i = 0, _len = fields.length; _i < _len; _i++) {
-        field = fields[_i];
-        validations[field] = {
-          identifier: field,
-          rules: [
-            {
-              type: "empty",
-              prompt: "Enter name"
-            }
-          ]
-        };
+      if (!this.disableValidations) {
+        for (_i = 0, _len = fields.length; _i < _len; _i++) {
+          field = fields[_i];
+          validations[field] = {
+            identifier: field,
+            rules: [
+              {
+                type: "empty",
+                prompt: "Enter name"
+              }
+            ]
+          };
+        }
       }
       return validations;
     };

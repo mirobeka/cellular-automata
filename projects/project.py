@@ -17,11 +17,27 @@ class Project:
         log.debug("config_path is {}".format(self.config_path))
 
     def update_config(self, config):
-        pass
+        """Change configuration of project and saves it to
+        project configure file.
+
+        :param config: dictionary with fields to update / add
+        :return: None
+        """
+        log = logging.getLogger("PROJECT")
+        for form_key in [key for key in config.keys() if "." in key]:
+            section, option = form_key.split(".")
+            log.debug("{}.{} => {}".format(section, option, config[form_key]))
+            self.config.set(section, option, config[form_key])
+
+        self.save()
+
 
     def save(self):
-        """Save configuration to cfg file """
-        with open("config_path", "w") as fp:
+        """Save configuration to cfg file.
+        
+        :return: None
+        """
+        with open(self.config_path, "w") as fp:
           self.config.write(fp)
 
     def delete(self):

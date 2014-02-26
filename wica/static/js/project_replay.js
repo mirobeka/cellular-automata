@@ -98,12 +98,6 @@
 
   $(document).ready(function() {
     var foo, hmm, loadReplayData, otherFoo;
-    new FormSubmitter(".ui.update.form", "PUT", ".", function(response) {
-      return window.location.assign(response);
-    });
-    new FormSubmitter(".ui.delete.form", "DELETE", ".", function(response) {
-      return window.location.assign(response);
-    });
     $(".ui.dimmable").dimmer({
       duration: {
         show: 300,

@@ -63,6 +63,7 @@ def get_project(project_name, tab="settings"):
 
 
 @app.route("/projects/<project_name>/", methods=["PUT"])
+@app.route("/projects/<project_name>/settings/", methods=["PUT"])
 def update_project_config(project_name):
     log = logging.getLogger("WICA")
     log.debug("trying update project {}".format(project_name))
@@ -70,6 +71,8 @@ def update_project_config(project_name):
     if project is None:
         return abort(404)
 
+    for option in request.form.keys():
+        log.debug("form[{}] = {}".format(option, request.form[option]))
     project.update_config(request.form)
     project.save()
     return url_for("get_project", project_name=project_name)
@@ -116,3 +119,4 @@ def convert_to_json(data):
 if __name__ == "__main__":
     set_logger()
     app.run()
+    # app.run(host="0.0.0.0")

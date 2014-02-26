@@ -6,7 +6,7 @@ class root.FormSubmitter
     if @form.length != 1
       console.log("Form not found with selector: "+@selector)
       return
-      
+    @disableValidations = true
     @form.form(@validations(), onSuccess: @sendForm)
 
   validations: () =>
@@ -14,10 +14,12 @@ class root.FormSubmitter
     # for now, we wan't to be each field filled with some value
     fields = @getFields()
     validations = {}
-    for field in fields
-      validations[field] =
-        identifier: field
-        rules: [{type: "empty", prompt: "Enter name"}],
+
+    unless @disableValidations
+      for field in fields
+        validations[field] =
+          identifier: field
+          rules: [{type: "empty", prompt: "Enter name"}],
 
     return validations
 
