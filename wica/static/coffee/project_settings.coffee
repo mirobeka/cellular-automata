@@ -1,8 +1,14 @@
 addOption = (event) ->
     section = $(event.target).attr('data-section')
+
+    # get input tag with name of new option
     inputTag = $(event.target).siblings('input[name="optionName"]').get(0)
+
+    # option name
     option = $(inputTag).val()
-    console.log "adding #{section}.#{option}"
+
+    console.log "Adding option #{option} in section #{section}"
+
     opt = optionHtml(section, option)
     insertOption(section, opt)
 
@@ -55,6 +61,7 @@ insertSection = (htmlToInsert) ->
     lastSection.removeClass('last')
 
 $(document).ready ->
+    # creates form submitters for deleting configuration and updating configuration
     new FormSubmitter(".ui.update.form", "PUT", ".", (response) -> window.location.assign response)
     new FormSubmitter(".ui.delete.form", "DELETE", ".", (response) -> window.location.assign response)
 
