@@ -4,10 +4,13 @@ addOption = (event) ->
     # get input tag with name of new option
     inputTag = $(event.target).siblings('input[name="optionName"]').get(0)
 
-    # option name
+    # get option name
     option = $(inputTag).val()
 
     console.log "Adding option #{option} in section #{section}"
+
+    # clear value in input tag
+    $(inputTag).val("")
 
     opt = optionHtml(section, option)
     insertOption(section, opt)
