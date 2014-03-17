@@ -7,7 +7,8 @@
     section = $(event.target).attr('data-section');
     inputTag = $(event.target).siblings('input[name="optionName"]').get(0);
     option = $(inputTag).val();
-    console.log("adding " + section + "." + option);
+    console.log("Adding option " + option + " in section " + section);
+    $(inputTag).val("");
     opt = optionHtml(section, option);
     return insertOption(section, opt);
   };
@@ -20,6 +21,7 @@
     section = $(inputTag).val();
     console.log("adding section " + section);
     sct = sectionHtml(section);
+    $(inputTag).val("");
     return insertSection(sct);
   };
 
@@ -28,23 +30,23 @@
   };
 
   sectionHtml = function(section) {
-    return "<div class=\"" + section + " last\">\n<h3>" + section + "</h3>\n  <div class=\"ui three column grid\">\n    <div class=\"column\">\n      <div class=\"ui action input\">\n        <input type=\"text\" name=\"optionName\" placeholder=\"Option name\">\n        <div class=\"ui addOption button\" data-section=\"" + section + "\">Add</div>\n      </div>\n    </div>\n  </div>";
+    return "<div class=\"ui horizontal icon divider\">\n  <i class=\"ellipsis horizontal icon\"></i>\n</div>\n<div class=\"" + section + " last\">\n\n    <h3>" + section + "</h3>\n\n      <div class=\"ui three column grid\">\n        <div class=\"column\">\n          <div class=\"ui action input\">\n            <input type=\"text\" name=\"optionName\" placeholder=\"Option name\">\n            <div class=\"ui addOption button\" data-section=\"" + section + "\">Add</div>\n          </div>\n        </div>\n\n      </div>";
   };
 
   insertOption = function(section, htmlToInsert) {
     var newOption;
     section = $("." + section);
     newOption = $(htmlToInsert);
-    newOption.bind('click', addOption);
-    return newOption.insertBefore(section.find('.ui.three.column.grid'));
+    newOption.bind("click", addOption);
+    return newOption.insertBefore(section.find(".ui.three.column.grid"));
   };
 
   insertSection = function(htmlToInsert) {
     var lastSection, newSection;
-    lastSection = $('.last');
+    lastSection = $(".last");
     newSection = $(htmlToInsert);
-    newSection.bind('click', addSection);
-    newSection.appendTo('.last');
+    newSection.insertAfter(".last");
+    newSection.find(".ui.addOption.button").bind("click", addOption);
     return lastSection.removeClass('last');
   };
 

@@ -19,10 +19,14 @@ addSection = (event) ->
     console.log event
 
     inputTag = $(event.target).siblings('input[name="sectionName"]').get(0)
+
     console.log inputTag
     section = $(inputTag).val()
+
     console.log "adding section #{section}"
     sct = sectionHtml(section)
+    # clear input field for section
+    $(inputTag).val("")
     insertSection(sct)
 
 
@@ -36,8 +40,14 @@ optionHtml = (section, option) ->
 
 # function for generating whole section for project configuration
 sectionHtml = (section) ->
-    """<div class="#{section} last">
+    """
+    <div class="ui horizontal icon divider">
+      <i class="ellipsis horizontal icon"></i>
+    </div>
+    <div class="#{section} last">
+
         <h3>#{section}</h3>
+
           <div class="ui three column grid">
             <div class="column">
               <div class="ui action input">
@@ -45,21 +55,25 @@ sectionHtml = (section) ->
                 <div class="ui addOption button" data-section="#{section}">Add</div>
               </div>
             </div>
+
           </div>"""
 
 insertOption = (section, htmlToInsert) ->
     section = $(".#{section}")
 
     newOption = $(htmlToInsert)
-    newOption.bind('click', addOption)
-    newOption.insertBefore(section.find('.ui.three.column.grid'))
+    newOption.bind("click", addOption)
+    newOption.insertBefore(section.find(".ui.three.column.grid"))
 
 insertSection = (htmlToInsert) ->
-    lastSection = $('.last')
+    lastSection = $(".last")
 
     newSection = $(htmlToInsert)
-    newSection.bind('click', addSection)
-    newSection.appendTo('.last')
+
+    newSection.insertAfter(".last")
+    newSection.find(".ui.addOption.button").bind("click", addOption)
+
+
 
     lastSection.removeClass('last')
 
