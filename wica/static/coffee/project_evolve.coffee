@@ -1,2 +1,2 @@
 $(document).ready ->
-  console.log "document ready for action"
+    console.log "document ready for action"

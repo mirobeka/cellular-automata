@@ -4,4 +4,4 @@ to see what was happening during Cellular Automaton simulation.
 """
 
 class Replay:
-  pass
+    pass

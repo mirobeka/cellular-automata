@@ -7,53 +7,76 @@
 
 {% block head %}
 <script src= {{ url_for("static", filename="js/form.js") }}></script>
-<script src= {{ url_for("static", filename="js/project.js") }}></script>
+<script src= {{ url_for("static", filename="js/project_settings.js") }}></script>
 {{ super() }}
 {% endblock %}
 
 {# content for main block #}
 {% block content %}
 <div class="ui page grid">
-  <div class="ui column">
+    <div class="ui column">
 
-    {% include "_project_header.jinja" %}
+        {% include "_project_header.jinja" %}
 
-    {{ helper.tab_menu(project.name, active_tab) }}
+        {{ helper.tab_menu(project.name, active_tab) }}
 
-    <div class="ui bottom attached update form segment">
+        <div class="ui bottom attached update form segment">
 
-      {% for section in project.config.sections() %}
-      <h3>{{ section }}</h3>
-        {% for option in project.config.options(section) %}
-        <div class="field">
-          <label>{{ option }}</label>
-          <input type="text" name="{{section}}.{{option}}" value="{{ project.config.get(section, option) }}">
-        </div> {# end field #}
-        {% endfor %}
-      <div class="ui horizontal icon divider">
-        <i class="ellipsis horizontal icon"></i>
-      </div>
-      {% endfor %} {# section end #}
+            {% for section in project.config.sections() %}
+            <div class="{{ section }} {{"last" if loop.last}}">
+                    <h3>{{ section }}</h3>
+                    {% for option in project.config.options(section) %}
+                <div class="field">
+                    <label>{{ option }}</label>
+                    <input type="text" name="{{section}}.{{option}}" value="{{ project.config.get(section, option) }}">
+                </div> {# end field #}
+                {% if loop.last %}
+                <div class="ui three column grid">
+                    <div class="column">
+                        <div class="ui action input">
+                            <input type="text" name="optionName" placeholder="Option name">
+                            <div class="ui addOption button" data-section="{{section}}">Add</div>
+                        </div>
+                    </div> {# end column #}
+                </div> {# end grid #}
+                {% endif %}
+                {% endfor %}
+            </div> {# end section div #}
+            {% if not loop.last %}
+            <div class="ui horizontal icon divider">
+                <i class="ellipsis horizontal icon"></i>
+            </div>
+            {% else %}
+            <div class="ui three column grid">
+                <div class="column">
+                    <div class="ui action input">
+                        <input type="text" name="sectionName" placeholder="Section name">
+                        <div class="ui addSection button">Add</div>
+                    </div>
+                </div> {# end column #}
+            </div> {# end grid #}
+            {% endif %}
+            {% endfor %} {# section end #}
 
-      <div class="ui floated right submit button">Update</button>
+            <div class="ui floated right submit button">Update</button>
 
-    </div> {# end form #}
+        </div> {# end form #}
 
-    <div class="ui horizontal icon divider">
-      <i class="trash icon"></i>
-    </div>
+        <div class="ui horizontal icon divider">
+            <i class="trash icon"></i>
+        </div>
 
-    <div class="ui delete form">
-      <div class="two fields">
-        <div class="field">
-          <input type="text" name="delete_pass" placeholder="Enter project name">
-        </div> {# end field #}
-        <div class="field">
-          <div class="ui primary submit button">Delete</button>
-        </div> {# end field #}
-      </div> {# end two fields #}
+        <div class="ui delete form">
+            <div class="two fields">
+                <div class="field">
+                    <input type="text" name="delete_pass" placeholder="Enter project name">
+                </div> {# end field #}
+                <div class="field">
+                    <div class="ui primary submit button">Delete</button>
+                </div> {# end field #}
+            </div> {# end two fields #}
 
-    </div> {# end form #}
-  </div> {# end ui column #}
+        </div> {# end form #}
+    </div> {# end ui column #}
 </div>
 {% endblock %}

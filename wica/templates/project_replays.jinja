@@ -15,55 +15,55 @@
 {# content for main block #}
 {% block content %}
 <div class="ui page grid">
-  <div class="ui column">
+    <div class="ui column">
 
-    {% include "_project_header.jinja" %}
+        {% include "_project_header.jinja" %}
 
-    {{ helper.tab_menu(project.name, active_tab) }}
+        {{ helper.tab_menu(project.name, active_tab) }}
 
-    <div class="ui bottom attached segment">
-      <div class="ui grid">
-        <div class="four wide column">
-          <div class="ui segment">
-            <div class="ui list">
-              {% for replay in project.replays %}
-              <div class="item load replay">
-                <i class="video icon"></i>
-                <a class="load replay" data-name={{replay}}> {{ replay|replace(".replay","") }}</a>
-              </div> {# end item #}
-              {% endfor %}
-            </div> {# end list #}
-          </div> {# end center aligned segment #}
-        </div> {# end first column #}
-        <div class="ten wide column">
-          <div class="ui center aligned segment dimmable">
-            <div class="ui dimmer hidden">
-              <div class="content">
-                <div class="center">
-                  Replay loaded
-                </div>
-              </div>
-            </div> {# end dimmer #}
-            <canvas
-              id="replayCanvas"
-              width="{{project.config.get("lattice", "width")}}"
-              height="{{project.config.get("lattice", "height")}}"></canvas>
-          <br />
+        <div class="ui bottom attached segment">
+            <div class="ui grid">
+                <div class="four wide column">
+                    <div class="ui segment">
+                        <div class="ui list">
+                            {% for replay in project.replays %}
+                            <div class="item load replay">
+                                <i class="video icon"></i>
+                                <a class="load replay" data-name={{replay}}> {{ replay|replace(".replay","") }}</a>
+                            </div> {# end item #}
+                            {% endfor %}
+                        </div> {# end list #}
+                    </div> {# end center aligned segment #}
+                </div> {# end first column #}
+                <div class="ten wide column">
+                    <div class="ui center aligned segment dimmable">
+                        <div class="ui dimmer hidden">
+                            <div class="content">
+                                <div class="center">
+                                    Replay loaded
+                                </div>
+                            </div>
+                        </div> {# end dimmer #}
+                        <canvas
+                            id="replayCanvas"
+                            width="{{project.config.get("lattice", "width")}}"
+                            height="{{project.config.get("lattice", "height")}}"></canvas>
+                    <br />
 
-          <div class="ui icon button">
-            <i class="play icon"></i>
-          </div>
-          <div class="ui icon button">
-            <i class="pause icon"></i>
-          </div>
-          <div class="ui icon button">
-            <i class="stop icon"></i>
-          </div>
-          </div> {# end center aligned segment #}
-        </div> {# end second column #}
-      </div> {# end grid #}
-    </div> {# end bottom attached segment #}
+                    <div class="ui icon button">
+                        <i class="play icon"></i>
+                    </div>
+                    <div class="ui icon button">
+                        <i class="pause icon"></i>
+                    </div>
+                    <div class="ui icon button">
+                        <i class="stop icon"></i>
+                    </div>
+                    </div> {# end center aligned segment #}
+                </div> {# end second column #}
+            </div> {# end grid #}
+        </div> {# end bottom attached segment #}
 
-  </div> {# end ui column #}
+    </div> {# end ui column #}
 </div>
 {% endblock %}

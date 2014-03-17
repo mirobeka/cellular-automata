@@ -14,16 +14,16 @@
 {# content for main block #}
 {% block content %}
 <div class="ui page grid">
-  <div class="ui column">
+    <div class="ui column">
 
-    {% include "_project_header.jinja" %}
+        {% include "_project_header.jinja" %}
 
-    {{ helper.tab_menu(project.name, active_tab) }}
+        {{ helper.tab_menu(project.name, active_tab) }}
 
-    <div class="ui bottom attached segment">
-      List of evolved values?
-    </div>
+        <div class="ui bottom attached segment">
+            List of evolved values?
+        </div>
 
-  </div> {# end ui column #}
+    </div> {# end ui column #}
 </div>
 {% endblock %}

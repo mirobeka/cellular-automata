@@ -5,32 +5,31 @@
 
 {# define navigation items #}
 {% set navigation = [
-  ("dashboard", url_for("dashboard"), "dashboard"),
-  ("projects", url_for("get_projects"), "lab"),
-  ("replays", url_for("replays"), "video"),
-  ("about", url_for("about"), "question"),
-  ("documentation", url_for("documentation"), "text file")
-  ]
-  %}
+    ("dashboard", url_for("dashboard"), "dashboard"),
+    ("projects", url_for("get_projects"), "lab"),
+    ("replays", url_for("replays"), "video"),
+    ("about", url_for("about"), "question"),
+    ("documentation", url_for("documentation"), "text file")
+    ]
+    %}
 <!doctype html>
 <html>
-  <head>
-    <title>{% block title%}{% endblock %}</title>
-    {% include "_head.jinja" %}
-    {% block head %}
-    
-    {% endblock %}
-  </head>
-  <body>
-    {# navigation #}
-    <nav> {{ helper.menu(navigation, active_page) }} </nav>
-    
-    {# replace block with content #}
-    {% block content %}{% endblock %}
+    <head>
+        <title>{% block title%}{% endblock %}</title>
+        {% include "_head.jinja" %}
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        {# navigation #}
+        <nav> {{ helper.menu(navigation, active_page) }} </nav>
 
-    {# footer here please #}
-    {% include "_footer.jinja" %}
-  </body>
+        {# replace block with content #}
+        {% block content %}{% endblock %}
+
+        {# footer here please #}
+        {% include "_footer.jinja" %}
+    </body>
 </html>
 
 

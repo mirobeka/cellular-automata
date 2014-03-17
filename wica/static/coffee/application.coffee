@@ -1,2 +1,2 @@
 $(document).ready ->
-  console.log("Howdy from main coffee sctipt ;)")
+    console.log("Howdy from main coffee sctipt ;)")

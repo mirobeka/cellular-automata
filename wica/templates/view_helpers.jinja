@@ -1,88 +1,88 @@
 {# generating menu item #}
 {% macro menu_item(label, url, icon=None, active=false) -%}
 <a class="item {% if active %}active{% endif %}" href="{{ url }}">
-  {% if icon != None -%}
-  <i class="{{ icon }} icon"></i>
-  {%- endif %}
-  {{ label }}
+    {% if icon != None -%}
+    <i class="{{ icon }} icon"></i>
+    {%- endif %}
+    {{ label }}
 </a>
 {%- endmacro %}
 
 {% macro header(icon,content) -%}
 <span>&nbsp;</span>
 <h2 class="ui right aligned header" >
-  <i class="{{icon}} icon"></i>
-  {{content}}
+    <i class="{{icon}} icon"></i>
+    {{content}}
 </h2>
 {% endmacro %}
 
 {# generating menu #}
 {% macro menu(items, active_page) -%}
 <div class="ui secondary pointing menu">
-  {% for item in items %}
-    {{ menu_item(item[0], item[1], item[2], active_page == item[0]) }}
-  {% endfor %}
+    {% for item in items %}
+        {{ menu_item(item[0], item[1], item[2], active_page == item[0]) }}
+    {% endfor %}
 </div>
 {% endmacro %}
 
 {# generating menu #}
 {% macro tab_menu(project_name, active_tab) -%}
 <div class="ui top attached tabular menu">
-  <a
-    class="{% if active_tab == "settings" %} active {% endif %} item"
-    href="{{url_for("get_project", project_name=project_name, tab="settings") }}">
-    settings
-  </a>
-  <a
-    class="{% if active_tab == "replays" %} active {% endif %} item"
-    href="{{url_for("get_project", project_name=project_name, tab="replays") }}">
-    replays
-  </a>
-  <a
-    class="{% if active_tab == "evolve" %} active {% endif %} item"
-    href="{{url_for("get_project", project_name=project_name, tab="evolve") }}">
-    evolve
-  </a>
+    <a
+        class="{% if active_tab == "settings" %} active {% endif %} item"
+        href="{{url_for("get_project", project_name=project_name, tab="settings") }}">
+        settings
+    </a>
+    <a
+        class="{% if active_tab == "replays" %} active {% endif %} item"
+        href="{{url_for("get_project", project_name=project_name, tab="replays") }}">
+        replays
+    </a>
+    <a
+        class="{% if active_tab == "evolve" %} active {% endif %} item"
+        href="{{url_for("get_project", project_name=project_name, tab="evolve") }}">
+        evolve
+    </a>
 </div> {# end tabular menu #}
 {% endmacro %}
 
 {% macro display_option(settings, section, option) -%}
 <div class="item">
-  <div class="content">
-    <div class="header"> {{ option }} </div> {# end header #}
-    <div class="description">
-        {{ settings.get(section, option)|truncate(30)}}
-      </div> {# end description #}
-  </div> {# end content #}
+    <div class="content">
+        <div class="header"> {{ option }} </div> {# end header #}
+        <div class="description">
+                {{ settings.get(section, option)|truncate(30)}}
+            </div> {# end description #}
+    </div> {# end content #}
 </div> {# end item #}
 {% endmacro %}
 
 {% macro display_section(settings, section) -%}
 <div class="item">
-  <div class="content active">
-    <a class="name"> {{ section }} </a> {# end name #}
+    <div class="content active">
+        <a class="name"> {{ section }} </a> {# end name #}
 
-    <div class="ui list">
-      {% for option in settings.options(section) %}
-        {{ display_option(settings, section, option) }}
-      {% endfor %}
-    </div> {# end list #}
-  </div> {# end content #}
+        <div class="ui list">
+            {% for option in settings.options(section) %}
+                {{ display_option(settings, section, option) }}
+            {% endfor %}
+        </div> {# end list #}
+    </div> {# end content #}
 </div> {# end item #}
 {% endmacro %}
 
 {# generate project #}
 {% macro display_project(project) -%}
-  <div class="title">
-    <i class="dropdown icon"></i>
-    <a href={{ url_for("get_project", project_name=project.name) }}>{{project.name}}</a>
-  </div> {# end title #}
-  <div class="content">
-    <div class="ui items">
-      {# list all sections of configuration #}
-      {% for section in project.config.sections() %}
-        {{ display_section(project.config, section) }}
-      {% endfor %}
-    </div> {# end ui items #}
-  </div> {# end content #}
+    <div class="title">
+        <i class="dropdown icon"></i>
+        <a href={{ url_for("get_project", project_name=project.name) }}>{{project.name}}</a>
+    </div> {# end title #}
+    <div class="content">
+        <div class="ui items">
+            {# list all sections of configuration #}
+            {% for section in project.config.sections() %}
+                {{ display_section(project.config, section) }}
+            {% endfor %}
+        </div> {# end ui items #}
+    </div> {# end content #}
 {% endmacro %}
