@@ -16,8 +16,6 @@ addOption = (event) ->
     insertOption(section, opt)
 
 addSection = (event) ->
-    console.log event
-
     inputTag = $(event.target).siblings('input[name="sectionName"]').get(0)
 
     console.log inputTag
@@ -29,13 +27,24 @@ addSection = (event) ->
     $(inputTag).val("")
     insertSection(sct)
 
+removeOption = (event) ->
+    section = $(event.target).attr('data-section')
+    option = $(event.target).attr('data-option')
+    console.log "removing #{section}.#{option}"
+    $(".#{section} > .#{option}").remove()
+
 
 # function for generating option in specified section of project
 # configuration
 optionHtml = (section, option) ->
-    """<div class="field">
+    """<div class="field #{option}">
     <label>#{option}</label>
-    <input type="text" name="#{section}.#{option}" placeholder="Enter value">
+    <div class="ui action input">
+        <input type="text" name="#{section}.#{option}" placeholder="Enter value">
+        <div class="ui removeOption tiny red button" data-option="#{option}" data-section="#{section}">
+            <i class="ui minus icon"></i>
+        </div>
+    </div>
     </div>"""
 
 # function for generating whole section for project configuration
@@ -52,7 +61,9 @@ sectionHtml = (section) ->
             <div class="column">
               <div class="ui action input">
                 <input type="text" name="optionName" placeholder="Option name">
-                <div class="ui addOption button" data-section="#{section}">Add</div>
+                <div class="ui addOption button" data-section="#{section}">
+                    <i class="ui plus icon"></i>
+                </div>
               </div>
             </div>
 
@@ -85,4 +96,5 @@ $(document).ready ->
     # button for adding fields
     $('.addSection').bind('click', addSection)
     $('.addOption').bind('click', addOption)
+    $('.removeOption').bind('click', removeOption)
 
