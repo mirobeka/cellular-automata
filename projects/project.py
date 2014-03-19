@@ -16,6 +16,27 @@ class Project:
         self.config_path = self.get_config_path(os.path.join(PROJECTS, project_name))
         log.debug("config_path is {}".format(self.config_path))
 
+    def remove_section(self, section):
+        """Remove whole section with all options from project configuration.
+        
+        If section is missing nothing happens.
+
+        :param section: string, name of section
+        :returns: None
+        """
+        self.config.remove_section(section)
+
+    def remove_option(self, section, option):
+        """Remove option from project configuration.
+        
+        If option is missing nothing happens.
+
+        :param section: string, name of section
+        :param option: string, name of option
+        :returns: None
+        """
+        self.config.remove_option(section, option)
+
     def update_config(self, config):
         """Change configuration of project and saves it to
         project configure file.
@@ -27,6 +48,8 @@ class Project:
         for form_key in [key for key in config.keys() if "." in key]:
             section, option = form_key.split(".")
             log.debug("{}.{} => {}".format(section, option, config[form_key]))
+            if section not in self.config.sections():
+                self.config.add_section(section)
             self.config.set(section, option, config[form_key])
 
         self.save()

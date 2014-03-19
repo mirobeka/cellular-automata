@@ -77,6 +77,23 @@ def update_project_config(project_name):
     project.save()
     return url_for("get_project", project_name=project_name)
 
+@app.route("/projects/<project_name>/settings/", methods=["DELETE"])
+def remove_project_field(project_name):
+    log = logging.getLogger("WICA")
+    log.debug("trying remove {} configuration field".format(project_name))
+    project = Project.load_project(project_name)
+    if project is None:
+        return abort(404)
+
+    if "option" not in request.form.keys():
+        log.debug("removing section {}".format(request.form["section"]))
+        project.remove_section(request.form["section"])
+    else:
+        log.debug("removing option {}.{}".format(request.form["section"], request.form["option"]))
+    project.save()
+    return url_for("get_project", project_name=project_name)
+
+
 @app.route("/projects/<project_name>/", methods=["DELETE"])
 def delete_project(project_name):
     log = logging.getLogger("WICA")
