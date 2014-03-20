@@ -35,7 +35,7 @@ def create_project():
 
     # creates project
     project = Project.create_project(project_name)
-    return url_for("get_project", project_name=project_name)
+    return url_for("get_project", project_name=project_name, tab="settings")
 
 @app.route("/projects/<project_name>/replay/<replay_name>/", methods=["GET"])
 def get_project_replay_data(project_name, replay_name):
@@ -48,9 +48,8 @@ def get_project_replay_data(project_name, replay_name):
     json_data = convert_to_json(project.replay(replay_name))
     return json_data
 
-@app.route("/projects/<project_name>/", methods=["GET"])
 @app.route("/projects/<project_name>/<tab>/", methods=["GET"])
-def get_project(project_name, tab="settings"):
+def get_project(project_name, tab):
     project = Project.load_project(project_name)
     if project is None:
         return abort(404)
@@ -75,7 +74,7 @@ def update_project_config(project_name):
         log.debug("form[{}] = {}".format(option, request.form[option]))
     project.update_config(request.form)
     project.save()
-    return url_for("get_project", project_name=project_name)
+    return url_for("get_project", project_name=project_name, tab="settings")
 
 @app.route("/projects/<project_name>/settings/", methods=["DELETE"])
 def remove_project_field(project_name):
@@ -90,8 +89,9 @@ def remove_project_field(project_name):
         project.remove_section(request.form["section"])
     else:
         log.debug("removing option {}.{}".format(request.form["section"], request.form["option"]))
+        project.remove_option(request.form["section"], request.form["option"])
     project.save()
-    return url_for("get_project", project_name=project_name)
+    return "successfully removed"
 
 
 @app.route("/projects/<project_name>/", methods=["DELETE"])

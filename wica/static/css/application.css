@@ -19,6 +19,15 @@ html, body {
   margin-bottom: 1.5rem;
 }
 
+.removeSection{
+  -webkit-transition: color 300ms;
+}
+
+.removeSection:hover{
+  -webkit-transition: color 300ms;
+  color: #D95C5C !important;
+}
+
 #replayCanvas{
   border: 1px solid black;
 }

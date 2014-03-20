@@ -23,8 +23,8 @@
         <div class="ui bottom attached update form segment">
 
             {% for section in project.config.sections() %}
-            <div class="{{ section }} {{"last" if loop.last}}">
-                    <h3>{{ section }}</h3>
+            <div class="{{ section }} section">
+                <h3>{{ section }} <i class="ui close removeSection icon" data-section="{{section}}"></i></h3>
                     {% for option in project.config.options(section) %}
                     <div class="field {{option}}">
                     <label>{{ option }}</label>
@@ -41,6 +41,7 @@
                         <div class="ui action input">
                             <input type="text" name="optionName" placeholder="Option name">
                             <div class="ui addOption button" data-section="{{section}}">
+                                &nbsp;
                                 <i class="ui plus icon"></i>
                             </div>
                         </div>
@@ -68,22 +69,7 @@
 
             <div class="ui floated right submit button">Update</button>
 
-        </div> {# end form #}
-
-        <div class="ui horizontal icon divider">
-            <i class="trash icon"></i>
-        </div>
-
-        <div class="ui delete form">
-            <div class="two fields">
-                <div class="field">
-                    <input type="text" name="delete_pass" placeholder="Enter project name">
-                </div> {# end field #}
-                <div class="field">
-                    <div class="ui primary submit button">Delete</button>
-                </div> {# end field #}
-            </div> {# end two fields #}
-
+        </div> {# wtf which div end? #}
         </div> {# end form #}
     </div> {# end ui column #}
 </div>

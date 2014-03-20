@@ -4,8 +4,11 @@ addOption = (event) ->
     # get input tag with name of new option
     inputTag = $(event.target).siblings('input[name="optionName"]').get(0)
 
+
     # get option name
     option = $(inputTag).val()
+    if option is ""
+        return
 
     console.log "Adding option #{option} in section #{section}"
 
@@ -20,6 +23,8 @@ addSection = (event) ->
 
     console.log inputTag
     section = $(inputTag).val()
+    if section is ""
+        return
 
     console.log "adding section #{section}"
     sct = sectionHtml(section)
@@ -31,7 +36,34 @@ removeOption = (event) ->
     section = $(event.target).attr('data-section')
     option = $(event.target).attr('data-option')
     console.log "removing #{section}.#{option}"
-    $(".#{section} > .#{option}").remove()
+    $(".#{section} > .#{option}").fadeOut(250, -> $(".#{section} > .#{option}").remove())
+
+    data =
+
+    $.ajax
+        type: "DELETE"
+        url: "."
+        data:
+            "section": "#{section}"
+            "option": "#{option}"
+        success: (response) -> console.log response
+
+removeSection = (event) ->
+    section = $(event.target).attr('data-section')
+    console.log "removing whole section #{section}"
+    $(".#{section}").fadeOut(250, ->
+        $(".#{section}").next('.ui.horizontal.icon.divider').remove()
+        $(".#{section}").remove()
+    )
+    $(".#{section}").next('.ui.horizontal.icon.divider').fadeOut(250)
+
+
+    $.ajax
+        type: "DELETE"
+        url: "."
+        data:
+            "section": "#{section}"
+        success: (response) -> console.log response
 
 
 # function for generating option in specified section of project
@@ -53,9 +85,9 @@ sectionHtml = (section) ->
     <div class="ui horizontal icon divider">
       <i class="ellipsis horizontal icon"></i>
     </div>
-    <div class="#{section} last">
+    <div class="#{section} section">
 
-        <h3>#{section}</h3>
+        <h3>#{section} <i class="ui remove removeSection icon" data-section="#{section}"></i></h3>
 
           <div class="ui three column grid">
             <div class="column">
@@ -73,28 +105,30 @@ insertOption = (section, htmlToInsert) ->
     section = $(".#{section}")
 
     newOption = $(htmlToInsert)
-    newOption.bind("click", addOption)
+    newOption.find(".ui.addOption.button").bind("click", addOption)
+    newOption.find(".ui.removeOption.button").bind("click", removeOption)
+    newOption.attr("hidden", "true")
     newOption.insertBefore(section.find(".ui.three.column.grid"))
+    newOption.fadeIn()
 
 insertSection = (htmlToInsert) ->
-    lastSection = $(".last")
+    lastSection = $(".section").last()
 
     newSection = $(htmlToInsert)
 
-    newSection.insertAfter(".last")
+    lastSection.after(newSection)
+    newSection.fadeIn()
     newSection.find(".ui.addOption.button").bind("click", addOption)
-
-
-
-    lastSection.removeClass('last')
+    newSection.find(".ui.removeOption.button").bind("click", removeOption)
+    newSection.find(".ui.icon.removeSection").bind("click", removeSection)
 
 $(document).ready ->
     # creates form submitters for deleting configuration and updating configuration
     new FormSubmitter(".ui.update.form", "PUT", ".", (response) -> window.location.assign response)
-    new FormSubmitter(".ui.delete.form", "DELETE", ".", (response) -> window.location.assign response)
 
     # button for adding fields
     $('.addSection').bind('click', addSection)
     $('.addOption').bind('click', addOption)
     $('.removeOption').bind('click', removeOption)
+    $('.removeSection').bind('click', removeSection)
 
