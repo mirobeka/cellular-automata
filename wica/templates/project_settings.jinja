@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div> {# end field #}
-                {% if loop.last %}
+                {% if loop.last %} {# if last option #}
                 <div class="ui three column grid">
                     <div class="column">
                         <div class="ui action input">
@@ -48,12 +48,13 @@
                     </div> {# end column #}
                 </div> {# end grid #}
                 {% endif %}
-                {% endfor %}
+                {% endfor %} {# end of options loop #}
             </div> {# end section div #}
-            <div class="ui horizontal icon divider">
-                <i class="ellipsis horizontal icon"></i>
+
+            {% if loop.last %} {# if last section #}
+            <div class="ui addSection horizontal icon divider">
+                <i class="plus horizontal icon"></i>
             </div>
-            {% if loop.last %}
             <div class="ui three column grid">
                 <div class="column">
                     <div class="ui action input">
@@ -64,13 +65,17 @@
                     </div>
                 </div> {# end column #}
             </div> {# end grid #}
+            {% else %} {# if NOT last section #}
+            <div class="ui addSection horizontal icon divider">
+                <i class="ellipsis horizontal icon"></i>
+            </div>
             {% endif %}
-            {% endfor %} {# section end #}
+            {% endfor %} {# end of section loop #}
 
             <div class="ui floated right submit button">Update</button>
 
         </div> {# wtf which div end? #}
         </div> {# end form #}
     </div> {# end ui column #}
-</div>
+</div> 
 {% endblock %}

@@ -19,6 +19,15 @@ html, body {
   margin-bottom: 1.5rem;
 }
 
+.addSection{
+  -webkit-transition: color 300ms;
+}
+
+.addSection:hover{
+  -webkit-transition: color 300ms;
+  color: #D95C5C !important;
+}
+
 .removeSection{
   -webkit-transition: color 300ms;
 }
