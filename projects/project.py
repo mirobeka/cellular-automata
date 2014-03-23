@@ -2,9 +2,13 @@ from __future__ import print_function
 from glob import glob
 from shutil import rmtree
 from cPickle import Pickler, Unpickler
+from threading import Thread
+from cellular_automata.creator import create_automaton
+from objectives.shapes import EnergyStopCriterion
 import ConfigParser
 import logging
 import os
+import time
 
 PROJECTS = "data"
 
@@ -83,6 +87,24 @@ class Project:
             replay = upkl.load()
         return replay
 
+    def record_replay(self):
+
+        def start_simulation(config_path):
+            log = logging.getLogger("THREAD")
+            replay_file_name = os.path.join(PROJECTS, self.name, "replays", time.strftime("%Y_%m_%d_%H_%M_%S.replay"))
+            log.info("creating automaton")
+            automaton = create_automaton(config_path)
+            log.info("Starting automaton")
+            automaton.run_with_record(EnergyStopCriterion(), replay_file_name)
+            log.info("Runngin finished! Replay saved in {}".format(replay_file_name))
+
+        # create thread
+        thrd = Thread(target=start_simulation, args=[self.config_path])
+        #start executing
+        thrd.start()
+
+        # success
+        return True
 
     @classmethod
     def create_project(cls, project_name):

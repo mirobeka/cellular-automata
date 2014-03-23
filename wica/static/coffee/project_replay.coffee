@@ -98,11 +98,23 @@ $(document).ready ->
             $(".ui.dimmable").dimmer("hide")
         window.setTimeout( hideDimmer, 1000)
 
-
-
     foo = (event) ->
         console.log "getting data from server"
         replayName = $(@).attr("data-name")
         jsonData = loadReplayData replayName, otherFoo
 
     hmm = $('a.load.replay').bind('click', foo)
+
+recordReplay = (event) ->
+    $.ajax
+        type: "POST"
+        data:
+            "replay": "true"
+        url: "."
+        success: (response) ->
+            console.log response
+
+    
+
+$(document).ready ->
+    $('.recordReplay').bind('click', recordReplay)

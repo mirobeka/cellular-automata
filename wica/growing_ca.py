@@ -37,6 +37,18 @@ def create_project():
     project = Project.create_project(project_name)
     return url_for("get_project", project_name=project_name, tab="settings")
 
+@app.route("/projects/<project_name>/replays/", methods=["POST"])
+def record_replay(project_name):
+    project = Project.load_project(project_name)
+    if project is None:
+        return abort(404)
+
+    if "replay" in request.form:
+        project.record_replay()
+        return "recording replay"
+
+    return "wrong input data"
+
 @app.route("/projects/<project_name>/replay/<replay_name>/", methods=["GET"])
 def get_project_replay_data(project_name, replay_name):
     log = logging.getLogger("PROJECT")
