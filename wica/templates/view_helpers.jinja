@@ -73,16 +73,9 @@
 
 {# generate project #}
 {% macro display_project(project) -%}
-    <div class="title">
-        <i class="dropdown icon"></i>
-        <a href={{ url_for("get_project", project_name=project.name) }}>{{project.name}}</a>
-    </div> {# end title #}
-    <div class="content">
-        <div class="ui items">
-            {# list all sections of configuration #}
-            {% for section in project.config.sections() %}
-                {{ display_section(project.config, section) }}
-            {% endfor %}
-        </div> {# end ui items #}
-    </div> {# end content #}
+    <tr>
+        <td><a href={{ url_for("get_project", project_name=project.name, tab="settings") }}>{{project.name}}</a></td>
+        <td> hmmmm </td>
+        <td> hmmmm? </td>
+    </tr>
 {% endmacro %}

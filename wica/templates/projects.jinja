@@ -33,10 +33,19 @@
 
         <div class="ui horizontal divider"> or </div>
 
-        <div class="ui fluid accordion">
-            {% for project in projects %}
-                {{ helper.display_project(project) }}
-            {% endfor %}
+        <table class="ui table segment">
+            <thead>
+                <tr>
+                    <td>project</td>
+                    <td>last edit</td>
+                    <td>other info</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                    {{ helper.display_project(project) }}
+                {% endfor %}
+            </tbody>
         </div> {# end accordion #}
 
     </div>
