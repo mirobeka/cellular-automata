@@ -5,12 +5,35 @@ from cPickle import Pickler, Unpickler
 from threading import Thread
 from cellular_automata.creator import create_automaton
 from objectives.shapes import EnergyStopCriterion
-import ConfigParser
+from ConfigParser import ConfigParser
 import logging
 import os
 import time
 
 PROJECTS = "data"
+
+DEFAULT_CONFIG = {
+        "lattice": {
+            "type": "",
+            "width": "",
+            "height": "",
+            "resolution": ""
+            },
+        "borders": {
+            "border_top": "",
+            "border_left": "",
+            "border_right": "",
+            "border_bottom": "",
+            },
+        "cells" : {
+            "state" : "",
+            "neighbourhood" : "",
+            "rule" : "",
+            },
+        "network" : {
+            "initial_weights" : ""
+            }
+        }
 
 class Project:
     def __init__(self, project_name):
@@ -72,7 +95,7 @@ class Project:
         rmtree(os.path.join(PROJECTS, self.name))
 
     def parse_config(self, path):
-        self.config = ConfigParser.ConfigParser()
+        self.config = ConfigParser()
         self.config.read(path)
 
     @property
@@ -109,15 +132,27 @@ class Project:
     @classmethod
     def create_project(cls, project_name):
         log = logging.getLogger("PROJECT")
+        project_path = os.path.join(PROJECTS,project_name)
         # TODO: creates project, directory structure, ...
-        if not os.path.exists(os.path.join(PROJECTS,project_name)):
-            os.makedirs(os.path.join(PROJECTS,project_name))
-            open(os.path.join(PROJECTS,project_name,"project.cfg"),"w").close()
+        if not os.path.exists(project_path):
+            cls.create_default_config_file(os.path.join(PROJECTS,project_name,"project.cfg"))
+            cls.create_project_directory(project_path)
 
         log.debug("Created project with name \"{}\"".format(project_name))
 
         project = cls(project_name)
         return cls(project_name)
+
+    @classmethod
+    def create_default_config_file(cls, config_path):
+        cp = ConfigParser()
+
+        for section in DEFAULT_CONFIG.keys():
+            cp.add_section(section)
+            for option in DEFAULT_CONFIG[section].keys():
+                cp.set(section, option, DEFAULT_CONFIG[section][option])
+        with open(config_path, "w") as fp:
+            cp.write(fp)
 
     @classmethod
     def load_projects(cls):
@@ -148,7 +183,7 @@ class Project:
     @staticmethod
     def create_project_directory(path_to_project):
         os.makedirs(path_to_project)
-        os.makedirs(path_to_project+"/replays")
+        os.makedirs(os.join(path_to_project,"replays"))
 
     def get_config_path(self, directory):
         """Find config file in directory and return full path.
