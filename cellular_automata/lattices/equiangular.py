@@ -202,7 +202,6 @@ class SquareLattice(Lattice):
         data = (stop_criterion.max_time+1)*[None]
         try:
             while stop_criterion.should_run(self):
-                log.debug("time is {}".format(self.time))
                 self.next_step()
                 data[self.time] = [cell.state.to_dict() for cell in self.cells.values()]
         except:
