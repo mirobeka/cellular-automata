@@ -22,6 +22,11 @@ class State(object):
         raise NotImplementedError(
             "initial_state_value method of state class is not implemented")
 
+    def to_dict(self):
+        raise NotImplementedError(
+            "to_dict method of state instance is not implemented")
+
+
 
 class BinaryState(State):
     @classmethod
@@ -39,6 +44,9 @@ class BinaryState(State):
     @classmethod
     def initial_state_value(cls):
         return False
+
+    def to_dict(self):
+        return {"alive": self.alive}
 
 
 class ColorState(State):
@@ -60,6 +68,10 @@ class ColorState(State):
 
     def euclidean_distance(self):
         return sqrt(sum(map(lambda x: pow(x, 2), self.rgb)))
+
+    def to_dict(self):
+        rgb = ("r", "g", "b")
+        return dict(zip(rgb,self.rgb))
 
 
 class ColorTopologyState(State):
@@ -84,6 +96,9 @@ class ColorTopologyState(State):
     def euclidean_distance(self):
         return sqrt(sum(map(lambda x: pow(x, 2), self.rgb)))
 
+    def to_dict(self):
+        return {"rgb":self.rgb, "wants_grow":self.wants_grow, "wants_divide":self.wants_divide}
+
 
 class ChemicalState(State):
     @classmethod
@@ -104,6 +119,9 @@ class ChemicalState(State):
 
     def euclidean_distance(self):
         return abs(self.chemicals)
+
+    def to_dict(self):
+        return {"chems":self.chemicals}
 
 
 class ChemicalInternalGrayscaleState(State):
@@ -142,4 +160,8 @@ class ChemicalInternalGrayscaleState(State):
         else:
             distance = self.internal
         return distance
+
+    def to_dict(self):
+        return {"chems":self.chemicals, "state": self.internal, "grayscale": self.grayscale}
+
 
