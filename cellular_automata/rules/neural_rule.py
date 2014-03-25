@@ -1,7 +1,22 @@
 from cellular_automata.rules.base import Rule
 from pybrain.tools.shortcuts import buildNetwork
 import numpy as np
+import logging
 
+class HardCodedRule(Rule):
+    """Programatically written rule for dividing space into 2 halves"""
+
+    def get_next_state(self, cell, neighbors):
+        new_state = cell.state.create_state()
+        if cell.position[0] <= 200:
+            new_state.rgb = tuple(map(lambda x: min(x+1, 254), cell.state.rgb))
+        else:
+            new_state.rgb = tuple(map(lambda x: min(x-1, 254), cell.state.rgb))
+
+        return new_state
+
+    def set_border(self, border=None):
+        self.border = border
 
 class TestRule(Rule):
     """This rule is just for testing energy stopping criterion"""
