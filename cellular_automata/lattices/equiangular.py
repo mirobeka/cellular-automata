@@ -199,7 +199,7 @@ class SquareLattice(Lattice):
 
     def run_with_record(self, stop_criterion, replay_file):
         log = logging.getLogger("LATTICE")
-        data = (stop_criterion.max_time+1)*[None]
+        data = stop_criterion.max_time*[None]
         try:
             while stop_criterion.should_run(self):
                 self.next_step()
@@ -208,7 +208,9 @@ class SquareLattice(Lattice):
                     pos = cell.top_left_corner
                     index = pos[0]/self.resolution + (pos[1]/self.resolution)*(self.width/self.resolution)
                     states_data[index] = cell.state.to_dict()
-                data[self.time] = states_data
+                data[self.time-1] = states_data
+            # trunc data
+            data = data[:self.time-1]
         except:
             log.exception("exception occured during lattice run")
         finally:
