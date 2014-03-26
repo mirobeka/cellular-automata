@@ -38,8 +38,6 @@ removeOption = (event) ->
     console.log "removing #{section}.#{option}"
     $(".#{section} > .#{option}").fadeOut(250, -> $(".#{section} > .#{option}").remove())
 
-    data =
-
     $.ajax
         type: "DELETE"
         url: "."

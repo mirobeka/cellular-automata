@@ -31,14 +31,14 @@
   };
 
   removeOption = function(event) {
-    var data, option, section;
+    var option, section;
     section = $(event.target).attr('data-section');
     option = $(event.target).attr('data-option');
     console.log("removing " + section + "." + option);
     $("." + section + " > ." + option).fadeOut(250, function() {
       return $("." + section + " > ." + option).remove();
     });
-    return data = $.ajax({
+    return $.ajax({
       type: "DELETE",
       url: ".",
       data: {
