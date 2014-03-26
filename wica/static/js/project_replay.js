@@ -44,7 +44,7 @@
 
     ReplayPlayer.prototype.update = function() {
       var idx, rgb, state, x, y, _i, _len, _ref;
-      if (this.step >= this.replay.length) {
+      if (this.step >= this.replay.data.length) {
         this.stop();
         return;
       }

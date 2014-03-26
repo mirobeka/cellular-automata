@@ -26,7 +26,7 @@ class ReplayPlayer
         @ctx.clearRect(0,0,@canvas.width, @canvas.height)
 
     update: =>
-        if @step >= @replay.length
+        if @step >= @replay.data.length
             @stop()
             return
 
