@@ -70,9 +70,7 @@ class ColorState(State):
         return sqrt(sum(map(lambda x: pow(x, 2), self.rgb)))
 
     def to_dict(self):
-        rgb = ("r", "g", "b")
-        return dict(zip(rgb,self.rgb))
-
+        return {"rgb": self.rgb}
 
 class ColorTopologyState(State):
     @classmethod
