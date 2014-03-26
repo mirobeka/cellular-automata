@@ -43,7 +43,7 @@
     };
 
     ReplayPlayer.prototype.update = function() {
-      var gray, idx, r, state, x, y, _i, _len, _ref;
+      var idx, rgb, state, x, y, _i, _len, _ref;
       if (this.step >= this.replay.length) {
         this.stop();
         return;
@@ -51,9 +51,8 @@
       _ref = this.replay.data[this.step];
       for (idx = _i = 0, _len = _ref.length; _i < _len; idx = ++_i) {
         state = _ref[idx];
-        r = Math.random();
-        gray = Math.floor(state * r);
-        this.ctx.fillStyle = "rgb(" + gray + "," + gray + "," + gray + ")";
+        rgb = state.rgb;
+        this.ctx.fillStyle = "rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ")";
         x = (idx % this.replay.width) * this.replay.resolution;
         y = Math.floor(idx / this.replay.height) * this.replay.resolution;
         this.ctx.fillRect(x, y, this.replay.resolution, this.replay.resolution);

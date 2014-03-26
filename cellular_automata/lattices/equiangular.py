@@ -203,7 +203,12 @@ class SquareLattice(Lattice):
         try:
             while stop_criterion.should_run(self):
                 self.next_step()
-                data[self.time] = [cell.state.to_dict() for cell in self.cells.values()]
+                states_data = len(self.cells)*[None]
+                for cell in self.cells.values():
+                    pos = cell.top_left_corner
+                    index = pos[0]/self.resolution + (pos[1]/self.resolution)*(self.width/self.resolution)
+                    states_data[index] = cell.state.to_dict()
+                data[self.time] = states_data
         except:
             log.exception("exception occured during lattice run")
         finally:

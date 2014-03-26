@@ -31,14 +31,8 @@ class ReplayPlayer
             return
 
         for state,idx in @replay.data[@step]
-
-            # this data are just white cells -> add some random just to see
-            # some changes...
-
-            r = Math.random()
-            gray = Math.floor(state*r)
-
-            @ctx.fillStyle = "rgb(#{gray},#{gray},#{gray})"
+            rgb = state.rgb
+            @ctx.fillStyle = "rgb(#{rgb[0]},#{rgb[1]},#{rgb[2]})"
             x = (idx % @replay.width)*@replay.resolution
             y = Math.floor(idx / @replay.height)*@replay.resolution
             @ctx.fillRect(x, y, @replay.resolution, @replay.resolution)
@@ -114,7 +108,6 @@ recordReplay = (event) ->
         success: (response) ->
             console.log response
 
-    
 
 $(document).ready ->
     $('.recordReplay').bind('click', recordReplay)
