@@ -11,7 +11,7 @@ class HardCodedRule(Rule):
         if cell.position[0] <= 200:
             new_state.rgb = tuple(map(lambda x: min(x+1, 254), cell.state.rgb))
         else:
-            new_state.rgb = tuple(map(lambda x: min(x-1, 254), cell.state.rgb))
+            new_state.rgb = tuple(map(lambda x: max(x-1, 0), cell.state.rgb))
 
         return new_state
 
