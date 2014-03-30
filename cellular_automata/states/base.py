@@ -65,8 +65,11 @@ class GrayscaleState(State):
     def initial_state_value(cls):
         return 0
 
+    def euclidean_distance(self):
+        return self.grayscale
+
     def to_dict(self):
-        return {"grayscale": self.rgb}
+        return {"grayscale": self.grayscale}
 
 
 class ColorState(State):
