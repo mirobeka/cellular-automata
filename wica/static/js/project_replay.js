@@ -13,6 +13,7 @@
       this.pause = __bind(this.pause, this);
       this.queue = __bind(this.queue, this);
       this.update = __bind(this.update, this);
+      this.map_state_to_color = __bind(this.map_state_to_color, this);
       this.clear = __bind(this.clear, this);
       this.loop = __bind(this.loop, this);
       this.initControls = __bind(this.initControls, this);
@@ -42,6 +43,14 @@
       return this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     };
 
+    ReplayPlayer.prototype.map_state_to_color = function(state) {
+      if ("rgb" in state) {
+        return state.rgb;
+      } else if ("grayscale" in state) {
+        return [state.grayscale, state.grayscale, state.grayscale];
+      }
+    };
+
     ReplayPlayer.prototype.update = function() {
       var idx, rgb, state, x, y, _i, _len, _ref;
       if (this.step >= this.replay.data.length) {
@@ -51,7 +60,7 @@
       _ref = this.replay.data[this.step];
       for (idx = _i = 0, _len = _ref.length; _i < _len; idx = ++_i) {
         state = _ref[idx];
-        rgb = state.rgb;
+        rgb = this.map_state_to_color(state);
         this.ctx.fillStyle = "rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ")";
         x = (idx % this.replay.width) * this.replay.resolution;
         y = Math.floor(idx / this.replay.height) * this.replay.resolution;

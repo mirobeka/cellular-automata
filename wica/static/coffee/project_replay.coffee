@@ -25,13 +25,19 @@ class ReplayPlayer
     clear: =>
         @ctx.clearRect(0,0,@canvas.width, @canvas.height)
 
+    map_state_to_color: (state) =>
+        if "rgb" of state
+            return state.rgb
+        else if "grayscale" of state
+            return [state.grayscale, state.grayscale, state.grayscale]
+
     update: =>
         if @step >= @replay.data.length
             @stop()
             return
 
         for state,idx in @replay.data[@step]
-            rgb = state.rgb
+            rgb = @map_state_to_color(state)
             @ctx.fillStyle = "rgb(#{rgb[0]},#{rgb[1]},#{rgb[2]})"
             x = (idx % @replay.width)*@replay.resolution
             y = Math.floor(idx / @replay.height)*@replay.resolution
