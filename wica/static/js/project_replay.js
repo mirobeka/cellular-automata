@@ -10,24 +10,52 @@
       this.replay = replay;
       this.start = __bind(this.start, this);
       this.stop = __bind(this.stop, this);
+      this.fastForward = __bind(this.fastForward, this);
+      this.forward = __bind(this.forward, this);
+      this.fastBackward = __bind(this.fastBackward, this);
+      this.backward = __bind(this.backward, this);
       this.pause = __bind(this.pause, this);
-      this.queue = __bind(this.queue, this);
       this.update = __bind(this.update, this);
+      this.updateStats = __bind(this.updateStats, this);
+      this.clearStats = __bind(this.clearStats, this);
+      this.draw = __bind(this.draw, this);
       this.map_state_to_color = __bind(this.map_state_to_color, this);
       this.clear = __bind(this.clear, this);
+      this.queue = __bind(this.queue, this);
       this.loop = __bind(this.loop, this);
+      this.slowDown = __bind(this.slowDown, this);
+      this.speedUp = __bind(this.speedUp, this);
       this.initControls = __bind(this.initControls, this);
       this.canvas = $("#replayCanvas").get(0);
       this.ctx = this.canvas.getContext("2d");
       this.canvas.width = this.replay.width * this.replay.resolution;
       this.canvas.height = this.replay.height * this.replay.resolution;
+      this.fps = 10;
       this.step = 0;
     }
 
     ReplayPlayer.prototype.initControls = function() {
-      $(".play.icon").parent().bind("click", this.start);
-      $(".pause.icon").parent().bind("click", this.pause);
-      return $(".stop.icon").parent().bind("click", this.stop);
+      $(".playButton").parent().bind("click", this.start);
+      $(".pauseButton").parent().bind("click", this.pause);
+      $(".stopButton").parent().bind("click", this.stop);
+      $(".forwardButton").parent().bind("click", this.forward);
+      $(".fastForwardButton").parent().bind("click", this.fastForward);
+      $(".backwardButton").parent().bind("click", this.backward);
+      $(".fastBackwardButton").parent().bind("click", this.fastBackward);
+      $(".speedUp").parent().bind("click", this.speedUp);
+      return $(".slowDown").parent().bind("click", this.slowDown);
+    };
+
+    ReplayPlayer.prototype.speedUp = function() {
+      this.fps += 2;
+      return this.updateStats();
+    };
+
+    ReplayPlayer.prototype.slowDown = function() {
+      if (!(this.fps <= 2)) {
+        this.fps -= 2;
+      }
+      return this.updateStats();
     };
 
     ReplayPlayer.prototype.loop = function() {
@@ -37,6 +65,16 @@
       this.clear();
       this.update();
       return this.queue();
+    };
+
+    ReplayPlayer.prototype.queue = function() {
+      var drawTimeout, nextFrame,
+        _this = this;
+      nextFrame = function() {
+        return window.requestAnimationFrame(_this.loop);
+      };
+      drawTimeout = 1000 / this.fps;
+      return window.setTimeout(nextFrame, drawTimeout);
     };
 
     ReplayPlayer.prototype.clear = function() {
@@ -51,47 +89,80 @@
       }
     };
 
-    ReplayPlayer.prototype.update = function() {
-      var idx, rgb, state, x, y, _i, _len, _ref;
-      if (this.step >= this.replay.data.length) {
-        this.stop();
-        return;
-      }
+    ReplayPlayer.prototype.draw = function(replay) {
+      var idx, rgb, state, x, y, _i, _len, _ref, _results;
       _ref = this.replay.data[this.step];
+      _results = [];
       for (idx = _i = 0, _len = _ref.length; _i < _len; idx = ++_i) {
         state = _ref[idx];
         rgb = this.map_state_to_color(state);
         this.ctx.fillStyle = "rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ")";
         x = (idx % this.replay.width) * this.replay.resolution;
         y = Math.floor(idx / this.replay.height) * this.replay.resolution;
-        this.ctx.fillRect(x, y, this.replay.resolution, this.replay.resolution);
+        _results.push(this.ctx.fillRect(x, y, this.replay.resolution, this.replay.resolution));
       }
-      return this.step++;
+      return _results;
     };
 
-    ReplayPlayer.prototype.queue = function() {
-      var nextFrame,
-        _this = this;
-      nextFrame = function() {
-        return window.requestAnimationFrame(_this.loop);
-      };
-      return window.setTimeout(nextFrame, 100);
+    ReplayPlayer.prototype.clearStats = function() {
+      return $('.frame').text("0/0");
+    };
+
+    ReplayPlayer.prototype.updateStats = function() {
+      $('.frame').text("" + this.step + "/" + this.replay.data.length);
+      return $('.fps').text("" + this.fps);
+    };
+
+    ReplayPlayer.prototype.update = function() {
+      if (this.step >= this.replay.data.length) {
+        this.stop();
+        return;
+      }
+      this.draw(this.replay);
+      this.updateStats();
+      return this.step++;
     };
 
     ReplayPlayer.prototype.pause = function() {
       console.log("pause");
       if (this.running) {
         return this.running = false;
-      } else {
-        this.running = true;
-        return window.requestAnimationFrame(this.loop);
       }
+    };
+
+    ReplayPlayer.prototype.backward = function() {
+      this.pause();
+      this.step--;
+      this.draw(this.replay);
+      return this.updateStats();
+    };
+
+    ReplayPlayer.prototype.fastBackward = function() {
+      this.pause();
+      this.step = 0;
+      this.draw(this.replay);
+      return this.updateStats();
+    };
+
+    ReplayPlayer.prototype.forward = function() {
+      this.pause();
+      this.step++;
+      this.draw(this.replay);
+      return this.updateStats();
+    };
+
+    ReplayPlayer.prototype.fastForward = function() {
+      this.pause();
+      this.step = this.replay.data.length - 1;
+      this.draw(this.replay);
+      return this.updateStats();
     };
 
     ReplayPlayer.prototype.stop = function() {
       this.clear();
       this.running = false;
-      return this.step = 0;
+      this.step = 0;
+      return this.updateStats();
     };
 
     ReplayPlayer.prototype.start = function() {
@@ -132,6 +203,8 @@
       console.log(player);
       console.log("initializing controls");
       player.initControls();
+      player.updateStats();
+      player.draw();
       $(".ui.dimmable").dimmer("show");
       hideDimmer = function() {
         return $(".ui.dimmable").dimmer("hide");
