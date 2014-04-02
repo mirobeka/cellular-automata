@@ -61,7 +61,10 @@ class SquareLattice(Lattice):
 
     @classmethod
     def create_initialized(cls, conf):
+        log = logging.getLogger("LATTICE")
         lattice = cls()
+
+        log.debug("Creating initialized")
 
         # set lattice dimensions
         lattice.width = int(conf["lattice"]["width"])
@@ -80,8 +83,10 @@ class SquareLattice(Lattice):
             lattice.rule = rule_class()
         lattice.rule.set_border(border)
 
-        if "initial_weights" in conf.keys():
-            weights = eval(conf["network"]["weights"])
+
+        if "network" in conf and "initial_weights" in conf["network"]:
+            weights = eval(conf["network"]["initial_weights"])
+            log.debug("setting initial weights {}".format(weights))
             lattice.rule.set_weights(weights)
 
         # cells are just carrying state, right? What kind of state? Here it is!
@@ -154,8 +159,8 @@ class SquareLattice(Lattice):
         map(lambda method: getattr(self, method)(), self.pre_methods)
 
         # change state of cells to next state
-        self.pool.map(lambda cell: cell.compute_next_state(), self.cells.values())
-        self.pool.map(lambda cell: cell.apply_next_state(), self.cells.values())
+        map(lambda cell: cell.compute_next_state(), self.cells.values())
+        map(lambda cell: cell.apply_next_state(), self.cells.values())
 
         # execute all pre methods
         map(lambda method: getattr(self, method)(), self.post_methods)
