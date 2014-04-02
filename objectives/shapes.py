@@ -73,6 +73,13 @@ class TwoBandObjective(Objective):
             print("error: {0}".format(error))
             return error
 
+class AgeStopCriterion(object):
+    def __init__(self):
+        self.max_time = 128
+
+    def should_run(self, lattice):
+        return lattice.time < self.max_time
+
 
 class EnergyStopCriterion(object):
     """ Energy stop criterion is really important part of evolution. It drives
