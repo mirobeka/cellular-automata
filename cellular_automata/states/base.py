@@ -52,24 +52,27 @@ class GrayscaleState(State):
     @classmethod
     def create_state(cls):
         state = cls()
-        state.grayscale = cls.initial_state_value()
+        state.internal, state.grayscale = cls.initial_state_value()
         return state
 
     @classmethod
     def create_random_state(cls):
         state = cls()
+        state.internal = random()
         state.grayscale = randint(0, 255)
         return state
 
     @classmethod
     def initial_state_value(cls):
-        return 0
+        internal = .0
+        grayscale = 128
+        return internal, grayscale
 
     def euclidean_distance(self):
         return self.grayscale
 
     def to_dict(self):
-        return {"grayscale": self.grayscale}
+        return {"grayscale": self.grayscale, "state": self.internal}
 
 
 class ColorState(State):
