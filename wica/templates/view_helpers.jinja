@@ -34,14 +34,14 @@
         settings
     </a>
     <a
-        class="{% if active_tab == "replays" %} active {% endif %} item"
-        href="{{url_for("get_project", project_name=project_name, tab="replays") }}">
-        replays
-    </a>
-    <a
         class="{% if active_tab == "evolve" %} active {% endif %} item"
         href="{{url_for("get_project", project_name=project_name, tab="evolve") }}">
         evolve
+    </a>
+    <a
+        class="{% if active_tab == "replays" %} active {% endif %} item"
+        href="{{url_for("get_project", project_name=project_name, tab="replays") }}">
+        replays
     </a>
 </div> {# end tabular menu #}
 {% endmacro %}
