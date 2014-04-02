@@ -121,10 +121,6 @@ def get_projects():
     projects = Project.load_projects()
     return render_template("projects.jinja", projects=projects)
 
-@app.route("/replays/")
-def replays():
-    return render_template("replays.jinja")
-
 @app.route("/about/")
 def about():
     return render_template("about.jinja")
