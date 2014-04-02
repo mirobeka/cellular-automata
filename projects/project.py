@@ -5,6 +5,7 @@ from cPickle import Pickler, Unpickler
 from threading import Thread
 from cellular_automata.creator import create_automaton
 from objectives.shapes import EnergyStopCriterion
+from objectives.shapes import AgeStopCriterion
 from ConfigParser import ConfigParser
 import logging
 import os
@@ -115,10 +116,9 @@ class Project:
         def start_simulation(config_path):
             log = logging.getLogger("THREAD")
             replay_file_name = os.path.join(PROJECTS, self.name, "replays", time.strftime("%Y_%m_%d_%H_%M_%S.replay"))
-            log.info("creating automaton")
             automaton = create_automaton(config_path)
-            log.info("Starting automaton")
-            automaton.run_with_record(EnergyStopCriterion(), replay_file_name)
+            log.debug("automaton created")
+            automaton.run_with_record(AgeStopCriterion(), replay_file_name)
             log.info("Runngin finished! Replay saved in {}".format(replay_file_name))
 
         # create thread
@@ -135,8 +135,8 @@ class Project:
         project_path = os.path.join(PROJECTS,project_name)
         # TODO: creates project, directory structure, ...
         if not os.path.exists(project_path):
-            cls.create_default_config_file(os.path.join(PROJECTS,project_name,"project.cfg"))
             cls.create_project_directory(project_path)
+            cls.create_default_config_file(os.path.join(PROJECTS,project_name,"project.cfg"))
 
         log.debug("Created project with name \"{}\"".format(project_name))
 
@@ -183,7 +183,9 @@ class Project:
     @staticmethod
     def create_project_directory(path_to_project):
         os.makedirs(path_to_project)
-        os.makedirs(os.join(path_to_project,"replays"))
+        os.makedirs(os.path.join(path_to_project,"replays"))
+        os.makedirs(os.path.join(path_to_project,"patterns"))
+        os.makedirs(os.path.join(path_to_project,"weights"))
 
     def get_config_path(self, directory):
         """Find config file in directory and return full path.
