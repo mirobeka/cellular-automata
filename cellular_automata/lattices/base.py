@@ -4,7 +4,7 @@ from cPickle import Unpickler
 class Lattice:
     def __init__(self):
         self.width = self.height = 0
-        self.time = 0
+        self.age = 0
         self.chaotic = False
 
     def next_step(self):

@@ -59,9 +59,11 @@ class TwoBandObjective(Objective):
         desired pattern. In this case desired pattern is two band.
         """
         lattice = create_automaton(self.conf_file)
+
         lattice.rule.set_weights(weights)
+
         lattice.run(self.stop_criterion)
-        print("lattice iterations: {0}".format(lattice.time))
+        print("lattice iterations: {0}".format(lattice.age))
         print("lattice weights: {0}".format(weights))
         if lattice.chaotic:   # if lattice doesn't have stable configuration
             print("error: 1.0")
@@ -74,11 +76,11 @@ class TwoBandObjective(Objective):
             return error
 
 class AgeStopCriterion(object):
-    def __init__(self):
-        self.max_time = 128
+    def __init__(self, max_age):
+        self.max_age = 128
 
     def should_run(self, lattice):
-        return lattice.time < self.max_time
+        return lattice.age < self.max_age
 
 
 class EnergyStopCriterion(object):
@@ -112,11 +114,11 @@ class EnergyStopCriterion(object):
     def __init__(self):
         self.energy_threshold = 0.01
         self.energy_difference_threshold = 0.0001
-        self.max_time = 1024
+        self.max_age = 1024
 
     def should_run(self, lattice):
         # print("lattice energy difference:{}".format(lattice.energy_difference()))
-        if lattice.time >= self.max_time:
+        if lattice.age >= self.max_age:
             lattice.chaotic = True
             return False
         # elif lattice.energy_variance() <= self.energy_threshold:

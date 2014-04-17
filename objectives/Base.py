@@ -33,3 +33,4 @@ class Objective(object):
         optimalization needs.
         """
         raise NotImplementedError("method objective_function not implemented")
+

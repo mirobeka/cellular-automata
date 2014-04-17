@@ -166,7 +166,7 @@ class SquareLattice(Lattice):
         map(lambda method: getattr(self, method)(), self.post_methods)
 
 
-        self.time += 1
+        self.age += 1
 
     def check_pre_post_methods(self):
         """This method check all instance methods, finds methods that should be
@@ -204,7 +204,7 @@ class SquareLattice(Lattice):
 
     def run_with_record(self, stop_criterion, replay_file):
         log = logging.getLogger("LATTICE")
-        data = stop_criterion.max_time*[None]
+        data = stop_criterion.max_age*[None]
         try:
             while stop_criterion.should_run(self):
                 self.next_step()
@@ -213,9 +213,9 @@ class SquareLattice(Lattice):
                     pos = cell.top_left_corner
                     index = pos[0]/self.resolution + (pos[1]/self.resolution)*(self.width/self.resolution)
                     states_data[index] = cell.state.to_dict()
-                data[self.time-1] = states_data
+                data[self.age-1] = states_data
             # trunc data
-            data = data[:self.time-1]
+            data = data[:self.age-1]
         except:
             log.exception("exception occured during lattice run")
         finally:
@@ -227,7 +227,7 @@ class SquareLattice(Lattice):
         replay["width"] = self.width / self.resolution
         replay["height"] = self.height / self.resolution
         replay["resolution"] = self.resolution
-        replay["length"] = self.time
+        replay["length"] = self.age
         replay["data"] = data
 
         with open(replay_file, "w") as fp:
