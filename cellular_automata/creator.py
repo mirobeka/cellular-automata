@@ -15,18 +15,21 @@ class LatticeMockup:
     def set_cells_state(self, data_string):
         data = eval(data_string)
         idx = 0
-        for x in range(0, self.width, self.resolution):
-            for y in range(0, self.height, self.resolution):
+        for y in range(0, self.height, self.resolution):
+            for x in range(0, self.width, self.resolution):
                 self.cells[(x,y)] = data[idx]
                 idx += 1
 
     @classmethod
-    def create_mockup(cls,pattern_path):
+    def create_mockup(cls, pattern_path):
         w = h = r = 0
         type=""
         try:
             with open(pattern_path, "r") as fp:
                 w,h,r,type = fp.readline().strip().split(" ")
+                w=int(w)
+                h=int(h)
+                r=int(r)
                 string_array = fp.readlines()
         except IOError as e:
             log = loggin.getLogger("PATTERN")
@@ -42,14 +45,14 @@ class LatticeMockup:
 
         return mockup
 
-class GrayscaleLatticeMockup:
+class GrayscaleLatticeMockup(LatticeMockup):
     def create_cells(self):
-        cells = {}
+        self.cells = {}
         for x in range(0, self.width, self.resolution):
             for y in range(0, self.height, self.resolution):
-                cells[(x, y)] = 0
+                self.cells[(x, y)] = 0
 
-class RGBLatticeMockup:
+class RGBLatticeMockup(LatticeMockup):
     def create_cells(self):
         self.cells = {}
         for x in range(0, self.width, self.resolution):
