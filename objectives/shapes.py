@@ -6,17 +6,8 @@ import logging
 
 
 class TwoBandObjective(Objective):
-    def __init__(self, pattern_file):
-        self.initialize_experiment_parameters(pattern_file)
-
-    # objective "factory"
-    @classmethod
-    def create_new_objective(cls, conf_file, pattern_file):
-        objective = cls(pattern_file)
-        objective.conf_file = conf_file
-        return objective
-
-    def initialize_experiment_parameters(self, pattern_file):
+    def __init__(self, conf_file, pattern_file):
+        self.conf_file = conf_file
         # load desired automaton from serialized file
         self.pattern = load_pattern(pattern_file)
 
@@ -29,17 +20,13 @@ class TwoBandObjective(Objective):
         # later we could be more flexible about choosing stop criterion
         self.stop_criterion = EnergyStopCriterion()
         self.max_difference = self.get_max_difference(self.pattern)
+
         self.min_error = 1.0
+        self.best_weights = None
 
     @staticmethod
     def get_max_difference(pattern):
-        """Return maximum possible difference of current lattice from desired
-         lattice. Also if we go over MAXINT, python automatically converts to
-         long
-
-        :param pattern: pattern which we want to fit
-        :return: maximum possible difference between current and pattern
-        """
+        """Max error value"""
         max_difference = len(pattern.cells) * 65536
         return max_difference
 
@@ -82,7 +69,7 @@ class TwoBandObjective(Objective):
                 objlog.info("updating minimal error to: {}".format(error))
                 self.min_error = error
                 self.best_weights = weights
-            print("error: {0}".format(error))
+            objlog.info("error: {}".format(error))
             return error
 
 class AgeStopCriterion(object):
