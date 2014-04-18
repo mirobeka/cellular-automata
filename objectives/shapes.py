@@ -1,52 +1,57 @@
 from objectives.base import Objective
 from cellular_automata.creator import create_automaton
 from cellular_automata.creator import load_automaton
+from cellular_automata.creator import load_pattern
+import logging
 
 
 class TwoBandObjective(Objective):
-    def __init__(self, lattice_file):
-        self.initialize_experiment_parameters(lattice_file)
+    def __init__(self, pattern_file):
+        self.initialize_experiment_parameters(pattern_file)
 
+    # objective "factory"
     @classmethod
-    def create_new_objective(cls, conf_file, desired_pattern):
-        objective = cls(desired_pattern)
+    def create_new_objective(cls, conf_file, pattern_file):
+        objective = cls(pattern_file)
         objective.conf_file = conf_file
         return objective
 
-    def initialize_experiment_parameters(self, desired_pattern):
+    def initialize_experiment_parameters(self, pattern_file):
         # load desired automaton from serialized file
-        self.desired_lattice = load_automaton(desired_pattern)
+        self.pattern = load_pattern(pattern_file)
 
         # load all important properties
-        self.dimensions = (self.desired_lattice.width,
-                           self.desired_lattice.height)
-        self.resolution = self.desired_lattice.resolution
+        self.dimensions = (self.pattern.width,
+                           self.pattern.height)
+        self.resolution = self.pattern.resolution
 
         # create energy stop criterion. This way is good for now,
         # later we could be more flexible about choosing stop criterion
         self.stop_criterion = EnergyStopCriterion()
-        self.max_difference = self.get_max_difference(self.desired_lattice)
+        self.max_difference = self.get_max_difference(self.pattern)
         self.min_error = 1.0
 
     @staticmethod
-    def get_max_difference(desired_lattice):
+    def get_max_difference(pattern):
         """Return maximum possible difference of current lattice from desired
          lattice. Also if we go over MAXINT, python automatically converts to
          long
 
-        :param desired_lattice: desired lattice which we want to fit
-        :return: maximum possible difference between current and desired lattice
+        :param pattern: pattern which we want to fit
+        :return: maximum possible difference between current and pattern
         """
-        max_difference = len(desired_lattice.cells) * 65536
+        max_difference = len(pattern.cells) * 65536
         return max_difference
 
-    def error_function(self, desired, lattice):
+    def error_function(self, pattern, lattice):
         """check desired pattern with given lattice. Return sum of state
         differences
+
+        TODO: we should be able to select which property of state to compare
         """
         difference = .0
-        for key in desired.cells.keys():
-            difference += (desired.cells[key].state.grayscale - lattice.cells[
+        for key in pattern.cells.keys():
+            difference += (pattern.cells[key] - lattice.cells[
                 key].state.grayscale) ** 2
 
         # normalize difference
@@ -63,14 +68,19 @@ class TwoBandObjective(Objective):
         lattice.rule.set_weights(weights)
 
         lattice.run(self.stop_criterion)
-        print("lattice iterations: {0}".format(lattice.age))
-        print("lattice weights: {0}".format(weights))
+
+        # TODO: save more statistics to logger
+        objlog = logging.getLogger("OBJECTIVEFNC")
+        objlog.info("iterations {}".format(lattice.age))
+
         if lattice.chaotic:   # if lattice doesn't have stable configuration
-            print("error: 1.0")
+            objlog.info("unstable lattice")
             return 1.0
         else:
-            error = self.error_function(self.desired_lattice, lattice)
+            error = self.error_function(self.pattern, lattice)
             if error <= self.min_error:
+                objlog.info("updating minimal error to: {}".format(error))
+                self.min_error = error
                 self.best_weights = weights
             print("error: {0}".format(error))
             return error
