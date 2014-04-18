@@ -20,6 +20,12 @@ class HardCodedRule1(Rule):
     def set_border(self, border=None):
         self.border = border
 
+    def set_weights(self, new_weights):
+        pass
+
+    def get_weights(self):
+        return None
+
 class HardCodedRule2(Rule):
     """Programatically written rule for dividing space into 2 halves"""
 
