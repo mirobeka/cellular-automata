@@ -25,6 +25,7 @@
       this.loop = __bind(this.loop, this);
       this.slowDown = __bind(this.slowDown, this);
       this.speedUp = __bind(this.speedUp, this);
+      this.unbindAll = __bind(this.unbindAll, this);
       this.initControls = __bind(this.initControls, this);
       this.canvas = $("#replayCanvas").get(0);
       this.ctx = this.canvas.getContext("2d");
@@ -44,6 +45,19 @@
       $(".fastBackwardButton").parent().bind("click", this.fastBackward);
       $(".speedUp").parent().bind("click", this.speedUp);
       return $(".slowDown").parent().bind("click", this.slowDown);
+    };
+
+    ReplayPlayer.prototype.unbindAll = function() {
+      console.log("unbinding");
+      $(".playButton").parent().unbind("click", this.start);
+      $(".pauseButton").parent().unbind("click", this.pause);
+      $(".stopButton").parent().unbind("click", this.stop);
+      $(".forwardButton").parent().unbind("click", this.forward);
+      $(".fastForwardButton").parent().unbind("click", this.fastForward);
+      $(".backwardButton").parent().unbind("click", this.backward);
+      $(".fastBackwardButton").parent().unbind("click", this.fastBackward);
+      $(".speedUp").parent().unbind("click", this.speedUp);
+      return $(".slowDown").parent().unbind("click", this.slowDown);
     };
 
     ReplayPlayer.prototype.speedUp = function() {
@@ -191,29 +205,20 @@
       });
     };
     otherFoo = function(replayData) {
-      var hideDimmer, player;
-      console.log("callback with data from server");
-      console.log(replayData);
-      console.log("parsing data");
       replayData = JSON.parse(replayData);
-      console.log("parsed data");
-      console.log(replayData);
-      console.log("Creating new ReplayPlayer");
-      player = new ReplayPlayer(replayData);
-      console.log(player);
-      console.log("initializing controls");
-      player.initControls();
-      player.updateStats();
-      player.draw();
-      $(".ui.dimmable").dimmer("show");
-      hideDimmer = function() {
-        return $(".ui.dimmable").dimmer("hide");
-      };
-      return window.setTimeout(hideDimmer, 1000);
+      root.player = new ReplayPlayer(replayData);
+      root.player.initControls();
+      root.player.updateStats();
+      root.player.draw();
+      return $(".ui.dimmable").dimmer("hide");
     };
     foo = function(event) {
       var jsonData, replayName;
-      console.log("getting data from server");
+      if (root.player != null) {
+        root.player.stop();
+        root.player.unbindAll();
+      }
+      $(".ui.dimmable").dimmer("show");
       replayName = $(this).attr("data-name");
       return jsonData = loadReplayData(replayName, otherFoo);
     };

@@ -23,6 +23,20 @@ class ReplayPlayer
         $(".speedUp").parent().bind("click", @speedUp)
         $(".slowDown").parent().bind("click", @slowDown)
 
+    unbindAll: =>
+        console.log "unbinding"
+        $(".playButton").parent().unbind("click", @start)
+        $(".pauseButton").parent().unbind("click", @pause)
+        $(".stopButton").parent().unbind("click", @stop)
+        $(".forwardButton").parent().unbind("click", @forward)
+        $(".fastForwardButton").parent().unbind("click", @fastForward)
+        $(".backwardButton").parent().unbind("click", @backward)
+        $(".fastBackwardButton").parent().unbind("click", @fastBackward)
+
+        $(".speedUp").parent().unbind("click", @speedUp)
+        $(".slowDown").parent().unbind("click", @slowDown)
+
+
     speedUp: =>
         @fps += 2
         @updateStats()
@@ -130,27 +144,18 @@ $(document).ready ->
             success: callback
 
     otherFoo= (replayData) ->
-        console.log "callback with data from server"
-        console.log replayData
-        console.log "parsing data"
         replayData = JSON.parse replayData
-        console.log "parsed data"
-        console.log replayData
-
-        console.log "Creating new ReplayPlayer"
-        player = new ReplayPlayer(replayData)
-        console.log player
-        console.log "initializing controls"
-        player.initControls()
-        player.updateStats()
-        player.draw()
-        $(".ui.dimmable").dimmer("show")
-        hideDimmer = ->
-            $(".ui.dimmable").dimmer("hide")
-        window.setTimeout( hideDimmer, 1000)
+        root.player = new ReplayPlayer(replayData)
+        root.player.initControls()
+        root.player.updateStats()
+        root.player.draw()
+        $(".ui.dimmable").dimmer("hide")
 
     foo = (event) ->
-        console.log "getting data from server"
+        if root.player?
+            root.player.stop()
+            root.player.unbindAll()
+        $(".ui.dimmable").dimmer("show")
         replayName = $(@).attr("data-name")
         jsonData = loadReplayData replayName, otherFoo
 
