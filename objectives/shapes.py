@@ -5,7 +5,7 @@ from cellular_automata.creator import load_pattern
 import logging
 
 
-class TwoBandObjective(Objective):
+class PatternObjective(Objective):
     def __init__(self, conf_file, pattern_file):
         self.conf_file = conf_file
         # load desired automaton from serialized file
@@ -18,7 +18,8 @@ class TwoBandObjective(Objective):
 
         # create energy stop criterion. This way is good for now,
         # later we could be more flexible about choosing stop criterion
-        self.stop_criterion = EnergyStopCriterion()
+
+        self.stop_criterion = EnergyStopCriterion() # This should be selectable
         self.max_difference = self.get_max_difference(self.pattern)
 
         self.min_error = 1.0
