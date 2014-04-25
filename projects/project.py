@@ -118,7 +118,7 @@ class Project:
             replay_file_name = os.path.join(PROJECTS, self.name, "replays", time.strftime("%Y_%m_%d_%H_%M_%S.replay"))
             automaton = create_automaton(config_path)
             log.debug("automaton created")
-            automaton.run_with_record(AgeStopCriterion(), replay_file_name)
+            automaton.run_with_record(AgeStopCriterion(800), replay_file_name)
             log.info("Runngin finished! Replay saved in {}".format(replay_file_name))
 
         # create thread
