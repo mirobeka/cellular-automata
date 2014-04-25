@@ -4,8 +4,8 @@ from shutil import rmtree
 from cPickle import Pickler, Unpickler
 from threading import Thread
 from cellular_automata.creator import create_automaton
-from objectives.shapes import EnergyStopCriterion
-from objectives.shapes import AgeStopCriterion
+from objectives.shapes import EnergyCriterion
+from objectives.shapes import AgeCriterion
 from ConfigParser import ConfigParser
 import logging
 import os
