@@ -7,6 +7,7 @@ ca_dict = {
     "neighbourhood": "cellular_automata.lattices.neighbourhoods",
     "rule": "cellular_automata.rules.neural_rule",
     "objective": "objectives.shapes",
+    "criterion": "objectives.shapes",
     "strategy": "methods"
 }
 
