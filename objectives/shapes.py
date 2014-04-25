@@ -40,7 +40,6 @@ class TwoBandObjective(Objective):
         for key in pattern.cells.keys():
             difference += (pattern.cells[key] - lattice.cells[
                 key].state.grayscale) ** 2
-
         # normalize difference
         normalized_difference = difference / self.max_difference
         return normalized_difference
@@ -74,7 +73,7 @@ class TwoBandObjective(Objective):
 
 class AgeStopCriterion(object):
     def __init__(self, max_age):
-        self.max_age = 128
+        self.max_age = max_age
 
     def should_run(self, lattice):
         return lattice.age < self.max_age
