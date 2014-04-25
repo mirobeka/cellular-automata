@@ -2,12 +2,15 @@ from objectives.base import Objective
 from cellular_automata.creator import create_automaton
 from cellular_automata.creator import load_automaton
 from cellular_automata.creator import load_pattern
+from utils.loader import module_loader
 import logging
 
 
 class PatternObjective(Objective):
     def __init__(self, conf_file, pattern_file):
         self.conf_file = conf_file
+        self.loaded_modules = module_loader(conf_file)
+
         # load desired automaton from serialized file
         self.pattern = load_pattern(pattern_file)
 
@@ -16,10 +19,10 @@ class PatternObjective(Objective):
                            self.pattern.height)
         self.resolution = self.pattern.resolution
 
-        # create energy stop criterion. This way is good for now,
-        # later we could be more flexible about choosing stop criterion
+        stop_crit = self.loaded_modules["stopcriterion"]["criterion"]
+        stop_crit_args = dict([(arg, val) for arg,val in self.loaded_modules["stopcriterion"].items() if arg != "criterion"])
 
-        self.stop_criterion = EnergyStopCriterion() # This should be selectable
+        self.stop_criterion = stop_crit(**stop_crit_args)
         self.max_difference = self.get_max_difference(self.pattern)
 
         self.min_error = 1.0
@@ -72,15 +75,17 @@ class PatternObjective(Objective):
             objlog.info("error: {}".format(error))
             return error
 
-class AgeStopCriterion(object):
-    def __init__(self, max_age):
-        self.max_age = max_age
+class StopCriterion(object):
+    def __init__(self, **kw):
+        for n,v in kw.items():
+            setattr(self, n, v)
 
+class AgeCriterion(StopCriterion):
     def should_run(self, lattice):
         return lattice.age < self.max_age
 
 
-class EnergyStopCriterion(object):
+class EnergyCriterion(StopCriterion):
     """ Energy stop criterion is really important part of evolution. It drives
     evolution to a certain very different solutions. As an example, we could 
     take stopping criterion based on variance of lattice in some time window.
@@ -108,7 +113,8 @@ class EnergyStopCriterion(object):
     over the whole time span of iteration of CA.
 
     """
-    def __init__(self):
+    def __init__(self, **kw):
+        super(EnergyCriterion, self).__init__(**kw)
         self.energy_threshold = 0.01
         self.energy_difference_threshold = 0.0001
         self.max_age = 1024
