@@ -27,7 +27,7 @@ def load_module(path, class_name):
     return getattr(module, class_name)
 
 
-def get_conf(file_name):
+def module_loader(file_name):
     # read configuration file
     conf = ConfigParser.ConfigParser()
     conf.read(file_name)

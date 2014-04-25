@@ -1,5 +1,5 @@
 from __future__ import print_function
-from utils.loader import get_conf
+from utils.loader import module_loader
 import numpy as np
 import logging
 import time
@@ -16,7 +16,7 @@ class Embryo(object):
     """
 
     def __init__(self, cfg):
-        self.conf = get_conf(cfg)
+        self.conf = module_loader(cfg)
 
         objective_class = self.conf["evolution"]["objective"]
         pattern_file = self.conf["evolution"]["pattern"]

@@ -1,5 +1,5 @@
 from cellular_automata.lattices.base import Lattice
-from utils.loader import get_conf
+from utils.loader import module_loader
 import logging
 
 class LatticeMockup:
@@ -64,7 +64,7 @@ def create_automaton(conf_file):
     :param conf_file: config file describing cellular automata
     :return: lattice instance
     """
-    conf = get_conf(conf_file)
+    conf = module_loader(conf_file)
     lattice_class = conf["lattice"]["type"]
     lattice = lattice_class.create_initialized(conf)
     return lattice
