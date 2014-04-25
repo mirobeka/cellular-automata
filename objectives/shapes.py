@@ -9,6 +9,7 @@ import logging
 class PatternObjective(Objective):
     def __init__(self, conf_file, pattern_file):
         self.conf_file = conf_file
+        self.pattern_file = pattern_file
         self.loaded_modules = module_loader(conf_file)
 
         # load desired automaton from serialized file
@@ -27,6 +28,9 @@ class PatternObjective(Objective):
 
         self.min_error = 1.0
         self.best_weights = None
+        self.lattice_age = 0
+        self.lattice_age_list = []
+        self.progress = []
 
     @staticmethod
     def get_max_difference(pattern):
@@ -54,12 +58,11 @@ class PatternObjective(Objective):
         desired pattern. In this case desired pattern is two band.
         """
         lattice = create_automaton(self.conf_file)
-
         lattice.rule.set_weights(weights)
-
         lattice.run(self.stop_criterion)
 
-        # TODO: save more statistics to logger
+        self.lattice_age_list.append(lattice.age)
+
         objlog = logging.getLogger("OBJECTIVEFNC")
         objlog.info("iterations {}".format(lattice.age))
 
@@ -68,11 +71,13 @@ class PatternObjective(Objective):
             return 1.0
         else:
             error = self.error_function(self.pattern, lattice)
-            if error <= self.min_error:
+            if error < self.min_error:
                 objlog.info("updating minimal error to: {}".format(error))
                 self.min_error = error
                 self.best_weights = weights
-            objlog.info("error: {}".format(error))
+                self.lattice_age = lattice.age
+                self.progress.append((error,weights))
+            objlog.debug("error: {}".format(error))
             return error
 
 class StopCriterion(object):

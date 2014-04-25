@@ -34,6 +34,18 @@ class Embryo(object):
         self.objective.best_weights = initial_weights
         self.result = self.strategy.learn(self.objective.objective_function, initial_weights)
 
+    def get_result(self):
+        result = {}
+        result["error"] = self.objective.min_error
+        result["weights"] = self.objective.best_weights
+        result["pattern"] = self.objective.pattern_file
+        # result["generations"] = self.objective.generation
+        result["lattice_age"] = self.objective.lattice_age
+        result["average_lattice_age"] = np.mean(self.objective.lattice_age_list)
+        result["progress"] = self.objective.progress
+
+        return result
+
 def evolve_weights(cfg):
     """Creates embryo, lets it evolve
 
@@ -41,13 +53,12 @@ def evolve_weights(cfg):
     :returns: list of evolved weights
     """
     embryo = Embryo(cfg)
-    weights = None
     try:
-        weights = embryo.evolve()
+        embryo.evolve()
     except KeyboardInterrupt:
         # take the best weights and save them
         log = logging.getLogger("MAIN")
         log.exception("Terminating evolution")
-        return embryo.objective.best_weights
-    return weights
+
+    return embryo.get_result()
 
