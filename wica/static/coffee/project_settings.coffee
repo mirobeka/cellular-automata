@@ -120,13 +120,23 @@ insertSection = (htmlToInsert) ->
     newSection.find(".ui.removeOption.button").bind("click", removeOption)
     newSection.find(".ui.icon.removeSection").bind("click", removeSection)
 
+evolve= (event) ->
+    $.ajax
+        type: "POST"
+        data:
+            "evolve": "true"
+        url: "../evolve"
+        success: (response) ->
+            console.log response
+
 $(document).ready ->
     # creates form submitters for deleting configuration and updating configuration
     new FormSubmitter(".ui.update.form", "PUT", ".", (response) -> window.location.assign response)
-
     # button for adding fields
     $('.addSection').bind('click', addSection)
     $('.addOption').bind('click', addOption)
     $('.removeOption').bind('click', removeOption)
     $('.removeSection').bind('click', removeSection)
 
+    $(".evolve").bind("click", evolve)
+        

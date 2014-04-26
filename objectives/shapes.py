@@ -32,6 +32,8 @@ class PatternObjective(Objective):
         self.lattice_age_list = []
         self.progress = []
 
+        self.callback = None
+
     @staticmethod
     def get_max_difference(pattern):
         """Max error value"""
@@ -77,6 +79,9 @@ class PatternObjective(Objective):
                 self.best_weights = weights
                 self.lattice_age = lattice.age
                 self.progress.append((error,weights))
+
+                if self.callback:
+                    self.callback() # hack
             objlog.debug("error: {}".format(error))
             return error
 

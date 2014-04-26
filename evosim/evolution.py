@@ -15,14 +15,19 @@ class Embryo(object):
     """Embryo
     """
 
-    def __init__(self, cfg):
+    def __init__(self, cfg, callback=None):
         self.conf = module_loader(cfg)
+        self.callback = callback
 
         objective_class = self.conf["evolution"]["objective"]
         pattern_file = self.conf["evolution"]["pattern"]
 
         self.objective = objective_class(cfg, pattern_file)
+        self.objective.callback = self.callback2
         self.strategy = self.conf["evolution"]["strategy"]
+
+    def callback2(self):
+        self.callback(self)
 
     def get_initial_weights(self):
         # for now, return just initial weights from configuration file
@@ -46,7 +51,23 @@ class Embryo(object):
 
         return result
 
-def evolve_weights(cfg):
+    def save_result(self, file_name):
+        result = self.get_result()
+        with open(file_name, "w") as fp:
+            fp.write(str(result["error"])+"\n")
+            fp.write("["+ ",".join(map(str,result["weights"])) +"]\n")
+            fp.write(str(result["pattern"])+"\n")
+            # fp.write(str(result["generations"])+"\n")
+            fp.write(str(result["lattice_age"])+"\n")
+            fp.write(str(result["average_lattice_age"])+"\n")
+            fp.write("\n")
+            fp.write("progress:\n")
+            for (error, weights) in result["progress"]:
+                fp.write(str(error)+":")
+                fp.write("["+ ",".join(map(str,result["weights"])) +"]\n")
+            fp.flush()
+
+def evolve_weights(cfg, save_to):
     """Creates embryo, lets it evolve
 
     :param cfg: path to project configuration file
@@ -60,5 +81,9 @@ def evolve_weights(cfg):
         log = logging.getLogger("MAIN")
         log.exception("Terminating evolution")
 
-    return embryo.get_result()
-
+    try:
+        embryo.save_result(save_to)
+    except:
+        log.exception("Exception while saving results")
+        log.info(embryo.get_result())
+    return True

@@ -4,6 +4,7 @@ from flask import redirect
 from flask import request
 from flask import abort
 from flask import url_for
+from flask import g
 from flask_cake import Cake
 import json
 import logging
@@ -49,6 +50,19 @@ def record_replay(project_name):
 
     return "wrong input data"
 
+@app.route("/projects/<project_name>/evolve/", methods=["POST"])
+def evolve_weights(project_name):
+    project = Project.load_project(project_name)
+    if project is None:
+        return abort(404)
+
+    if "evolve" in request.form:
+        thread_handle = project.evolve_weights()
+        add_thread(thread_handle)
+        return "evolve thread started"
+
+    return "wrong input data"
+
 @app.route("/projects/<project_name>/replay/<replay_name>/", methods=["GET"])
 def get_project_replay_data(project_name, replay_name):
     log = logging.getLogger("PROJECT")
@@ -69,9 +83,6 @@ def get_project(project_name, tab):
         return render_template("project_settings.jinja", project=project)
     elif tab == "replays":
         return render_template("project_replays.jinja", project=project)
-    elif tab == "evolve":
-        return render_template("project_evolve.jinja", project=project)
-
 
 @app.route("/projects/<project_name>/", methods=["PUT"])
 @app.route("/projects/<project_name>/settings/", methods=["PUT"])
@@ -128,6 +139,13 @@ def about():
 @app.route("/documentation/")
 def documentation():
     return render_template("documentation.jinja")
+
+def add_thread(thread_handle):
+    ctx = app.app_context()
+    threads = g.get("threads", [])
+    threads.append(thread_handle)
+    g.threads = threads
+    ctx.push()
 
 def set_logger(level="DEBUG", outfile=None):
     """Configure logger"""

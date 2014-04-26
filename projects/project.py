@@ -3,10 +3,12 @@ from glob import glob
 from shutil import rmtree
 from cPickle import Pickler, Unpickler
 from threading import Thread
+from projects.evothread import StopableThread
 from cellular_automata.creator import create_automaton
 from objectives.shapes import EnergyCriterion
 from objectives.shapes import AgeCriterion
 from ConfigParser import ConfigParser
+from evosim.evolution import Embryo
 import logging
 import os
 import time
@@ -111,6 +113,31 @@ class Project:
             replay = upkl.load()
         return replay
 
+    def evolve_weights(self):
+
+        def start_evolution(config_path, save_to):
+            embryo = Embryo(config_path, lambda x: x.save_result(save_to) )
+            try:
+                embryo.evolve()
+            except:
+                # take the best weights and save them
+                log = logging.getLogger("THREAD")
+                log.exception("Terminating evolution")
+            try:
+                embryo.save_result(save_to)
+            except:
+                log.exception("Exception while saving results")
+                log.info(embryo.get_result())
+            return True
+        
+        save_to = os.path.join(PROJECTS, self.name, "weights", time.ctime().replace(" ","_")+".wgh")
+
+        # create thread
+        thrd = StopableThread(target=start_evolution, args=[self.config_path, save_to])
+        #start executing
+        thrd.start()
+        return thrd
+
     def record_replay(self):
 
         def start_simulation(config_path):
@@ -119,14 +146,12 @@ class Project:
             automaton = create_automaton(config_path)
             log.debug("automaton created")
             automaton.run_with_record(AgeStopCriterion(800), replay_file_name)
-            log.info("Runngin finished! Replay saved in {}".format(replay_file_name))
+            log.info("Running finished! Replay saved in {}".format(replay_file_name))
 
         # create thread
         thrd = Thread(target=start_simulation, args=[self.config_path])
         #start executing
         thrd.start()
-
-        # success
         return True
 
     @classmethod
