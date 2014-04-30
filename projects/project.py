@@ -11,6 +11,8 @@ import logging
 import os
 import time
 
+log = logging.getLogger("PROJECT")
+
 PROJECTS = "data"
 
 DEFAULT_CONFIG = {
@@ -99,6 +101,30 @@ class Project:
         self.config = ConfigParser()
         self.config.read(path)
 
+    def get_error_from_wgh(self, file_name):
+        with open(file_name, "r") as fp:
+            error = float(fp.readline().strip())
+        log.debug("loaded error: {} -> {}".format(file_name, error))
+        return error
+
+    @property
+    def weights(self):
+        weights = [(self.get_error_from_wgh(wght),os.path.basename(wght)) for wght in glob(os.path.join(PROJECTS, self.name, "weights", "*.wgh"))]
+        log.debug(weights)
+        return weights
+
+    def weight(self, name):
+        weight_file_path = os.path.join(PROJECTS, self.name, "weights", name)
+        weight = {}
+        with open(weight_file_path, "r") as fp:
+            weight["error"] = float(fp.readline().strip())
+            weight["weights"] = eval(fp.readline().strip())
+            weight["pattern"] = fp.readline().strip()
+            weight["generations"] = int(fp.readline().strip())
+            weight["lattice_age"] = int(fp.readline().strip())
+            weight["average_lattice_age"] = float(fp.readline().strip())
+        return weight
+
     @property
     def replays(self):
         return [os.path.basename(repl) for repl in glob(os.path.join(PROJECTS, self.name, "replays", "*.replay"))]
@@ -118,7 +144,7 @@ class Project:
             replay_file_name = os.path.join(PROJECTS, self.name, "replays", time.strftime("%Y_%m_%d_%H_%M_%S.replay"))
             automaton = create_automaton(config_path)
             log.debug("automaton created")
-            automaton.run_with_record(AgeStopCriterion(800), replay_file_name)
+            automaton.run_with_record(AgeCriterion(max_age=800), replay_file_name)
             log.info("Runngin finished! Replay saved in {}".format(replay_file_name))
 
         # create thread
