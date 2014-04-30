@@ -1,13 +1,13 @@
 {% extends "application.jinja" %}
 {% set active_page = "projects" %}
-{% set active_tab = "evolve" %}
+{% set active_tab = "weights" %}
 
 {# change title #}
 {% block title %}WICA - Project {{ project.name }}{% endblock %}
 
 {% block head %}
 <script src= {{ url_for("static", filename="js/form.js") }}></script>
-<script src= {{ url_for("static", filename="js/project_evolve.js") }}></script>
+<script src= {{ url_for("static", filename="js/project_weights.js") }}></script>
 {{ super() }}
 {% endblock %}
 
@@ -25,11 +25,11 @@
                 <div class="four wide column">
                     <div class="ui segment">
                         <div class="ui list">
-                            {% if weights %}
-                                {% for weights in project.weights %}
+                            {% if project.weights %}
+                                {% for (err,fname) in project.weights %}
                                 <div class="item">
                                     <i class="file icon"></i>
-                                    <a class="load weight" data-name={{weights.name}}> {{ weights.name|replace(".wgh","") }}</a>
+                                    <a class="load weight" data-name={{fname}}>{{ err }}</a>
                                 </div> {# end item #}
                                 {% endfor %}
                             {% else %}
@@ -42,19 +42,21 @@
                         Evolve weights
                     </div>
                 </div> {# end first column #}
-                <div class="nine wide column">
+                <div class="twelve wide column" id="contentContainer">
                     <div class="ui center aligned segment dimmable">
                         <div class="ui dimmer hidden">
                             <div class="content">
                                 <div class="center">
-                                    Weights loaded
+                                    Loading...
                                 </div>
                             </div>
                         </div> {# end dimmer #}
+
                         <h2 class="ui huge center aligned icon header" >
                             <i class="circular emphasized inverted green hdd icon"></i>
-                            <div class="content">Load Weights to edit</div>
+                            <div class="content">Select Weight File</div>
                         </h2>
+
                     </div> {# end center aligned segment #}
                 </div> {# end third column #}
             </div> {# end grid #}
