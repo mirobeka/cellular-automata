@@ -61,8 +61,6 @@ class SquareLattice(Lattice):
         log = logging.getLogger("LATTICE")
         lattice = cls()
 
-        log.debug("Creating initialized")
-
         # set lattice dimensions
         lattice.width = int(conf["lattice"]["width"])
         lattice.height = int(conf["lattice"]["height"])
@@ -83,7 +81,6 @@ class SquareLattice(Lattice):
 
         if "network" in conf and "initial_weights" in conf["network"]:
             weights = eval(conf["network"]["initial_weights"])
-            log.debug("setting initial weights {}".format(weights))
             lattice.rule.set_weights(weights)
 
         # cells are just carrying state, right? What kind of state? Here it is!
@@ -191,7 +188,6 @@ class SquareLattice(Lattice):
 
     def run_without_record(self, stop_criterion):
         log = logging.getLogger("LATTICE")
-        log.info("starting lattice run")
         try:
             while stop_criterion.should_run(self):
                 self.next_step()
