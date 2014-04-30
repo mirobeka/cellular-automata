@@ -130,6 +130,15 @@ class ReplayPlayer
         @running = true
         window.requestAnimationFrame(@loop)
 
+recordReplay = (event) ->
+    $.ajax
+        type: "POST"
+        data:
+            "replay": "true"
+        url: "."
+        success: (response) ->
+            console.log response
+
 $(document).ready ->
     $(".ui.dimmable").dimmer({
             duration:
@@ -157,19 +166,7 @@ $(document).ready ->
             root.player.unbindAll()
         $(".ui.dimmable").dimmer("show")
         replayName = $(@).attr("data-name")
-        jsonData = loadReplayData replayName, otherFoo
+        loadReplayData replayName, otherFoo
 
     hmm = $('a.load.replay').bind('click', foo)
-
-recordReplay = (event) ->
-    $.ajax
-        type: "POST"
-        data:
-            "replay": "true"
-        url: "."
-        success: (response) ->
-            console.log response
-
-
-$(document).ready ->
     $('.recordReplay').bind('click', recordReplay)

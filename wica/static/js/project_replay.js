@@ -189,6 +189,19 @@
 
   })();
 
+  recordReplay = function(event) {
+    return $.ajax({
+      type: "POST",
+      data: {
+        "replay": "true"
+      },
+      url: ".",
+      success: function(response) {
+        return console.log(response);
+      }
+    });
+  };
+
   $(document).ready(function() {
     var foo, hmm, loadReplayData, otherFoo;
     $(".ui.dimmable").dimmer({
@@ -213,32 +226,16 @@
       return $(".ui.dimmable").dimmer("hide");
     };
     foo = function(event) {
-      var jsonData, replayName;
+      var replayName;
       if (root.player != null) {
         root.player.stop();
         root.player.unbindAll();
       }
       $(".ui.dimmable").dimmer("show");
       replayName = $(this).attr("data-name");
-      return jsonData = loadReplayData(replayName, otherFoo);
+      return loadReplayData(replayName, otherFoo);
     };
-    return hmm = $('a.load.replay').bind('click', foo);
-  });
-
-  recordReplay = function(event) {
-    return $.ajax({
-      type: "POST",
-      data: {
-        "replay": "true"
-      },
-      url: ".",
-      success: function(response) {
-        return console.log(response);
-      }
-    });
-  };
-
-  $(document).ready(function() {
+    hmm = $('a.load.replay').bind('click', foo);
     return $('.recordReplay').bind('click', recordReplay);
   });
 
