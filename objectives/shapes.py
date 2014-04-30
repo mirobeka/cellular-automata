@@ -5,6 +5,8 @@ from cellular_automata.creator import load_pattern
 from utils.loader import module_loader
 import logging
 
+log = logging.getLogger("OBJECTIVE")
+
 
 class PatternObjective(Objective):
     def __init__(self, conf_file, pattern_file):
@@ -31,12 +33,18 @@ class PatternObjective(Objective):
         self.lattice_age = 0
         self.lattice_age_list = []
         self.progress = []
+        self.generation = 0
+
+        self.callback = None
 
     @staticmethod
     def get_max_difference(pattern):
         """Max error value"""
         max_difference = len(pattern.cells) * 65536
         return max_difference
+
+    def generation_callback(self, cmaes_object):
+        self.generation = cmaes_object.numLearningSteps
 
     def error_function(self, pattern, lattice):
         """check desired pattern with given lattice. Return sum of state
@@ -63,21 +71,23 @@ class PatternObjective(Objective):
 
         self.lattice_age_list.append(lattice.age)
 
-        objlog = logging.getLogger("OBJECTIVEFNC")
-        objlog.info("iterations {}".format(lattice.age))
+        log.info("iterations {}".format(lattice.age))
 
         if lattice.chaotic:   # if lattice doesn't have stable configuration
-            objlog.info("unstable lattice")
+            log.info("unstable lattice")
             return 1.0
         else:
             error = self.error_function(self.pattern, lattice)
             if error < self.min_error:
-                objlog.info("updating minimal error to: {}".format(error))
+                log.info("updating minimal error to: {}".format(error))
                 self.min_error = error
                 self.best_weights = weights
                 self.lattice_age = lattice.age
-                self.progress.append((error,weights))
-            objlog.debug("error: {}".format(error))
+                self.progress.append((self.generation,error,weights))
+
+                if self.callback is not None:
+                    self.callback()
+            log.debug("error: {}".format(error))
             return error
 
 class StopCriterion(object):
