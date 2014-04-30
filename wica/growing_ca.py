@@ -60,6 +60,14 @@ def get_project_replay_data(project_name, replay_name):
     json_data = convert_to_json(project.replay(replay_name))
     return json_data
 
+@app.route("/projects/<project_name>/weight/<weight_name>/", methods=["GET"])
+def get_project_weight_data(project_name, weight_name):
+    project = Project.load_project(project_name)
+    if project is None:
+        return abort(404)
+    json_data = convert_to_json(project.weight(weight_name))
+    return json_data
+
 @app.route("/projects/<project_name>/<tab>/", methods=["GET"])
 def get_project(project_name, tab):
     project = Project.load_project(project_name)
@@ -69,8 +77,8 @@ def get_project(project_name, tab):
         return render_template("project_settings.jinja", project=project)
     elif tab == "replays":
         return render_template("project_replays.jinja", project=project)
-    elif tab == "evolve":
-        return render_template("project_evolve.jinja", project=project)
+    elif tab == "weights":
+        return render_template("project_weights.jinja", project=project)
 
 
 @app.route("/projects/<project_name>/", methods=["PUT"])
