@@ -7,7 +7,7 @@ log = logging.getLogger("CMAES")
 def learn(objective, inital_weights):
     l = CMAES(objective.objective_function, inital_weights, minimize=True, verbose=True, )
 
-    l.maxLearningSteps = 2
+    l.maxLearningSteps = 200
     l._callback = objective.generation_callback
 
     log.debug("starting cmaes evolution")
