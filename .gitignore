@@ -1,6 +1,3 @@
-# Project files
-data/*
-
 # ignore pylife.py
 pylife.py
 
