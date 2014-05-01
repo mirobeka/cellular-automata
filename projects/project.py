@@ -139,16 +139,20 @@ class Project:
 
     def record_replay(self):
 
-        def start_simulation(config_path):
+        def start_simulation(config_path, max_age):
             log = logging.getLogger("THREAD")
             replay_file_name = os.path.join(PROJECTS, self.name, "replays", time.strftime("%Y_%m_%d_%H_%M_%S.replay"))
             automaton = create_automaton(config_path)
             log.debug("automaton created")
-            automaton.run_with_record(AgeCriterion(max_age=800), replay_file_name)
+            automaton.run_with_record(AgeCriterion(max_age=max_age), replay_file_name)
             log.info("Runngin finished! Replay saved in {}".format(replay_file_name))
 
+        max_age = 800
+        if "max_time" in self.config.options("stopcriterion"):
+            max_age = self.config.getint("stopcriterion", "max_time")
+
         # create thread
-        thrd = Thread(target=start_simulation, args=[self.config_path])
+        thrd = Thread(target=start_simulation, args=[self.config_path, max_age])
         #start executing
         thrd.start()
 
