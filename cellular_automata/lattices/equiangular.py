@@ -79,8 +79,8 @@ class SquareLattice(Lattice):
         lattice.rule.set_border(border)
 
 
-        if "network" in conf and "initial_weights" in conf["network"]:
-            weights = eval(conf["network"]["initial_weights"])
+        if "replay" in conf and "weights" in conf["replay"]:
+            weights = eval(conf["replay"]["weights"])
             lattice.rule.set_weights(weights)
 
         # cells are just carrying state, right? What kind of state? Here it is!

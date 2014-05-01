@@ -33,8 +33,8 @@ DEFAULT_CONFIG = {
             "neighbourhood" : "",
             "rule" : "",
             },
-        "network" : {
-            "initial_weights" : ""
+        "replay" : {
+            "weights" : ""
             }
         }
 
@@ -148,8 +148,8 @@ class Project:
             log.info("Runngin finished! Replay saved in {}".format(replay_file_name))
 
         max_age = 800
-        if "max_time" in self.config.options("stopcriterion"):
-            max_age = self.config.getint("stopcriterion", "max_time")
+        if "max_time" in self.config.options("replay"):
+            max_age = self.config.getint("replay", "max_time")
 
         # create thread
         thrd = Thread(target=start_simulation, args=[self.config_path, max_age])
