@@ -1,12 +1,13 @@
 from __future__ import print_function
-from glob import glob
-from shutil import rmtree
-from cPickle import Pickler, Unpickler
-from threading import Thread
 from cellular_automata.creator import create_automaton
 from objectives.shapes import EnergyCriterion
 from objectives.shapes import AgeCriterion
+from utils.loader import module_loader
+from cPickle import Pickler, Unpickler
 from ConfigParser import ConfigParser
+from threading import Thread
+from shutil import rmtree
+from glob import glob
 import logging
 import os
 import time
@@ -141,6 +142,14 @@ class Project:
             weight["generations"] = int(fp.readline().strip())
             weight["lattice_age"] = int(fp.readline().strip())
             weight["average_lattice_age"] = float(fp.readline().strip())
+
+        modules = module_loader(self.config_path)
+        rule_instance = modules["cells"]["rule"]()
+        rule_instance.set_weights(weight["weights"])
+
+        weight["layer1"] = rule_instance.theta1.tolist()
+        weight["layer2"] = rule_instance.theta2.tolist()
+        weight["neigh"] = self.config.get("cells", "neighbourhood").lower()
         return weight
 
     @property
