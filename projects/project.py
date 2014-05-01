@@ -17,24 +17,42 @@ PROJECTS = "data"
 
 DEFAULT_CONFIG = {
         "lattice": {
-            "type": "",
-            "width": "",
-            "height": "",
-            "resolution": ""
+            "type": "SquareLattice",
+            "width": "400",
+            "height": "400",
+            "resolution": "20"
             },
         "borders": {
-            "border_top": "",
-            "border_left": "",
-            "border_right": "",
-            "border_bottom": "",
+            "border_top": "[[-1]]*20",
+            "border_left": "[[1]]*20",
+            "border_right": "[[-1]]*20",
+            "border_bottom": "[[1]]*20",
+            "border_top_northwest":"[[-1]]*20",
+            "border_top_northeast":"[[-1]]*20",
+            "border_left_northwest":"[[1]]*20",
+            "border_left_southwest":"[[1]]*20",
+            "border_right_northeast":"[[-1]]*20",
+            "border_right_southeast":"[[-1]]*20",
+            "border_bottom_southwest":"[[1]]*20",
+            "border_bottom_southeast":"[[1]]*20"
             },
         "cells" : {
-            "state" : "",
-            "neighbourhood" : "",
-            "rule" : "",
+            "state" : "GrayscaleState",
+            "neighbourhood" : "VonNeumann",
+            "rule" : "FeedForwardNetwork",
             },
         "replay" : {
-            "weights" : ""
+            "weights" : "",
+            "max_time" : "512"
+            },
+        "stopcriterion" : {
+            "criterion" : "EnergyCriterion"
+            },
+        "evolution" :{
+            "objective" : "PatternObjective",
+            "strategy" : "cmaes",
+            "pattern" : "",
+            "initial_weights" : ""
             }
         }
 
