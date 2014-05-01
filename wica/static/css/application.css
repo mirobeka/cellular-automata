@@ -37,6 +37,6 @@ html, body {
   color: #D95C5C !important;
 }
 
-#replayCanvas{
-  border: 1px solid black;
+canvas{
+  border: 1px solid lightgray;
 }
