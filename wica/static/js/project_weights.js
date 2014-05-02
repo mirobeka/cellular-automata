@@ -224,13 +224,17 @@
   };
 
   displayWeightData = function(weight) {
-    var html, idx, _i, _ref;
+    var html, idx, _i, _j, _ref, _ref1, _results;
     html = getHtml(weight);
     replaceHtml(html);
     for (idx = _i = 0, _ref = weight["layer1"].length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; idx = 0 <= _ref ? ++_i : --_i) {
       addLayer1Neuron(weight, idx);
     }
-    return addLayer2Neuron(weight, 0);
+    _results = [];
+    for (idx = _j = 0, _ref1 = weight["layer2"].length - 1; 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; idx = 0 <= _ref1 ? ++_j : --_j) {
+      _results.push(addLayer2Neuron(weight, idx));
+    }
+    return _results;
   };
 
   getData = function(weightName, callback) {

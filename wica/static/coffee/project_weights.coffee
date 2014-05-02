@@ -190,7 +190,8 @@ displayWeightData = (weight) ->
     for idx in [0..weight["layer1"].length-1]
         addLayer1Neuron(weight,idx)
 
-    addLayer2Neuron(weight, 0)
+    for idx in [0..weight["layer2"].length-1]
+        addLayer2Neuron(weight,idx)
 
 getData = (weightName, callback) ->
     $.ajax
