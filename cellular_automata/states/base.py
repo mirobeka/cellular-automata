@@ -186,6 +186,6 @@ class ChemicalInternalGrayscaleState(State):
         return distance
 
     def to_dict(self):
-        return {"chems":self.chemicals, "state": self.internal, "grayscale": self.grayscale}
+        return {"chems":self.chemicals[0], "state": self.internal[0], "grayscale": self.grayscale}
 
 
