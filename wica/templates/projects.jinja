@@ -14,39 +14,38 @@
 {% block content %}
 <div class="ui page grid">
     <div class="ui column">
-        <h2 class="ui huge center aligned icon header" >
-            <i class="circular emphasized inverted teal lab icon"></i>
-            <div class="content">Welcome to projects</div>
-        </h2>
 
-        <div class="ui form segment">
-            <div class="field">
-                <label>Create new project</label>
-                <div class="ui left labeled icon input">
-                    <input type="text" name="projectName" placeholder="Project Name">
-                        <i class="lab icon"></i>
-                    </input>
-                </div>
-            </div> {# field end #}
-            <div class="ui blue submit button floated right">Create</div>
-        </div> {# form end #}
-
-        <div class="ui horizontal divider"> or </div>
+        {% include "_projects_header.jinja" %}
 
         <table class="ui table segment">
             <thead>
                 <tr>
                     <td>project</td>
-                    <td>last edit</td>
-                    <td>other info</td>
                 </tr>
             </thead>
             <tbody>
                 {% for project in projects %}
                     {{ helper.display_project(project) }}
                 {% endfor %}
+                <tr>
+                    <td>
+                        <div class="ui form">
+                            <div class="field">
+                                <label>Create new project</label>
+                                <div class="ui action left labeled icon input">
+                                    <input type="text" name="projectName" placeholder="Project Name">
+                                        <i class="lab icon"></i>
+                                        <div style="width:3em" class="ui blue submit button">
+                                            Create
+                                        </div>
+                                    </input>
+                                </div>
+                            </div> {# field end #}
+                        </div> {# form end #}
+                    </td>
+                </tr>
             </tbody>
-        </div> {# end accordion #}
+        </table> {# end accordion #}
 
     </div>
 </div>
