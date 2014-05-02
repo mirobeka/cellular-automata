@@ -17,13 +17,17 @@ class Layer
 
         scale = d3.scale.linear().range(["darkturquoise","white","orange"]).domain([min_val, 0, max_val])
 
-        @ctx.font = "9px curier new"
+        @ctx.font = "10px courier new"
         for row,ridx in neuron
             for val,cidx in row
                 @ctx.fillStyle = scale(val)
                 @ctx.fillRect(33*cidx,33*ridx,33,33)
+
                 @ctx.fillStyle = "#000"
-                @ctx.fillText("#{Math.round(val * 100) / 100}",33*cidx+5,33*ridx+18)
+                text = "#{Math.round(val * 100) / 100}"
+                l = text.length*9
+
+                @ctx.fillText(text,33*cidx+16-l/3,33*ridx+20)
 
     removeBias: (matrix) =>
         return (row[1..] for row in matrix)
@@ -215,13 +219,16 @@ loadWeight = (event) ->
 getCellValue = (name) ->
     parseFloat($("span[data-var='#{name}'] span").text())
 
-inputCellsValues = () ->
-    [getCellValue(direction) for direction in ["st","n", "ne", "e", "se", "s", "sw", "w", "nw"]]
+inputCellsValues = (neigh) ->
+    if neigh == "vonneumann"
+        return [getCellValue(direction) for direction in ["st","n", "e", "s", "w"]]
+    else if neigh == "ediemoore"
+        return [getCellValue(direction) for direction in ["st","n", "ne", "e", "se", "s", "sw", "w", "nw"]]
+
 
 tanh = (arg) ->
-    for r,ridx in arg
-        for x,cidx in r
-            arg[ridx][cidx] = (Math.exp(arg[ridx][cidx]) - Math.exp(-arg[ridx][cidx])) / (Math.exp(arg[ridx][cidx]) + Math.exp(-arg[ridx][cidx]))
+    for x,idx in arg
+        arg[idx] = (Math.exp(x) - Math.exp(-x)) / (Math.exp(x) + Math.exp(-x))
     return arg
 
 activateNetwork = (input) ->
@@ -229,28 +236,34 @@ activateNetwork = (input) ->
     theta2 = root.data["layer2"]
 
     input.unshift(1)
-    console.log input
 
     hidden_layer = tanh(numeric.dot(theta1, input))
-    console.log hidden_layer
 
     # get output layer
     hidden_layer.unshift(1)
-    console.log hidden_layer
 
     out_vector = tanh(numeric.dot(theta2, hidden_layer))
 
     # set new internal state of cell
     internal_state = out_vector[0]
-    grayscale = 255*(internal_state+1)/2
-    grayscale = 255 - Math.max(Math.min(Math.round(grayscale), 255), 0)
-    return grayscale
+    grayscale = 255*(internal_state+1)/2.0
+    grayscale = Math.max(Math.min(Math.round(grayscale), 255), 0)
+    return [internal_state, grayscale]
 
-displayOutput = (color)->
+displayOutput = ([state,color])->
     canvas = $("#output").get(0)
     ctx = canvas.getContext("2d")
+
     ctx.fillStyle = "rgb(#{color},#{color},#{color})"
     ctx.fillRect(0,0,canvas.width, canvas.height)
+
+    ctx.font = "12px courier new"
+    ctx.fillStyle = "black"
+    if color <= 128
+        ctx.fillStyle = "white"
+    text = "#{Math.round(state * 100) / 100}"
+    l = text.length*12
+    ctx.fillText(text,23-l/4,28)
 
 checkInputVector = (vec) ->
     for x in vec
@@ -258,7 +271,7 @@ checkInputVector = (vec) ->
     return true
 
 updateNetwork = () ->
-    input = inputCellsValues()[0]
+    input = inputCellsValues(root.data["neigh"])[0]
     if !checkInputVector(input)
         return
     output = activateNetwork(input)
@@ -269,10 +282,10 @@ initializeInputCells = () ->
         name = $(elem).attr("data-var")
         new Tangle(document, {
                 initialize: () ->
-                    @[name] = -1
+                    @[name] = 1
                 update: () ->
                     updateNetwork()
-                    color = Math.round(255 - 255*((1+@[name])/2))
+                    color = Math.round(255*((1+@[name])/2))
                     font_color = "black"
                     if color < 128
                         font_color = "white"

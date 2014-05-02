@@ -1,5 +1,7 @@
 root = exports ? this
 
+root.displayValues = false
+
 # this class will be for controlling what's happening on replay canvas
 class ReplayPlayer
     constructor: (@replay) ->
@@ -75,6 +77,17 @@ class ReplayPlayer
             y = Math.floor(idx / @replay.height)*@replay.resolution
             @ctx.fillRect(x, y, @replay.resolution, @replay.resolution)
 
+            if root.displayValues
+                @ctx.font = "#{@replay.resolution/2}px courier new"
+                @ctx.fillStyle = "black"
+                if (rgb[0]+rgb[1]+rgb[2])/3 < 128
+                    @ctx.fillStyle = "white"
+
+                text = "#{Math.round(state["state"] * 10) / 10}"
+                l = text.length*@replay.resolution/2
+                r = @replay.resolution/2
+                @ctx.fillText(text, x+r-l/3,y+r*1.5)
+
     clearStats: =>
         $('.frame').text("0/0")
 
@@ -145,6 +158,11 @@ $(document).ready ->
                 show: 300
                 hide: 700
         })
+
+    $('.ui.checkbox').checkbox().on('click', () ->
+        root.displayValues = !root.displayValues
+        root.player.draw()
+    )
 
     loadReplayData= (replayName, callback) ->
         $.ajax

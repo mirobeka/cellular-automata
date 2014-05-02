@@ -22,14 +22,14 @@
     }
 
     Layer.prototype.draw = function() {
-      var cidx, flatten, max_val, mid_val, min_val, neuron, ridx, row, scale, val, _i, _len, _results;
+      var cidx, flatten, l, max_val, mid_val, min_val, neuron, ridx, row, scale, text, val, _i, _len, _results;
       neuron = this.getNeuron();
       flatten = [].concat.apply([], neuron);
       min_val = Math.min(0, Math.min.apply(null, flatten));
       max_val = Math.max.apply(null, flatten);
       mid_val = (min_val + max_val) / 2;
       scale = d3.scale.linear().range(["darkturquoise", "white", "orange"]).domain([min_val, 0, max_val]);
-      this.ctx.font = "9px curier new";
+      this.ctx.font = "10px courier new";
       _results = [];
       for (ridx = _i = 0, _len = neuron.length; _i < _len; ridx = ++_i) {
         row = neuron[ridx];
@@ -41,7 +41,9 @@
             this.ctx.fillStyle = scale(val);
             this.ctx.fillRect(33 * cidx, 33 * ridx, 33, 33);
             this.ctx.fillStyle = "#000";
-            _results1.push(this.ctx.fillText("" + (Math.round(val * 100) / 100), 33 * cidx + 5, 33 * ridx + 18));
+            text = "" + (Math.round(val * 100) / 100);
+            l = text.length * 9;
+            _results1.push(this.ctx.fillText(text, 33 * cidx + 16 - l / 3, 33 * ridx + 20));
           }
           return _results1;
         }).call(this));
@@ -264,30 +266,42 @@
     return parseFloat($("span[data-var='" + name + "'] span").text());
   };
 
-  inputCellsValues = function() {
+  inputCellsValues = function(neigh) {
     var direction;
-    return [
-      (function() {
-        var _i, _len, _ref, _results;
-        _ref = ["st", "n", "ne", "e", "se", "s", "sw", "w", "nw"];
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          direction = _ref[_i];
-          _results.push(getCellValue(direction));
-        }
-        return _results;
-      })()
-    ];
+    if (neigh === "vonneumann") {
+      return [
+        (function() {
+          var _i, _len, _ref, _results;
+          _ref = ["st", "n", "e", "s", "w"];
+          _results = [];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            direction = _ref[_i];
+            _results.push(getCellValue(direction));
+          }
+          return _results;
+        })()
+      ];
+    } else if (neigh === "ediemoore") {
+      return [
+        (function() {
+          var _i, _len, _ref, _results;
+          _ref = ["st", "n", "ne", "e", "se", "s", "sw", "w", "nw"];
+          _results = [];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            direction = _ref[_i];
+            _results.push(getCellValue(direction));
+          }
+          return _results;
+        })()
+      ];
+    }
   };
 
   tanh = function(arg) {
-    var cidx, r, ridx, x, _i, _j, _len, _len1;
-    for (ridx = _i = 0, _len = arg.length; _i < _len; ridx = ++_i) {
-      r = arg[ridx];
-      for (cidx = _j = 0, _len1 = r.length; _j < _len1; cidx = ++_j) {
-        x = r[cidx];
-        arg[ridx][cidx] = (Math.exp(arg[ridx][cidx]) - Math.exp(-arg[ridx][cidx])) / (Math.exp(arg[ridx][cidx]) + Math.exp(-arg[ridx][cidx]));
-      }
+    var idx, x, _i, _len;
+    for (idx = _i = 0, _len = arg.length; _i < _len; idx = ++_i) {
+      x = arg[idx];
+      arg[idx] = (Math.exp(x) - Math.exp(-x)) / (Math.exp(x) + Math.exp(-x));
     }
     return arg;
   };
@@ -297,24 +311,30 @@
     theta1 = root.data["layer1"];
     theta2 = root.data["layer2"];
     input.unshift(1);
-    console.log(input);
     hidden_layer = tanh(numeric.dot(theta1, input));
-    console.log(hidden_layer);
     hidden_layer.unshift(1);
-    console.log(hidden_layer);
     out_vector = tanh(numeric.dot(theta2, hidden_layer));
     internal_state = out_vector[0];
-    grayscale = 255 * (internal_state + 1) / 2;
-    grayscale = 255 - Math.max(Math.min(Math.round(grayscale), 255), 0);
-    return grayscale;
+    grayscale = 255 * (internal_state + 1) / 2.0;
+    grayscale = Math.max(Math.min(Math.round(grayscale), 255), 0);
+    return [internal_state, grayscale];
   };
 
-  displayOutput = function(color) {
-    var canvas, ctx;
+  displayOutput = function(_arg) {
+    var canvas, color, ctx, l, state, text;
+    state = _arg[0], color = _arg[1];
     canvas = $("#output").get(0);
     ctx = canvas.getContext("2d");
     ctx.fillStyle = "rgb(" + color + "," + color + "," + color + ")";
-    return ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = "12px courier new";
+    ctx.fillStyle = "black";
+    if (color <= 128) {
+      ctx.fillStyle = "white";
+    }
+    text = "" + (Math.round(state * 100) / 100);
+    l = text.length * 12;
+    return ctx.fillText(text, 23 - l / 4, 28);
   };
 
   checkInputVector = function(vec) {
@@ -330,7 +350,7 @@
 
   updateNetwork = function() {
     var input, output;
-    input = inputCellsValues()[0];
+    input = inputCellsValues(root.data["neigh"])[0];
     if (!checkInputVector(input)) {
       return;
     }
@@ -344,12 +364,12 @@
       name = $(elem).attr("data-var");
       return new Tangle(document, {
         initialize: function() {
-          return this[name] = -1;
+          return this[name] = 1;
         },
         update: function() {
           var color, font_color;
           updateNetwork();
-          color = Math.round(255 - 255 * ((1 + this[name]) / 2));
+          color = Math.round(255 * ((1 + this[name]) / 2));
           font_color = "black";
           if (color < 128) {
             font_color = "white";

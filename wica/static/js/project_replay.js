@@ -5,6 +5,8 @@
 
   root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
+  root.displayValues = false;
+
   ReplayPlayer = (function() {
     function ReplayPlayer(replay) {
       this.replay = replay;
@@ -104,7 +106,7 @@
     };
 
     ReplayPlayer.prototype.draw = function(replay) {
-      var idx, rgb, state, x, y, _i, _len, _ref, _results;
+      var idx, l, r, rgb, state, text, x, y, _i, _len, _ref, _results;
       _ref = this.replay.data[this.step];
       _results = [];
       for (idx = _i = 0, _len = _ref.length; _i < _len; idx = ++_i) {
@@ -113,7 +115,20 @@
         this.ctx.fillStyle = "rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ")";
         x = (idx % this.replay.width) * this.replay.resolution;
         y = Math.floor(idx / this.replay.height) * this.replay.resolution;
-        _results.push(this.ctx.fillRect(x, y, this.replay.resolution, this.replay.resolution));
+        this.ctx.fillRect(x, y, this.replay.resolution, this.replay.resolution);
+        if (root.displayValues) {
+          this.ctx.font = "" + (this.replay.resolution / 2) + "px courier new";
+          this.ctx.fillStyle = "black";
+          if ((rgb[0] + rgb[1] + rgb[2]) / 3 < 128) {
+            this.ctx.fillStyle = "white";
+          }
+          text = "" + (Math.round(state["state"] * 10) / 10);
+          l = text.length * this.replay.resolution / 2;
+          r = this.replay.resolution / 2;
+          _results.push(this.ctx.fillText(text, x + r - l / 3, y + r * 1.5));
+        } else {
+          _results.push(void 0);
+        }
       }
       return _results;
     };
@@ -209,6 +224,10 @@
         show: 300,
         hide: 700
       }
+    });
+    $('.ui.checkbox').checkbox().on('click', function() {
+      root.displayValues = !root.displayValues;
+      return root.player.draw();
     });
     loadReplayData = function(replayName, callback) {
       return $.ajax({
