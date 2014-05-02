@@ -1,3 +1,5 @@
+root = exports ? this
+
 class Layer
     constructor: (selector, @data, @neuron) ->
         @canvas = $(selector).get(0)
@@ -51,7 +53,6 @@ class Layer1 extends Layer
 
     getNeuron: =>
         layer = @removeBias(@layer1)
-        console.log layer
         #layer = @normalize(layer)
         neuron = @mapNetworkToNeigh(layer[@neuron], @data["neigh"])
 
@@ -124,14 +125,40 @@ getHtml = (weight) ->
                 </tbody>
             </table>
 
-            <div class="ui middle aligned two column grid">
+            <div class="ui middle aligned four column grid">
                 <div class="row">
+                    <div class="column">
+                        <div class="ui input vertical fluid menu">
+                            <table id="input">
+                                <tr>
+                                    <td><span data-var="nw" data-format="%.2f" data-min="-1" data-max="1" data-step="0.1" class="TKAdjustableNumber"></span></td>
+                                    <td><span data-var="n" data-format="%.2f" data-min="-1" data-max="1" data-step="0.1" class="TKAdjustableNumber"></span></td>
+                                    <td><span data-var="ne" data-format="%.2f" data-min="-1" data-max="1" data-step="0.1" class="TKAdjustableNumber"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span data-var="w" data-format="%.2f" data-min="-1" data-max="1" data-step="0.1" class="TKAdjustableNumber"></span></td>
+                                    <td><span data-var="st" data-format="%.2f" data-min="-1" data-max="1" data-step="0.1" class="TKAdjustableNumber"></span></td>
+                                    <td><span data-var="e" data-format="%.2f" data-min="-1" data-max="1" data-step="0.1" class="TKAdjustableNumber"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span data-var="sw" data-format="%.2f" data-min="-1" data-max="1" data-step="0.1" class="TKAdjustableNumber"></span></td>
+                                    <td><span data-var="s" data-format="%.2f" data-min="-1" data-max="1" data-step="0.1" class="TKAdjustableNumber"></span></td>
+                                    <td><span data-var="se" data-format="%.2f" data-min="-1" data-max="1" data-step="0.1" class="TKAdjustableNumber"></span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                     <div class="column">
                         <div class="ui layer1 vertical fluid menu">
                         </div>
                     </div>
                     <div class="column">
                         <div class="ui layer2 vertical fluid menu">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="ui vertical fluid menu">
+                            <canvas id="output" width="50" height="50"></canvas>
                         </div>
                     </div>
                 </div>
@@ -173,13 +200,83 @@ getData = (weightName, callback) ->
 
 parseData = (data) ->
     data = JSON.parse data
+    root.data = data
     displayWeightData data
+    initializeInputCells()
+
     $(".ui.dimmable").dimmer("hide")
 
 loadWeight = (event) ->
     $(".ui.dimmable").dimmer("show")
     replayName = $(@).attr("data-name")
     getData replayName, parseData
+
+getCellValue = (name) ->
+    parseFloat($("span[data-var='#{name}'] span").text())
+
+inputCellsValues = () ->
+    [getCellValue(direction) for direction in ["st","n", "ne", "e", "se", "s", "sw", "w", "nw"]]
+
+tanh = (arg) ->
+    for r,ridx in arg
+        for x,cidx in r
+            arg[ridx][cidx] = (Math.exp(arg[ridx][cidx]) - Math.exp(-arg[ridx][cidx])) / (Math.exp(arg[ridx][cidx]) + Math.exp(-arg[ridx][cidx]))
+    return arg
+
+activateNetwork = (input) ->
+    theta1 = root.data["layer1"]
+    theta2 = root.data["layer2"]
+
+    input.unshift(1)
+    console.log input
+
+    hidden_layer = tanh(numeric.dot(theta1, input))
+    console.log hidden_layer
+
+    # get output layer
+    hidden_layer.unshift(1)
+    console.log hidden_layer
+
+    out_vector = tanh(numeric.dot(theta2, hidden_layer))
+
+    # set new internal state of cell
+    internal_state = out_vector[0]
+    grayscale = 255*(internal_state+1)/2
+    grayscale = 255 - Math.max(Math.min(Math.round(grayscale), 255), 0)
+    return grayscale
+
+displayOutput = (color)->
+    canvas = $("#output").get(0)
+    ctx = canvas.getContext("2d")
+    ctx.fillStyle = "rgb(#{color},#{color},#{color})"
+    ctx.fillRect(0,0,canvas.width, canvas.height)
+
+checkInputVector = (vec) ->
+    for x in vec
+        return false if isNaN(x)
+    return true
+
+updateNetwork = () ->
+    input = inputCellsValues()[0]
+    if !checkInputVector(input)
+        return
+    output = activateNetwork(input)
+    displayOutput(output)
+
+initializeInputCells = () ->
+    $("#input span").each (idx, elem) ->
+        name = $(elem).attr("data-var")
+        new Tangle(document, {
+                initialize: () ->
+                    @[name] = -1
+                update: () ->
+                    updateNetwork()
+                    color = Math.round(255 - 255*((1+@[name])/2))
+                    font_color = "black"
+                    if color < 128
+                        font_color = "white"
+                    $(elem).css({"background-color": "rgb(#{color},#{color},#{color}", "color": font_color})
+        })
 
 $(document).ready ->
     $(".ui.dimmable").dimmer({
@@ -188,3 +285,5 @@ $(document).ready ->
                 hide: 700
         })
     $('.load.weight').bind('click', loadWeight)
+    if $(".load.weight").length > 0
+        $(".load.weight").first().trigger("click")
