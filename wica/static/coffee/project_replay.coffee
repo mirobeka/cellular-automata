@@ -7,7 +7,7 @@ class Preview
         @size = 20
         @resolution = 10
         @canvas = $("#preview").get(0)
-        @canvas.height = @size*@resolution+20
+        @canvas.height = @size*@resolution*3+65
         @canvas.width = @size*@resolution*3+22
         @ctx = @canvas.getContext("2d")
         @ctx.font = "12px courier new"
@@ -22,17 +22,19 @@ class Preview
         @ctx.clearRect(0,0,@canvas.width, @canvas.height)
 
     show: =>
-        mid = Math.round(@replay.data.length/2)
-        steps = [0, mid, @replay.data.length-2]
+        scale = d3.scale.linear().range([0,@replay.data.length-1]).domain([0,9])
+        steps = (Math.round(scale(x)) for x in [0..8])
+        width = @size*@resolution
+        height = @size*@resolution
         for step,idx in steps
-            xx = @size*@resolution*idx + 5*idx + 1
-            yy = 18
+            xx = 1+width*(idx%3) + 5*(idx%3)
+            yy = 18 + Math.floor(idx/3)*height + 18*Math.floor(idx/3)
             @draw xx, yy, step
 
     draw: (xx, yy, step) =>
         @ctx.fillStyle = "black"
         text = "step: #{step}"
-        @ctx.fillText(text, xx, 11)
+        @ctx.fillText(text, xx, yy-6)
         @ctx.fillRect(xx-1, yy-1, @size*@resolution+2, @size*@resolution+2)
 
         for state,idx in @replay.data[step]

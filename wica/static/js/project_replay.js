@@ -17,7 +17,7 @@
       this.size = 20;
       this.resolution = 10;
       this.canvas = $("#preview").get(0);
-      this.canvas.height = this.size * this.resolution + 20;
+      this.canvas.height = this.size * this.resolution * 3 + 65;
       this.canvas.width = this.size * this.resolution * 3 + 22;
       this.ctx = this.canvas.getContext("2d");
       this.ctx.font = "12px courier new";
@@ -36,14 +36,23 @@
     };
 
     Preview.prototype.show = function() {
-      var idx, mid, step, steps, xx, yy, _i, _len, _results;
-      mid = Math.round(this.replay.data.length / 2);
-      steps = [0, mid, this.replay.data.length - 2];
+      var height, idx, scale, step, steps, width, x, xx, yy, _i, _len, _results;
+      scale = d3.scale.linear().range([0, this.replay.data.length - 1]).domain([0, 9]);
+      steps = (function() {
+        var _i, _results;
+        _results = [];
+        for (x = _i = 0; _i <= 8; x = ++_i) {
+          _results.push(Math.round(scale(x)));
+        }
+        return _results;
+      })();
+      width = this.size * this.resolution;
+      height = this.size * this.resolution;
       _results = [];
       for (idx = _i = 0, _len = steps.length; _i < _len; idx = ++_i) {
         step = steps[idx];
-        xx = this.size * this.resolution * idx + 5 * idx + 1;
-        yy = 18;
+        xx = 1 + width * (idx % 3) + 5 * (idx % 3);
+        yy = 18 + Math.floor(idx / 3) * height + 18 * Math.floor(idx / 3);
         _results.push(this.draw(xx, yy, step));
       }
       return _results;
@@ -53,7 +62,7 @@
       var idx, rgb, state, text, x, y, _i, _len, _ref, _results;
       this.ctx.fillStyle = "black";
       text = "step: " + step;
-      this.ctx.fillText(text, xx, 11);
+      this.ctx.fillText(text, xx, yy - 6);
       this.ctx.fillRect(xx - 1, yy - 1, this.size * this.resolution + 2, this.size * this.resolution + 2);
       _ref = this.replay.data[step];
       _results = [];
