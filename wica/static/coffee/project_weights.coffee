@@ -90,6 +90,44 @@ class Layer2 extends Layer
 
         return sum
 
+class Progress
+    constructor: (@selector, @data) ->
+        @fokinData = @parseData(@data)
+        console.log @fokinData
+
+    options: ->
+        opts =
+            title: "progress of error"
+            axesDefaults:
+                labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+            axes:
+                xaxis:
+                    label: "generations"
+                yaxis:
+                    label: "error"
+
+    show: () =>
+        $.jqplot @selector, @fokinData, @options()
+
+    parseData: (data) ->
+        parsed = [[]]
+        lastGen = 0
+        lastErr = 1
+        for prog in data
+            if prog[0] > lastGen
+                lastGen = prog[0]
+                lastErr = prog[1]
+                parsed[0].push([prog[0], prog[1]])
+            else if prog[0] == lastGen and prog[1] < lastErr
+                lastGen = prog[0]
+                lastErr = prog[1]
+                parsed[0].pop()
+                parsed[0].push([prog[0], prog[1]])
+
+        return parsed
+                
+
+
 replaceHtml = (newHtml) ->
     $("#contentContainer").html newHtml
     
@@ -105,7 +143,7 @@ getHtml = (weight) ->
                 <tbody>
            """
     for name,value of weight
-        if name == "layer1" or name == "layer2"
+        if name == "layer1" or name == "layer2" or name == "progress"
             continue
         if name == "weights"
             xx = 0
@@ -128,7 +166,8 @@ getHtml = (weight) ->
     html += """
                 </tbody>
             </table>
-
+            <div id="progress" class="jqplot-target">
+            </div>
             <div class="ui middle aligned four column grid">
                 <div class="row">
                     <div class="column">
@@ -162,7 +201,7 @@ getHtml = (weight) ->
                     </div>
                     <div class="column">
                         <div class="ui vertical fluid menu">
-                            <canvas id="output" width="50" height="50"></canvas>
+                            <canvas id="output" class="border" width="50" height="50"></canvas>
                         </div>
                     </div>
                 </div>
@@ -180,7 +219,7 @@ addLayer2Neuron = (w,idx) ->
 addNeuron = (klass, selector, layer, w, idx) ->
     html = """
         <div class="item">
-            <canvas id="#{layer}_neuron#{idx}"></canvas>
+            <canvas id="#{layer}_neuron#{idx}" class="border"></canvas>
         </div>
     """
     $(selector).append(html)
@@ -197,6 +236,10 @@ displayWeightData = (weight) ->
     for idx in [0..weight["layer2"].length-1]
         addLayer2Neuron(weight,idx)
 
+displayProgress = (data) ->
+    prog = new Progress "progress", data["progress"]
+    prog.show()
+
 getData = (weightName, callback) ->
     $.ajax
         type: "GET"
@@ -206,9 +249,10 @@ getData = (weightName, callback) ->
 parseData = (data) ->
     data = JSON.parse data
     root.data = data
+    
     displayWeightData data
+    displayProgress data
     initializeInputCells()
-
     $(".ui.dimmable").dimmer("hide")
 
 loadWeight = (event) ->

@@ -142,6 +142,17 @@ class Project:
             weight["generations"] = int(fp.readline().strip())
             weight["lattice_age"] = int(fp.readline().strip())
             weight["average_lattice_age"] = float(fp.readline().strip())
+            weight["progress"] = []
+            fp.readline() # empty line
+            assert fp.readline() == "progress:\n"
+            for line in fp.readlines():
+                i, w = line.split(":")
+                gen, err = i.split(" ")
+                gen = int(gen)
+                err = float(err)
+                w = eval(w)
+                weight["progress"].append([gen, err, w])
+
 
         modules = module_loader(self.config_path)
         rule_instance = modules["cells"]["rule"]()

@@ -8,6 +8,7 @@
 {% block head %}
 <script src= {{ url_for("static", filename="js/form.js") }}></script>
 <link rel="stylesheet" href="http://worrydream.com/Tangle/TangleKit/TangleKit.css" type="text/css">
+<link rel="stylesheet" type="text/css" href={{ url_for("static", filename="css/jquery.jqplot.min.css") }} />
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="http://worrydream.com/Tangle/Tangle.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://worrydream.com/Tangle/TangleKit/mootools.js"></script>
@@ -15,6 +16,9 @@
 <script type="text/javascript" src="http://worrydream.com/Tangle/TangleKit/BVTouchable.js"></script>
 <script type="text/javascript" src="http://worrydream.com/Tangle/TangleKit/TangleKit.js"></script>
 <script type="text/javascript" src="http://www.numericjs.com/lib/numeric-1.2.6.min.js"></script>
+<script type="text/javascript" src={{ url_for("static", filename="js/jquery.jqplot.min.js")}} ></script>
+<script type="text/javascript" src={{ url_for("static", filename="js/jqplot.canvasTextRenderer.min.js") }}></script>
+<script type="text/javascript" src={{ url_for("static", filename="js/jqplot.canvasAxisLabelRenderer.min.js")}}></script>
 <script src= {{ url_for("static", filename="js/project_weights.js") }}></script>
 {{ super() }}
 {% endblock %}
