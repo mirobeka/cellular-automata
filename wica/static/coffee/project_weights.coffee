@@ -103,8 +103,14 @@ class Progress
             axes:
                 xaxis:
                     label: "generations"
+                    min: 0
+                    max: 200
+
                 yaxis:
                     label: "error"
+                    min: 0.0
+                    max: 1.0
+
 
     show: () =>
         $.jqplot @selector, @fokinData, @options()

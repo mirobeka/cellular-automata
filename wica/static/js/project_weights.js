@@ -194,10 +194,14 @@
         },
         axes: {
           xaxis: {
-            label: "generations"
+            label: "generations",
+            min: 0,
+            max: 200
           },
           yaxis: {
-            label: "error"
+            label: "error",
+            min: 0.0,
+            max: 1.0
           }
         }
       };
