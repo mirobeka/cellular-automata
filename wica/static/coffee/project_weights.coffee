@@ -129,6 +129,7 @@ class Progress
                 lastErr = prog[1]
                 parsed[0].pop()
                 parsed[0].push([prog[0], prog[1]])
+        parsed[0].push([200, lastErr])
 
         return parsed
                 

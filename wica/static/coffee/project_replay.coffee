@@ -2,6 +2,47 @@ root = exports ? this
 
 root.displayValues = false
 
+class Preview
+    constructor: (@replay) ->
+        @size = 20
+        @resolution = 10
+        @canvas = $("#preview").get(0)
+        @canvas.height = @size*@resolution+20
+        @canvas.width = @size*@resolution*3+22
+        @ctx = @canvas.getContext("2d")
+        @ctx.font = "12px courier new"
+
+    map_state_to_color: (state) =>
+        if "rgb" of state
+            return state.rgb
+        else if "grayscale" of state
+            return [state.grayscale, state.grayscale, state.grayscale]
+
+    clear: =>
+        @ctx.clearRect(0,0,@canvas.width, @canvas.height)
+
+    show: =>
+        mid = Math.round(@replay.data.length/2)
+        steps = [0, mid, @replay.data.length-2]
+        for step,idx in steps
+            xx = @size*@resolution*idx + 5*idx + 1
+            yy = 18
+            @draw xx, yy, step
+
+    draw: (xx, yy, step) =>
+        @ctx.fillStyle = "black"
+        text = "step: #{step}"
+        @ctx.fillText(text, xx, 11)
+        @ctx.fillRect(xx-1, yy-1, @size*@resolution+2, @size*@resolution+2)
+
+        for state,idx in @replay.data[step]
+            rgb = @map_state_to_color(state)
+            @ctx.fillStyle = "rgb(#{rgb[0]},#{rgb[1]},#{rgb[2]})"
+            x = (idx % @size)*@resolution
+            y = Math.floor(idx / @size)*@resolution
+            @ctx.fillRect(xx+x, yy+y, @resolution, @resolution)
+
+
 # this class will be for controlling what's happening on replay canvas
 class ReplayPlayer
     constructor: (@replay) ->
@@ -173,6 +214,9 @@ $(document).ready ->
     otherFoo= (replayData) ->
         replayData = JSON.parse replayData
         root.player = new ReplayPlayer(replayData)
+        root.preview = new Preview(replayData)
+
+        root.preview.show()
         root.player.initControls()
         root.player.updateStats()
         root.player.draw()
