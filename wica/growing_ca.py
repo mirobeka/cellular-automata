@@ -151,5 +151,4 @@ def convert_to_json(data):
 
 if __name__ == "__main__":
     set_logger()
-    app.run()
-    # app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0")
